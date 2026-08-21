@@ -5,7 +5,7 @@
     "mode": "url",
     "url": {
       "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "ms-809a2d72-e350-44b4-b9e8-5d92d1170f11",
+      "api_key": "np1:mZHDNzy7ZUk8bu/tctKsIspGTS/V6ltgAYJC87D7epUtK8SKuwp+tT1PRAEKuDeKXVguHnQsNj6JSHZ4+9yE",
       "model_name": "Qwen/Qwen3.5-27B",
       "support_image": true,
       "prompt_format": "chatml",
@@ -48,7 +48,7 @@
     "name": "default",
     "mode": "url",
     "base_url": "https://api-inference.modelscope.cn/v1",
-    "api_key": "ms-809a2d72-e350-44b4-b9e8-5d92d1170f11",
+    "api_key": "np1:mZHDNzy7ZUk8bu/tctKsIspGTS/V6ltgAYJC87D7epUtK8SKuwp+tT1PRAEKuDeKXVguHnQsNj6JSHZ4+9yE",
     "model_name": "Qwen/Qwen3.5-27B",
     "support_image": true,
     "prompt_format": "chatml",
