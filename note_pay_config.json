@@ -1,0 +1,60 @@
+{
+  "_comment": "NotePay 远程配置（部署到 GitHub Pages / jsDelivr 的 config.json）。与 app_config.json 同构：拉取后与本地生效配置深度合并，远程同 key 覆盖本地；远程未写的 key 原样保留（兜底 app_config.json）。本文件只覆盖「不发版即可调整」的字段。",
+  "llm": {
+    "_comment": "LLM 接入（同 app_config 的 llm 段）。作用：①首次启动（本地无预设时）的种子；②已在用用户以顶层 server 段为准。远程改 LLM 地址请改 server 段，不要只改这里（已装用户的实时地址由 server 段驱动）。",
+    "mode": "url",
+    "url": {
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "ms-809a2d72-e350-44b4-b9e8-5d92d1170f11",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "temperature": 0.3,
+      "max_tokens": 13092,
+      "disable_think": true,
+      "agent_memory_enabled": false,
+      "agent_memory_turns": 6
+    },
+    "local": {
+      "model_path": "",
+      "mmproj_path": "",
+      "model_name": "local-llm",
+      "support_image": true,
+      "temperature": 0.3,
+      "max_tokens": 1024
+    }
+  },
+  "amap": {
+    "_comment": "高德 Key。Key 泄露 / 配额耗尽时改这里即可，无需发版。",
+    "android_key": "e9f1b2b359006a40c7a91380d369dce6",
+    "ios_key": "be4efefadc06a6ce2481e6629a440fd3",
+    "web_key": "e9f1b2b359006a40c7a91380d369dce6"
+  },
+  "limits": {
+    "_comment": "LLM 每日调用次数（按业务通道计）。远程可调，便于按成本随时收紧/放开；免费版请勿给太高。",
+    "free": {
+      "entry": 50,
+      "agent": 50,
+      "stats": 100
+    },
+    "premium": {
+      "entry": 500,
+      "agent": 500,
+      "stats": 2000
+    }
+  },
+  "server": {
+    "_comment": "实时 LLM 服务器预设（覆盖名为 default 的预设，即时生效）。这是「远程改 LLM 地址」的唯一生效通道；与上面 llm.url 保持一致。字段对齐 flutter_llm_client 的 ServerConfig.toMap（snake_case）。",
+    "name": "default",
+    "mode": "url",
+    "base_url": "https://api-inference.modelscope.cn/v1",
+    "api_key": "ms-809a2d72-e350-44b4-b9e8-5d92d1170f11",
+    "model_name": "Qwen/Qwen3.5-27B",
+    "support_image": true,
+    "prompt_format": "chatml",
+    "default_params": {
+      "temperature": 0.3,
+      "max_tokens": 13092
+    }
+  }
+}
