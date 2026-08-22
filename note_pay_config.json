@@ -35,7 +35,7 @@
     "free": {
       "entry": 20,
       "agent": 20,
-      "stats": 100
+      "stats": 50
     },
     "premium": {
       "entry": 500,
