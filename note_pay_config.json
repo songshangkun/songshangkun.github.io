@@ -33,14 +33,14 @@
   "limits": {
     "_comment": "LLM 每日调用次数（按业务通道计）。远程可调，便于按成本随时收紧/放开；免费版请勿给太高。",
     "free": {
-      "entry": 20,
-      "agent": 20,
-      "stats": 50
+      "entry": 5,
+      "agent": 5,
+      "stats": 10
     },
     "premium": {
-      "entry": 500,
-      "agent": 500,
-      "stats": 2000
+      "entry": 50,
+      "agent": 50,
+      "stats": 100
     }
   },
   "server": {
