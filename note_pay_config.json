@@ -1,5 +1,7 @@
 {
-  "_comment": "NotePay 远程配置（部署到 GitHub Pages / jsDelivr 的 config.json）。与 app_config.json 同构：拉取后与本地生效配置深度合并，远程同 key 覆盖本地；远程未写的 key 原样保留（兜底 app_config.json）。本文件只覆盖「不发版即可调整」的字段。",
+  "_comment": "NotePay 远程配置（部署到 GitHub Pages / jsDelivr 的 config.json）。与 app_config.json 同构：拉取后落盘到独立远程文件，读时三层合并（打包 assets → 远程文件 → 本地开发覆盖），远程同 key 覆盖本地；远程未写的 key 原样保留（兜底 app_config.json）。本文件只覆盖「不发版即可调整」的字段。平台分治见 platforms.{ios,android}（AppConfig 按平台取，无需两套远程文件）；顶层 ad_gate/pay 作为旧版 App 的 fallback 保留。",
+  "map_enabled": true,
+  "_note_map_enabled": "高德地图总开关（默认开）。true=启用地图选点/定位与「定位后自动回填最近地点名称」；false=整个 App 隐藏地图控件与定位按钮（用户看不到经纬度/地图），消费地点【地点名称】改由 LLM 从用户输入描述/小票分析（用户仍可手改）。高德 API 不稳定时改这里为 false 即可，无需发版。",
   "llm": {
     "_comment": "LLM 接入（同 app_config 的 llm 段）。作用：①首次启动（本地无预设时）的种子；②已在用用户以顶层 server 段为准。远程改 LLM 地址请改 server 段，不要只改这里（已装用户的实时地址由 server 段驱动）。",
     "mode": "url",
@@ -28,19 +30,103 @@
     "_comment": "高德 Key。Key 泄露 / 配额耗尽时改这里即可，无需发版。",
     "android_key": "e9f1b2b359006a40c7a91380d369dce6",
     "ios_key": "be4efefadc06a6ce2481e6629a440fd3",
-    "web_key": "e9f1b2b359006a40c7a91380d369dce6"
+    "web_key": "ff3a6bbd1b714b27b13ee17bb8adc150"
   },
   "limits": {
-    "_comment": "LLM 每日调用次数（按业务通道计）。远程可调，便于按成本随时收紧/放开；免费版请勿给太高。",
+    "_comment": "每日功能使用次数（按功能 key 计）。远程可调，便于按成本随时收紧/放开。注意：本段同时驱动 LLM 通道配额（agent/stats/entry）与三功能入口配额（agent/entry/photo）。free=未购买档，premium=已购买(pro_trial)档。远程合并覆盖本地 app_config.json 的同名段。",
     "free": {
       "entry": 5,
       "agent": 5,
-      "stats": 10
+      "stats": 100,
+      "photo": 5
     },
     "premium": {
-      "entry": 50,
-      "agent": 50,
-      "stats": 100
+      "entry": 20,
+      "agent": 20,
+      "stats": 2000,
+      "photo": 20
+    }
+  },
+  "ad_gate": {
+    "_comment": "按次广告门槛（区别于 pay 段的 ad_reward『看完解锁N天』）。required_before 列出的功能，每次使用前三必须看激励视频广告。reward_feature 为看完后授予的临时权益 key（业务可忽略）。远程可随时开关。",
+    "required_before": ["agent", "entry", "photo"],
+    "reward_feature": "no_ad_session"
+  },
+  "pay": {
+    "_comment": "盈利框架配置（flutter_pay 消费）。【顶层 fallback】平台专属覆盖见 platforms.{ios,android}.pay；新版 App 按平台取，旧版 App 无 platforms 时回退到此（当前值与 Android 一致，符合国内安卓主力市场）。enabled=是否启用付费墙；features=受控功能列表；products=商品/奖励项。ad_reward 类型即『看完广告解锁N天』（区别于 ad_gate 的按次广告）。trial_7d=7天试用解锁 pro_trial（试用期间享受 premium 档配额）。已移除 pro_monthly 订阅。",
+    "enabled": true,
+    "features": ["agent", "entry", "photo", "pro_trial"],
+    "products": [
+      {
+        "id": "pro_lifetime",
+        "type": "oneTime",
+        "grants": ["__ALL__"],
+        "title": "专业版永久",
+        "price_label": "¥198"
+      },
+      {
+        "id": "trial_7d",
+        "type": "ad_reward",
+        "reward_days": 7,
+        "grants": ["pro_trial"],
+        "title": "7天免费试用",
+        "ad_network": "debug"
+      }
+    ]
+  },
+  "platforms": {
+    "_comment": "平台分治（与 app_config.json 同构）。AppConfig 按 Platform.isIOS 选对应段，缺失回退顶层 ad_gate/pay。limits 两端相同留在顶层共享，此处只拆 ad_gate/pay。",
+    "ios": {
+      "ad_gate": {
+        "required_before": [],
+        "reward_feature": "no_ad_session"
+      },
+      "pay": {
+        "enabled": true,
+        "features": ["agent", "entry", "photo", "pro_lifetime"],
+        "products": [
+          {
+            "id": "pro_lifetime",
+            "type": "oneTime",
+            "grants": ["__ALL__"],
+            "title": "专业版永久",
+            "price_label": "¥198"
+          }
+        ]
+      }
+    },
+    "android": {
+      "ad_gate": {
+        "required_before": ["agent", "entry", "photo"],
+        "reward_feature": "no_ad_session"
+      },
+      "pay": {
+        "enabled": true,
+        "features": ["agent", "entry", "photo", "pro_6m"],
+        "products": [
+          {
+            "id": "pro_6m",
+            "type": "oneTime",
+            "grants": ["__ALL__"],
+            "title": "专业版6个月",
+            "price_label": "¥20/6个月"
+          },
+          {
+            "id": "trial_7d",
+            "type": "ad_reward",
+            "reward_days": 7,
+            "grants": ["pro_trial"],
+            "title": "看广告免费试用7天",
+            "ad_network": "debug"
+          }
+        ],
+        "providers": {
+          "qr_pay": {
+            "enabled": true,
+            "transfer_channels": ["alipay", "wechat"]
+          }
+        }
+      }
     }
   },
   "server": {
