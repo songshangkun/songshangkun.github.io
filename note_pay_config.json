@@ -36,7 +36,7 @@
     "_comment": "每日功能使用次数（按功能 key 计）。远程可调，便于按成本随时收紧/放开。注意：本段同时驱动 LLM 通道配额（agent/stats/entry）与三功能入口配额（agent/entry/photo）。free=未购买档，premium=已购买(pro_trial)档。远程合并覆盖本地 app_config.json 的同名段。",
     "free": {
       "entry": 5,
-      "agent": 5,
+      "agent": 10,
       "stats": 100,
       "photo": 5
     },
