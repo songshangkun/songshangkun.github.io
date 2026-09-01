@@ -36,15 +36,15 @@
     "_comment": "每日功能使用次数（按功能 key 计）。远程可调，便于按成本随时收紧/放开。注意：本段同时驱动 LLM 通道配额（agent/stats/entry）与三功能入口配额（agent/entry/photo）。free=未购买档，premium=已购买(pro_trial)档。远程合并覆盖本地 app_config.json 的同名段。",
     "free": {
       "entry": 5,
-      "agent": 10,
-      "stats": 100,
+      "agent": 5,
+      "stats": 10,
       "photo": 5
     },
     "premium": {
-      "entry": 20,
-      "agent": 20,
-      "stats": 2000,
-      "photo": 20
+      "entry": 50,
+      "agent": 50,
+      "stats": 100,
+      "photo": 50
     }
   },
   "ad_gate": {
@@ -53,7 +53,7 @@
     "reward_feature": "no_ad_session"
   },
   "pay": {
-    "_comment": "盈利框架配置（flutter_pay 消费）。【顶层 fallback】平台专属覆盖见 platforms.{ios,android}.pay；新版 App 按平台取，旧版 App 无 platforms 时回退到此（当前值与 Android 一致，符合国内安卓主力市场）。enabled=是否启用付费墙；features=受控功能列表；products=商品/奖励项。ad_reward 类型即『看完广告解锁N天』（区别于 ad_gate 的按次广告）。trial_7d=7天试用解锁 pro_trial（试用期间享受 premium 档配额）。已移除 pro_monthly 订阅。",
+    "_comment": "盈利框架配置（flutter_pay 消费）。【顶层 fallback】平台专属覆盖见 platforms.{ios,android}.pay；新版 App 按平台取，旧版 App 无 platforms 时回退到此（当前值与 Android 一致，符合国内安卓主力市场）。enabled=是否启用付费墙；features=受控功能列表；products=商品/奖励项。ad_reward 类型即『看完广告解锁N天』（区别于 ad_gate 的按次广告）。trial_7d=7天试用解锁 pro_trial（试用期间享受 premium 档配额）。本期为一次性买断，products 里就是全部在售商品、不含订阅。【可选扩展举例，非现状】type 已支持 subscription，将来想加订阅无需改代码，只需追加形如 {\"id\":\"pro_monthly\",\"type\":\"subscription\",\"grants\":[\"__ALL__\"],\"title\":\"专业版月付\",\"price_label\":\"¥20/月\"} 的一项，并同步做好 App Store Connect 建商品 + NotePay.storekit 的 subscriptionGroups 写法 + EntitlementService 到期回收，详见 note_pay/docs/配置全景说明.md §2.7.1。",
     "enabled": true,
     "features": ["agent", "entry", "photo", "pro_trial"],
     "products": [
@@ -62,7 +62,7 @@
         "type": "oneTime",
         "grants": ["__ALL__"],
         "title": "专业版永久",
-        "price_label": "¥198"
+        "price_label": "¥68"
       },
       {
         "id": "trial_7d",
@@ -84,13 +84,17 @@
       "pay": {
         "enabled": true,
         "features": ["agent", "entry", "photo", "pro_lifetime"],
+        "trial_days": 7,
+        "platform_routing": {
+          "ios": ["apple_iap", "local_trial"]
+        },
         "products": [
           {
             "id": "pro_lifetime",
             "type": "oneTime",
             "grants": ["__ALL__"],
             "title": "专业版永久",
-            "price_label": "¥198"
+            "price_label": "¥68"
           }
         ]
       }
