@@ -146,5 +146,46 @@
       "temperature": 0.3,
       "max_tokens": 13092
     }
+  },
+  "legal": {
+    "_comment": "隐私政策/使用条款托管页 URL（与 app_config.json 同构，且为本文件实际生效的权威值）。支持按 region 出不同页面：privacy_url/terms_url 为基础回退；privacy_url_by_region/terms_url_by_region 为各 region 专属页（key=AppRegion 名）。远程可覆盖本地，便于上架后动态修正而不必发版。",
+    "privacy_url": "https://songshangkun.github.io/note_pay/privacy/privacy_en.html",
+    "terms_url": "https://songshangkun.github.io/note_pay/terms/terms_en.html",
+    "privacy_url_by_region": {
+      "cn": "https://songshangkun.github.io/note_pay/privacy/privacy_cn.html",
+      "tw": "https://songshangkun.github.io/note_pay/privacy/privacy_tw.html",
+      "hk": "https://songshangkun.github.io/note_pay/privacy/privacy_hk.html",
+      "eu": "https://songshangkun.github.io/note_pay/privacy/privacy_eu.html",
+      "gb": "https://songshangkun.github.io/note_pay/privacy/privacy_gb.html",
+      "us": "https://songshangkun.github.io/note_pay/privacy/privacy_us.html",
+      "sg": "https://songshangkun.github.io/note_pay/privacy/privacy_sg.html",
+      "jp": "https://songshangkun.github.io/note_pay/privacy/privacy_jp.html",
+      "kr": "https://songshangkun.github.io/note_pay/privacy/privacy_kr.html"
+    },
+    "terms_url_by_region": {
+      "cn": "https://songshangkun.github.io/note_pay/terms/terms_cn.html",
+      "tw": "https://songshangkun.github.io/note_pay/terms/terms_tw.html",
+      "hk": "https://songshangkun.github.io/note_pay/terms/terms_hk.html",
+      "eu": "https://songshangkun.github.io/note_pay/terms/terms_eu.html",
+      "gb": "https://songshangkun.github.io/note_pay/terms/terms_gb.html",
+      "us": "https://songshangkun.github.io/note_pay/terms/terms_us.html",
+      "sg": "https://songshangkun.github.io/note_pay/terms/terms_sg.html",
+      "jp": "https://songshangkun.github.io/note_pay/terms/terms_jp.html",
+      "kr": "https://songshangkun.github.io/note_pay/terms/terms_kr.html"
+    }
+  },
+  "updates": {
+    "_comment": "版本升级检查（P2）。more_screen 的「检查更新」读取本段；latest_version > 本机版本即弹升级框。当前为测试值 1.1.0（本机 1.0.0+2）用于真机验证弹窗；正式发版前改回真实版本号与商店/apk 地址。force=true 时强制升级；min_version 低于则强制。ios_app_store_id 用于 itms-apps:// 跳转；android_apk_url 为国内 apk 直链；play_store_url 为海外 Google Play（合规仅跳转）。",
+    "latest_version": "1.1.0",
+    "min_version": "1.0.0",
+    "force": false,
+    "title": "NotePay 测试版本",
+    "notes": [
+      "（测试用）用于验证 P2 升级弹窗链路",
+      "正式更新日志将在发版时填写"
+    ],
+    "ios_app_store_id": "",
+    "android_apk_url": "https://songshangkun.github.io/note_pay/note_pay.apk",
+    "play_store_url": ""
   }
 }
