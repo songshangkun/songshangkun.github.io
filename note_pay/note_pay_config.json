@@ -32,6 +32,25 @@
     "ios_key": "be4efefadc06a6ce2481e6629a440fd3",
     "web_key": "ff3a6bbd1b714b27b13ee17bb8adc150"
   },
+  "google_maps_api_key": "",
+  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url 为空 = 该模型暂不可用（UI 优雅降级）。sha256 用于下载校验，防止 GitHub Pages 启用 Git LFS 时下到指针文件。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
+  "asr_models": [
+    {
+      "id": "zh-14M",
+      "langs": ["zh"],
+      "asset": "assets/models/sherpa-zh-14M.zip",
+      "url": "https://songshangkun.github.io/note_pay/models/sherpa-zh-14M.zip",
+      "size": 20946231,
+      "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b"
+    },
+    {
+      "id": "en-20M",
+      "langs": ["en"],
+      "url": "https://songshangkun.github.io/note_pay/models/sherpa-en-20M.zip",
+      "size": 38277116,
+      "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00"
+    }
+  ],
   "limits": {
     "_comment": "每日功能使用次数（按功能 key 计）。远程可调，便于按成本随时收紧/放开。注意：本段同时驱动 LLM 通道配额（agent/stats/entry）与三功能入口配额（agent/entry/photo）。free=未购买档，premium=已购买(pro_trial)档。远程合并覆盖本地 app_config.json 的同名段。",
     "free": {
@@ -49,27 +68,56 @@
   },
   "ad_gate": {
     "_comment": "按次广告门槛（区别于 pay 段的 ad_reward『看完解锁N天』）。required_before 列出的功能，每次使用前三必须看激励视频广告。reward_feature 为看完后授予的临时权益 key（业务可忽略）。远程可随时开关。",
-    "required_before": ["agent", "entry", "photo"],
+    "required_before": [
+      "agent",
+      "entry",
+      "photo"
+    ],
     "reward_feature": "no_ad_session"
   },
   "pay": {
     "_comment": "盈利框架配置（flutter_pay 消费）。【顶层 fallback】平台专属覆盖见 platforms.{ios,android}.pay；新版 App 按平台取，旧版 App 无 platforms 时回退到此（当前值与 Android 一致，符合国内安卓主力市场）。enabled=是否启用付费墙；features=受控功能列表；products=商品/奖励项。ad_reward 类型即『看完广告解锁N天』（区别于 ad_gate 的按次广告）。trial_7d=7天试用解锁 pro_trial（试用期间享受 premium 档配额）。本期为一次性买断，products 里就是全部在售商品、不含订阅。【可选扩展举例，非现状】type 已支持 subscription，将来想加订阅无需改代码，只需追加形如 {\"id\":\"pro_monthly\",\"type\":\"subscription\",\"grants\":[\"__ALL__\"],\"title\":\"专业版月付\",\"price_label\":\"¥20/月\"} 的一项，并同步做好 App Store Connect 建商品 + NotePay.storekit 的 subscriptionGroups 写法 + EntitlementService 到期回收，详见 note_pay/docs/配置全景说明.md §2.7.1。",
     "enabled": true,
-    "features": ["agent", "entry", "photo", "pro_trial"],
+    "features": [
+      "agent",
+      "entry",
+      "photo",
+      "pro_trial"
+    ],
     "products": [
       {
         "id": "pro_lifetime",
         "type": "oneTime",
-        "grants": ["__ALL__"],
-        "title": "专业版永久",
+        "grants": [
+          "__ALL__"
+        ],
+        "title": {
+          "zh": "专业版永久",
+          "en": "Pro Lifetime",
+          "ja": "プロ版買い切り",
+          "ko": "Pro 평생",
+          "de": "Pro Lebenszeit",
+          "es": "Pro de por vida",
+          "fr": "Pro à vie"
+        },
         "price_label": "¥68"
       },
       {
         "id": "trial_7d",
         "type": "ad_reward",
         "reward_days": 7,
-        "grants": ["pro_trial"],
-        "title": "7天免费试用",
+        "grants": [
+          "pro_trial"
+        ],
+        "title": {
+          "zh": "7天免费试用",
+          "en": "7-Day Free Trial",
+          "ja": "7日間無料トライアル",
+          "ko": "7일 무료 체험",
+          "de": "7 Tage kostenlos testen",
+          "es": "Prueba gratis de 7 días",
+          "fr": "Essai gratuit de 7 jours"
+        },
         "ad_network": "debug"
       }
     ]
@@ -83,17 +131,35 @@
       },
       "pay": {
         "enabled": true,
-        "features": ["agent", "entry", "photo", "pro_lifetime"],
+        "features": [
+          "agent",
+          "entry",
+          "photo",
+          "pro_lifetime"
+        ],
         "trial_days": 7,
         "platform_routing": {
-          "ios": ["apple_iap", "local_trial"]
+          "ios": [
+            "apple_iap",
+            "local_trial"
+          ]
         },
         "products": [
           {
             "id": "pro_lifetime",
             "type": "oneTime",
-            "grants": ["__ALL__"],
-            "title": "专业版永久",
+            "grants": [
+              "__ALL__"
+            ],
+            "title": {
+              "zh": "专业版永久",
+              "en": "Pro Lifetime",
+              "ja": "プロ版買い切り",
+              "ko": "Pro 평생",
+              "de": "Pro Lebenszeit",
+              "es": "Pro de por vida",
+              "fr": "Pro à vie"
+            },
             "price_label": "¥68"
           }
         ]
@@ -101,33 +167,65 @@
     },
     "android": {
       "ad_gate": {
-        "required_before": ["agent", "entry", "photo"],
+        "required_before": [
+          "agent",
+          "entry",
+          "photo"
+        ],
         "reward_feature": "no_ad_session"
       },
       "pay": {
         "enabled": true,
-        "features": ["agent", "entry", "photo", "pro_6m"],
+        "features": [
+          "agent",
+          "entry",
+          "photo",
+          "pro_6m"
+        ],
         "products": [
           {
             "id": "pro_6m",
             "type": "oneTime",
-            "grants": ["__ALL__"],
-            "title": "专业版6个月",
+            "grants": [
+              "__ALL__"
+            ],
+            "title": {
+              "zh": "专业版6个月",
+              "en": "Pro 6 Months",
+              "ja": "プロ版6ヶ月",
+              "ko": "Pro 6개월",
+              "de": "Pro 6 Monate",
+              "es": "Pro 6 meses",
+              "fr": "Pro 6 mois"
+            },
             "price_label": "¥20/6个月"
           },
           {
             "id": "trial_7d",
             "type": "ad_reward",
             "reward_days": 7,
-            "grants": ["pro_trial"],
-            "title": "看广告免费试用7天",
+            "grants": [
+              "pro_trial"
+            ],
+            "title": {
+              "zh": "7天免费试用",
+              "en": "7-Day Free Trial",
+              "ja": "7日間無料トライアル",
+              "ko": "7일 무료 체험",
+              "de": "7 Tage kostenlos testen",
+              "es": "Prueba gratis de 7 días",
+              "fr": "Essai gratuit de 7 jours"
+            },
             "ad_network": "debug"
           }
         ],
         "providers": {
           "qr_pay": {
             "enabled": true,
-            "transfer_channels": ["alipay", "wechat"]
+            "transfer_channels": [
+              "alipay",
+              "wechat"
+            ]
           }
         }
       }
@@ -145,6 +243,117 @@
     "default_params": {
       "temperature": 0.3,
       "max_tokens": 13092
+    }
+  },
+  "server_by_region": {
+    "_comment": "按地区 LLM 端点映射字典（key=AppRegion 名 cn/us/eu/jp/kr/gb/tw/hk/sg）。每个值是完整内联 ServerConfig，不同地区可独立配模型/密钥，实现合规灵活。未列出 region 回退顶层 server 段（default）。api_key 必须为 np1: 密文。当前演示各 region 暂指向同一国内合规端点，部署时按地区替换为各自合规端点/密钥即可。",
+    "cn": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "us": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "eu": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "jp": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "kr": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "gb": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "tw": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "hk": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
+    },
+    "sg": {
+      "mode": "url",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
+      "model_name": "Qwen/Qwen3.5-27B",
+      "support_image": true,
+      "prompt_format": "chatml",
+      "default_params": {
+        "temperature": 0.3,
+        "max_tokens": 13092
+      }
     }
   },
   "legal": {
