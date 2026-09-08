@@ -33,22 +33,78 @@
     "web_key": "ff3a6bbd1b714b27b13ee17bb8adc150"
   },
   "google_maps_api_key": "",
-  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url 为空 = 该模型暂不可用（UI 优雅降级）。sha256 用于下载校验，防止 GitHub Pages 启用 Git LFS 时下到指针文件。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
+  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url = 全球默认地址（Hugging Face：HardyCamila/hardy_sherpa）；url_by_region 按地区覆盖地址，key 为 AppRegion 名，当前仅 cn 需要（国内无法直连 Hugging Face，改为 hf-mirror.com 镜像；路径与官方一致、是同一份 LFS 对象，sha256 相同）。url 与 url_by_region 均无该模型地址 = 暂不可用（UI 优雅降级）。sha256 用于下载校验，防止镜像/代理返回错误页而非模型。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
   "asr_models": [
     {
       "id": "zh-14M",
       "langs": ["zh"],
       "asset": "assets/models/sherpa-zh-14M.zip",
-      "url": "https://songshangkun.github.io/note_pay/models/sherpa-zh-14M.zip",
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
+      },
       "size": 20946231,
       "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b"
     },
     {
       "id": "en-20M",
       "langs": ["en"],
-      "url": "https://songshangkun.github.io/note_pay/models/sherpa-en-20M.zip",
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
+      },
       "size": 38277116,
       "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00"
+    },
+    {
+      "id": "de-kroko-2025-08-06",
+      "langs": ["de"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip"
+      },
+      "size": 55197225,
+      "sha256": "c92f14c8d25151bfbd7ec71e768a89c9c08d3ad647cf5592fc83a856fe5070ed"
+    },
+    {
+      "id": "es-kroko-2025-08-06",
+      "langs": ["es"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip"
+      },
+      "size": 119581787,
+      "sha256": "18e44eb8d81f7d4d53db1e955719ad8693617b166b54d48c178390d5239ae6ae"
+    },
+    {
+      "id": "fr-kroko-2025-08-06",
+      "langs": ["fr"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip"
+      },
+      "size": 54801828,
+      "sha256": "d42e0c8d6b9805fecfc467d028773bfcfb2f899ab3b037ff409bfaa2866355d3"
+    },
+    {
+      "id": "korean-2024-06-16-mobile",
+      "langs": ["ko"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip"
+      },
+      "size": 100596025,
+      "sha256": "20d600cb9190914de5ed121d86c696505099ff493cf30cd068b48705e1c41035"
+    },
+    {
+      "id": "ar_en_id_ja_ru_th_vi_zh-2025-02-10",
+      "langs": ["zh","en","ja","de","es","fr","ko","ar","id","ru","th","vi"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip"
+      },
+      "size": 225329782,
+      "sha256": "e2160cb762322f831d87714bc048a28810f246fab96c6b093fad2c3353811b01"
     }
   ],
   "limits": {
