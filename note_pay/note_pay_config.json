@@ -32,7 +32,7 @@
     "ios_key": "be4efefadc06a6ce2481e6629a440fd3",
     "web_key": "ff3a6bbd1b714b27b13ee17bb8adc150"
   },
-  "google_maps_api_key": "",
+  "google_maps_api_key": "AIzaSyDePPWNsPopozyVW5FvrQRbF45iLnXjkIc",
   "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url = 全球默认地址（Hugging Face：HardyCamila/hardy_sherpa）；url_by_region 按地区覆盖地址，key 为 AppRegion 名，当前仅 cn 需要（国内无法直连 Hugging Face，改为 hf-mirror.com 镜像；路径与官方一致、是同一份 LFS 对象，sha256 相同）。url 与 url_by_region 均无该模型地址 = 暂不可用（UI 优雅降级）。sha256 用于下载校验，防止镜像/代理返回错误页而非模型。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
   "asr_models": [
     {
@@ -44,7 +44,8 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
       },
       "size": 20946231,
-      "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b"
+      "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b",
+      "descriptions": {"zh": "已随 App 内置，离线即可使用。识别快，适合日常中文记账。", "en": "Bundled with the app for offline use. Fast — ideal for everyday Chinese expense tracking.", "ja": "アプリに内蔵され、オフラインですぐ使えます。高速で、日常の中国語家計簿に最適です。", "ko": "앱에 내장되어 오프라인에서 바로 쓸 수 있습니다. 빠르게 일상 중국어 가계부에 적합합니다.", "de": "Im App enthalten und offline nutzbar. Schnell — ideal für den chinesischen Alltag.", "es": "Modelo de voz en chino incluido en la app y utilizable sin conexión. Rápido, ideal para el registro diario en chino.", "fr": "Modèle vocal chinois intégré à l'app et utilisable hors ligne. Rapide, idéal pour la saisie quotidienne en chinois."}
     },
     {
       "id": "en-20M",
@@ -54,7 +55,8 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
       },
       "size": 38277116,
-      "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00"
+      "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00",
+      "descriptions": {"zh": "英文语音模型，识别快。需首次联网下载，之后本地离线使用。", "en": "English speech model, fast. Downloads on first use, then runs fully offline.", "ja": "高速な英語音声モデル。初回のみダウンロードし、以降はオフラインで動作します。", "ko": "빠른 영어 음성 모델입니다. 첫 사용 시 한 번 내려받고 이후엔 오프라인으로 씁니다.", "de": "Englisches Sprachmodell, schnell. Beim ersten Mal herunterladen, danach offline.", "es": "Modelo de voz en inglés, rápido. Se descarga la primera vez y luego funciona sin conexión.", "fr": "Modèle vocal anglais, rapide. Téléchargé au premier usage, puis hors ligne."}
     },
     {
       "id": "de-kroko-2025-08-06",
@@ -64,7 +66,8 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip"
       },
       "size": 55197225,
-      "sha256": "c92f14c8d25151bfbd7ec71e768a89c9c08d3ad647cf5592fc83a856fe5070ed"
+      "sha256": "c92f14c8d25151bfbd7ec71e768a89c9c08d3ad647cf5592fc83a856fe5070ed",
+      "descriptions": {"zh": "德语流式语音模型，按需下载后离线识别德语。", "en": "German streaming speech model. Download on demand, then transcribe German offline.", "ja": "ドイツ語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでドイツ語を認識します。", "ko": "독일어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 독일어를 인식합니다.", "de": "Deutsches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Deutsch offline transkribieren.", "es": "Modelo de voz en alemán por streaming. Descárgalo bajo demanda para transcribir alemán sin conexión.", "fr": "Modèle vocal allemand en streaming. Téléchargez à la demande pour transcrire l'allemand hors ligne."}
     },
     {
       "id": "es-kroko-2025-08-06",
@@ -74,7 +77,8 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip"
       },
       "size": 119581787,
-      "sha256": "18e44eb8d81f7d4d53db1e955719ad8693617b166b54d48c178390d5239ae6ae"
+      "sha256": "18e44eb8d81f7d4d53db1e955719ad8693617b166b54d48c178390d5239ae6ae",
+      "descriptions": {"zh": "西班牙语流式语音模型，按需下载后离线识别西班牙语。", "en": "Spanish streaming speech model. Download on demand, then transcribe Spanish offline.", "ja": "スペイン語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでスペイン語を認識します。", "ko": "스페인어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 스페인어를 인식합니다.", "de": "Spanisches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Spanisch offline transkribieren.", "es": "Modelo de voz en español por streaming. Descárgalo bajo demanda para transcribir español sin conexión.", "fr": "Modèle vocal espagnol en streaming. Téléchargez à la demande pour transcrire l'espagnol hors ligne."}
     },
     {
       "id": "fr-kroko-2025-08-06",
@@ -84,7 +88,8 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip"
       },
       "size": 54801828,
-      "sha256": "d42e0c8d6b9805fecfc467d028773bfcfb2f899ab3b037ff409bfaa2866355d3"
+      "sha256": "d42e0c8d6b9805fecfc467d028773bfcfb2f899ab3b037ff409bfaa2866355d3",
+      "descriptions": {"zh": "法语流式语音模型，按需下载后离线识别法语。", "en": "French streaming speech model. Download on demand, then transcribe French offline.", "ja": "フランス語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでフランス語を認識します。", "ko": "프랑스어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 프랑스어를 인식합니다.", "de": "Französisches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Französisch offline transkribieren.", "es": "Modelo de voz en francés por streaming. Descárgalo bajo demanda para transcribir francés sin conexión.", "fr": "Modèle vocal français en streaming. Téléchargez à la demande pour transcrire le français hors ligne."}
     },
     {
       "id": "korean-2024-06-16-mobile",
@@ -94,7 +99,8 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip"
       },
       "size": 100596025,
-      "sha256": "20d600cb9190914de5ed121d86c696505099ff493cf30cd068b48705e1c41035"
+      "sha256": "20d600cb9190914de5ed121d86c696505099ff493cf30cd068b48705e1c41035",
+      "descriptions": {"zh": "韩文移动端语音模型，适合手机离线识别韩语。", "en": "Korean mobile speech model, tuned for on-device Korean recognition.", "ja": "韓国語モバイル音声モデルで、端末上で韓国語をオフライン認識します。", "ko": "한국어 모바일 음성 모델로, 기기에서 한국어를 오프라인으로 인식합니다.", "de": "Koreanisches Mobil-Sprachmodell, für die koreanische Erkennung auf dem Gerät optimiert.", "es": "Modelo de voz coreano para móviles, optimizado para reconocer coreano en el dispositivo.", "fr": "Modèle vocal coréen pour mobile, optimisé pour la reconnaissance coréenne sur l'appareil."}
     },
     {
       "id": "ar_en_id_ja_ru_th_vi_zh-2025-02-10",
@@ -104,7 +110,54 @@
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip"
       },
       "size": 225329782,
-      "sha256": "e2160cb762322f831d87714bc048a28810f246fab96c6b093fad2c3353811b01"
+      "sha256": "e2160cb762322f831d87714bc048a28810f246fab96c6b093fad2c3353811b01",
+      "descriptions": {"zh": "多语种模型，一次下载覆盖中/英/日/韩/法/德/西及阿拉伯、印尼、俄、泰、越语，无需切换模型。", "en": "Multilingual model: one download covers Chinese, English, Japanese, Korean, French, German, Spanish plus Arabic, Indonesian, Russian, Thai and Vietnamese — no model switching.", "ja": "多言語モデル。一度ダウンロードするだけで中国語・英語・日本語・韓国語・フランス語・ドイツ語・スペイン語に加え、アラビア語・インドネシア語・ロシア語・タイ語・ベトナム語もカバーし、モデル切り替え不要です。", "ko": "다국어 모델로, 한 번 내려받으면 중국어·영어·일본어·한국어·프랑스어·독일어·스페인어와 아랍어·인도네시아어·러시아어·태국어·베트남어를 모두 커버해 모델을 바꿀 필요가 없습니다.", "de": "Mehrsprachiges Modell: Ein Download deckt Chinesisch, Englisch, Japanisch, Koreanisch, Französisch, Deutsch, Spanisch sowie Arabisch, Indonesisch, Russisch, Thai und Vietnamesisch ab — kein Modellwechsel nötig.", "es": "Modelo multilingüe: una sola descarga cubre chino, inglés, japonés, coreano, francés, alemán, español y además árabe, indonesio, ruso, tailandés y vietnamita, sin cambiar de modelo.", "fr": "Modèle multilingue : un seul téléchargement couvre le chinois, l'anglais, le japonais, le coréen, le français, l'allemand, l'espagnol ainsi que l'arabe, l'indonésien, le russe, le thaï et le vietnamien — sans changer de modèle."}
+    },
+    {
+      "id": "zh-multi-70M",
+      "langs": ["zh"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip"
+      },
+      "size": 59326993,
+      "sha256": "f11835c417f3a019cc3fb9506f19cdda9346744c67352586f8601d6dee1b1761",
+      "descriptions": {"zh": "中文多口音模型，识别质量高于内置基础模型，覆盖更多方言口音。带 BPE，需 App 已支持。", "en": "Chinese multi-accent model with higher accuracy than the built-in base model, covering more dialects. Uses BPE (requires app support).", "ja": "内蔵の基礎モデルより高精度で、より多くの方言をカバーする中国語多アクセントモデル。BPE使用（アプリ側対応必須）。", "ko": "내장 기본 모델보다 정확도가 높고 더 많은 방언을 커버하는 중국어 다중 억양 모델입니다. BPE 사용(앱 지원 필요).", "de": "Chinesisches Modell mit vielen Akzenten, genauer als das eingebaute Basismodell, deckt mehr Dialekte ab. Nutzt BPE (App-Unterstützung nötig).", "es": "Modelo chino de múltiples acentos, más preciso que el modelo base integrado, cubre más dialectos. Usa BPE (requiere soporte de la app).", "fr": "Modèle chinois multi-accent, plus précis que le modèle de base intégré, couvrant plus de dialectes. Utilise le BPE (nécessite le support de l'app)."},
+      
+      
+      
+      
+      
+      
+      
+      
+      "_comment": "中等中文（多口音）流式 Transducer，带 bpe.model；需 App 已支持 BPE（asr_service_native.dart 传 bpeVocab）。已打包上传 HF，size/sha256 已填真实值。"
+    },
+    {
+      "id": "en-70M",
+      "langs": ["en"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip"
+      },
+      "size": 243002880,
+      "sha256": "45d15a63b24b80cec08d1176af2d4d78dbbaac0dd6fc42d2975c271c1c87fb09",
+      "descriptions": {"zh": "英文高精度模型，比基础英文模型更准确，带 BPE，需 App 已支持。", "en": "Higher-accuracy English model than the basic English model, uses BPE (requires app support).", "ja": "基本の英語モデルより高精度な英語モデル。BPE使用（アプリ側対応必須）。", "ko": "기본 영어 모델보다 정확도가 높은 영어 모델로 BPE를 사용합니다(앱 지원 필요).", "de": "Englisches Modell mit höherer Genauigkeit als das Basis-Englischmodell, nutzt BPE (App-Unterstützung nötig).", "es": "Modelo de inglés más preciso que el modelo básico de inglés, usa BPE (requiere soporte de la app).", "fr": "Modèle anglais plus précis que le modèle de base en anglais, utilise le BPE (nécessite le support de l'app)."},
+      
+      "_comment": "中等英文流式 Transducer，带 bpe.model；需 App 已支持 BPE。已打包上传 HF，size/sha256 已填真实值。"
+    },
+    {
+      "id": "zh-en-150",
+      "langs": ["zh", "en"],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip"
+      },
+      "size": 317891921,
+      "sha256": "1486df55e166e8bbab3491a5637e23502ecef24d7387fa902030bcf44a611d84",
+      "descriptions": {"zh": "中英双语模型，精度最高，适合中英混合或双语记账。带 BPE，需 App 已支持。", "en": "Bilingual Chinese-English model, highest accuracy — great for mixed or bilingual expense tracking. Uses BPE (requires app support).", "ja": "中国語・英語バイリンガルモデルで最も高精度。混合・バイリンガルな家計簿に最適。BPE使用（アプリ側対応必須）。", "ko": "중국어-영어 양언어 모델로 정확도가 가장 높아 혼합·이중 언어 가계부에 적합합니다. BPE 사용(앱 지원 필요).", "de": "Zweisprachiges Chinesisch-Englisch-Modell, höchste Genauigkeit — ideal für gemischte oder zweisprachige Einträge. Nutzt BPE (App-Unterstützung nötig).", "es": "Modelo bilingüe chino-inglés, máxima precisión — ideal para registros mixtos o bilingües. Usa BPE (requiere soporte de la app).", "fr": "Modèle bilingue chinois-anglais, précision maximale — idéal pour les saisies mixtes ou bilingues. Utilise le BPE (nécessite le support de l'app)."},
+      
+      "_comment": "中英双语中等流式 Transducer（zipformer），App 已支持 BPE；已打包上传 HF，size/sha256 已填真实值。"
     }
   ],
   "limits": {
