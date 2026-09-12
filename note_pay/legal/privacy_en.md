@@ -18,7 +18,7 @@ For any privacy question, request or complaint, contact us at **13808875@qq.com*
 - We **do not sell** your personal information and **do not** use it for behavioural advertising.
 - This version of the App **contains no advertising SDK and no analytics SDK**.
 - Location, camera, photo library and microphone are **optional** and used only when you invoke the corresponding feature. We never track your location in the background.
-- Optional AI features may send what you type, say or photograph to an external AI endpoint — see section 4. You can turn this off.
+- Optional AI features may send what you type, say or photograph to an external third-party aggregate LLM platform — see section 4. You can turn this off.
 
 ## 3. Information we handle
 
@@ -47,7 +47,7 @@ We hold no server-side copy of the above and cannot restore it for you. Please k
 Only in these cases:
 
 1. **Reverse geocoding** — the coordinate you select is sent to AMap or Google Maps to obtain a place name.
-2. **AI processing** — if you enable a remote AI endpoint, the text, voice transcript or receipt image you submit is sent to that endpoint, which you configure yourself or which is selected according to your region. That provider processes the content under its own privacy policy.
+2. **AI processing** — if you enable remote AI, the text, voice transcript or receipt image you submit is sent to a **third-party aggregate LLM platform** preconfigured by the developer for your region. That platform selects the model used for each request (the model is not fixed by NotePay and may vary). The platform processes your content under its own privacy policy. You do not configure that address or key yourself and cannot.
 3. **Purchase verification** — in-app purchases are verified by Apple or Google. We receive only a purchase confirmation, never your payment card details.
 4. **Remote configuration and model downloads** — the App fetches configuration files, speech models and, where applicable, updated legal documents. These requests do not carry your ledger content.
 
@@ -55,10 +55,10 @@ We do not operate advertising or analytics SDKs, so no identifier is shared with
 
 ## 4. AI features, in plain words
 
-The App can run AI either **on your device** or through a **remote endpoint**.
+The App can run AI either **on your device** or through a **remote AI (third-party aggregate LLM platform)**.
 
 - **On-device mode:** your content stays on your device. Nothing is transmitted.
-- **Remote mode:** your content is transmitted to the AI endpoint in use. That endpoint may be located in a country other than your own. The provider acts as a processor under its own terms; please review its policy. Do not submit information you consider confidential in remote mode.
+- **Remote mode:** your content is transmitted to a **third-party aggregate LLM platform** selected for your region. That platform may be located outside your country and, for each request, dispatches your content to whichever model it selects — the specific model is not chosen by NotePay and may differ from request to request. The platform processes your content under its own privacy policy and may retain it under its own retention rules, to which you should refer. **NotePay itself operates no server, keeps no copy of your content, and logs nothing about what you submit.** Do not submit information you consider confidential in remote mode.
 
 You can switch to on-device mode or stop using AI features at any time in Settings.
 
@@ -74,7 +74,7 @@ We do not use your ledger content to train models, to profile you, or to target 
 |---|---|---|
 | AMap (Gaode) — mainland China region | Coordinate you select | Reverse geocoding |
 | Google Maps — other regions | Coordinate you select | Reverse geocoding |
-| The AI endpoint you use | Text, transcript or image you submit | AI processing you requested |
+| The third-party aggregate LLM platform you use | Text, transcript or image you submit | AI processing you requested |
 | Apple App Store / Google Play | Purchase token | Purchase verification |
 
 Each recipient is governed by its own privacy policy. We do not sell or rent personal information to anyone.
@@ -83,7 +83,7 @@ Each recipient is governed by its own privacy policy. We do not sell or rent per
 
 Your ledger and settings remain on your device until you delete the record, clear the data, or uninstall the App. Deleting or uninstalling removes them permanently; we keep no copy and cannot recover them.
 
-Content submitted to a remote AI endpoint is retained according to that provider's retention policy.
+Content submitted to a remote third-party aggregate LLM platform is retained according to that provider's retention policy.
 
 ## 8. Security
 
@@ -108,6 +108,3 @@ We may update this policy. When we do, we change the date above and, for materia
 Privacy questions and requests: **13808875@qq.com**
 Postal address: **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**
 
----
-
-*This document is a template prepared for NotePay. Have it reviewed by qualified legal counsel before publication.*

@@ -18,7 +18,7 @@ Pour toute question, demande ou réclamation relative à la confidentialité, co
 - Nous ne **vendons** pas vos données à caractère personnel et ne les utilisons **pas** à des fins de publicité comportementale.
 - Cette version de l'Application **ne contient ni SDK publicitaire ni SDK d'analyse**.
 - La localisation, l'appareil photo, la photothèque et le microphone sont **facultatifs** et utilisés uniquement lorsque vous invoquez la fonction correspondante. Nous ne suivons jamais votre position en arrière-plan.
-- Les fonctions d'IA facultatives peuvent envoyer ce que vous écrivez, dites ou photographiez à une plateforme LLM publique préconfigurée par le développeur pour votre région — voir section 4. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas. Vous pouvez les désactiver.
+- Les fonctions d'IA facultatives peuvent envoyer ce que vous écrivez, dites ou photographiez à une plateforme LLM agrégée tierce préconfigurée par le développeur pour votre région — voir section 4. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas. Vous pouvez les désactiver.
 
 ## 3. Données que nous traitons
 
@@ -47,7 +47,7 @@ Nous ne conservons aucune copie côté serveur des éléments ci-dessus et ne po
 Uniquement dans les cas suivants :
 
 1. **Géocodage inverse** — la coordonnée que vous sélectionnez est envoyée à AMap ou à Google Maps afin d'obtenir un nom de lieu.
-2. **Traitement par l'IA** — si vous activez l'IA distante, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à une plateforme LLM publique préconfigurée par le développeur pour votre région (par exemple la série Qwen hébergée sur ModelScope). Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas.
+2. **Traitement par l'IA** — si vous activez l'IA distante, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à une **plateforme LLM agrégée tierce** préconfigurée par le développeur pour votre région. Cette plateforme choisit le modèle utilisé pour chaque requête (le modèle n'est pas fixé par NotePay et peut varier). Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas.
 3. **Vérification d'achat** — les achats intégrés sont vérifiés par Apple ou Google. Nous ne recevons qu'une confirmation d'achat, jamais les coordonnées de votre carte de paiement.
 4. **Configuration à distance et téléchargements de modèles** — l'Application récupère des fichiers de configuration, des modèles vocaux et, le cas échéant, des documents juridiques mis à jour. Ces requêtes ne contiennent pas le contenu de votre registre.
 
@@ -58,7 +58,7 @@ Nous n'exploitons ni SDK publicitaire ni SDK d'analyse ; aucun identifiant n'est
 L'Application peut exécuter l'IA soit **sur votre appareil**, soit via un **point de terminaison distant**.
 
 - **Mode sur appareil :** votre contenu reste sur votre appareil. Rien n'est transmis.
-- **Mode distant :** votre contenu est transmis à la plateforme LLM publique préconfigurée par le développeur pour votre région. Ce point de terminaison peut être situé dans un pays différent du vôtre. Le fournisseur agit en tant que sous-traitant selon ses propres conditions ; veuillez consulter sa politique. Ne soumettez pas d'informations que vous considérez comme confidentielles en mode distant. **L'Application n'exploite aucun serveur dorsal privé et ne conserve aucun de vos contenus.**
+- **Mode distant :** votre contenu est transmis à une **plateforme LLM agrégée tierce** sélectionnée pour votre région. Cette plateforme peut être située hors de votre pays et, pour chaque requête, achemine votre contenu vers le modèle qu'elle sélectionne — le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. La plateforme traite votre contenu conformément à sa propre politique de confidentialité et peut le conserver selon ses propres règles de conservation, auxquelles vous devez vous référer. **NotePay n'exploite aucun serveur, ne conserve aucune copie de votre contenu et n'enregistre rien de ce que vous soumettez.** Ne soumettez pas en mode distant des informations que vous considérez comme confidentielles.
 
 Vous pouvez passer en mode sur appareil ou cesser d'utiliser les fonctions d'IA à tout moment dans les Paramètres.
 
@@ -74,7 +74,7 @@ Nous n'utilisons pas le contenu de votre registre pour entraîner des modèles, 
 |---|---|---|
 | AMap (Gaode) — région Chine continentale | Coordonnée que vous sélectionnez | Géocodage inverse |
 | Google Maps — autres régions | Coordonnée que vous sélectionnez | Géocodage inverse |
-| La plateforme LLM publique préconfigurée par le développeur pour votre région | Texte, transcription ou image que vous soumettez | Traitement par l'IA que vous avez demandé |
+| La plateforme LLM agrégée tierce préconfigurée par le développeur pour votre région | Texte, transcription ou image que vous soumettez | Traitement par l'IA que vous avez demandé |
 | Apple App Store / Google Play | Jeton d'achat | Vérification d'achat |
 
 Chaque destinataire est régi par sa propre politique de confidentialité. Nous ne vendons ni ne louons de données à caractère personnel à quiconque.
@@ -83,7 +83,7 @@ Chaque destinataire est régi par sa propre politique de confidentialité. Nous 
 
 Votre registre et vos paramètres demeurent sur votre appareil jusqu'à ce que vous supprimiez l'écriture, effaciez les données ou désinstalliez l'Application. La suppression ou la désinstallation les retire de façon permanente ; nous n'en conservons aucune copie et ne pouvons pas les récupérer.
 
-Le contenu soumis à un point de terminaison d'IA distant est conservé selon la politique de conservation de ce fournisseur.
+Le contenu soumis à un plateforme LLM agrégée tierce distant est conservé selon la politique de conservation de ce fournisseur.
 
 ## 8. Sécurité
 
@@ -108,6 +108,3 @@ Nous pouvons mettre à jour la présente politique. Lorsque nous le faisons, nou
 Questions et demandes relatives à la confidentialité : **13808875@qq.com**
 Adresse postale : **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**
 
----
-
-*Le présent document est un modèle établi pour NotePay. Faites-le examiner par un conseil juridique qualifié avant publication.*

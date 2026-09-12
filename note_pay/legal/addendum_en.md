@@ -13,7 +13,7 @@ The section that matches your region applies in addition to the document above.
 - **Personal information handler:** songshangkun, 中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园. Contact: 13808875@qq.com.
 - **Sensitive personal information:** precise location, camera, photo library and microphone are sensitive personal information. We ask for your **separate consent** the first time each is used, and explain the necessity and the impact of refusing. You may withdraw consent at any time in your device settings.
 - **Storage:** your ledger is stored **on your device within the territory**. We do not operate a server that stores your bookkeeping data.
-- **Cross-border transfer:** in remote AI mode, content you submit may be transmitted to an AI endpoint located outside mainland China. This occurs only when you enable that feature, and we will inform you of the recipient, purpose and your rights before it happens.
+- **Cross-border transfer:** in remote AI mode, content you submit may be transmitted to an third-party aggregate LLM platform located outside mainland China. This occurs only when you enable that feature, and we will inform you of the recipient, purpose and your rights before it happens.
 - **Your rights:** to access, copy, correct, supplement, delete, transfer your personal information, to request an explanation of the handling rules, and to withdraw consent. Because data is local, exercise these directly in the App.
 - **Complaints:** 可通过 13808875@qq.com 向我们提出投诉 — you may also file a complaint with the cyberspace administration or the market regulator in your locality.
 - **Retention:** until you delete the record or uninstall the App; we keep no copy.
@@ -75,8 +75,8 @@ The section that matches your region applies in addition to the document above.
 
 - **Personal information protection manager:** songshangkun (app operator). Contact: 13808875@qq.com.
 - **Purpose of use:** to provide and improve the App's bookkeeping, statistics, reminder, map, speech and AI functions, and to respond to your enquiries. We will not use your information beyond this purpose without your consent.
-- **Provision to third parties:** we do not provide your personal data to third parties without your consent, except as described in the main policy (map providers, the public LLM platform preconfigured by the developer for your region, and app store purchase verification) or as permitted by law.
-- **Cross-border transfer:** if you enable remote AI, your content may be transferred to a public LLM platform in a foreign country. Before doing so we will provide information about that country, its personal information protection regime and the measures taken by the recipient, as required by APPI.
+- **Provision to third parties:** we do not provide your personal data to third parties without your consent, except as described in the main policy (map providers, the third-party aggregate LLM platform preconfigured by the developer for your region, and app store purchase verification) or as permitted by law.
+- **Cross-border transfer:** if you enable remote AI, your content may be transferred to a third-party aggregate LLM platform in a foreign country. Before doing so we will provide information about that country, its personal information protection regime and the measures taken by the recipient, as required by APPI.
 - **Your rights:** to request disclosure (including disclosure of records of provision to third parties), correction, suspension of use, and erasure of your retained personal data. Contact 13808875@qq.com.
 - **Retention:** on your device until you delete or uninstall.
 

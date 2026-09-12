@@ -18,7 +18,7 @@ Para cualquier duda, solicitud o reclamación relativa a la privacidad, contáct
 - **No vendemos** su información personal y **no** la utilizamos para publicidad comportamental.
 - Esta versión de la App **no contiene ningún SDK de publicidad ni de analítica**.
 - La ubicación, la cámara, la biblioteca de fotos y el micrófono son **opcionales** y se usan únicamente cuando usted invoca la función correspondiente. Nunca rastreamos su ubicación en segundo plano.
-- Las funciones de IA opcionales pueden enviar lo que usted escribe, dice o fotografía a una plataforma LLM pública preconfigurada por el desarrollador para su región — véase la sección 4. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo. Puede desactivarlas.
+- Las funciones de IA opcionales pueden enviar lo que usted escribe, dice o fotografía a una plataforma LLM agregada de terceros preconfigurada por el desarrollador para su región — véase la sección 4. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo. Puede desactivarlas.
 
 ## 3. Información que tratamos
 
@@ -47,7 +47,7 @@ No conservamos ninguna copia en servidor de lo anterior y no podemos restaurárs
 Solo en estos casos:
 
 1. **Geocodificación inversa** — la coordenada que usted selecciona se envía a AMap o a Google Maps para obtener un nombre de lugar.
-2. **Tratamiento de IA** — si habilita la IA remota, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a una plataforma LLM pública preconfigurada por el desarrollador para su región (por ejemplo, la serie Qwen alojada en ModelScope). Ese proveedor trata el contenido conforme a su propia política de privacidad. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo.
+2. **Tratamiento de IA** — si habilita la IA remota, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a una **plataforma LLM agregada de terceros** preconfigurada por el desarrollador para su región. Esa plataforma selecciona el modelo que usa en cada solicitud (el modelo no lo fija NotePay y puede variar). Ese proveedor trata el contenido conforme a su propia política de privacidad. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo.
 3. **Verificación de compra** — las compras integradas las verifican Apple o Google. Solo recibimos una confirmación de compra, nunca los datos de su tarjeta de pago.
 4. **Configuración remota y descargas de modelos** — la App obtiene archivos de configuración, modelos de voz y, cuando proceda, documentos legales actualizados. Estas solicitudes no llevan el contenido de su libro de cuentas.
 
@@ -58,7 +58,7 @@ No operamos SDK de publicidad ni de analítica, por lo que ningún identificador
 La App puede ejecutar IA **en su dispositivo** o a través de un **punto final remoto**.
 
 - **Modo en el dispositivo:** su contenido permanece en su dispositivo. Nada se transmite.
-- **Modo remoto:** su contenido se transmite a la plataforma LLM pública preconfigurada por el desarrollador para su región. Ese punto final puede estar ubicado en un país distinto del suyo. El proveedor actúa como encargado del tratamiento conforme a sus propias condiciones; revise su política. No envíe en modo remoto información que considere confidencial. **La App no opera ningún backend privado y no retiene ninguno de sus contenidos.**
+- **Modo remoto:** su contenido se transmite a una **plataforma LLM agregada de terceros** seleccionada para su región. Esa plataforma puede estar ubicada fuera de su país y, para cada solicitud, envía su contenido al modelo que ella misma selecciona — el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. La plataforma procesa su contenido bajo su propia política de privacidad y puede retenerlo según sus propias reglas de conservación, a las que debe remitirse. **NotePay no opera ningún servidor, no conserva copia alguna de su contenido y no registra nada de lo que usted envía.** No envíe en modo remoto información que considere confidencial.
 
 Puede cambiar al modo en el dispositivo o dejar de usar las funciones de IA en cualquier momento en Ajustes.
 
@@ -74,7 +74,7 @@ No usamos el contenido de su libro de cuentas para entrenar modelos, para perfil
 |---|---|---|
 | AMap (Gaode) — región de la China continental | Coordenada que usted selecciona | Geocodificación inversa |
 | Google Maps — demás regiones | Coordenada que usted selecciona | Geocodificación inversa |
-| La plataforma LLM pública preconfigurada por el desarrollador para su región | Texto, transcripción o imagen que usted envía | Tratamiento de IA que usted solicitó |
+| La plataforma LLM agregada de terceros preconfigurada por el desarrollador para su región | Texto, transcripción o imagen que usted envía | Tratamiento de IA que usted solicitó |
 | Apple App Store / Google Play | Testigo de compra | Verificación de compra |
 
 Cada destinatario se rige por su propia política de privacidad. No vendemos ni alquilamos información personal a nadie.
@@ -83,7 +83,7 @@ Cada destinatario se rige por su propia política de privacidad. No vendemos ni 
 
 Su libro de cuentas y sus ajustes permanecen en su dispositivo hasta que usted elimine el registro, borre los datos o desinstale la App. Eliminarlos o desinstalarla los elimina de forma permanente; no conservamos ninguna copia ni podemos recuperarlos.
 
-El contenido enviado a un punto final de IA remoto se conserva según la política de retención de ese proveedor.
+El contenido enviado a un plataforma LLM agregada de terceros remoto se conserva según la política de retención de ese proveedor.
 
 ## 8. Seguridad
 
@@ -108,6 +108,3 @@ Podemos actualizar esta política. Cuando lo hagamos, cambiamos la fecha indicad
 Dudas y solicitudes de privacidad: **13808875@qq.com**
 Domicilio postal: **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**
 
----
-
-*Este documento es una plantilla preparada para NotePay. Hágalo revisar por un asesor jurídico cualificado antes de su publicación.*

@@ -34,7 +34,7 @@ La App puede sugerir asientos a partir de su texto, voz o imágenes de recibos. 
 
 - La salida de la IA es un **borrador**. Cada registro se le muestra para su confirmación antes de guardarse, y usted sigue siendo responsable de lo que se registra.
 - Los registros financieros producidos con la App **no** constituyen asesoramiento contable, fiscal, jurídico ni de inversión. Verifique cualquier dato en el que se apoye para fines oficiales.
-- En modo remoto, su contenido se transmite a una plataforma LLM pública preconfigurada por el desarrollador para su región (por ejemplo, Qwen en ModelScope). No envíe en modo remoto información que considere confidencial.
+- En modo remoto, su contenido se transmite a una **plataforma LLM agregada de terceros** preconfigurada por el desarrollador para su región. Estas plataformas envían cada solicitud al modelo que ellas mismas seleccionan, y el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. NotePay no opera ningún servidor y no retiene ninguno de sus contenidos. No envíe en modo remoto información que considere confidencial.
 - Las funciones de IA están sujetas a límites de uso que pueden variar según el plan, el dispositivo y la región.
 
 ## 6. Funciones opcionales del dispositivo
@@ -57,7 +57,7 @@ Usted no debe: realizar ingeniería inversa o descompilar la App salvo en la med
 
 ## 9. Servicios de terceros
 
-La App se apoya en servicios de terceros que usted elige o que su región selecciona (incluidos los proveedores de mapas y la tienda de aplicaciones), así como en plataformas LLM públicas preconfiguradas por el desarrollador según la región. Su uso de dichos servicios se rige por sus propios términos, y no somos responsables de sus actos u omisiones.
+La App se apoya en servicios de terceros que usted elige o que su región selecciona (incluidos los proveedores de mapas y la tienda de aplicaciones), así como en plataformas LLM agregadas de terceros preconfiguradas por el desarrollador según la región. Su uso de dichos servicios se rige por sus propios términos, y no somos responsables de sus actos u omisiones.
 
 ## 10. Disponibilidad y cambios
 
@@ -87,6 +87,3 @@ Estos Términos se rigen por la ley indicada en la sección específica por regi
 
 **songshangkun** · **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园** · **13808875@qq.com**
 
----
-
-*Este documento es una plantilla preparada para NotePay. Hágalo revisar por un asesor jurídico cualificado antes de su publicación.*

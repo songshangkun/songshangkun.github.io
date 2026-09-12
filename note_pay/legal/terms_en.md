@@ -34,7 +34,7 @@ The App can suggest entries from your text, speech or receipt images. These sugg
 
 - AI output is a **draft**. Every record is shown to you for confirmation before it is saved, and you remain responsible for what is recorded.
 - Financial records produced with the App are **not** accounting, tax, legal or investment advice. Verify anything you rely on for official purposes.
-- In remote mode your content is transmitted to a public LLM platform preconfigured by the developer for your region (e.g. Qwen hosted on ModelScope). Do not submit information you consider confidential in remote mode.
+- In remote mode your content is transmitted to a **third-party aggregate LLM platform** preconfigured by the developer for your region. Such platforms dispatch each request to whichever model they select, and the specific model is not chosen by NotePay and may vary from request to request. NotePay itself operates no server and keeps no copy of your content. Do not submit information you consider confidential in remote mode.
 - AI features are subject to usage limits that may vary by plan, device and region.
 
 ## 6. Optional device features
@@ -57,7 +57,7 @@ You must not: reverse engineer or decompile the App except to the extent permitt
 
 ## 9. Third-party services
 
-The App relies on third-party services you choose or that your region selects, including map providers, AI endpoints and the app store. Your use of those services is governed by their own terms, and we are not responsible for their acts or omissions.
+The App relies on third-party services you choose or that your region selects, including map providers, third-party aggregate LLM platforms and the app store. Your use of those services is governed by their own terms, and we are not responsible for their acts or omissions.
 
 ## 10. Availability and changes
 
@@ -87,6 +87,3 @@ These Terms are governed by the law indicated in the region-specific section bel
 
 **songshangkun** · **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园** · **13808875@qq.com**
 
----
-
-*This document is a template prepared for NotePay. Have it reviewed by qualified legal counsel before publication.*

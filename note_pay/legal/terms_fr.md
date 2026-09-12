@@ -34,7 +34,7 @@ L'Application peut proposer des écritures à partir de votre texte, de votre vo
 
 - La sortie de l'IA est une **ébauche**. Chaque écriture vous est présentée pour confirmation avant d'être enregistrée, et vous restez responsable de ce qui est consigné.
 - Les écritures produites avec l'Application ne constituent **pas** un conseil comptable, fiscal, juridique ou en investissement. Vérifiez tout élément sur lequel vous comptez à des fins officielles.
-- En mode distant, votre contenu est transmis à une plateforme LLM publique préconfigurée par le développeur pour votre région (par exemple Qwen sur ModelScope). Ne soumettez pas d'informations que vous considérez comme confidentielles en mode distant.
+- En mode distant, votre contenu est transmis à une **plateforme LLM agrégée tierce** préconfigurée par le développeur pour votre région. Ces plateformes acheminent chaque requête vers le modèle qu'elles sélectionnent, et le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. NotePay n'exploite aucun serveur et ne conserve aucun de vos contenus. Ne soumettez pas d'informations que vous considérez comme confidentielles en mode distant.
 - Les fonctions d'IA sont soumises à des limites d'utilisation qui peuvent varier selon le forfait, l'appareil et la région.
 
 ## 6. Fonctions facultatives de l'appareil
@@ -57,7 +57,7 @@ Vous ne devez pas : procéder à l'ingénierie inverse ou décompiler l'Applica
 
 ## 9. Services de tiers
 
-L'Application s'appuie sur des services tiers que vous choisissez ou que votre région sélectionne (y compris les fournisseurs de cartes et la boutique d'applications), ainsi que sur des plateformes LLM publiques préconfigurées par le développeur selon la région. Votre utilisation de ces services est régie par leurs propres conditions, et nous ne sommes pas responsables de leurs actes ou omissions.
+L'Application s'appuie sur des services tiers que vous choisissez ou que votre région sélectionne (y compris les fournisseurs de cartes et la boutique d'applications), ainsi que sur des plateformes LLM agrégées tierces préconfigurées par le développeur selon la région. Votre utilisation de ces services est régie par leurs propres conditions, et nous ne sommes pas responsables de leurs actes ou omissions.
 
 ## 10. Disponibilité et modifications
 
@@ -87,6 +87,3 @@ Les présentes Conditions sont régies par le droit indiqué dans la section pro
 
 **songshangkun** · **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园** · **13808875@qq.com**
 
----
-
-*Le présent document est un modèle établi pour NotePay. Faites-le examiner par un conseil juridique qualifié avant publication.*

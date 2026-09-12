@@ -21,7 +21,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <li><strong>No vendemos</strong> su información personal y <strong>no</strong> la utilizamos para publicidad comportamental.</li>
 <li>Esta versión de la App <strong>no contiene ningún SDK de publicidad ni de analítica</strong>.</li>
 <li>La ubicación, la cámara, la biblioteca de fotos y el micrófono son <strong>opcionales</strong> y se usan únicamente cuando usted invoca la función correspondiente. Nunca rastreamos su ubicación en segundo plano.</li>
-<li>Las funciones de IA opcionales pueden enviar lo que usted escribe, dice o fotografía a un punto final de IA externo — véase la sección 4. Puede desactivarlas.</li>
+<li>Las funciones de IA opcionales pueden enviar lo que usted escribe, dice o fotografía a un plataforma LLM agregada de terceros externo — véase la sección 4. Puede desactivarlas.</li>
 </ul>
 <h2>3. Información que tratamos</h2>
 <p>Dado que la App es de almacenamiento local, la mayor parte de la información nunca abandona su dispositivo.</p>
@@ -73,7 +73,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <p>Solo en estos casos:</p>
 <ol>
 <li><strong>Geocodificación inversa</strong> — la coordenada que usted selecciona se envía a AMap o a Google Maps para obtener un nombre de lugar.</li>
-<li><strong>Tratamiento de IA</strong> — si habilita un punto final de IA remoto, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a ese punto final, que usted configura o que se selecciona según su región. Ese proveedor trata el contenido conforme a su propia política de privacidad.</li>
+<li><strong>Tratamiento de IA</strong> — si habilita un plataforma LLM agregada de terceros remoto, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a ese punto final, que usted configura o que se selecciona según su región. Ese proveedor trata el contenido conforme a su propia política de privacidad.</li>
 <li><strong>Verificación de compra</strong> — las compras integradas las verifican Apple o Google. Solo recibimos una confirmación de compra, nunca los datos de su tarjeta de pago.</li>
 <li><strong>Configuración remota y descargas de modelos</strong> — la App obtiene archivos de configuración, modelos de voz y, cuando proceda, documentos legales actualizados. Estas solicitudes no llevan el contenido de su libro de cuentas.</li>
 </ol>
@@ -82,7 +82,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <p>La App puede ejecutar IA <strong>en su dispositivo</strong> o a través de un <strong>punto final remoto</strong>.</p>
 <ul>
 <li><strong>Modo en el dispositivo:</strong> su contenido permanece en su dispositivo. Nada se transmite.</li>
-<li><strong>Modo remoto:</strong> su contenido se transmite al punto final de IA en uso. Ese punto final puede estar ubicado en un país distinto del suyo. El proveedor actúa como encargado del tratamiento conforme a sus propias condiciones; revise su política. No envíe en modo remoto información que considere confidencial.</li>
+<li>- **Modo remoto:** su contenido se transmite a una **plataforma LLM agregada de terceros** seleccionada para su región. Esa plataforma puede estar ubicada fuera de su país y, para cada solicitud, envía su contenido al modelo que ella misma selecciona — el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. La plataforma procesa su contenido bajo su propia política de privacidad y puede retenerlo según sus propias reglas de conservación, a las que debe remitirse. **NotePay no opera ningún servidor, no conserva copia alguna de su contenido y no registra nada de lo que usted envía.** No envíe en modo remoto información que considere confidencial.</li>
 </ul>
 <p>Puede cambiar al modo en el dispositivo o dejar de usar las funciones de IA en cualquier momento en Ajustes.</p>
 <h2>5. Por qué tratamos su información</h2>
@@ -109,7 +109,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <td>Geocodificación inversa</td>
 </tr>
 <tr>
-<td>El punto final de IA que use</td>
+<td>El plataforma LLM agregada de terceros que use</td>
 <td>Texto, transcripción o imagen que usted envía</td>
 <td>Tratamiento de IA que usted solicitó</td>
 </tr>
@@ -123,7 +123,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <p>Cada destinatario se rige por su propia política de privacidad. No vendemos ni alquilamos información personal a nadie.</p>
 <h2>7. Por cuánto tiempo conservamos la información</h2>
 <p>Su libro de cuentas y sus ajustes permanecen en su dispositivo hasta que usted elimine el registro, borre los datos o desinstale la App. Eliminarlos o desinstalarla los elimina de forma permanente; no conservamos ninguna copia ni podemos recuperarlos.</p>
-<p>El contenido enviado a un punto final de IA remoto se conserva según la política de retención de ese proveedor.</p>
+<p>El contenido enviado a un plataforma LLM agregada de terceros remoto se conserva según la política de retención de ese proveedor.</p>
 <h2>8. Seguridad</h2>
 <p>Sus datos se almacenan en una base de datos local protegida por la propia seguridad de su dispositivo (código de acceso del dispositivo, cifrado de disco). Su clave del proveedor de IA, en su caso, se almacena cifrada en el dispositivo y nunca se transmite a nosotros. Ningún método de almacenamiento es totalmente seguro, así que proteja su dispositivo y conserve copias de seguridad.</p>
 <h2>9. Menores</h2>
@@ -136,7 +136,5 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <h2>12. Contacto</h2>
 <p>Dudas y solicitudes de privacidad: <strong>13808875@qq.com</strong>
 Domicilio postal: <strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong></p>
-<hr />
-<p><em>Este documento es una plantilla preparada para NotePay. Hágalo revisar por un asesor jurídico cualificado antes de su publicación.</em></p>
 </body>
 </html>
