@@ -18,7 +18,7 @@ Für Datenschutzfragen, -ersuchen oder -beschwerden kontaktieren Sie uns unter *
 - Wir **verkaufen** Ihre personenbezogenen Daten **nicht** und nutzen sie **nicht** für verhaltensbezogene Werbung.
 - Diese Version der App **enthält kein Werbe-SDK und kein Analyse-SDK**.
 - Standort, Kamera, Fotobibliothek und Mikrofon sind **optional** und werden nur verwendet, wenn Sie die entsprechende Funktion aufrufen. Wir verfolgen Ihren Standort niemals im Hintergrund.
-- Optionale KI-Funktionen können das von Ihnen Getippte, Gesagte oder Fotografierte an einen externen KI-Endpunkt senden — siehe Abschnitt 4. Sie können dies deaktivieren.
+- Optionale KI-Funktionen können das von Ihnen Getippte, Gesagte oder Fotografierte an eine öffentliche LLM-Plattform senden, die vom Entwickler für Ihre Region vorkonfiguriert ist — siehe Abschnitt 4. Sie konfigurieren diese Adresse oder diesen Schlüssel selbst nicht und können es auch nicht. Sie können dies deaktivieren.
 
 ## 3. Informationen, die wir verarbeiten
 
@@ -32,7 +32,7 @@ Da die App lokal ausgerichtet ist, verlässt die meiste Information niemals Ihr 
 | Von Ihnen erstellte Hauptbücher und Kategorien | Zur Organisation Ihrer Aufzeichnungen | Datenbank auf dem Gerät |
 | App-Einstellungen, einschließlich Sprache und Region | Zur Speicherung Ihrer Präferenzen | Geräteeinstellungen |
 | Erinnerungszeitpläne | Zur Benachrichtigung zum von Ihnen festgelegten Zeitpunkt | Datenbank auf dem Gerät und lokale Benachrichtigungen |
-| KI-Anbieterschlüssel, sofern von Ihnen konfiguriert | Zum Aufruf der von Ihnen aktivierten KI-Funktionen | Auf dem Gerät, **verschlüsselt**; wir können ihn nicht lesen |
+| KI-Anbieterschlüssel (vom Entwickler je Region vorkonfiguriert) | Zum Aufruf der von Ihnen aktivierten KI-Funktionen | Auf dem Gerät, **verschlüsselt**; wir können ihn nicht lesen |
 
 Wir halten keine serverseitige Kopie der obigen Daten vor und können sie für Sie nicht wiederherstellen. Bitte erstellen Sie eigene Sicherungskopien.
 
@@ -47,7 +47,7 @@ Wir halten keine serverseitige Kopie der obigen Daten vor und können sie für S
 Nur in folgenden Fällen:
 
 1. **Reverse Geocoding** — die von Ihnen ausgewählten Koordinaten werden an AMap oder Google Maps gesendet, um einen Ortsnamen zu erhalten.
-2. **KI-Verarbeitung** — wenn Sie einen Remote-KI-Endpunkt aktivieren, werden der von Ihnen übermittelte Text, das Transkript oder das Belegbild an diesen Endpunkt gesendet, den Sie selbst konfigurieren oder der gemäß Ihrer Region ausgewählt wird. Dieser Anbieter verarbeitet den Inhalt unter seiner eigenen Datenschutzerklärung.
+2. **KI-Verarbeitung** — wenn Sie die Remote-KI aktivieren, werden der von Ihnen übermittelte Text, das Transkript oder das Belegbild an eine öffentliche LLM-Plattform gesendet, die vom Entwickler für Ihre Region vorkonfiguriert ist (zum Beispiel die Qwen-Reihe auf ModelScope). Dieser Anbieter verarbeitet den Inhalt unter seiner eigenen Datenschutzerklärung. Sie konfigurieren diese Adresse oder diesen Schlüssel selbst nicht und können es auch nicht.
 3. **Kaufnachweis** — In-App-Käufe werden von Apple oder Google verifiziert. Wir erhalten lediglich eine Kaufbestätigung, niemals Ihre Zahlungskartendaten.
 4. **Remote-Konfiguration und Modell-Downloads** — die App ruft Konfigurationsdateien, Sprachmodelle und — sofern zutreffend — aktualisierte Rechtsdokumente ab. Diese Anfragen enthalten keinen Inhalt Ihres Hauptbuchs.
 
@@ -58,7 +58,7 @@ Wir betreiben keine Werbe- oder Analyse-SDKs, sodass keine Kennung mit Werbenetz
 Die App kann KI entweder **auf Ihrem Gerät** oder über einen **Remote-Endpunkt** ausführen.
 
 - **Gerätemodus:** Ihr Inhalt verbleibt auf Ihrem Gerät. Es wird nichts übertragen.
-- **Remote-Modus:** Ihr Inhalt wird an den genutzten KI-Endpunkt übertragen. Dieser Endpunkt kann sich in einem anderen Land als Ihrem befinden. Der Anbieter agiert als Auftragsverarbeiter gemäß seinen eigenen Bedingungen; bitte prüfen Sie seine Richtlinie. Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten.
+- **Remote-Modus:** Ihr Inhalt wird an die für Ihre Region vorkonfigurierte öffentliche LLM-Plattform übertragen. Dieser Endpunkt kann sich in einem anderen Land als Ihrem befinden. Der Anbieter agiert als Auftragsverarbeiter gemäß seinen eigenen Bedingungen; bitte prüfen Sie seine Richtlinie. Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten. **Die App betreibt kein privates Backend und behält keinen Ihrer Inhalte.**
 
 Sie können jederzeit in den Gerätemodus wechseln oder die Nutzung von KI-Funktionen in den Einstellungen beenden.
 
@@ -74,7 +74,7 @@ Wir nutzen den Inhalt Ihres Hauptbuchs nicht, um Modelle zu trainieren, ein Prof
 |---|---|---|
 | AMap (Gaode) — Region Festlandchina | Von Ihnen ausgewählte Koordinaten | Reverse Geocoding |
 | Google Maps — andere Regionen | Von Ihnen ausgewählte Koordinaten | Reverse Geocoding |
-| Der von Ihnen genutzte KI-Endpunkt | Von Ihnen übermittelter Text, Transkript oder Bild | Von Ihnen angeforderte KI-Verarbeitung |
+| Die für Ihre Region vom Entwickler vorkonfigurierte öffentliche LLM-Plattform | Von Ihnen übermittelter Text, Transkript oder Bild | Von Ihnen angeforderte KI-Verarbeitung |
 | Apple App Store / Google Play | Kauf-Token | Kaufverifizierung |
 
 Jeder Empfänger unterliegt seiner eigenen Datenschutzerklärung. Wir verkaufen oder vermieten personenbezogene Daten an niemanden.

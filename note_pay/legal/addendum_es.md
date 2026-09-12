@@ -75,7 +75,7 @@ La sección que corresponda a su región se aplica además del documento anterio
 
 - **Responsable de la protección de datos personales:** songshangkun (app operator). Contacto: 13808875@qq.com.
 - **Finalidad del uso:** proporcionar y mejorar las funciones de contabilidad, estadística, recordatorios, mapas, voz e IA de la App, y responder a sus consultas. No usaremos su información fuera de esta finalidad sin su consentimiento.
-- **Cesión a terceros:** no cedemos sus datos personales a terceros sin su consentimiento, salvo lo descrito en la política principal (proveedores de mapas, el punto final de IA que use y la verificación de compra de la tienda de aplicaciones) o lo permitido por la ley.
+- **Cesión a terceros:** no cedemos sus datos personales a terceros sin su consentimiento, salvo lo descrito en la política principal (proveedores de mapas, la plataforma LLM pública preconfigurada por el desarrollador para su región y la verificación de compra de la tienda de aplicaciones) o lo permitido por la ley.
 - **Transferencia transfronteriza:** si habilita un punto final de IA remoto, su contenido puede transferirse a un proveedor en un país extranjero. Antes de hacerlo, le facilitaremos información sobre ese país, su régimen de protección de datos personales y las medidas adoptadas por el destinatario, según exige la APPI.
 - **Sus derechos:** solicitar la divulgación (incluida la divulgación de registros de cesión a terceros), la rectificación, la suspensión del uso y la supresión de sus datos personales retenidos. Contacte con 13808875@qq.com.
 - **Conservación:** en su dispositivo hasta que elimine o desinstale.

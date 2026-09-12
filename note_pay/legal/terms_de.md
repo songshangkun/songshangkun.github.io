@@ -34,7 +34,7 @@ Die App kann aus Ihrem Text, Ihrer Sprache oder Belegbildern Einträge vorschlag
 
 - KI-Ausgaben sind ein **Entwurf**. Jeder Datensatz wird Ihnen zur Bestätigung angezeigt, bevor er gespeichert wird, und Sie bleiben für das Aufgezeichnete verantwortlich.
 - Mit der App erstellte Finanzaufzeichnungen sind **keine** Buchhaltungs-, Steuer-, Rechts- oder Anlageberatung. Überprüfen Sie alles, worauf Sie für amtliche Zwecke vertrauen.
-- Im Remote-Modus wird Ihr Inhalt an einen KI-Anbieter übertragen, den Sie oder Ihre Region auswählen. Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten.
+- Im Remote-Modus wird Ihr Inhalt an eine öffentliche LLM-Plattform übertragen, die vom Entwickler für Ihre Region vorkonfiguriert ist (z. B. Qwen auf ModelScope). Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten.
 - KI-Funktionen unterliegen Nutzungsgrenzen, die je nach Tarif, Gerät und Region variieren können.
 
 ## 6. Optionale Gerätefunktionen
@@ -57,7 +57,7 @@ Sie dürfen nicht: die App reverse engineering-mäßig rückentwickeln oder deko
 
 ## 9. Drittanbieterdienste
 
-Die App stützt sich auf Drittanbieterdienste, die Sie wählen oder die Ihre Region auswählt, einschließlich Kartenanbietern, KI-Endpunkten und dem App-Store. Ihre Nutzung dieser Dienste unterliegt deren eigenen Bedingungen, und wir sind nicht für deren Handlungen oder Unterlassungen verantwortlich.
+Die App stützt sich auf Drittanbieterdienste, die Sie wählen oder die Ihre Region auswählt (einschließlich Kartenanbietern und dem App-Store), sowie auf öffentliche LLM-Plattformen, die vom Entwickler je Region vorkonfiguriert sind. Ihre Nutzung dieser Dienste unterliegt deren eigenen Bedingungen, und wir sind nicht für deren Handlungen oder Unterlassungen verantwortlich.
 
 ## 10. Verfügbarkeit und Änderungen
 

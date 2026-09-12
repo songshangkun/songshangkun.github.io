@@ -34,7 +34,7 @@ The App can suggest entries from your text, speech or receipt images. These sugg
 
 - AI output is a **draft**. Every record is shown to you for confirmation before it is saved, and you remain responsible for what is recorded.
 - Financial records produced with the App are **not** accounting, tax, legal or investment advice. Verify anything you rely on for official purposes.
-- In remote mode your content is transmitted to an AI provider you or your region selects. Do not submit information you consider confidential in remote mode.
+- In remote mode your content is transmitted to a public LLM platform preconfigured by the developer for your region (e.g. Qwen hosted on ModelScope). Do not submit information you consider confidential in remote mode.
 - AI features are subject to usage limits that may vary by plan, device and region.
 
 ## 6. Optional device features

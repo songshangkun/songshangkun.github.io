@@ -18,7 +18,7 @@ Pour toute question, demande ou réclamation relative à la confidentialité, co
 - Nous ne **vendons** pas vos données à caractère personnel et ne les utilisons **pas** à des fins de publicité comportementale.
 - Cette version de l'Application **ne contient ni SDK publicitaire ni SDK d'analyse**.
 - La localisation, l'appareil photo, la photothèque et le microphone sont **facultatifs** et utilisés uniquement lorsque vous invoquez la fonction correspondante. Nous ne suivons jamais votre position en arrière-plan.
-- Les fonctions d'IA facultatives peuvent envoyer ce que vous écrivez, dites ou photographiez à un point de terminaison d'IA externe — voir section 4. Vous pouvez les désactiver.
+- Les fonctions d'IA facultatives peuvent envoyer ce que vous écrivez, dites ou photographiez à une plateforme LLM publique préconfigurée par le développeur pour votre région — voir section 4. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas. Vous pouvez les désactiver.
 
 ## 3. Données que nous traitons
 
@@ -32,7 +32,7 @@ Puisque l'Application est de type « local-first », la plupart des informations
 | Registres et catégories que vous créez | Pour organiser vos données | Base de données locale |
 | Paramètres de l'Application, y compris la langue et la région | Pour mémoriser vos préférences | Préférences locales |
 | Planning des rappels | Pour vous notifier à l'heure que vous avez définie | Base de données locale et notifications locales |
-| Clé du fournisseur d'IA, si vous en configurez une | Pour appeler les fonctions d'IA que vous activez | Sur l'appareil, **chiffrée** ; nous ne pouvons pas la lire |
+| Clé du fournisseur d'IA (préconfigurée par le développeur selon la région) | Pour appeler les fonctions d'IA que vous activez | Sur l'appareil, **chiffrée** ; nous ne pouvons pas la lire |
 
 Nous ne conservons aucune copie côté serveur des éléments ci-dessus et ne pouvons pas les restaurer pour vous. Veuillez conserver vos propres sauvegardes.
 
@@ -47,7 +47,7 @@ Nous ne conservons aucune copie côté serveur des éléments ci-dessus et ne po
 Uniquement dans les cas suivants :
 
 1. **Géocodage inverse** — la coordonnée que vous sélectionnez est envoyée à AMap ou à Google Maps afin d'obtenir un nom de lieu.
-2. **Traitement par l'IA** — si vous activez un point de terminaison d'IA distant, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à ce point de terminaison, que vous configurez vous-même ou qui est sélectionné selon votre région. Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité.
+2. **Traitement par l'IA** — si vous activez l'IA distante, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à une plateforme LLM publique préconfigurée par le développeur pour votre région (par exemple la série Qwen hébergée sur ModelScope). Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas.
 3. **Vérification d'achat** — les achats intégrés sont vérifiés par Apple ou Google. Nous ne recevons qu'une confirmation d'achat, jamais les coordonnées de votre carte de paiement.
 4. **Configuration à distance et téléchargements de modèles** — l'Application récupère des fichiers de configuration, des modèles vocaux et, le cas échéant, des documents juridiques mis à jour. Ces requêtes ne contiennent pas le contenu de votre registre.
 
@@ -58,7 +58,7 @@ Nous n'exploitons ni SDK publicitaire ni SDK d'analyse ; aucun identifiant n'est
 L'Application peut exécuter l'IA soit **sur votre appareil**, soit via un **point de terminaison distant**.
 
 - **Mode sur appareil :** votre contenu reste sur votre appareil. Rien n'est transmis.
-- **Mode distant :** votre contenu est transmis au point de terminaison d'IA utilisé. Ce point de terminaison peut être situé dans un pays différent du vôtre. Le fournisseur agit en tant que sous-traitant selon ses propres conditions ; veuillez consulter sa politique. Ne soumettez pas d'informations que vous considérez comme confidentielles en mode distant.
+- **Mode distant :** votre contenu est transmis à la plateforme LLM publique préconfigurée par le développeur pour votre région. Ce point de terminaison peut être situé dans un pays différent du vôtre. Le fournisseur agit en tant que sous-traitant selon ses propres conditions ; veuillez consulter sa politique. Ne soumettez pas d'informations que vous considérez comme confidentielles en mode distant. **L'Application n'exploite aucun serveur dorsal privé et ne conserve aucun de vos contenus.**
 
 Vous pouvez passer en mode sur appareil ou cesser d'utiliser les fonctions d'IA à tout moment dans les Paramètres.
 
@@ -74,7 +74,7 @@ Nous n'utilisons pas le contenu de votre registre pour entraîner des modèles, 
 |---|---|---|
 | AMap (Gaode) — région Chine continentale | Coordonnée que vous sélectionnez | Géocodage inverse |
 | Google Maps — autres régions | Coordonnée que vous sélectionnez | Géocodage inverse |
-| Le point de terminaison d'IA que vous utilisez | Texte, transcription ou image que vous soumettez | Traitement par l'IA que vous avez demandé |
+| La plateforme LLM publique préconfigurée par le développeur pour votre région | Texte, transcription ou image que vous soumettez | Traitement par l'IA que vous avez demandé |
 | Apple App Store / Google Play | Jeton d'achat | Vérification d'achat |
 
 Chaque destinataire est régi par sa propre politique de confidentialité. Nous ne vendons ni ne louons de données à caractère personnel à quiconque.

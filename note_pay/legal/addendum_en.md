@@ -75,8 +75,8 @@ The section that matches your region applies in addition to the document above.
 
 - **Personal information protection manager:** songshangkun (app operator). Contact: 13808875@qq.com.
 - **Purpose of use:** to provide and improve the App's bookkeeping, statistics, reminder, map, speech and AI functions, and to respond to your enquiries. We will not use your information beyond this purpose without your consent.
-- **Provision to third parties:** we do not provide your personal data to third parties without your consent, except as described in the main policy (map providers, the AI endpoint you use, and app store purchase verification) or as permitted by law.
-- **Cross-border transfer:** if you enable a remote AI endpoint, your content may be transferred to a provider in a foreign country. Before doing so we will provide information about that country, its personal information protection regime and the measures taken by the recipient, as required by APPI.
+- **Provision to third parties:** we do not provide your personal data to third parties without your consent, except as described in the main policy (map providers, the public LLM platform preconfigured by the developer for your region, and app store purchase verification) or as permitted by law.
+- **Cross-border transfer:** if you enable remote AI, your content may be transferred to a public LLM platform in a foreign country. Before doing so we will provide information about that country, its personal information protection regime and the measures taken by the recipient, as required by APPI.
 - **Your rights:** to request disclosure (including disclosure of records of provision to third parties), correction, suspension of use, and erasure of your retained personal data. Contact 13808875@qq.com.
 - **Retention:** on your device until you delete or uninstall.
 

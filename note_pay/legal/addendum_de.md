@@ -75,7 +75,7 @@ Der mit Ihrer Region übereinstimmende Abschnitt gilt zusätzlich zu dem obigen 
 
 - **Beauftragter für den Schutz personenbezogener Informationen:** songshangkun (app operator). Kontakt: 13808875@qq.com.
 - **Nutzungszweck:** Bereitstellung und Verbesserung der Buchhaltungs-, Statistik-, Erinnerungs-, Karten-, Sprach- und KI-Funktionen der App sowie Beantwortung Ihrer Anfragen. Wir verwenden Ihre Informationen ohne Ihre Einwilligung nicht über diesen Zweck hinaus.
-- **Bereitstellung an Dritte:** Wir stellen Ihre personenbezogenen Daten ohne Ihre Einwilligung nicht an Dritte bereit, außer wie in der Hauptrichtlinie beschrieben (Kartenanbieter, der von Ihnen genutzte KI-Endpunkt und Kaufverifizierung durch den App-Store) oder soweit gesetzlich erlaubt.
+- **Bereitstellung an Dritte:** Wir stellen Ihre personenbezogenen Daten ohne Ihre Einwilligung nicht an Dritte bereit, außer wie in der Hauptrichtlinie beschrieben (Kartenanbieter, die für Ihre Region vom Entwickler vorkonfigurierte öffentliche LLM-Plattform und Kaufverifizierung durch den App-Store) oder soweit gesetzlich erlaubt.
 - **Grenzüberschreitende Übermittlung:** Wenn Sie einen Remote-KI-Endpunkt aktivieren, kann Ihr Inhalt an einen Anbieter in einem ausländischen Staat übertragen werden. Vorab stellen wir — soweit von APPI gefordert — Informationen über diesen Staat, dessen Regime zum Schutz personenbezogener Informationen und die vom Empfänger getroffenen Maßnahmen bereit.
 - **Ihre Rechte:** Auskunft zu verlangen (einschließlich Auskunft über Aufzeichnungen der Bereitstellung an Dritte), Berichtigung, Nutzungsaussetzung und Löschung Ihrer vorgehaltenen personenbezogenen Daten. Kontakt: 13808875@qq.com.
 - **Speicherdauer:** auf Ihrem Gerät bis zur Löschung oder Deinstallation.

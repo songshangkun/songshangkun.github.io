@@ -39,7 +39,7 @@ We hold no server-side copy of the above and cannot restore it for you. Please k
 ### 3.2 Information handled only when you use a specific feature
 
 - **Location (optional).** When you attach a place to a record, the App reads your coordinates to resolve a place name. Resolution is performed by AMap (Gaode) in mainland China and by Google Maps in other regions, depending on your configured region. We request location **only while you are using the App** — **never in the background**. You may decline the permission or disable the map feature entirely; the rest of the App keeps working.
-- **Camera and photo library (optional).** When you photograph or pick a receipt, the image is read for recognition. Originals are not uploaded to any server of ours.
+- **Camera and photo library (optional).** When you photograph or pick a receipt, the image is read for recognition. Originals are not uploaded to any server we operate; when remote AI is enabled, the image is sent to a public third-party LLM platform (see section 4), and the App itself keeps no copy.
 - **Microphone (optional).** When you use voice entry, audio is captured and transcribed. Transcription is performed **on your device** using offline speech models you download; audio is not streamed to our servers.
 
 ### 3.3 Information sent outside your device
@@ -87,7 +87,7 @@ Content submitted to a remote AI endpoint is retained according to that provider
 
 ## 8. Security
 
-Your data is stored in a local database protected by your device's own security (device passcode, disk encryption). Your AI provider key, if any, is stored encrypted on the device and is never transmitted to us. No method of storage is perfectly secure, so please protect your device and keep backups.
+Your data is stored in a local database protected by your device's own security (device passcode, disk encryption). The AI provider key, preconfigured by the developer per region, is stored encrypted on the device and is never transmitted to us. No method of storage is perfectly secure, so please protect your device and keep backups.
 
 ## 9. Children
 

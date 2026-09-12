@@ -18,7 +18,7 @@ Para cualquier duda, solicitud o reclamación relativa a la privacidad, contáct
 - **No vendemos** su información personal y **no** la utilizamos para publicidad comportamental.
 - Esta versión de la App **no contiene ningún SDK de publicidad ni de analítica**.
 - La ubicación, la cámara, la biblioteca de fotos y el micrófono son **opcionales** y se usan únicamente cuando usted invoca la función correspondiente. Nunca rastreamos su ubicación en segundo plano.
-- Las funciones de IA opcionales pueden enviar lo que usted escribe, dice o fotografía a un punto final de IA externo — véase la sección 4. Puede desactivarlas.
+- Las funciones de IA opcionales pueden enviar lo que usted escribe, dice o fotografía a una plataforma LLM pública preconfigurada por el desarrollador para su región — véase la sección 4. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo. Puede desactivarlas.
 
 ## 3. Información que tratamos
 
@@ -32,7 +32,7 @@ Dado que la App es de almacenamiento local, la mayor parte de la información nu
 | Libros de cuentas y categorías que usted cree | Para organizar sus registros | Base de datos en el dispositivo |
 | Ajustes de la App, incluido el idioma y la región | Para recordar sus preferencias | Preferencias en el dispositivo |
 | Programaciones de recordatorios | Para avisarle a la hora que usted fije | Base de datos en el dispositivo y notificaciones locales |
-| Clave del proveedor de IA, si configura una | Para invocar las funciones de IA que usted habilite | En el dispositivo, **cifrada**; no podemos leerla |
+| Clave del proveedor de IA (preconfigurada por el desarrollador según la región) | Para invocar las funciones de IA que usted habilite | En el dispositivo, **cifrada**; no podemos leerla |
 
 No conservamos ninguna copia en servidor de lo anterior y no podemos restaurársela. Conserve por su cuenta sus propias copias de seguridad.
 
@@ -47,7 +47,7 @@ No conservamos ninguna copia en servidor de lo anterior y no podemos restaurárs
 Solo en estos casos:
 
 1. **Geocodificación inversa** — la coordenada que usted selecciona se envía a AMap o a Google Maps para obtener un nombre de lugar.
-2. **Tratamiento de IA** — si habilita un punto final de IA remoto, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a ese punto final, que usted configura o que se selecciona según su región. Ese proveedor trata el contenido conforme a su propia política de privacidad.
+2. **Tratamiento de IA** — si habilita la IA remota, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a una plataforma LLM pública preconfigurada por el desarrollador para su región (por ejemplo, la serie Qwen alojada en ModelScope). Ese proveedor trata el contenido conforme a su propia política de privacidad. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo.
 3. **Verificación de compra** — las compras integradas las verifican Apple o Google. Solo recibimos una confirmación de compra, nunca los datos de su tarjeta de pago.
 4. **Configuración remota y descargas de modelos** — la App obtiene archivos de configuración, modelos de voz y, cuando proceda, documentos legales actualizados. Estas solicitudes no llevan el contenido de su libro de cuentas.
 
@@ -58,7 +58,7 @@ No operamos SDK de publicidad ni de analítica, por lo que ningún identificador
 La App puede ejecutar IA **en su dispositivo** o a través de un **punto final remoto**.
 
 - **Modo en el dispositivo:** su contenido permanece en su dispositivo. Nada se transmite.
-- **Modo remoto:** su contenido se transmite al punto final de IA en uso. Ese punto final puede estar ubicado en un país distinto del suyo. El proveedor actúa como encargado del tratamiento conforme a sus propias condiciones; revise su política. No envíe en modo remoto información que considere confidencial.
+- **Modo remoto:** su contenido se transmite a la plataforma LLM pública preconfigurada por el desarrollador para su región. Ese punto final puede estar ubicado en un país distinto del suyo. El proveedor actúa como encargado del tratamiento conforme a sus propias condiciones; revise su política. No envíe en modo remoto información que considere confidencial. **La App no opera ningún backend privado y no retiene ninguno de sus contenidos.**
 
 Puede cambiar al modo en el dispositivo o dejar de usar las funciones de IA en cualquier momento en Ajustes.
 
@@ -74,7 +74,7 @@ No usamos el contenido de su libro de cuentas para entrenar modelos, para perfil
 |---|---|---|
 | AMap (Gaode) — región de la China continental | Coordenada que usted selecciona | Geocodificación inversa |
 | Google Maps — demás regiones | Coordenada que usted selecciona | Geocodificación inversa |
-| El punto final de IA que use | Texto, transcripción o imagen que usted envía | Tratamiento de IA que usted solicitó |
+| La plataforma LLM pública preconfigurada por el desarrollador para su región | Texto, transcripción o imagen que usted envía | Tratamiento de IA que usted solicitó |
 | Apple App Store / Google Play | Testigo de compra | Verificación de compra |
 
 Cada destinatario se rige por su propia política de privacidad. No vendemos ni alquilamos información personal a nadie.
