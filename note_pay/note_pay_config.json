@@ -1,14 +1,14 @@
 {
-  "_comment": "NotePay 远程配置（部署到 GitHub Pages / jsDelivr 的 config.json）。与 app_config.json 同构：拉取后落盘到独立远程文件，读时三层合并（打包 assets → 远程文件 → 本地开发覆盖），远程同 key 覆盖本地；远程未写的 key 原样保留（兜底 app_config.json）。本文件只覆盖「不发版即可调整」的字段。平台分治见 platforms.{ios,android}（AppConfig 按平台取，无需两套远程文件）；顶层 ad_gate/pay 作为旧版 App 的 fallback 保留。",
+  "_comment": "NotePay 远程配置（GitHub Pages 托管，App 拉取后落盘并按 deepMerge 覆盖本地同名段）。\n⚠️ 语义：**远程写的 key 覆盖本地，没写的原样保留本地** —— 故本文件只放「不发版即可调整」的字段，是 assets/config/app_config.json 的非全量子集。\n⚠️ 本文件由 `tool/gen_remote_config.py` 从本地 app_config.json 生成，**不要手改**：改了下次生成会被覆盖，且 ② 与 ③ 会失去同步。要改配置请改本地 app_config.json 再跑脚本。\n\n产物流向（全部由本脚本产出，手工**只改 ①**）：① assets/config/app_config.json（唯一手改处）→ ② remote/note_pay_config.json（远程源，进版本控制）→ ③ 本文件（Pages 部署产物，与 ② 逐字节相同）→ ④ docs/remote_config.example.json（脱敏样本）。\n\n⚠️ 本文件**不含** remote_config 段（自举字段恒取本地，否则 App 无法决定要不要拉远程）；\n⚠️ 本文件**不含** entitlement 段（那是开发期本地解锁开关，不是运营配置）。\n\n⚠️ 商品 ID 有三个互不可引用的消费者：本文件 / App Store Connect / ios/NotePay.storekit。改名或加商品后必须跑 `dart run scripts/check_pay_ids.dart`（C1 校验 ① 与 ② 同平台 ID 一致）。\n\n⚠️ iOS（StoreKit）与海外 Android（Google Play）的商品**不配** price_amount / price_currency：商店下发的价格已按用户地区本地化，配置里再写一份会与商店价冲突；只有走自建渠道（国内 Android 扫码转账）的 pro_6m 需要配。",
   "map_enabled": true,
   "_note_map_enabled": "高德地图总开关（默认开）。true=启用地图选点/定位与「定位后自动回填最近地点名称」；false=整个 App 隐藏地图控件与定位按钮（用户看不到经纬度/地图），消费地点【地点名称】改由 LLM 从用户输入描述/小票分析（用户仍可手改）。高德 API 不稳定时改这里为 false 即可，无需发版。",
   "llm": {
-    "_comment": "LLM 接入（同 app_config 的 llm 段）。作用：①首次启动（本地无预设时）的种子；②已在用用户以顶层 server 段为准。远程改 LLM 地址请改 server 段，不要只改这里（已装用户的实时地址由 server 段驱动）。",
+    "_comment": "LLM 接入。mode: url(远程 OpenAI 兼容) / local(端侧 llama.cpp)。url 段是**首次启动的种子 + 未命中 region 时的回退端点**，当前指向海外端点（出海优先）。已装用户的实时地址由远程 server 段驱动（见 remote/note_pay_config.json）；按地区精确路由见顶层 server_by_region。disable_think 为全局开关，实际只发 thinking:{type:'disabled'}（gpt-4o 拒绝 reasoning_effort——见 lib/config/app_config.dart 的 noThinkKwargs 注释）。",
     "mode": "url",
     "url": {
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "temperature": 0.3,
@@ -18,6 +18,7 @@
       "agent_memory_turns": 6
     },
     "local": {
+      "_comment": "端侧模式（可选）。走 flutter_llm_client local 接口，切换零改业务。",
       "model_path": "",
       "mmproj_path": "",
       "model_name": "local-llm",
@@ -26,330 +27,13 @@
       "max_tokens": 1024
     }
   },
-  "amap": {
-    "_comment": "高德 Key。Key 泄露 / 配额耗尽时改这里即可，无需发版。逆地理走原生 AMapSearch SDK（iOS/Android 各用对应 Key），不再用 Web 服务 Key。",
-    "android_key": "np1:TGaheqAMYGLXMfBbYph/ycgX4sVOx/bOGXdBuv7c2FRi3wVcmBXmWRk+B0O5xNMhEjfc9/MfIHIK+ejDaN9OsQ==",
-    "ios_key": "np1:qB7j6eF2A+TOEbJPBqPJ4HGDwbO6IWy1pzHSlsnmYqh1Qju7xtqwN+uVK0negiyVwLsPW9cJfIapBKjad7WbEw=="
-  },
-  "google_maps": {
-    "_comment": "Google Maps Key。一个 Google Cloud Key 的「应用限制」只能锁定 iOS 或 Android 之一，故拆两把。逆地理走原生 SDK（iOS GMSGeocoder 用 ios_key；Android 系统 Geocoder 免 Key），不走 Web HTTP。当前 iOS/Android 暂填同一密文占位，待在 Google Cloud 控制台分别建两把平台限制 Key 后替换。",
-    "android_key": "np1:U6cwwaEo7Imv99f6diwQpj5P2Tm7nG21bAoeYzuk5bmWnhIhTow+FrwjvRcX1SgVzaggiGsGdu4/aDlvYa39cw==",
-    "ios_key": "np1:jj5R/MethQteVP9sApnoA2FhAxQcT/jTeWzKP7acgke1TPs4T3btlrAZl2grFad5L8rtE4M2g1SsXaV1iKzMjA=="
-  },
-  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url = 全球默认地址（Hugging Face：HardyCamila/hardy_sherpa）；url_by_region 按地区覆盖地址，key 为 AppRegion 名，当前仅 cn 需要（国内无法直连 Hugging Face，改为 hf-mirror.com 镜像；路径与官方一致、是同一份 LFS 对象，sha256 相同）。url 与 url_by_region 均无该模型地址 = 暂不可用（UI 优雅降级）。sha256 用于下载校验，防止镜像/代理返回错误页而非模型。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
-  "asr_models": [
-    {
-      "id": "zh-14M",
-      "langs": ["zh"],
-      "asset": "assets/models/sherpa-zh-14M.zip",
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
-      },
-      "size": 20946231,
-      "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b",
-      "descriptions": {"zh": "已随 App 内置，离线即可使用。识别快，适合日常中文记账。", "en": "Bundled with the app for offline use. Fast — ideal for everyday Chinese expense tracking.", "ja": "アプリに内蔵され、オフラインですぐ使えます。高速で、日常の中国語家計簿に最適です。", "ko": "앱에 내장되어 오프라인에서 바로 쓸 수 있습니다. 빠르게 일상 중국어 가계부에 적합합니다.", "de": "Im App enthalten und offline nutzbar. Schnell — ideal für den chinesischen Alltag.", "es": "Modelo de voz en chino incluido en la app y utilizable sin conexión. Rápido, ideal para el registro diario en chino.", "fr": "Modèle vocal chinois intégré à l'app et utilisable hors ligne. Rapide, idéal pour la saisie quotidienne en chinois."}
-    },
-    {
-      "id": "en-20M",
-      "langs": ["en"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
-      },
-      "size": 38277116,
-      "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00",
-      "descriptions": {"zh": "英文语音模型，识别快。需首次联网下载，之后本地离线使用。", "en": "English speech model, fast. Downloads on first use, then runs fully offline.", "ja": "高速な英語音声モデル。初回のみダウンロードし、以降はオフラインで動作します。", "ko": "빠른 영어 음성 모델입니다. 첫 사용 시 한 번 내려받고 이후엔 오프라인으로 씁니다.", "de": "Englisches Sprachmodell, schnell. Beim ersten Mal herunterladen, danach offline.", "es": "Modelo de voz en inglés, rápido. Se descarga la primera vez y luego funciona sin conexión.", "fr": "Modèle vocal anglais, rapide. Téléchargé au premier usage, puis hors ligne."}
-    },
-    {
-      "id": "de-kroko-2025-08-06",
-      "langs": ["de"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip"
-      },
-      "size": 55197225,
-      "sha256": "c92f14c8d25151bfbd7ec71e768a89c9c08d3ad647cf5592fc83a856fe5070ed",
-      "descriptions": {"zh": "德语流式语音模型，按需下载后离线识别德语。", "en": "German streaming speech model. Download on demand, then transcribe German offline.", "ja": "ドイツ語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでドイツ語を認識します。", "ko": "독일어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 독일어를 인식합니다.", "de": "Deutsches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Deutsch offline transkribieren.", "es": "Modelo de voz en alemán por streaming. Descárgalo bajo demanda para transcribir alemán sin conexión.", "fr": "Modèle vocal allemand en streaming. Téléchargez à la demande pour transcrire l'allemand hors ligne."}
-    },
-    {
-      "id": "es-kroko-2025-08-06",
-      "langs": ["es"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip"
-      },
-      "size": 119581787,
-      "sha256": "18e44eb8d81f7d4d53db1e955719ad8693617b166b54d48c178390d5239ae6ae",
-      "descriptions": {"zh": "西班牙语流式语音模型，按需下载后离线识别西班牙语。", "en": "Spanish streaming speech model. Download on demand, then transcribe Spanish offline.", "ja": "スペイン語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでスペイン語を認識します。", "ko": "스페인어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 스페인어를 인식합니다.", "de": "Spanisches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Spanisch offline transkribieren.", "es": "Modelo de voz en español por streaming. Descárgalo bajo demanda para transcribir español sin conexión.", "fr": "Modèle vocal espagnol en streaming. Téléchargez à la demande pour transcrire l'espagnol hors ligne."}
-    },
-    {
-      "id": "fr-kroko-2025-08-06",
-      "langs": ["fr"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip"
-      },
-      "size": 54801828,
-      "sha256": "d42e0c8d6b9805fecfc467d028773bfcfb2f899ab3b037ff409bfaa2866355d3",
-      "descriptions": {"zh": "法语流式语音模型，按需下载后离线识别法语。", "en": "French streaming speech model. Download on demand, then transcribe French offline.", "ja": "フランス語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでフランス語を認識します。", "ko": "프랑스어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 프랑스어를 인식합니다.", "de": "Französisches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Französisch offline transkribieren.", "es": "Modelo de voz en francés por streaming. Descárgalo bajo demanda para transcribir francés sin conexión.", "fr": "Modèle vocal français en streaming. Téléchargez à la demande pour transcrire le français hors ligne."}
-    },
-    {
-      "id": "korean-2024-06-16-mobile",
-      "langs": ["ko"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip"
-      },
-      "size": 100596025,
-      "sha256": "20d600cb9190914de5ed121d86c696505099ff493cf30cd068b48705e1c41035",
-      "descriptions": {"zh": "韩文移动端语音模型，适合手机离线识别韩语。", "en": "Korean mobile speech model, tuned for on-device Korean recognition.", "ja": "韓国語モバイル音声モデルで、端末上で韓国語をオフライン認識します。", "ko": "한국어 모바일 음성 모델로, 기기에서 한국어를 오프라인으로 인식합니다.", "de": "Koreanisches Mobil-Sprachmodell, für die koreanische Erkennung auf dem Gerät optimiert.", "es": "Modelo de voz coreano para móviles, optimizado para reconocer coreano en el dispositivo.", "fr": "Modèle vocal coréen pour mobile, optimisé pour la reconnaissance coréenne sur l'appareil."}
-    },
-    {
-      "id": "ar_en_id_ja_ru_th_vi_zh-2025-02-10",
-      "langs": ["zh","en","ja","de","es","fr","ko","ar","id","ru","th","vi"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip"
-      },
-      "size": 225329782,
-      "sha256": "e2160cb762322f831d87714bc048a28810f246fab96c6b093fad2c3353811b01",
-      "descriptions": {"zh": "多语种模型，一次下载覆盖中/英/日/韩/法/德/西及阿拉伯、印尼、俄、泰、越语，无需切换模型。", "en": "Multilingual model: one download covers Chinese, English, Japanese, Korean, French, German, Spanish plus Arabic, Indonesian, Russian, Thai and Vietnamese — no model switching.", "ja": "多言語モデル。一度ダウンロードするだけで中国語・英語・日本語・韓国語・フランス語・ドイツ語・スペイン語に加え、アラビア語・インドネシア語・ロシア語・タイ語・ベトナム語もカバーし、モデル切り替え不要です。", "ko": "다국어 모델로, 한 번 내려받으면 중국어·영어·일본어·한국어·프랑스어·독일어·스페인어와 아랍어·인도네시아어·러시아어·태국어·베트남어를 모두 커버해 모델을 바꿀 필요가 없습니다.", "de": "Mehrsprachiges Modell: Ein Download deckt Chinesisch, Englisch, Japanisch, Koreanisch, Französisch, Deutsch, Spanisch sowie Arabisch, Indonesisch, Russisch, Thai und Vietnamesisch ab — kein Modellwechsel nötig.", "es": "Modelo multilingüe: una sola descarga cubre chino, inglés, japonés, coreano, francés, alemán, español y además árabe, indonesio, ruso, tailandés y vietnamita, sin cambiar de modelo.", "fr": "Modèle multilingue : un seul téléchargement couvre le chinois, l'anglais, le japonais, le coréen, le français, l'allemand, l'espagnol ainsi que l'arabe, l'indonésien, le russe, le thaï et le vietnamien — sans changer de modèle."}
-    },
-    {
-      "id": "zh-multi-70M",
-      "langs": ["zh"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip"
-      },
-      "size": 59326993,
-      "sha256": "f11835c417f3a019cc3fb9506f19cdda9346744c67352586f8601d6dee1b1761",
-      "descriptions": {"zh": "中文多口音模型，识别质量高于内置基础模型，覆盖更多方言口音。带 BPE，需 App 已支持。", "en": "Chinese multi-accent model with higher accuracy than the built-in base model, covering more dialects. Uses BPE (requires app support).", "ja": "内蔵の基礎モデルより高精度で、より多くの方言をカバーする中国語多アクセントモデル。BPE使用（アプリ側対応必須）。", "ko": "내장 기본 모델보다 정확도가 높고 더 많은 방언을 커버하는 중국어 다중 억양 모델입니다. BPE 사용(앱 지원 필요).", "de": "Chinesisches Modell mit vielen Akzenten, genauer als das eingebaute Basismodell, deckt mehr Dialekte ab. Nutzt BPE (App-Unterstützung nötig).", "es": "Modelo chino de múltiples acentos, más preciso que el modelo base integrado, cubre más dialectos. Usa BPE (requiere soporte de la app).", "fr": "Modèle chinois multi-accent, plus précis que le modèle de base intégré, couvrant plus de dialectes. Utilise le BPE (nécessite le support de l'app)."},
-      
-      
-      
-      
-      
-      
-      
-      
-      "_comment": "中等中文（多口音）流式 Transducer，带 bpe.model；需 App 已支持 BPE（asr_service_native.dart 传 bpeVocab）。已打包上传 HF，size/sha256 已填真实值。"
-    },
-    {
-      "id": "en-70M",
-      "langs": ["en"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip"
-      },
-      "size": 243002880,
-      "sha256": "45d15a63b24b80cec08d1176af2d4d78dbbaac0dd6fc42d2975c271c1c87fb09",
-      "descriptions": {"zh": "英文高精度模型，比基础英文模型更准确，带 BPE，需 App 已支持。", "en": "Higher-accuracy English model than the basic English model, uses BPE (requires app support).", "ja": "基本の英語モデルより高精度な英語モデル。BPE使用（アプリ側対応必須）。", "ko": "기본 영어 모델보다 정확도가 높은 영어 모델로 BPE를 사용합니다(앱 지원 필요).", "de": "Englisches Modell mit höherer Genauigkeit als das Basis-Englischmodell, nutzt BPE (App-Unterstützung nötig).", "es": "Modelo de inglés más preciso que el modelo básico de inglés, usa BPE (requiere soporte de la app).", "fr": "Modèle anglais plus précis que le modèle de base en anglais, utilise le BPE (nécessite le support de l'app)."},
-      
-      "_comment": "中等英文流式 Transducer，带 bpe.model；需 App 已支持 BPE。已打包上传 HF，size/sha256 已填真实值。"
-    },
-    {
-      "id": "zh-en-150",
-      "langs": ["zh", "en"],
-      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip",
-      "url_by_region": {
-        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip"
-      },
-      "size": 317891921,
-      "sha256": "1486df55e166e8bbab3491a5637e23502ecef24d7387fa902030bcf44a611d84",
-      "descriptions": {"zh": "中英双语模型，精度最高，适合中英混合或双语记账。带 BPE，需 App 已支持。", "en": "Bilingual Chinese-English model, highest accuracy — great for mixed or bilingual expense tracking. Uses BPE (requires app support).", "ja": "中国語・英語バイリンガルモデルで最も高精度。混合・バイリンガルな家計簿に最適。BPE使用（アプリ側対応必須）。", "ko": "중국어-영어 양언어 모델로 정확도가 가장 높아 혼합·이중 언어 가계부에 적합합니다. BPE 사용(앱 지원 필요).", "de": "Zweisprachiges Chinesisch-Englisch-Modell, höchste Genauigkeit — ideal für gemischte oder zweisprachige Einträge. Nutzt BPE (App-Unterstützung nötig).", "es": "Modelo bilingüe chino-inglés, máxima precisión — ideal para registros mixtos o bilingües. Usa BPE (requiere soporte de la app).", "fr": "Modèle bilingue chinois-anglais, précision maximale — idéal pour les saisies mixtes ou bilingues. Utilise le BPE (nécessite le support de l'app)."},
-      
-      "_comment": "中英双语中等流式 Transducer（zipformer），App 已支持 BPE；已打包上传 HF，size/sha256 已填真实值。"
-    }
-  ],
-  "limits": {
-    "_comment": "每日功能使用次数（按功能 key 计）。远程可调，便于按成本随时收紧/放开。注意：本段同时驱动 LLM 通道配额（agent/stats/entry）与三功能入口配额（agent/entry/photo）。free=未购买档，premium=已购买(pro_trial)档。远程合并覆盖本地 app_config.json 的同名段。",
-    "free": {
-      "entry": 5,
-      "agent": 5,
-      "stats": 10,
-      "photo": 5
-    },
-    "premium": {
-      "entry": 50,
-      "agent": 50,
-      "stats": 100,
-      "photo": 50
-    }
-  },
-  "ad_gate": {
-    "_comment": "按次广告门槛（区别于 pay 段的 ad_reward『看完解锁N天』）。required_before 列出的功能，每次使用前三必须看激励视频广告。reward_feature 为看完后授予的临时权益 key（业务可忽略）。远程可随时开关。",
-    "required_before": [
-      "agent",
-      "entry",
-      "photo"
-    ],
-    "reward_feature": "no_ad_session"
-  },
-  "pay": {
-    "_comment": "盈利框架配置（flutter_pay 消费）。【顶层 fallback】平台专属覆盖见 platforms.{ios,android}.pay；新版 App 按平台取，旧版 App 无 platforms 时回退到此（当前值与 Android 一致，符合国内安卓主力市场）。enabled=是否启用付费墙；features=受控功能列表；products=商品/奖励项。ad_reward 类型即『看完广告解锁N天』（区别于 ad_gate 的按次广告）。trial_7d=7天试用解锁 pro_trial（试用期间享受 premium 档配额）。本期为一次性买断，products 里就是全部在售商品、不含订阅。【可选扩展举例，非现状】type 已支持 subscription，将来想加订阅无需改代码，只需追加形如 {\"id\":\"pro_monthly\",\"type\":\"subscription\",\"grants\":[\"__ALL__\"],\"title\":\"专业版月付\",\"price_label\":\"¥20/月\"} 的一项，并同步做好 App Store Connect 建商品 + NotePay.storekit 的 subscriptionGroups 写法 + EntitlementService 到期回收，详见 note_pay/docs/配置全景说明.md §2.7.1。",
-    "enabled": true,
-    "features": [
-      "agent",
-      "entry",
-      "photo",
-      "pro_trial"
-    ],
-    "products": [
-      {
-        "id": "pro_lifetime",
-        "type": "oneTime",
-        "grants": [
-          "__ALL__"
-        ],
-        "title": {
-          "zh": "专业版永久",
-          "en": "Pro Lifetime",
-          "ja": "プロ版買い切り",
-          "ko": "Pro 평생",
-          "de": "Pro Lebenszeit",
-          "es": "Pro de por vida",
-          "fr": "Pro à vie"
-        },
-        "price_label": "¥68"
-      },
-      {
-        "id": "trial_7d",
-        "type": "ad_reward",
-        "reward_days": 7,
-        "grants": [
-          "pro_trial"
-        ],
-        "title": {
-          "zh": "7天免费试用",
-          "en": "7-Day Free Trial",
-          "ja": "7日間無料トライアル",
-          "ko": "7일 무료 체험",
-          "de": "7 Tage kostenlos testen",
-          "es": "Prueba gratis de 7 días",
-          "fr": "Essai gratuit de 7 jours"
-        },
-        "ad_network": "debug"
-      }
-    ]
-  },
-  "platforms": {
-    "_comment": "平台分治（与 app_config.json 同构）。AppConfig 按 Platform.isIOS 选对应段，缺失回退顶层 ad_gate/pay。limits 两端相同留在顶层共享，此处只拆 ad_gate/pay。",
-    "ios": {
-      "ad_gate": {
-        "required_before": [],
-        "reward_feature": "no_ad_session"
-      },
-      "pay": {
-        "enabled": true,
-        "features": [
-          "agent",
-          "entry",
-          "photo",
-          "pro_lifetime"
-        ],
-        "trial_days": 7,
-        "platform_routing": {
-          "ios": [
-            "apple_iap",
-            "local_trial"
-          ]
-        },
-        "products": [
-          {
-            "id": "pro_lifetime",
-            "type": "oneTime",
-            "grants": [
-              "__ALL__"
-            ],
-            "title": {
-              "zh": "专业版永久",
-              "en": "Pro Lifetime",
-              "ja": "プロ版買い切り",
-              "ko": "Pro 평생",
-              "de": "Pro Lebenszeit",
-              "es": "Pro de por vida",
-              "fr": "Pro à vie"
-            },
-            "price_label": "¥68"
-          }
-        ]
-      }
-    },
-    "android": {
-      "ad_gate": {
-        "required_before": [
-          "agent",
-          "entry",
-          "photo"
-        ],
-        "reward_feature": "no_ad_session"
-      },
-      "pay": {
-        "enabled": true,
-        "features": [
-          "agent",
-          "entry",
-          "photo",
-          "pro_6m"
-        ],
-        "products": [
-          {
-            "id": "pro_6m",
-            "type": "oneTime",
-            "grants": [
-              "__ALL__"
-            ],
-            "title": {
-              "zh": "专业版6个月",
-              "en": "Pro 6 Months",
-              "ja": "プロ版6ヶ月",
-              "ko": "Pro 6개월",
-              "de": "Pro 6 Monate",
-              "es": "Pro 6 meses",
-              "fr": "Pro 6 mois"
-            },
-            "price_label": "¥20/6个月"
-          },
-          {
-            "id": "trial_7d",
-            "type": "ad_reward",
-            "reward_days": 7,
-            "grants": [
-              "pro_trial"
-            ],
-            "title": {
-              "zh": "7天免费试用",
-              "en": "7-Day Free Trial",
-              "ja": "7日間無料トライアル",
-              "ko": "7일 무료 체험",
-              "de": "7 Tage kostenlos testen",
-              "es": "Prueba gratis de 7 días",
-              "fr": "Essai gratuit de 7 jours"
-            },
-            "ad_network": "debug"
-          }
-        ],
-        "providers": {
-          "qr_pay": {
-            "enabled": true,
-            "transfer_channels": [
-              "alipay",
-              "wechat"
-            ]
-          }
-        }
-      }
-    }
-  },
   "server": {
-    "_comment": "实时 LLM 服务器预设（覆盖名为 default 的预设，即时生效）。这是「远程改 LLM 地址」的唯一生效通道；与上面 llm.url 保持一致。字段对齐 flutter_llm_client 的 ServerConfig.toMap（snake_case）。",
+    "_comment": "实时 LLM 服务器预设（覆盖名为 default 的预设，即时生效）。这是「远程改 LLM 地址」的**唯一生效通道**；必须与上面 llm 段的 url 保持一致（llm 段只作首次启动的种子，已装用户的实时地址由本段驱动）。字段对齐 flutter_llm_client 的 ServerConfig.toMap（snake_case）。api_key 必须为 np1: 密文。",
     "name": "default",
     "mode": "url",
-    "base_url": "https://api-inference.modelscope.cn/v1",
-    "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-    "model_name": "Qwen/Qwen3.5-27B",
+    "base_url": "https://api.n1n.ai/v1",
+    "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+    "model_name": "gpt-4o",
     "support_image": true,
     "prompt_format": "chatml",
     "default_params": {
@@ -358,7 +42,7 @@
     }
   },
   "server_by_region": {
-    "_comment": "按地区 LLM 端点映射字典（key=AppRegion 名 cn/us/eu/jp/kr/gb/tw/hk/sg）。每个值是完整内联 ServerConfig，不同地区可独立配模型/密钥，实现合规灵活。未列出 region 回退顶层 server 段（default）。api_key 必须为 np1: 密文。当前演示各 region 暂指向同一国内合规端点，部署时按地区替换为各自合规端点/密钥即可。",
+    "_comment": "按地区 LLM 端点映射字典（key=AppRegion 名 cn/us/eu/jp/kr/gb/tw/hk/sg）。每个值是完整内联 ServerConfig，不同地区可独立配模型/密钥，实现合规灵活。离线首启种子用：远程关闭/失败时按 region 命中各自端点，否则回退 llm.url 的 default。此处与远程同构，api_key 用 np1: 密文。当前：cn 指向国内合规端点（modelscope / Qwen3.5-27B）；其余 8 区（us/eu/jp/kr/gb/tw/hk/sg）指向海外端点（n1n.ai / gpt-4o）。⚠️ gpt-4o 会直接 400 拒绝 reasoning_effort，故全局关思考只发 thinking:{type:'disabled'}（见 lib/config/app_config.dart 的 noThinkKwargs）。",
     "cn": {
       "mode": "url",
       "base_url": "https://api-inference.modelscope.cn/v1",
@@ -373,9 +57,9 @@
     },
     "us": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -385,9 +69,9 @@
     },
     "eu": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -397,9 +81,9 @@
     },
     "jp": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -409,9 +93,9 @@
     },
     "kr": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -421,9 +105,9 @@
     },
     "gb": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -433,9 +117,9 @@
     },
     "tw": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -445,9 +129,9 @@
     },
     "hk": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -457,9 +141,9 @@
     },
     "sg": {
       "mode": "url",
-      "base_url": "https://api-inference.modelscope.cn/v1",
-      "api_key": "np1:bokjAkTmUC4vfFRwY2qqu/rddV0LwB4c9J5kirWDxBt9Sdr3ZiU2NsDVot+aJeIR2p2o+VPbcADnVFghLTghow==",
-      "model_name": "Qwen/Qwen3.5-27B",
+      "base_url": "https://api.n1n.ai/v1",
+      "api_key": "np1:YH4cc3MdA4I4ucO+u6x4VU+E5dX2o5z7oO7ttvhG2VIZSZMQ0ORJM2bc6p+gGGe9GavB5bGU7M/8nDaIPkEgPhTNwDYXhbrTJSg0o/RERe4=",
+      "model_name": "gpt-4o",
       "support_image": true,
       "prompt_format": "chatml",
       "default_params": {
@@ -468,8 +152,247 @@
       }
     }
   },
+  "amap": {
+    "_comment": "高德地图 Key。Android Key 需绑定「包名 + 签名 SHA1」；iOS Key 绑定 Bundle Id。分别在高德控制台申请。逆地理编码走原生 AMapSearch SDK（iOS/Android 各用对应 Key），不再使用 Web 服务 Key。留空则选点不回填地址（仅显示坐标）。",
+    "android_key": "np1:TGaheqAMYGLXMfBbYph/ycgX4sVOx/bOGXdBuv7c2FRi3wVcmBXmWRk+B0O5xNMhEjfc9/MfIHIK+ejDaN9OsQ==",
+    "ios_key": "np1:qB7j6eF2A+TOEbJPBqPJ4HGDwbO6IWy1pzHSlsnmYqh1Qju7xtqwN+uVK0negiyVwLsPW9cJfIapBKjad7WbEw=="
+  },
+  "google_maps": {
+    "_comment": "Google Maps Key。一个 Google Cloud Key 的「应用限制」只能锁定 iOS 或 Android 之一，故拆两把。逆地理走原生 SDK（iOS GMSGeocoder 用 ios_key；Android 系统 Geocoder 免 Key），不走 Web HTTP。当前 iOS/Android 暂填同一密文占位，待在 Google Cloud 控制台分别建两把平台限制 Key 后替换。",
+    "android_key": "np1:U6cwwaEo7Imv99f6diwQpj5P2Tm7nG21bAoeYzuk5bmWnhIhTow+FrwjvRcX1SgVzaggiGsGdu4/aDlvYa39cw==",
+    "ios_key": "np1:jj5R/MethQteVP9sApnoA2FhAxQcT/jTeWzKP7acgke1TPs4T3btlrAZl2grFad5L8rtE4M2g1SsXaV1iKzMjA=="
+  },
+  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url = 全球默认地址（Hugging Face：HardyCamila/hardy_sherpa）；url_by_region 按地区覆盖地址，key 为 AppRegion 名，当前仅 cn 需要（国内无法直连 Hugging Face，改为 hf-mirror.com 镜像；路径与官方一致、是同一份 LFS 对象，sha256 相同）。url 与 url_by_region 均无该模型地址 = 暂不可用（UI 优雅降级）。sha256 用于下载校验，防止镜像/代理返回错误页而非模型。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
+  "asr_models": [
+    {
+      "id": "zh-14M",
+      "langs": [
+        "zh"
+      ],
+      "asset": "assets/models/sherpa-zh-14M.zip",
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
+      },
+      "size": 20946231,
+      "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b",
+      "descriptions": {
+        "zh": "已随 App 内置，离线即可使用。识别快，适合日常中文记账。",
+        "en": "Bundled with the app for offline use. Fast — ideal for everyday Chinese expense tracking.",
+        "ja": "アプリに内蔵され、オフラインですぐ使えます。高速で、日常の中国語家計簿に最適です。",
+        "ko": "앱에 내장되어 오프라인에서 바로 쓸 수 있습니다. 빠르게 일상 중국어 가계부에 적합합니다.",
+        "de": "Im App enthalten und offline nutzbar. Schnell — ideal für den chinesischen Alltag.",
+        "es": "Modelo de voz en chino incluido en la app y utilizable sin conexión. Rápido, ideal para el registro diario en chino.",
+        "fr": "Modèle vocal chinois intégré à l'app et utilisable hors ligne. Rapide, idéal pour la saisie quotidienne en chinois."
+      }
+    },
+    {
+      "id": "en-20M",
+      "langs": [
+        "en"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
+      },
+      "size": 38277116,
+      "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00",
+      "descriptions": {
+        "zh": "英文语音模型，识别快。需首次联网下载，之后本地离线使用。",
+        "en": "English speech model, fast. Downloads on first use, then runs fully offline.",
+        "ja": "高速な英語音声モデル。初回のみダウンロードし、以降はオフラインで動作します。",
+        "ko": "빠른 영어 음성 모델입니다. 첫 사용 시 한 번 내려받고 이후엔 오프라인으로 씁니다.",
+        "de": "Englisches Sprachmodell, schnell. Beim ersten Mal herunterladen, danach offline.",
+        "es": "Modelo de voz en inglés, rápido. Se descarga la primera vez y luego funciona sin conexión.",
+        "fr": "Modèle vocal anglais, rapide. Téléchargé au premier usage, puis hors ligne."
+      }
+    },
+    {
+      "id": "de-kroko-2025-08-06",
+      "langs": [
+        "de"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip"
+      },
+      "size": 55197225,
+      "sha256": "c92f14c8d25151bfbd7ec71e768a89c9c08d3ad647cf5592fc83a856fe5070ed",
+      "descriptions": {
+        "zh": "德语流式语音模型，按需下载后离线识别德语。",
+        "en": "German streaming speech model. Download on demand, then transcribe German offline.",
+        "ja": "ドイツ語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでドイツ語を認識します。",
+        "ko": "독일어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 독일어를 인식합니다.",
+        "de": "Deutsches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Deutsch offline transkribieren.",
+        "es": "Modelo de voz en alemán por streaming. Descárgalo bajo demanda para transcribir alemán sin conexión.",
+        "fr": "Modèle vocal allemand en streaming. Téléchargez à la demande pour transcrire l'allemand hors ligne."
+      }
+    },
+    {
+      "id": "es-kroko-2025-08-06",
+      "langs": [
+        "es"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip"
+      },
+      "size": 119581787,
+      "sha256": "18e44eb8d81f7d4d53db1e955719ad8693617b166b54d48c178390d5239ae6ae",
+      "descriptions": {
+        "zh": "西班牙语流式语音模型，按需下载后离线识别西班牙语。",
+        "en": "Spanish streaming speech model. Download on demand, then transcribe Spanish offline.",
+        "ja": "スペイン語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでスペイン語を認識します。",
+        "ko": "스페인어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 스페인어를 인식합니다.",
+        "de": "Spanisches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Spanisch offline transkribieren.",
+        "es": "Modelo de voz en español por streaming. Descárgalo bajo demanda para transcribir español sin conexión.",
+        "fr": "Modèle vocal espagnol en streaming. Téléchargez à la demande pour transcrire l'espagnol hors ligne."
+      }
+    },
+    {
+      "id": "fr-kroko-2025-08-06",
+      "langs": [
+        "fr"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip"
+      },
+      "size": 54801828,
+      "sha256": "d42e0c8d6b9805fecfc467d028773bfcfb2f899ab3b037ff409bfaa2866355d3",
+      "descriptions": {
+        "zh": "法语流式语音模型，按需下载后离线识别法语。",
+        "en": "French streaming speech model. Download on demand, then transcribe French offline.",
+        "ja": "フランス語ストリーミング音声モデル。必要に応じてダウンロードし、オフラインでフランス語を認識します。",
+        "ko": "프랑스어 스트리밍 음성 모델입니다. 필요할 때 내려받아 오프라인으로 프랑스어를 인식합니다.",
+        "de": "Französisches Streaming-Sprachmodell. Bei Bedarf herunterladen, dann Französisch offline transkribieren.",
+        "es": "Modelo de voz en francés por streaming. Descárgalo bajo demanda para transcribir francés sin conexión.",
+        "fr": "Modèle vocal français en streaming. Téléchargez à la demande pour transcrire le français hors ligne."
+      }
+    },
+    {
+      "id": "korean-2024-06-16-mobile",
+      "langs": [
+        "ko"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip"
+      },
+      "size": 100596025,
+      "sha256": "20d600cb9190914de5ed121d86c696505099ff493cf30cd068b48705e1c41035",
+      "descriptions": {
+        "zh": "韩文移动端语音模型，适合手机离线识别韩语。",
+        "en": "Korean mobile speech model, tuned for on-device Korean recognition.",
+        "ja": "韓国語モバイル音声モデルで、端末上で韓国語をオフライン認識します。",
+        "ko": "한국어 모바일 음성 모델로, 기기에서 한국어를 오프라인으로 인식합니다.",
+        "de": "Koreanisches Mobil-Sprachmodell, für die koreanische Erkennung auf dem Gerät optimiert.",
+        "es": "Modelo de voz coreano para móviles, optimizado para reconocer coreano en el dispositivo.",
+        "fr": "Modèle vocal coréen pour mobile, optimisé pour la reconnaissance coréenne sur l'appareil."
+      }
+    },
+    {
+      "id": "ar_en_id_ja_ru_th_vi_zh-2025-02-10",
+      "langs": [
+        "zh",
+        "en",
+        "ja",
+        "de",
+        "es",
+        "fr",
+        "ko",
+        "ar",
+        "id",
+        "ru",
+        "th",
+        "vi"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip"
+      },
+      "size": 225329782,
+      "sha256": "e2160cb762322f831d87714bc048a28810f246fab96c6b093fad2c3353811b01",
+      "descriptions": {
+        "zh": "多语种模型，一次下载覆盖中/英/日/韩/法/德/西及阿拉伯、印尼、俄、泰、越语，无需切换模型。",
+        "en": "Multilingual model: one download covers Chinese, English, Japanese, Korean, French, German, Spanish plus Arabic, Indonesian, Russian, Thai and Vietnamese — no model switching.",
+        "ja": "多言語モデル。一度ダウンロードするだけで中国語・英語・日本語・韓国語・フランス語・ドイツ語・スペイン語に加え、アラビア語・インドネシア語・ロシア語・タイ語・ベトナム語もカバーし、モデル切り替え不要です。",
+        "ko": "다국어 모델로, 한 번 내려받으면 중국어·영어·일본어·한국어·프랑스어·독일어·스페인어와 아랍어·인도네시아어·러시아어·태국어·베트남어를 모두 커버해 모델을 바꿀 필요가 없습니다.",
+        "de": "Mehrsprachiges Modell: Ein Download deckt Chinesisch, Englisch, Japanisch, Koreanisch, Französisch, Deutsch, Spanisch sowie Arabisch, Indonesisch, Russisch, Thai und Vietnamesisch ab — kein Modellwechsel nötig.",
+        "es": "Modelo multilingüe: una sola descarga cubre chino, inglés, japonés, coreano, francés, alemán, español y además árabe, indonesio, ruso, tailandés y vietnamita, sin cambiar de modelo.",
+        "fr": "Modèle multilingue : un seul téléchargement couvre le chinois, l'anglais, le japonais, le coréen, le français, l'allemand, l'espagnol ainsi que l'arabe, l'indonésien, le russe, le thaï et le vietnamien — sans changer de modèle."
+      }
+    },
+    {
+      "id": "zh-multi-70M",
+      "langs": [
+        "zh"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip"
+      },
+      "size": 59326993,
+      "sha256": "f11835c417f3a019cc3fb9506f19cdda9346744c67352586f8601d6dee1b1761",
+      "descriptions": {
+        "zh": "中文多口音模型，识别质量高于内置基础模型，覆盖更多方言口音。带 BPE，需 App 已支持。",
+        "en": "Chinese multi-accent model with higher accuracy than the built-in base model, covering more dialects. Uses BPE (requires app support).",
+        "ja": "内蔵の基礎モデルより高精度で、より多くの方言をカバーする中国語多アクセントモデル。BPE使用（アプリ側対応必須）。",
+        "ko": "내장 기본 모델보다 정확도가 높고 더 많은 방언을 커버하는 중국어 다중 억양 모델입니다. BPE 사용(앱 지원 필요).",
+        "de": "Chinesisches Modell mit vielen Akzenten, genauer als das eingebaute Basismodell, deckt mehr Dialekte ab. Nutzt BPE (App-Unterstützung nötig).",
+        "es": "Modelo chino de múltiples acentos, más preciso que el modelo base integrado, cubre más dialectos. Usa BPE (requiere soporte de la app).",
+        "fr": "Modèle chinois multi-accent, plus précis que le modèle de base intégré, couvrant plus de dialectes. Utilise le BPE (nécessite le support de l'app)."
+      },
+      "_comment": "中等中文（多口音）流式 Transducer，带 bpe.model；需 App 已支持 BPE（asr_service_native.dart 传 bpeVocab）。已打包上传 HF，size/sha256 已填真实值。"
+    },
+    {
+      "id": "en-70M",
+      "langs": [
+        "en"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip"
+      },
+      "size": 243002880,
+      "sha256": "45d15a63b24b80cec08d1176af2d4d78dbbaac0dd6fc42d2975c271c1c87fb09",
+      "descriptions": {
+        "zh": "英文高精度模型，比基础英文模型更准确，带 BPE，需 App 已支持。",
+        "en": "Higher-accuracy English model than the basic English model, uses BPE (requires app support).",
+        "ja": "基本の英語モデルより高精度な英語モデル。BPE使用（アプリ側対応必須）。",
+        "ko": "기본 영어 모델보다 정확도가 높은 영어 모델로 BPE를 사용합니다(앱 지원 필요).",
+        "de": "Englisches Modell mit höherer Genauigkeit als das Basis-Englischmodell, nutzt BPE (App-Unterstützung nötig).",
+        "es": "Modelo de inglés más preciso que el modelo básico de inglés, usa BPE (requiere soporte de la app).",
+        "fr": "Modèle anglais plus précis que le modèle de base en anglais, utilise le BPE (nécessite le support de l'app)."
+      },
+      "_comment": "中等英文流式 Transducer，带 bpe.model；需 App 已支持 BPE。已打包上传 HF，size/sha256 已填真实值。"
+    },
+    {
+      "id": "zh-en-150",
+      "langs": [
+        "zh",
+        "en"
+      ],
+      "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip",
+      "url_by_region": {
+        "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip"
+      },
+      "size": 317891921,
+      "sha256": "1486df55e166e8bbab3491a5637e23502ecef24d7387fa902030bcf44a611d84",
+      "descriptions": {
+        "zh": "中英双语模型，精度最高，适合中英混合或双语记账。带 BPE，需 App 已支持。",
+        "en": "Bilingual Chinese-English model, highest accuracy — great for mixed or bilingual expense tracking. Uses BPE (requires app support).",
+        "ja": "中国語・英語バイリンガルモデルで最も高精度。混合・バイリンガルな家計簿に最適。BPE使用（アプリ側対応必須）。",
+        "ko": "중국어-영어 양언어 모델로 정확도가 가장 높아 혼합·이중 언어 가계부에 적합합니다. BPE 사용(앱 지원 필요).",
+        "de": "Zweisprachiges Chinesisch-Englisch-Modell, höchste Genauigkeit — ideal für gemischte oder zweisprachige Einträge. Nutzt BPE (App-Unterstützung nötig).",
+        "es": "Modelo bilingüe chino-inglés, máxima precisión — ideal para registros mixtos o bilingües. Usa BPE (requiere soporte de la app).",
+        "fr": "Modèle bilingue chinois-anglais, précision maximale — idéal pour les saisies mixtes ou bilingues. Utilise le BPE (nécessite le support de l'app)."
+      },
+      "_comment": "中英双语中等流式 Transducer（zipformer），App 已支持 BPE；已打包上传 HF，size/sha256 已填真实值。"
+    }
+  ],
   "legal": {
-    "_comment": "隐私政策/使用条款托管页 URL（与 app_config.json 同构，且为本文件实际生效的权威值）。支持按 region 出不同页面：privacy_url/terms_url 为基础回退；privacy_url_by_region/terms_url_by_region 为各 region 专属页（key=AppRegion 名）。远程可覆盖本地，便于上架后动态修正而不必发版。",
+    "_comment": "隐私政策/使用条款托管页 URL。支持按 region 出不同页面：privacy_url/terms_url 为基础回退（远程未配 by_region 时使用）；privacy_url_by_region/terms_url_by_region 为各 region 专属页（key=AppRegion 名 cn/us/eu/jp/kr/gb/tw/hk/sg）。远程 config.json 可覆盖，便于上架后动态修正而不必发版。App 经 AppConfig.I.privacyPolicyUrlFor(region) 读取。",
     "privacy_url": "https://songshangkun.github.io/note_pay/legal/privacy_en.html",
     "terms_url": "https://songshangkun.github.io/note_pay/legal/terms_en.html",
     "privacy_url_by_region": {
@@ -495,15 +418,190 @@
       "kr": "https://songshangkun.github.io/note_pay/legal/terms_ko.html"
     }
   },
+  "limits": {
+    "_comment": "每日功能使用次数限制（按业务通道计：一次完整智能录入/Agent 操作=1 次）。null = 不限。未购买用 free，已购买用 premium。photo=图片记账入口（与 agent/entry 并列的三入口之一）。",
+    "free": {
+      "entry": 5,
+      "agent": 5,
+      "stats": 10,
+      "photo": 5
+    },
+    "premium": {
+      "entry": 50,
+      "agent": 50,
+      "stats": 100,
+      "photo": 50
+    }
+  },
+  "ad_gate": {
+    "_comment": "按次广告门槛（顶层 fallback；平台专属覆盖见 platforms.{ios,android}.ad_gate）。本地兜底默认空（无门槛）。仅当对应平台段缺失时才回退到此。",
+    "required_before": [],
+    "reward_feature": "no_ad_session"
+  },
+  "pay": {
+    "_comment": "盈利框架配置（顶层 fallback；平台专属覆盖见 platforms.{ios,android}.pay）。对齐 flutter_pay 的 PayConfig.fromMap。本地无后台版本 enabled=false，付费解锁走 entitlement 开关（premium_unlocked）。仅当对应平台段缺失时才回退到此。本期为一次性买断，products 里就是全部在售商品、不含订阅。【可选扩展举例，非现状】type 已支持 subscription，将来想加订阅无需改代码，只需追加形如 {\"id\":\"pro_monthly\",\"type\":\"subscription\",\"grants\":[\"__ALL__\"],\"title\":\"专业版月付\",\"price_amount\":20,\"price_currency\":\"CNY\"} 的一项，并同步做好 App Store Connect 建商品 + NotePay.storekit 的 subscriptionGroups 写法 + EntitlementService 到期回收，详见 docs/配置全景说明.md §2.7.1。",
+    "enabled": true,
+    "features": [
+      "agent",
+      "entry",
+      "photo",
+      "pro_trial"
+    ],
+    "products": [
+      {
+        "id": "pro_lifetime_intl",
+        "type": "oneTime",
+        "grants": [
+          "__ALL__"
+        ],
+        "title": {
+          "zh": "专业版永久",
+          "en": "Pro Lifetime",
+          "ja": "プロ版買い切り",
+          "ko": "Pro 평생",
+          "de": "Pro Lebenszeit",
+          "es": "Pro de por vida",
+          "fr": "Pro à vie"
+        }
+      },
+      {
+        "id": "trial_7d",
+        "type": "ad_reward",
+        "reward_days": 7,
+        "grants": [
+          "pro_trial"
+        ],
+        "title": {
+          "zh": "7天免费试用",
+          "en": "7-Day Free Trial",
+          "ja": "7日間無料トライアル",
+          "ko": "7일 무료 체험",
+          "de": "7 Tage kostenlos testen",
+          "es": "Prueba gratis de 7 días",
+          "fr": "Essai gratuit de 7 jours"
+        }
+      }
+    ]
+  },
+  "platforms": {
+    "_comment": "平台分治：iOS / Android 付费与广告策略完全不同（见 flutter-skills/monetization_scenarios.md §8）。limits 两端相同留在顶层共享；此处只拆真正有差异的 ad_gate / pay。AppConfig 按 Platform.isIOS 选对应段，缺失回退顶层同名段。",
+    "ios": {
+      "_comment": "iOS：免费额度（5 次/日，用 free 配额、无广告）+ App Store IAP 一次性买断 pro_lifetime_intl（premium 配额）。方案 A：首次超额自动本地发放 7 天 pro_trial 试用（local_trial provider，非 IAP/非订阅），到期回退 free。无广告（ad_gate 为空）。",
+      "ad_gate": {
+        "required_before": [],
+        "reward_feature": "no_ad_session"
+      },
+      "pay": {
+        "enabled": true,
+        "features": [
+          "agent",
+          "entry",
+          "photo",
+          "pro_lifetime_intl"
+        ],
+        "trial_days": 7,
+        "platform_routing": {
+          "ios": [
+            "apple_iap",
+            "local_trial"
+          ]
+        },
+        "products": [
+          {
+            "id": "pro_lifetime_intl",
+            "type": "oneTime",
+            "grants": [
+              "__ALL__"
+            ],
+            "title": {
+              "zh": "专业版永久",
+              "en": "Pro Lifetime",
+              "ja": "プロ版買い切り",
+              "ko": "Pro 평생",
+              "de": "Pro Lebenszeit",
+              "es": "Pro de por vida",
+              "fr": "Pro à vie"
+            }
+          }
+        ]
+      }
+    },
+    "android": {
+      "_comment": "Android：免费但每次使用先看广告（ad_gate 命中）+ 支付宝/微信转账购买 pro_6m（premium 配额、购买后无广告）。pro_6m 经 QrPayProvider（框架内置、自动排除 iOS），6 个月有效期由后端 verifyReceipt 返回的 EntitlementSnapshot.expireAt 下发，框架已支持过期回退。transfer_channels 存于 providers.qr_pay.extra（框架 Product 不解析未知字段，故放 provider 级）。",
+      "ad_gate": {
+        "required_before": [
+          "agent",
+          "entry",
+          "photo"
+        ],
+        "reward_feature": "no_ad_session"
+      },
+      "pay": {
+        "_comment": "商品标价用 price_amount（主单位数值，如 20=¥20、2.99=$2.99）+ price_currency（ISO 4217 码）两个字段，**不要**写 price_label 字符串——那会把『6个月』这种中文和『¥』这种货币同时钉死，切语言/切地区都不会变。付费墙按当前语言渲染数值、按 price_currency 出符号；周期由商品本地化 title 承担，标价里不重复写。⚠️ iOS（StoreKit）与海外 Android（Google Play）不要配这两个字段：商店返回的价格已按用户地区本地化，配置里再写一份会与商店价冲突。",
+        "enabled": true,
+        "features": [
+          "agent",
+          "entry",
+          "photo",
+          "pro_6m"
+        ],
+        "products": [
+          {
+            "id": "pro_6m",
+            "type": "oneTime",
+            "grants": [
+              "__ALL__"
+            ],
+            "title": {
+              "zh": "专业版6个月",
+              "en": "Pro 6 Months",
+              "ja": "プロ版6ヶ月",
+              "ko": "Pro 6개월",
+              "de": "Pro 6 Monate",
+              "es": "Pro 6 meses",
+              "fr": "Pro 6 mois"
+            },
+            "price_amount": 20,
+            "price_currency": "CNY"
+          },
+          {
+            "id": "trial_7d",
+            "type": "ad_reward",
+            "reward_days": 7,
+            "grants": [
+              "pro_trial"
+            ],
+            "title": {
+              "zh": "7天免费试用",
+              "en": "7-Day Free Trial",
+              "ja": "7日間無料トライアル",
+              "ko": "7일 무료 체험",
+              "de": "7 Tage kostenlos testen",
+              "es": "Prueba gratis de 7 días",
+              "fr": "Essai gratuit de 7 jours"
+            }
+          }
+        ],
+        "providers": {
+          "qr_pay": {
+            "enabled": true,
+            "transfer_channels": [
+              "alipay",
+              "wechat"
+            ]
+          }
+        }
+      }
+    }
+  },
   "updates": {
-    "_comment": "版本升级检查（P2）。more_screen 的「检查更新」读取本段；latest_version > 本机版本即弹升级框。当前为测试值 1.1.0（本机 1.0.0+2）用于真机验证弹窗；正式发版前改回真实版本号与商店/apk 地址。force=true 时强制升级；min_version 低于则强制。ios_app_store_id 用于 itms-apps:// 跳转；android_apk_url 为国内 apk 直链；play_store_url 为海外 Google Play（合规仅跳转）。",
-    "latest_version": "1.1.0",
+    "_comment": "版本升级检查。more_screen 的「检查更新」读取本段：latest_version > 本机版本即弹升级框（**仅用户主动点击时比对，不会自动弹**）。force=true 强制升级；min_version 低于则强制。ios_app_store_id 用于 itms-apps:// 跳转；android_apk_url 为国内 apk 直链；play_store_url 为海外 Google Play（合规仅跳转）。⚠️ 当前为不发版占位（latest_version = 1.0.0 = 本机版本，故不触发升级提示）。**首版上架后须改为商店真实最新版本号，并填上 ios_app_store_id / play_store_url。**",
+    "latest_version": "1.0.0",
     "min_version": "1.0.0",
     "force": false,
-    "title": "NotePay 测试版本",
+    "title": "NotePay",
     "notes": [
-      "（测试用）用于验证 P2 升级弹窗链路",
-      "正式更新日志将在发版时填写"
+      "本版本为 NotePay 首个正式版本。"
     ],
     "ios_app_store_id": "",
     "android_apk_url": "https://songshangkun.github.io/note_pay/note_pay.apk",
