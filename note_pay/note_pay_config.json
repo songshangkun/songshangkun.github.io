@@ -190,7 +190,6 @@
       "langs": [
         "en"
       ],
-      "asset": "assets/models/sherpa-en-20M.zip",
       "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip",
       "url_by_region": {
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
