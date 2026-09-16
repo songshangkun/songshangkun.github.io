@@ -162,14 +162,13 @@
     "android_key": "np1:U6cwwaEo7Imv99f6diwQpj5P2Tm7nG21bAoeYzuk5bmWnhIhTow+FrwjvRcX1SgVzaggiGsGdu4/aDlvYa39cw==",
     "ios_key": "np1:jj5R/MethQteVP9sApnoA2FhAxQcT/jTeWzKP7acgke1TPs4T3btlrAZl2grFad5L8rtE4M2g1SsXaV1iKzMjA=="
   },
-  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置中文包同构，否则端上按固定名精确匹配会失败。url = 全球默认地址（Hugging Face：HardyCamila/hardy_sherpa）；url_by_region 按地区覆盖地址，key 为 AppRegion 名，当前仅 cn 需要（国内无法直连 Hugging Face，改为 hf-mirror.com 镜像；路径与官方一致、是同一份 LFS 对象，sha256 相同）。url 与 url_by_region 均无该模型地址 = 暂不可用（UI 优雅降级）。sha256 用于下载校验，防止镜像/代理返回错误页而非模型。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
+  "_note_asr_models": "离线语音模型清单（模型为主体、语言为属性）。langs 声明该模型支持的语言，语言只决定选哪个模型，不决定模型文件。模型包必须是扁平 4 文件规范化命名（encoder/decoder/joiner.int8.onnx + tokens.txt），与内置英文包同构，否则端上按固定名精确匹配会失败。url = 全球默认地址（Hugging Face：HardyCamila/hardy_sherpa）；url_by_region 按地区覆盖地址，key 为 AppRegion 名，当前仅 cn 需要（国内无法直连 Hugging Face，改为 hf-mirror.com 镜像；路径与官方一致、是同一份 LFS 对象，sha256 相同）。url 与 url_by_region 均无该模型地址 = 暂不可用（UI 优雅降级）。sha256 用于下载校验，防止镜像/代理返回错误页而非模型。本段可远程整体覆盖：换托管地址或新增语种只改配置，无需发版。",
   "asr_models": [
     {
       "id": "zh-14M",
       "langs": [
         "zh"
       ],
-      "asset": "assets/models/sherpa-zh-14M.zip",
       "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip",
       "url_by_region": {
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
@@ -191,6 +190,7 @@
       "langs": [
         "en"
       ],
+      "asset": "assets/models/sherpa-en-20M.zip",
       "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip",
       "url_by_region": {
         "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
