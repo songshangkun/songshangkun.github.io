@@ -1,6 +1,7 @@
 {
-  "_comment": "NotePay 远程配置（GitHub Pages 托管，App 拉取后落盘并按 deepMerge 覆盖本地同名段）。\n⚠️ 语义：**远程写的 key 覆盖本地，没写的原样保留本地** —— 故本文件只放「不发版即可调整」的字段，是 assets/config/app_config.json 的非全量子集。\n⚠️ 本文件由 `tool/gen_remote_config.py` 从本地 app_config.json 生成，**不要手改**：改了下次生成会被覆盖，且 ② 与 ③ 会失去同步。要改配置请改本地 app_config.json 再跑脚本。\n\n产物流向（全部由本脚本产出，手工**只改 ①**）：① assets/config/app_config.json（唯一手改处）→ ② remote/note_pay_config.json（远程源，进版本控制）→ ③ 本文件（Pages 部署产物，与 ② 逐字节相同）→ ④ docs/remote_config.example.json（脱敏样本）。\n\n⚠️ 本文件**不含** remote_config 段（自举字段恒取本地，否则 App 无法决定要不要拉远程）；\n⚠️ 本文件**不含** entitlement 段（那是开发期本地解锁开关，不是运营配置）。\n\n⚠️ 商品 ID 有三个互不可引用的消费者：本文件 / App Store Connect / ios/NotePay.storekit。改名或加商品后必须跑 `dart run scripts/check_pay_ids.dart`（C1 校验 ① 与 ② 同平台 ID 一致）。\n\n⚠️ iOS（StoreKit）与海外 Android（Google Play）的商品**不配** price_amount / price_currency：商店下发的价格已按用户地区本地化，配置里再写一份会与商店价冲突；只有走自建渠道（国内 Android 扫码转账）的 pro_6m 需要配。",
+  "_comment": "NotePay 远程配置（GitHub Pages 托管，App 拉取后落盘并按 deepMerge 覆盖本地同名段）。\n⚠️ 语义：**远程写的 key 覆盖本地，没写的原样保留本地** —— 故本文件只放「不发版即可调整」的字段，是 assets/config/app_config.json 的非全量子集。\n⚠️ 本文件由 `tool/gen_remote_config.py` 从本地 app_config.json 生成，**不要手改**：改了下次生成会被覆盖，且 ② 与 ③ 会失去同步。要改配置请改本地 app_config.json 再跑脚本。\n\n产物流向（全部由本脚本产出，手工**只改 ①**）：① assets/config/app_config.json（唯一手改处）→ ② remote/note_pay_config.json（远程源，进版本控制）→ ③ 本文件（Pages 部署产物，与 ② 逐字节相同）→ ④ docs/remote_config.example.json（脱敏样本）。\n\n⚠️ 本文件**不含** remote_config 段（自举字段恒取本地，否则 App 无法决定要不要拉远程）；\n⚠️ 本文件**不含** entitlement 段（那是开发期本地解锁开关，不是运营配置）。\n⚠️ limits（加权日池）与 ai_monthly_cap（系统云月封顶）**必须与 ① 一致**：二者是运营可调项，由本脚本从 ① 同步。守门测试 test/quota_config_sync_test.dart 断言 ①/②/④ 三份一致 —— 手改或漏生成会让远程覆盖本地后配额失效。\n\n⚠️ 商品 ID 有三个互不可引用的消费者：本文件 / App Store Connect / ios/NotePay.storekit。改名或加商品后必须跑 `dart run scripts/check_pay_ids.dart`（C1 校验 ① 与 ② 同平台 ID 一致）。\n\n⚠️ iOS（StoreKit）与海外 Android（Google Play）的商品**不配** price_amount / price_currency：商店下发的价格已按用户地区本地化，配置里再写一份会与商店价冲突；只有走自建渠道（国内 Android 扫码转账）的 pro_6m 需要配。",
   "map_enabled": true,
+  "ai_monthly_cap": 300,
   "_note_map_enabled": "高德地图总开关（默认开）。true=启用地图选点/定位与「定位后自动回填最近地点名称」；false=整个 App 隐藏地图控件与定位按钮（用户看不到经纬度/地图），消费地点【地点名称】改由 LLM 从用户输入描述/小票分析（用户仍可手改）。高德 API 不稳定时改这里为 false 即可，无需发版。",
   "llm": {
     "_comment": "LLM 接入。mode: url(远程 OpenAI 兼容) / local(端侧 llama.cpp)。url 段是**首次启动的种子 + 未命中 region 时的回退端点**，当前指向海外端点（出海优先）。已装用户的实时地址由远程 server 段驱动（见 remote/note_pay_config.json）；按地区精确路由见顶层 server_by_region。disable_think 为全局开关，实际只发 thinking:{type:'disabled'}（gpt-4o 拒绝 reasoning_effort——见 lib/config/app_config.dart 的 noThinkKwargs 注释）。",
@@ -418,18 +419,12 @@
     }
   },
   "limits": {
-    "_comment": "每日功能使用次数限制（按业务通道计：一次完整智能录入/Agent 操作=1 次）。null = 不限。未购买用 free，已购买用 premium。photo=图片记账入口（与 agent/entry 并列的三入口之一）。",
+    "_comment": "每日加权单位额度（共享单一 'ai' 池，按通道权重扣减：entry=1 / photo=2 / agent=3，stats 走 agent 权重）。null = 不限。未购买用 free，已购买用 premium。",
     "free": {
-      "entry": 5,
-      "agent": 5,
-      "stats": 10,
-      "photo": 5
+      "ai": 5
     },
     "premium": {
-      "entry": 50,
-      "agent": 50,
-      "stats": 100,
-      "photo": 50
+      "ai": null
     }
   },
   "ad_gate": {
