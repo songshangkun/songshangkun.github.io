@@ -419,7 +419,7 @@
     }
   },
   "limits": {
-    "_comment": "每日加权单位额度（共享单一 'ai' 池，按通道权重扣减：entry=1 / photo=2 / agent=3，stats 走 agent 权重）。null = 不限。未购买用 free，已购买用 premium。",
+    "_comment": "每日加权单位额度（共享单一 'ai' 池，按通道权重扣减：entry=1 / photo=2 / agent=3，stats 走 agent 权重）。null = 不限。**仅约束系统云通道**（端侧模型与自有 API Key 不扣任何配额）：free = 无系统云权益时的日上限（即 30 天试用窗内每天 5 单位）；premium = 持 'ai_cloud' 权益（$9.9 pro_lifetime_intl / 国内 pro_6m）时的日上限，再由 ai_monthly_cap 封月。注意：$3.9 档（pro_lite_intl）**不授予** 'ai_cloud'，故它永远落在 free 档，且仅在试用窗内有云可用。",
     "free": {
       "ai": 5
     },
@@ -433,20 +433,27 @@
     "reward_feature": "no_ad_session"
   },
   "pay": {
-    "_comment": "盈利框架配置（顶层 fallback；平台专属覆盖见 platforms.{ios,android}.pay）。对齐 flutter_pay 的 PayConfig.fromMap。本地无后台版本 enabled=false，付费解锁走 entitlement 开关（premium_unlocked）。仅当对应平台段缺失时才回退到此。本期为一次性买断，products 里就是全部在售商品、不含订阅。【可选扩展举例，非现状】type 已支持 subscription，将来想加订阅无需改代码，只需追加形如 {\"id\":\"pro_monthly\",\"type\":\"subscription\",\"grants\":[\"__ALL__\"],\"title\":\"专业版月付\",\"price_amount\":20,\"price_currency\":\"CNY\"} 的一项，并同步做好 App Store Connect 建商品 + NotePay.storekit 的 subscriptionGroups 写法 + EntitlementService 到期回收，详见 docs/配置全景说明.md §2.7.1。",
+    "_comment": "盈利框架配置（顶层 fallback；平台专属覆盖见 platforms.{ios,android}.pay）。对齐 flutter_pay 的 PayConfig.fromMap。本地无后台版本 enabled=false，付费解锁走 entitlement 开关（premium_unlocked）。仅当对应平台段缺失时才回退到此。本期为一次性买断，products 里就是全部在售商品、不含订阅。【可选扩展举例，非现状】type 已支持 subscription，将来想加订阅无需改代码，只需追加形如 {\"id\":\"pro_monthly\",\"type\":\"subscription\",\"grants\":[\"agent\",\"entry\",\"photo\",\"ai_cloud\"],\"title\":\"专业版月付\",\"price_amount\":20,\"price_currency\":\"CNY\"} 的一项，并同步做好 App Store Connect 建商品 + NotePay.storekit 的 subscriptionGroups 写法 + EntitlementService 到期回收，详见 docs/配置全景说明.md §2.7.1。",
     "enabled": true,
     "features": [
       "agent",
       "entry",
       "photo",
-      "pro_trial"
+      "pro_lite_intl",
+      "pro_lifetime_intl",
+      "ai_cloud"
     ],
     "products": [
       {
         "id": "pro_lifetime_intl",
         "type": "oneTime",
         "grants": [
-          "__ALL__"
+          "agent",
+          "entry",
+          "photo",
+          "pro_lite_intl",
+          "pro_lifetime_intl",
+          "ai_cloud"
         ],
         "title": {
           "zh": "专业版永久",
@@ -456,6 +463,25 @@
           "de": "Pro Lebenszeit",
           "es": "Pro de por vida",
           "fr": "Pro à vie"
+        }
+      },
+      {
+        "id": "pro_lite_intl",
+        "type": "oneTime",
+        "grants": [
+          "agent",
+          "entry",
+          "photo",
+          "pro_lite_intl"
+        ],
+        "title": {
+          "zh": "轻享版永久",
+          "en": "Lite Lifetime",
+          "ja": "ライト版買い切り",
+          "ko": "라이트 평생",
+          "de": "Lite Lebenszeit",
+          "es": "Lite de por vida",
+          "fr": "Lite à vie"
         }
       },
       {
@@ -480,7 +506,7 @@
   "platforms": {
     "_comment": "平台分治：iOS / Android 付费与广告策略完全不同（见 flutter-skills/monetization_scenarios.md §8）。limits 两端相同留在顶层共享；此处只拆真正有差异的 ad_gate / pay。AppConfig 按 Platform.isIOS 选对应段，缺失回退顶层同名段。",
     "ios": {
-      "_comment": "iOS：免费额度（5 次/日，用 free 配额、无广告）+ App Store IAP 一次性买断 pro_lifetime_intl（premium 配额）。方案 A：首次超额自动本地发放 7 天 pro_trial 试用（local_trial provider，非 IAP/非订阅），到期回退 free。无广告（ad_gate 为空）。",
+      "_comment": "iOS：两条并列的商品档 —— ① pro_lite_intl（$3.9）解锁端侧本地模型 + 自有 API Key（零成本、不扣配额），**不含系统云**；② pro_lifetime_intl（$9.9）含①全部 + 系统云（持 ai_cloud 权益，300 加权单位/月）。系统云的另外一条来源是 30 天试用窗：由 local_trial provider（非 IAP/非订阅）按 AppTransaction.originalPurchaseDate 锚定，窗内每天 5 加权单位，与是否购买 $3.9 无关，窗外且未购 $9.9 则无云可用。无广告（ad_gate 为空）。",
       "ad_gate": {
         "required_before": [],
         "reward_feature": "no_ad_session"
@@ -491,9 +517,10 @@
           "agent",
           "entry",
           "photo",
-          "pro_lifetime_intl"
+          "pro_lite_intl",
+          "pro_lifetime_intl",
+          "ai_cloud"
         ],
-        "trial_days": 7,
         "platform_routing": {
           "ios": [
             "apple_iap",
@@ -505,7 +532,12 @@
             "id": "pro_lifetime_intl",
             "type": "oneTime",
             "grants": [
-              "__ALL__"
+              "agent",
+              "entry",
+              "photo",
+              "pro_lite_intl",
+              "pro_lifetime_intl",
+              "ai_cloud"
             ],
             "title": {
               "zh": "专业版永久",
@@ -516,12 +548,31 @@
               "es": "Pro de por vida",
               "fr": "Pro à vie"
             }
+          },
+          {
+            "id": "pro_lite_intl",
+            "type": "oneTime",
+            "grants": [
+              "agent",
+              "entry",
+              "photo",
+              "pro_lite_intl"
+            ],
+            "title": {
+              "zh": "轻享版永久",
+              "en": "Lite Lifetime",
+              "ja": "ライト版買い切り",
+              "ko": "라이트 평생",
+              "de": "Lite Lebenszeit",
+              "es": "Lite de por vida",
+              "fr": "Lite à vie"
+            }
           }
         ]
       }
     },
     "android": {
-      "_comment": "Android：免费但每次使用先看广告（ad_gate 命中）+ 支付宝/微信转账购买 pro_6m（premium 配额、购买后无广告）。pro_6m 经 QrPayProvider（框架内置、自动排除 iOS），6 个月有效期由后端 verifyReceipt 返回的 EntitlementSnapshot.expireAt 下发，框架已支持过期回退。transfer_channels 存于 providers.qr_pay.extra（框架 Product 不解析未知字段，故放 provider 级）。",
+      "_comment": "Android：每次使用先看广告（ad_gate 命中）+ 支付宝/微信转账购买 pro_6m（含 ai_cloud 权益 = 系统云 premium 配额、购买后无广告）。pro_6m 经 QrPayProvider（框架内置、自动排除 iOS），6 个月有效期由后端 verifyReceipt 返回的 EntitlementSnapshot.expireAt 下发，框架已支持过期回退。transfer_channels 存于 providers.qr_pay.extra（框架 Product 不解析未知字段，故放 provider 级）。",
       "ad_gate": {
         "required_before": [
           "agent",
@@ -537,14 +588,19 @@
           "agent",
           "entry",
           "photo",
-          "pro_6m"
+          "pro_6m",
+          "ai_cloud"
         ],
         "products": [
           {
             "id": "pro_6m",
             "type": "oneTime",
             "grants": [
-              "__ALL__"
+              "agent",
+              "entry",
+              "photo",
+              "pro_6m",
+              "ai_cloud"
             ],
             "title": {
               "zh": "专业版6个月",
