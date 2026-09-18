@@ -1,5 +1,5 @@
 {
-  "_comment": "NotePay 远程配置（GitHub Pages 托管，App 拉取后落盘并按 deepMerge 覆盖本地同名段）。\n⚠️ 语义：**远程写的 key 覆盖本地，没写的原样保留本地** —— 故本文件只放「不发版即可调整」的字段，是 assets/config/app_config.json 的非全量子集。\n⚠️ 本文件由 `tool/gen_remote_config.py` 从本地 app_config.json 生成，**不要手改**：改了下次生成会被覆盖，且 ② 与 ③ 会失去同步。要改配置请改本地 app_config.json 再跑脚本。\n\n产物流向（全部由本脚本产出，手工**只改 ①**）：① assets/config/app_config.json（唯一手改处）→ ② remote/note_pay_config.json（远程源，进版本控制）→ ③ 本文件（Pages 部署产物，与 ② 逐字节相同）→ ④ docs/remote_config.example.json（脱敏样本）。\n\n⚠️ 本文件**不含** remote_config 段（自举字段恒取本地，否则 App 无法决定要不要拉远程）；\n⚠️ 本文件**不含** entitlement 段（那是开发期本地解锁开关，不是运营配置）。\n⚠️ limits（加权日池）与 ai_monthly_cap（系统云月封顶）**必须与 ① 一致**：二者是运营可调项，由本脚本从 ① 同步。守门测试 test/quota_config_sync_test.dart 断言 ①/②/④ 三份一致 —— 手改或漏生成会让远程覆盖本地后配额失效。\n\n⚠️ 商品 ID 有三个互不可引用的消费者：本文件 / App Store Connect / ios/NotePay.storekit。改名或加商品后必须跑 `dart run scripts/check_pay_ids.dart`（C1 校验 ① 与 ② 同平台 ID 一致）。\n\n⚠️ iOS（StoreKit）与海外 Android（Google Play）的商品**不配** price_amount / price_currency：商店下发的价格已按用户地区本地化，配置里再写一份会与商店价冲突；只有走自建渠道（国内 Android 扫码转账）的 pro_6m 需要配。",
+  "_comment": "NotePay 远程配置（GitHub Pages 托管，App 拉取后落盘并按 deepMerge 覆盖本地同名段）。\n⚠️ 语义：**远程写的 key 覆盖本地，没写的原样保留本地** —— 故本文件只放「不发版即可调整」的字段，是 assets/config/app_config.json 的非全量子集。\n⚠️ 本文件由 `tool/gen_remote_config.py` 从本地 app_config.json 生成，**不要手改**：改了下次生成会被覆盖，且 ② 与 ③ 会失去同步。要改配置请改本地 app_config.json 再跑脚本。\n\n产物流向（全部由本脚本产出，手工**只改 ①**）：① assets/config/app_config.json（唯一手改处）→ ② remote/note_pay_config.json（远程源，进版本控制）→ ③ 本文件（Pages 部署产物，与 ② 逐字节相同）→ ④ docs/remote_config.example.json（脱敏样本）。\n\n⚠️ 本文件**不含** remote_config 段（自举字段恒取本地，否则 App 无法决定要不要拉远程）；\n⚠️ 本文件**不含** entitlement 段（那是开发期本地解锁开关，不是运营配置）。\n⚠️ limits（加权日池）与 ai_monthly_cap（系统云月封顶）**必须与 ① 一致**：二者是运营可调项，由本脚本从 ① 同步。守门测试 test/quota_config_sync_test.dart 断言 ①/②/④ 三份一致 —— 手改或漏生成会让远程覆盖本地后配额失效。\n\n⚠️ llm_models（端侧 LLM 模型：族→变体→main/vision）与 asr_models 同为**远程可覆盖段**：改模型清单 / 变体 / 托管地址只需改 ① 并重跑本脚本 + 推 ③，**无需发版**。App 侧按 deepMerge 让远程同名段整体覆盖本地（列表按整体替换，不做元素级合并），本地 AI 页订阅 AppConfig 变更后即时刷新展示。\n\n⚠️ 商品 ID 有三个互不可引用的消费者：本文件 / App Store Connect / ios/NotePay.storekit。改名或加商品后必须跑 `dart run scripts/check_pay_ids.dart`（C1 校验 ① 与 ② 同平台 ID 一致）。\n\n⚠️ iOS（StoreKit）与海外 Android（Google Play）的商品**不配** price_amount / price_currency：商店下发的价格已按用户地区本地化，配置里再写一份会与商店价冲突；只有走自建渠道（国内 Android 扫码转账）的 pro_6m 需要配。",
   "map_enabled": true,
   "ai_monthly_cap": 300,
   "_note_map_enabled": "高德地图总开关（默认开）。true=启用地图选点/定位与「定位后自动回填最近地点名称」；false=整个 App 隐藏地图控件与定位按钮（用户看不到经纬度/地图），消费地点【地点名称】改由 LLM 从用户输入描述/小票分析（用户仍可手改）。高德 API 不稳定时改这里为 false 即可，无需发版。",
@@ -391,6 +391,69 @@
       "_comment": "中英双语中等流式 Transducer（zipformer），App 已支持 BPE；已打包上传 HF，size/sha256 已填真实值。"
     }
   ],
+  "_note_llm_models": "端侧 LLM 模型清单（按模型族分组，GGUF 直链；端侧下的是单个文件、**不解压**，故与 asr_models 的 zip 约定不同）。顶层 groups[]：每族含 id / name(7语) / desc(7语) / minRamMb / minIosGen / variants[]；每变体含 id / label(7语) / recommended / files{main,vision}。main=主逻辑 gguf（语言理解与生成），vision=视觉投影 gguf（缺它则端侧不能识图）。文件级 url / url_by_region(cn 走 hf-mirror) / fallback_urls / size / sha256 的有序回退链口径与 asr_models **完全一致**。minRamMb / minIosGen 是**每模型**声明的硬件门槛，仅用于 App 给「推荐/偏慢/崩溃」三级能力徽标，**绝不拦截**下载/购买/激活（2026-09-18 改为更开放的提示策略）。HF 直链请用 resolve/main 形式。落盘位置：<文档目录>/llm_models/<id>/<直链文件名>，下载中写 .part、校验通过才改名。⚠️ 本段**已纳入远程层白名单**（T4.5，2026-09-18 拍板）：OUT['llm_models'] 与 OUT['_note_llm_models'] 同步导出，模型族/变体/地址可远程热更，无需发版。",
+  "llm_models": {
+    "groups": [
+      {
+        "id": "qwen3.5-0.8b",
+        "name": {
+          "zh": "通义千问 3.5 · 0.8B",
+          "en": "Qwen3.5-0.8B",
+          "ja": "Qwen3.5-0.8B",
+          "ko": "Qwen3.5-0.8B",
+          "de": "Qwen3.5-0.8B",
+          "es": "Qwen3.5-0.8B",
+          "fr": "Qwen3.5-0.8B"
+        },
+        "desc": {
+          "zh": "端侧主模型族（Q4_K_M 量化，约 508 MB 主模型 + 196 MB 视觉投影）。装好后完全离线记账，零系统云消耗。",
+          "en": "On-device model family (Q4_K_M quant, ~508 MB main + 196 MB vision). Fully offline after install, no cloud use.",
+          "ja": "オンデバイスモデル群（Q4_K_M 量、約508MB 主＋196MB 視覚）。導入後オフライン、クラウド無消費。",
+          "ko": "온디바이스 모델 패밀리(Q4_K_M 양자화, 약 508MB 주＋196MB 시각). 설치 후 오프라인, 클라우드 무소비.",
+          "de": "On-device Modellfamilie (Q4_K_M, ~508 MB Haupt + 196 MB Vision). Offline nach Install, kein Cloud.",
+          "es": "Familia de modelo en dispositivo (Q4_K_M, ~508 MB principal + 196 MB visión). Offline tras instalar, sin nube.",
+          "fr": "Famille de modèle sur appareil (Q4_K_M, ~508 Mo principal + 196 Mo vision). Hors ligne après install, sans cloud."
+        },
+        "minRamMb": 3072,
+        "minIosGen": 11,
+        "variants": [
+          {
+            "id": "q4_k_m",
+            "label": {
+              "zh": "省电版 · 508 MB",
+              "en": "Lite · 508 MB",
+              "ja": "軽量版 · 508MB",
+              "ko": "가벼운 버전 · 508MB",
+              "de": "Sparsam · 508 MB",
+              "es": "Ligero · 508 MB",
+              "fr": "Léger · 508 Mo"
+            },
+            "recommended": true,
+            "files": {
+              "main": {
+                "id": "qwen3.5-0.8b-q4km",
+                "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/qwen3.5-0.8/Qwen3.5-0.8B-Q4_K_M.gguf",
+                "url_by_region": {
+                  "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/qwen3.5-0.8/Qwen3.5-0.8B-Q4_K_M.gguf"
+                },
+                "size": 532517120,
+                "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517"
+              },
+              "vision": {
+                "id": "qwen3.5-0.8b-mmproj",
+                "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/qwen3.5-0.8/mmproj-F16.gguf",
+                "url_by_region": {
+                  "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/qwen3.5-0.8/mmproj-F16.gguf"
+                },
+                "size": 204987232,
+                "sha256": "56e4c6cfe73b0c82e3e82bc518d7591997e61d81f723fc41a586f4fa69ea2453"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
   "legal": {
     "_comment": "隐私政策/使用条款托管页 URL。支持按 region 出不同页面：privacy_url/terms_url 为基础回退（远程未配 by_region 时使用）；privacy_url_by_region/terms_url_by_region 为各 region 专属页（key=AppRegion 名 cn/us/eu/jp/kr/gb/tw/hk/sg）。远程 config.json 可覆盖，便于上架后动态修正而不必发版。App 经 AppConfig.I.privacyPolicyUrlFor(region) 读取。",
     "privacy_url": "https://songshangkun.github.io/note_pay/legal/privacy_en.html",
