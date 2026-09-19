@@ -25,7 +25,7 @@
       "model_name": "local-llm",
       "support_image": true,
       "temperature": 0.3,
-      "max_tokens": 1024
+      "max_tokens": 8096
     }
   },
   "server": {
