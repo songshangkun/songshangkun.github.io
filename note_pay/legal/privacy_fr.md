@@ -47,20 +47,21 @@ Nous ne conservons aucune copie côté serveur des éléments ci-dessus et ne po
 Uniquement dans les cas suivants :
 
 1. **Géocodage inverse** — la coordonnée que vous sélectionnez est envoyée à AMap ou à Google Maps afin d'obtenir un nom de lieu.
-2. **Traitement par l'IA** — si vous activez l'IA distante, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à une **plateforme LLM agrégée tierce** préconfigurée par le développeur pour votre région. Cette plateforme choisit le modèle utilisé pour chaque requête (le modèle n'est pas fixé par NotePay et peut varier). Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas.
-3. **Vérification d'achat** — les achats intégrés sont vérifiés par Apple ou Google. Nous ne recevons qu'une confirmation d'achat, jamais les coordonnées de votre carte de paiement.
-4. **Configuration à distance et téléchargements de modèles** — l'Application récupère des fichiers de configuration, des modèles vocaux et, le cas échéant, des documents juridiques mis à jour. Ces requêtes ne contiennent pas le contenu de votre registre.
+2. **Traitement par l'IA** — si vous activez l'IA distante, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à une **plateforme LLM agrégée tierce** préconfigurée par le développeur pour votre région. Cette plateforme choisit le modèle utilisé pour chaque requête (le modèle n'est pas fixé par NotePay et peut varier). Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité. Ceci s'applique **uniquement au canal cloud système** — les deux autres canaux sont décrits à la section 4.
+3. **Vérification d'achat** — les achats intégrés sont vérifiés par la boutique d'applications de votre appareil (actuellement l'Apple App Store). Nous ne recevons qu'une confirmation d'achat, jamais les coordonnées de votre carte de paiement.
+4. **Configuration à distance et téléchargements de modèles** — l'Application récupère des fichiers de configuration, des modèles de reconnaissance vocale, des **modèles d'IA pour l'appareil** et, le cas échéant, des documents juridiques mis à jour. Ces requêtes ne contiennent pas le contenu de votre registre.
 
 Nous n'exploitons ni SDK publicitaire ni SDK d'analyse ; aucun identifiant n'est donc partagé avec des réseaux publicitaires.
 
 ## 4. Les fonctions d'IA, en termes simples
 
-L'Application peut exécuter l'IA soit **sur votre appareil**, soit via un **point de terminaison distant**.
+L'Application propose **trois canaux d'IA indépendants**. Vous pouvez passer de l'un à l'autre, ou désactiver l'IA, à tout moment dans les Paramètres.
 
-- **Mode sur appareil :** votre contenu reste sur votre appareil. Rien n'est transmis.
-- **Mode distant :** votre contenu est transmis à une **plateforme LLM agrégée tierce** sélectionnée pour votre région. Cette plateforme peut être située hors de votre pays et, pour chaque requête, achemine votre contenu vers le modèle qu'elle sélectionne — le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. La plateforme traite votre contenu conformément à sa propre politique de confidentialité et peut le conserver selon ses propres règles de conservation, auxquelles vous devez vous référer. **NotePay n'exploite aucun serveur, ne conserve aucune copie de votre contenu et n'enregistre rien de ce que vous soumettez.** Ne soumettez pas en mode distant des informations que vous considérez comme confidentielles.
+- **Modèle sur l'appareil :** l'IA s'exécute sur votre appareil avec un modèle que vous téléchargez et fonctionne hors ligne. **Votre contenu ne quitte pas votre appareil — rien n'est transmis.**
+- **Apport de votre propre clé (BYOK) :** vous saisissez l'adresse et la clé d'un service d'IA de votre choix. Votre contenu est envoyé **directement à ce fournisseur**. Le fournisseur est choisi par vous : nous ne l'exploitons pas et ne pouvons pas lire l'adresse ou la clé que vous configurez. Veuillez consulter la politique de confidentialité de ce fournisseur.
+- **Cloud système :** votre contenu est transmis à une **plateforme LLM agrégée tierce** sélectionnée pour votre région. Cette plateforme peut être située hors de votre pays et, pour chaque requête, achemine votre contenu vers le modèle qu'elle sélectionne — le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. La plateforme traite votre contenu conformément à sa propre politique de confidentialité et peut le conserver selon ses propres règles de conservation, auxquelles vous devez vous référer. **NotePay n'exploite aucun serveur, ne conserve aucune copie de votre contenu et n'enregistre rien de ce que vous soumettez.** Ne soumettez pas d'informations que vous considérez comme confidentielles par ce canal.
 
-Vous pouvez passer en mode sur appareil ou cesser d'utiliser les fonctions d'IA à tout moment dans les Paramètres.
+Les quotas d'utilisation s'appliquent uniquement au canal **cloud système** ; le modèle sur l'appareil et le BYOK ne sont pas comptés par nous.
 
 ## 5. Pourquoi nous traitons vos informations
 
@@ -75,7 +76,8 @@ Nous n'utilisons pas le contenu de votre registre pour entraîner des modèles, 
 | AMap (Gaode) — région Chine continentale | Coordonnée que vous sélectionnez | Géocodage inverse |
 | Google Maps — autres régions | Coordonnée que vous sélectionnez | Géocodage inverse |
 | La plateforme LLM agrégée tierce préconfigurée par le développeur pour votre région | Texte, transcription ou image que vous soumettez | Traitement par l'IA que vous avez demandé |
-| Apple App Store / Google Play | Jeton d'achat | Vérification d'achat |
+| Le fournisseur d'IA que vous configurez vous-même en mode BYOK | Texte, transcription ou image que vous soumettez | Traitement par l'IA que vous avez demandé |
+| Apple App Store | Jeton d'achat | Vérification d'achat |
 
 Chaque destinataire est régi par sa propre politique de confidentialité. Nous ne vendons ni ne louons de données à caractère personnel à quiconque.
 

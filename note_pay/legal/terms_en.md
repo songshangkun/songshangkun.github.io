@@ -4,7 +4,7 @@ title: Terms of Service
 
 # Terms of Service
 
-**Last updated:** 2026-09-09 · **Effective:** 2026-09-09
+**Last updated:** 2026-09-19 · **Effective:** 2026-09-19
 
 ## 1. Agreement
 
@@ -34,8 +34,12 @@ The App can suggest entries from your text, speech or receipt images. These sugg
 
 - AI output is a **draft**. Every record is shown to you for confirmation before it is saved, and you remain responsible for what is recorded.
 - Financial records produced with the App are **not** accounting, tax, legal or investment advice. Verify anything you rely on for official purposes.
-- In remote mode your content is transmitted to a **third-party aggregate LLM platform** preconfigured by the developer for your region. Such platforms dispatch each request to whichever model they select, and the specific model is not chosen by NotePay and may vary from request to request. NotePay itself operates no server and keeps no copy of your content. Do not submit information you consider confidential in remote mode.
-- AI features are subject to usage limits that may vary by plan, device and region.
+- The App offers **three independent AI channels**; which one you use is your choice in Settings:
+  - **On-device model:** AI runs on your device with a model you download, and works offline. **Your content does not leave your device** — nothing is transmitted.
+  - **Bring your own key (BYOK):** you enter the address and key of an AI service of your own choosing, and your content is sent **directly to that provider**. The provider is chosen by you; we neither operate it nor can we read the address or key you configure.
+  - **System cloud:** your content is transmitted to a **third-party aggregate LLM platform** preconfigured by the developer for your region. Such platforms dispatch each request to whichever model they select, and the specific model is not chosen by NotePay and may vary from request to request. NotePay itself operates no server and keeps no copy of your content. Do not submit information you consider confidential through this channel.
+- When you use BYOK, **you are the party deciding where your content is sent**. The recipient's terms, pricing and security are governed by your own relationship with that provider; we are not a party to it and accept no responsibility for it.
+- Usage limits apply to the **system cloud** channel only. The on-device and BYOK channels are neither metered nor throttled by us.
 
 ## 6. Optional device features
 
@@ -45,7 +49,15 @@ Map place-name lookup is provided by AMap (Gaode) in mainland China and by Googl
 
 ## 7. Purchases, trials and refunds
 
-Some features may require a purchase or may be limited until you purchase. All payments are processed by the app store on your device (Apple App Store or Google Play), and **the store's own terms govern the transaction, billing and refunds**. Refund requests must be made through that store.
+Some features may require a purchase or may be limited until you purchase. The features currently offered are **one-time unlocks** — they are not subscriptions and do not renew automatically.
+
+All payments are processed by the app store on your device — currently the **Apple App Store** — and **the store's own terms govern the transaction, billing and refunds**. Refund requests must be made through that store.
+
+About your entitlement:
+
+- A one-time unlock is the item shown to you in the App at the time of purchase and remains valid afterwards. If you reinstall, you may restore your entitlement through the app store's restore function, subject to that store's rules.
+- Some entitlements may include a trial window of a certain number of days. Its length and any quota are those shown to you in the App.
+- **Purchasing does not make AI output more accurate.** Suggestions remain drafts that you confirm before anything is saved.
 
 Prices, available products, free quotas and trial terms are those shown to you in the App at the time of purchase.
 
@@ -57,7 +69,7 @@ You must not: reverse engineer or decompile the App except to the extent permitt
 
 ## 9. Third-party services
 
-The App relies on third-party services you choose or that your region selects, including map providers, third-party aggregate LLM platforms and the app store. Your use of those services is governed by their own terms, and we are not responsible for their acts or omissions.
+The App involves these third-party services: map providers, third-party aggregate LLM platforms assigned by your region, the app store, and — when you use bring-your-own-key (BYOK) mode — **any AI provider you configure yourself**. The first three are selected by us or by your region; a **BYOK provider is chosen and configured by you alone, and you are the party deciding where your content is sent**. Its terms, pricing and security depend on your relationship with it; we are not responsible for its acts or omissions. Your use of those services is governed by their own terms, and we are not responsible for their acts or omissions.
 
 ## 10. Availability and changes
 

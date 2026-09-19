@@ -4,7 +4,7 @@ title: Nutzungsbedingungen
 
 # Nutzungsbedingungen
 
-**Stand:** 2026-09-09 · **In Kraft:** 2026-09-09
+**Stand:** 2026-09-19 · **In Kraft:** 2026-09-19
 
 ## 1. Vereinbarung
 
@@ -34,8 +34,12 @@ Die App kann aus Ihrem Text, Ihrer Sprache oder Belegbildern Einträge vorschlag
 
 - KI-Ausgaben sind ein **Entwurf**. Jeder Datensatz wird Ihnen zur Bestätigung angezeigt, bevor er gespeichert wird, und Sie bleiben für das Aufgezeichnete verantwortlich.
 - Mit der App erstellte Finanzaufzeichnungen sind **keine** Buchhaltungs-, Steuer-, Rechts- oder Anlageberatung. Überprüfen Sie alles, worauf Sie für amtliche Zwecke vertrauen.
-- Im Remote-Modus wird Ihr Inhalt an eine **aggregierende Drittanbieter-LLM-Plattform** übertragen, die vom Entwickler für Ihre Region vorkonfiguriert ist. Solche Plattformen leiten jede Anfrage an das von ihnen gewählte Modell weiter, und das konkrete Modell wird nicht von NotePay bestimmt und kann von Anfrage zu Anfrage variieren. NotePay selbst betreibt keinen Server und behält keinen Ihrer Inhalte. Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten.
-- KI-Funktionen unterliegen Nutzungsgrenzen, die je nach Tarif, Gerät und Region variieren können.
+- Die App bietet **drei voneinander unabhängige KI-Kanäle**; welchen Sie nutzen, wählen Sie selbst in den Einstellungen:
+  - **Modell auf dem Gerät:** die KI läuft mit einem von Ihnen heruntergeladenen Modell auf Ihrem Gerät und funktioniert offline. **Ihr Inhalt verlässt Ihr Gerät nicht** — es wird nichts übertragen.
+  - **Eigener Schlüssel (BYOK):** Sie hinterlegen Adresse und Schlüssel eines von Ihnen selbst gewählten KI-Dienstes; Ihr Inhalt wird **direkt an diesen Anbieter** übermittelt. Der Anbieter ist von Ihnen gewählt; wir betreiben ihn nicht und können die hinterlegte Adresse oder den Schlüssel nicht lesen.
+  - **System-Cloud:** Ihr Inhalt wird an eine **aggregierende Drittanbieter-LLM-Plattform** übertragen, die vom Entwickler für Ihre Region vorkonfiguriert ist. Solche Plattformen leiten jede Anfrage an das von ihnen gewählte Modell weiter, und das konkrete Modell wird nicht von NotePay bestimmt und kann von Anfrage zu Anfrage variieren. NotePay selbst betreibt keinen Server und behält keinen Ihrer Inhalte. Übermitteln Sie über diesen Kanal keine Informationen, die Sie für vertraulich halten.
+- Bei Nutzung von BYOK **entscheiden Sie, wohin Ihr Inhalt gesendet wird**. Bedingungen, Preise und Sicherheit des Empfängers richten sich nach Ihrem Verhältnis zu diesem Anbieter; wir sind daran nicht beteiligt und übernehmen dafür keine Verantwortung.
+- Nutzungsgrenzen gelten ausschließlich für den Kanal **System-Cloud**. Die Kanäle Modell auf dem Gerät und BYOK werden von uns nicht gezählt und nicht gedrosselt.
 
 ## 6. Optionale Gerätefunktionen
 
@@ -45,7 +49,15 @@ Die Karten-Ortsnamenssuche wird in Festlandchina von AMap (Gaode) und in anderen
 
 ## 7. Käufe, Testphasen und Rückerstattungen
 
-Manche Funktionen können einen Kauf erfordern oder sind bis zu einem Kauf eingeschränkt. Alle Zahlungen werden vom App-Store auf Ihrem Gerät verarbeitet (Apple App Store oder Google Play), und **die eigenen Bedingungen des Stores regeln Transaktion, Abrechnung und Rückerstattung**. Rückerstattungsersuchen sind über diesen Store zu richten.
+Manche Funktionen können einen Kauf erfordern oder sind bis zu einem Kauf eingeschränkt. Die derzeit angebotenen Funktionen sind **einmalige Freischaltungen** — keine Abonnements, sie verlängern sich nicht automatisch.
+
+Alle Zahlungen werden über den **App-Store** auf Ihrem Gerät abgewickelt (derzeit der **Apple App Store**), und **dessen eigene Bedingungen regeln Transaktion, Abrechnung und Rückerstattung**. Rückerstattungsersuchen sind an diesen Store zu richten.
+
+Zu Ihrem Berechtigungsumfang:
+
+- Eine einmalige Freischaltung entspricht dem beim Kauf in der App angezeigten Artikel und bleibt danach gültig. Nach einer Neuinstallation können Sie Ihre Berechtigung über die Wiederherstellungsfunktion des App-Stores zurückholen, soweit dessen Regeln dies vorsehen.
+- Manche Berechtigungen können ein Testfenster von einer bestimmten Anzahl von Tagen umfassen. Dessen Dauer und etwaige Kontingente richten sich nach der Anzeige in der App.
+- **Ein Kauf macht die KI-Ausgaben nicht richtiger.** Vorschläge bleiben Entwürfe, die Sie vor dem Speichern bestätigen.
 
 Preise, verfügbare Produkte, kostenlose Kontingente und Testbedingungen sind diejenigen, die Ihnen zum Zeitpunkt des Kaufs in der App angezeigt werden.
 
@@ -57,7 +69,7 @@ Sie dürfen nicht: die App reverse engineering-mäßig rückentwickeln oder deko
 
 ## 9. Drittanbieterdienste
 
-Die App stützt sich auf Drittanbieterdienste, die Sie wählen oder die Ihre Region auswählt (einschließlich Kartenanbietern und dem App-Store), sowie auf aggregierende Drittanbieter-LLM-Plattformen, die vom Entwickler je Region vorkonfiguriert sind. Ihre Nutzung dieser Dienste unterliegt deren eigenen Bedingungen, und wir sind nicht für deren Handlungen oder Unterlassungen verantwortlich.
+Die App berührt folgende Drittanbieterdienste: Kartenanbieter, die Ihrer Region zugeordneten aggregierenden Drittanbieter-LLM-Plattformen, den App-Store sowie — bei Nutzung des Modus **Eigener Schlüssel (BYOK)** — **jeden KI-Anbieter, den Sie selbst konfigurieren**. Die ersten drei werden von uns oder von Ihrer Region ausgewählt; ein **BYOK-Anbieter wird allein von Ihnen ausgewählt und konfiguriert, und Sie entscheiden, wohin Ihr Inhalt gesendet wird**. Seine Bedingungen, Preise und Sicherheit hängen an Ihrem Verhältnis zu ihm; wir sind für seine Handlungen oder Unterlassungen nicht verantwortlich. Ihre Nutzung dieser Dienste unterliegt deren eigenen Bedingungen, und wir sind nicht für deren Handlungen oder Unterlassungen verantwortlich.
 
 ## 10. Verfügbarkeit und Änderungen
 

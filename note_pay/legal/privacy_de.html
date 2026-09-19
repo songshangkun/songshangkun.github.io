@@ -21,7 +21,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <li>Wir <strong>verkaufen</strong> Ihre personenbezogenen Daten <strong>nicht</strong> und nutzen sie <strong>nicht</strong> für verhaltensbezogene Werbung.</li>
 <li>Diese Version der App <strong>enthält kein Werbe-SDK und kein Analyse-SDK</strong>.</li>
 <li>Standort, Kamera, Fotobibliothek und Mikrofon sind <strong>optional</strong> und werden nur verwendet, wenn Sie die entsprechende Funktion aufrufen. Wir verfolgen Ihren Standort niemals im Hintergrund.</li>
-<li>Optionale KI-Funktionen können das von Ihnen Getippte, Gesagte oder Fotografierte an einen externen aggregierende Drittanbieter-LLM-Plattform senden — siehe Abschnitt 4. Sie können dies deaktivieren.</li>
+<li>Optionale KI-Funktionen können das von Ihnen Getippte, Gesagte oder Fotografierte an eine aggregierende Drittanbieter-LLM-Plattform senden, die vom Entwickler für Ihre Region vorkonfiguriert ist — siehe Abschnitt 4. Sie konfigurieren diese Adresse oder diesen Schlüssel selbst nicht und können es auch nicht. Sie können dies deaktivieren.</li>
 </ul>
 <h2>3. Informationen, die wir verarbeiten</h2>
 <p>Da die App lokal ausgerichtet ist, verlässt die meiste Information niemals Ihr Gerät.</p>
@@ -56,7 +56,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <td>Datenbank auf dem Gerät und lokale Benachrichtigungen</td>
 </tr>
 <tr>
-<td>KI-Anbieterschlüssel, sofern von Ihnen konfiguriert</td>
+<td>KI-Anbieterschlüssel (vom Entwickler je Region vorkonfiguriert)</td>
 <td>Zum Aufruf der von Ihnen aktivierten KI-Funktionen</td>
 <td>Auf dem Gerät, <strong>verschlüsselt</strong>; wir können ihn nicht lesen</td>
 </tr>
@@ -73,18 +73,19 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <p>Nur in folgenden Fällen:</p>
 <ol>
 <li><strong>Reverse Geocoding</strong> — die von Ihnen ausgewählten Koordinaten werden an AMap oder Google Maps gesendet, um einen Ortsnamen zu erhalten.</li>
-<li><strong>KI-Verarbeitung</strong> — wenn Sie einen Remote-aggregierende Drittanbieter-LLM-Plattform aktivieren, werden der von Ihnen übermittelte Text, das Transkript oder das Belegbild an diesen Endpunkt gesendet, den Sie selbst konfigurieren oder der gemäß Ihrer Region ausgewählt wird. Dieser Anbieter verarbeitet den Inhalt unter seiner eigenen Datenschutzerklärung.</li>
-<li><strong>Kaufnachweis</strong> — In-App-Käufe werden von Apple oder Google verifiziert. Wir erhalten lediglich eine Kaufbestätigung, niemals Ihre Zahlungskartendaten.</li>
-<li><strong>Remote-Konfiguration und Modell-Downloads</strong> — die App ruft Konfigurationsdateien, Sprachmodelle und — sofern zutreffend — aktualisierte Rechtsdokumente ab. Diese Anfragen enthalten keinen Inhalt Ihres Hauptbuchs.</li>
+<li><strong>KI-Verarbeitung</strong> — wenn Sie die Remote-KI aktivieren, werden der von Ihnen übermittelte Text, das Transkript oder das Belegbild an eine <strong>aggregierende Drittanbieter-LLM-Plattform</strong> gesendet, die vom Entwickler für Ihre Region vorkonfiguriert ist. Diese Plattform wählt für jede Anfrage das Modell, das sie verwendet (das Modell ist nicht von NotePay festgelegt und kann variieren). Der Anbieter verarbeitet den Inhalt unter seiner eigenen Datenschutzerklärung. Dies gilt <strong>nur für den Kanal System-Cloud</strong> — die beiden anderen Kanäle sind in Abschnitt 4 beschrieben.</li>
+<li><strong>Kaufnachweis</strong> — In-App-Käufe werden vom App-Store auf Ihrem Gerät verifiziert (derzeit der Apple App Store). Wir erhalten lediglich eine Kaufbestätigung, niemals Ihre Zahlungskartendaten.</li>
+<li><strong>Remote-Konfiguration und Modell-Downloads</strong> — die App ruft Konfigurationsdateien, Spracherkennungsmodelle, <strong>KI-Modelle für das Gerät</strong> und — sofern zutreffend — aktualisierte Rechtsdokumente ab. Diese Anfragen enthalten keinen Inhalt Ihres Hauptbuchs.</li>
 </ol>
 <p>Wir betreiben keine Werbe- oder Analyse-SDKs, sodass keine Kennung mit Werbenetzwerken geteilt wird.</p>
 <h2>4. KI-Funktionen, einfach erklärt</h2>
-<p>Die App kann KI entweder <strong>auf Ihrem Gerät</strong> oder über einen <strong>aggregierende Drittanbieter-LLM-Plattform</strong> ausführen.</p>
+<p>Die App bietet <strong>drei voneinander unabhängige KI-Kanäle</strong>. Sie können jederzeit in den Einstellungen zwischen ihnen wechseln oder die KI-Funktionen abschalten.</p>
 <ul>
-<li><strong>Gerätemodus:</strong> Ihr Inhalt verbleibt auf Ihrem Gerät. Es wird nichts übertragen.</li>
-<li>- **Remote-Modus:** Ihr Inhalt wird an eine für Ihre Region ausgewählte **aggregierende Drittanbieter-LLM-Plattform** übertragen. Diese Plattform kann sich außerhalb Ihres Landes befinden und wählt für jede Anfrage selbst das Modell, das sie aufruft — das konkrete Modell wird nicht von NotePay bestimmt und kann von Anfrage zu Anfrage variieren. Die Plattform verarbeitet Ihren Inhalt unter ihrer eigenen Datenschutzerklärung und kann ihn nach ihren eigenen Aufbewahrungsregeln speichern; bitte lesen Sie deren Richtlinie. **NotePay selbst betreibt keinen Server, behält keine Kopie Ihres Inhalts und protokolliert nichts von dem, was Sie übermitteln.** Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten.</li>
+<li><strong>Modell auf dem Gerät:</strong> die KI läuft auf Ihrem Gerät mit einem Modell, das Sie herunterladen; sie funktioniert offline. <strong>Ihr Inhalt verlässt Ihr Gerät nicht — es wird nichts übertragen.</strong></li>
+<li><strong>Eigener Schlüssel (BYOK):</strong> Sie geben Adresse und Schlüssel eines KI-Dienstes Ihrer Wahl ein. Ihr Inhalt wird <strong>direkt an diesen Anbieter</strong> übermittelt. Der Anbieter ist von Ihnen gewählt — wir betreiben ihn nicht und können die von Ihnen konfigurierte Adresse oder den Schlüssel nicht lesen. Bitte prüfen Sie die Datenschutzerklärung dieses Anbieters.</li>
+<li><strong>System-Cloud:</strong> Ihr Inhalt wird an eine für Ihre Region ausgewählte <strong>aggregierende Drittanbieter-LLM-Plattform</strong> übertragen. Diese Plattform kann sich außerhalb Ihres Landes befinden und wählt für jede Anfrage selbst das Modell, das sie aufruft — das konkrete Modell wird nicht von NotePay bestimmt und kann von Anfrage zu Anfrage variieren. Die Plattform verarbeitet Ihren Inhalt unter ihrer eigenen Datenschutzerklärung und kann ihn nach ihren eigenen Aufbewahrungsregeln speichern; bitte lesen Sie deren Richtlinie. <strong>NotePay selbst betreibt keinen Server, behält keine Kopie Ihres Inhalts und protokolliert nichts von dem, was Sie übermitteln.</strong> Übermitteln Sie über diesen Kanal keine Informationen, die Sie für vertraulich halten.</li>
 </ul>
-<p>Sie können jederzeit in den Gerätemodus wechseln oder die Nutzung von KI-Funktionen in den Einstellungen beenden.</p>
+<p>Nutzungskontingente gelten ausschließlich für den Kanal <strong>System-Cloud</strong>; Modell auf dem Gerät und BYOK werden von uns nicht gezählt.</p>
 <h2>5. Warum wir Ihre Informationen verarbeiten</h2>
 <p>Wir verarbeiten Informationen nur, um: Ihre Ausgaben aufzuzeichnen und anzuzeigen; Statistiken, Budgets und Erinnerungen zu erstellen; Ortsnamen aufzulösen; Belege und Sprache auf Ihren Wunsch zu erkennen; Käufe zu verifizieren; sowie die App funktionsfähig und sicher zu halten.</p>
 <p>Wir nutzen den Inhalt Ihres Hauptbuchs nicht, um Modelle zu trainieren, ein Profil über Sie zu erstellen oder Werbung zielgerichtet auszuspielen.</p>
@@ -109,12 +110,17 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <td>Reverse Geocoding</td>
 </tr>
 <tr>
-<td>Der von Ihnen genutzte aggregierende Drittanbieter-LLM-Plattform</td>
+<td>Die für Ihre Region vom Entwickler vorkonfigurierte aggregierende Drittanbieter-LLM-Plattform</td>
 <td>Von Ihnen übermittelter Text, Transkript oder Bild</td>
 <td>Von Ihnen angeforderte KI-Verarbeitung</td>
 </tr>
 <tr>
-<td>Apple App Store / Google Play</td>
+<td>Der von Ihnen selbst konfigurierte KI-Anbieter im BYOK-Modus</td>
+<td>Von Ihnen übermittelter Text, Transkript oder Bild</td>
+<td>Von Ihnen angeforderte KI-Verarbeitung</td>
+</tr>
+<tr>
+<td>Apple App Store</td>
 <td>Kauf-Token</td>
 <td>Kaufverifizierung</td>
 </tr>

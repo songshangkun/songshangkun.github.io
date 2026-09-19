@@ -66,25 +66,26 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <h3>3.2 Information handled only when you use a specific feature</h3>
 <ul>
 <li><strong>Location (optional).</strong> When you attach a place to a record, the App reads your coordinates to resolve a place name. Resolution is performed by AMap (Gaode) in mainland China and by Google Maps in other regions, depending on your configured region. We request location <strong>only while you are using the App</strong> — <strong>never in the background</strong>. You may decline the permission or disable the map feature entirely; the rest of the App keeps working.</li>
-<li><strong>Camera and photo library (optional).</strong> When you photograph or pick a receipt, the image is read for recognition. Originals are not uploaded to any server of ours.</li>
+<li><strong>Camera and photo library (optional).</strong> When you photograph or pick a receipt, the image is read for recognition. Originals are not uploaded to any server we operate; when remote AI is enabled, the image is sent to a public third-party LLM platform (see section 4), and the App itself keeps no copy.</li>
 <li><strong>Microphone (optional).</strong> When you use voice entry, audio is captured and transcribed. Transcription is performed <strong>on your device</strong> using offline speech models you download; audio is not streamed to our servers.</li>
 </ul>
 <h3>3.3 Information sent outside your device</h3>
 <p>Only in these cases:</p>
 <ol>
 <li><strong>Reverse geocoding</strong> — the coordinate you select is sent to AMap or Google Maps to obtain a place name.</li>
-<li><strong>AI processing</strong> — if you enable a remote third-party aggregate LLM platform, the text, voice transcript or receipt image you submit is sent to that endpoint, which you configure yourself or which is selected according to your region. That provider processes the content under its own privacy policy.</li>
-<li><strong>Purchase verification</strong> — in-app purchases are verified by Apple or Google. We receive only a purchase confirmation, never your payment card details.</li>
-<li><strong>Remote configuration and model downloads</strong> — the App fetches configuration files, speech models and, where applicable, updated legal documents. These requests do not carry your ledger content.</li>
+<li><strong>AI processing</strong> — if you enable remote AI, the text, voice transcript or receipt image you submit is sent to a <strong>third-party aggregate LLM platform</strong> preconfigured by the developer for your region. That platform selects the model used for each request (the model is not fixed by NotePay and may vary). That platform processes your content under its own privacy policy. This applies <strong>only to the system cloud channel</strong> — see section 4 for the other two channels.</li>
+<li><strong>Purchase verification</strong> — in-app purchases are verified by the app store on your device (currently the Apple App Store). We receive only a purchase confirmation, never your payment card details.</li>
+<li><strong>Remote configuration and model downloads</strong> — the App fetches configuration files, speech recognition models, on-device AI models and, where applicable, updated legal documents. These requests do not carry your ledger content.</li>
 </ol>
 <p>We do not operate advertising or analytics SDKs, so no identifier is shared with advertising networks.</p>
 <h2>4. AI features, in plain words</h2>
-<p>The App can run AI either <strong>on your device</strong> or through a <strong>remote AI (third-party aggregate LLM platform)</strong>.</p>
+<p>The App offers <strong>three independent AI channels</strong>. You can switch between them, or turn AI off, at any time in Settings.</p>
 <ul>
-<li><strong>On-device mode:</strong> your content stays on your device. Nothing is transmitted.</li>
-<li>- **Remote mode:** your content is transmitted to a **third-party aggregate LLM platform** selected for your region. That platform may be located outside your country and, for each request, dispatches your content to whichever model it selects — the specific model is not chosen by NotePay and may differ from request to request. The platform processes your content under its own privacy policy and may retain it under its own retention rules, to which you should refer. **NotePay itself operates no server, keeps no copy of your content, and logs nothing about what you submit.** Do not submit information you consider confidential in remote mode.</li>
+<li><strong>On-device model:</strong> AI runs on your device with a model you download, and works offline. <strong>Your content does not leave your device — nothing is transmitted.</strong></li>
+<li><strong>Bring your own key (BYOK):</strong> you enter the address and key of an AI service of your own choosing. Your content is sent <strong>directly to that provider</strong>. The provider is chosen by you — we neither operate it nor can we read the address or key you configure. Please review that provider's privacy policy.</li>
+<li><strong>System cloud:</strong> your content is transmitted to a <strong>third-party aggregate LLM platform</strong> selected for your region. That platform may be located outside your country and, for each request, dispatches your content to whichever model it selects — the specific model is not chosen by NotePay and may differ from request to request. The platform processes your content under its own privacy policy and may retain it under its own retention rules, to which you should refer. <strong>NotePay itself operates no server, keeps no copy of your content, and logs nothing about what you submit.</strong> Do not submit information you consider confidential through this channel.</li>
 </ul>
-<p>You can switch to on-device mode or stop using AI features at any time in Settings.</p>
+<p>Usage quotas apply to the <strong>system cloud</strong> channel only; the on-device and BYOK channels are not metered by us.</p>
 <h2>5. Why we process your information</h2>
 <p>We process information only to: record and display your expenses; produce statistics, budgets and reminders; resolve place names; recognise receipts and speech when you ask for it; verify purchases; and keep the App working and secure.</p>
 <p>We do not use your ledger content to train models, to profile you, or to target advertising.</p>
@@ -114,7 +115,12 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <td>AI processing you requested</td>
 </tr>
 <tr>
-<td>Apple App Store / Google Play</td>
+<td>The AI provider you configure yourself, in BYOK mode</td>
+<td>Text, transcript or image you submit</td>
+<td>AI processing you requested</td>
+</tr>
+<tr>
+<td>Apple App Store</td>
 <td>Purchase token</td>
 <td>Purchase verification</td>
 </tr>
@@ -125,7 +131,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <p>Your ledger and settings remain on your device until you delete the record, clear the data, or uninstall the App. Deleting or uninstalling removes them permanently; we keep no copy and cannot recover them.</p>
 <p>Content submitted to a remote third-party aggregate LLM platform is retained according to that provider's retention policy.</p>
 <h2>8. Security</h2>
-<p>Your data is stored in a local database protected by your device's own security (device passcode, disk encryption). Your AI provider key, if any, is stored encrypted on the device and is never transmitted to us. No method of storage is perfectly secure, so please protect your device and keep backups.</p>
+<p>Your data is stored in a local database protected by your device's own security (device passcode, disk encryption). The AI provider key, preconfigured by the developer per region, is stored encrypted on the device and is never transmitted to us. No method of storage is perfectly secure, so please protect your device and keep backups.</p>
 <h2>9. Children</h2>
 <p>The App is not directed to children. We do not knowingly collect personal information from children under the age of digital consent in their jurisdiction (13 in the United States, 16 in much of the EEA, and as defined locally elsewhere). If you believe a child has provided us information, contact us and we will help remove it.</p>
 <h2>10. Your rights</h2>

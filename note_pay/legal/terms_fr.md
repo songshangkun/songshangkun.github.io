@@ -4,7 +4,7 @@ title: Conditions d'utilisation
 
 # Conditions d'utilisation
 
-**Dernière mise à jour :** 2026-09-09 · **Entrée en vigueur :** 2026-09-09
+**Dernière mise à jour :** 2026-09-19 · **Entrée en vigueur :** 2026-09-19
 
 ## 1. Convention
 
@@ -34,8 +34,12 @@ L'Application peut proposer des écritures à partir de votre texte, de votre vo
 
 - La sortie de l'IA est une **ébauche**. Chaque écriture vous est présentée pour confirmation avant d'être enregistrée, et vous restez responsable de ce qui est consigné.
 - Les écritures produites avec l'Application ne constituent **pas** un conseil comptable, fiscal, juridique ou en investissement. Vérifiez tout élément sur lequel vous comptez à des fins officielles.
-- En mode distant, votre contenu est transmis à une **plateforme LLM agrégée tierce** préconfigurée par le développeur pour votre région. Ces plateformes acheminent chaque requête vers le modèle qu'elles sélectionnent, et le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. NotePay n'exploite aucun serveur et ne conserve aucun de vos contenus. Ne soumettez pas d'informations que vous considérez comme confidentielles en mode distant.
-- Les fonctions d'IA sont soumises à des limites d'utilisation qui peuvent varier selon le forfait, l'appareil et la région.
+- L'Application propose **trois canaux d'IA indépendants** ; celui que vous utilisez est choisi par vous dans les Paramètres :
+  - **Modèle sur l'appareil :** l'IA s'exécute sur votre appareil à l'aide d'un modèle que vous téléchargez et fonctionne hors ligne. **Votre contenu ne quitte pas votre appareil** — rien n'est transmis.
+  - **Apport de votre propre clé (BYOK) :** vous saisissez l'adresse et la clé d'un service d'IA de votre choix ; votre contenu est envoyé **directement à ce fournisseur**. Le fournisseur est choisi par vous ; nous ne l'exploitons pas et ne pouvons pas lire l'adresse ou la clé que vous configurez.
+  - **Cloud système :** votre contenu est transmis à une **plateforme LLM agrégée tierce** préconfigurée par le développeur pour votre région. Ces plateformes acheminent chaque requête vers le modèle qu'elles sélectionnent, et le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. NotePay n'exploite aucun serveur et ne conserve aucun de vos contenus. Ne soumettez pas d'informations que vous considérez comme confidentielles par ce canal.
+- Lorsque vous utilisez BYOK, **c'est vous qui décidez où votre contenu est envoyé**. Les conditions, les prix et la sécurité du destinataire relèvent de votre relation avec ce fournisseur ; nous n'y sommes pas partie et n'en assumons aucune responsabilité.
+- Les limites d'utilisation s'appliquent uniquement au canal **cloud système**. Les canaux modèle sur l'appareil et BYOK ne sont ni comptés ni bridés par nous.
 
 ## 6. Fonctions facultatives de l'appareil
 
@@ -45,7 +49,15 @@ La recherche de noms de lieux sur la carte est fournie par AMap (Gaode) en Chine
 
 ## 7. Achats, essais et remboursements
 
-Certaines fonctions peuvent nécessiter un achat ou être limitées jusqu'à ce que vous effectuiez un achat. Tous les paiements sont traités par la boutique d'applications de votre appareil (Apple App Store ou Google Play), et **les propres conditions de la boutique régissent la transaction, la facturation et les remboursements**. Les demandes de remboursement doivent être adressées à cette boutique.
+Certaines fonctions peuvent nécessiter un achat ou être limitées jusqu'à ce que vous effectuiez un achat. Les fonctions actuellement proposées sont des **déblocages uniques** — ce ne sont pas des abonnements et ils ne se renouvellent pas automatiquement.
+
+Tous les paiements sont traités par la **boutique d'applications** de votre appareil (actuellement l'**Apple App Store**), et **les propres conditions de cette boutique régissent la transaction, la facturation et les remboursements**. Les demandes de remboursement doivent être adressées à cette boutique.
+
+À propos de vos droits :
+
+- Un déblocage unique correspond à l'article présenté dans l'Application au moment de l'achat et reste valable ensuite. En cas de réinstallation, vous pouvez restaurer vos droits via la fonction de restauration de la boutique d'applications, selon les règles de celle-ci.
+- Certains droits peuvent inclure une fenêtre d'essai d'un certain nombre de jours. Sa durée et les quotas éventuels sont ceux affichés dans l'Application.
+- **Un achat ne rend pas les sorties de l'IA plus exactes.** Les suggestions restent des ébauches que vous confirmez avant tout enregistrement.
 
 Les prix, les produits disponibles, les quotas gratuits et les conditions d'essai sont ceux qui vous sont présentés dans l'Application au moment de l'achat.
 
@@ -57,7 +69,7 @@ Vous ne devez pas : procéder à l'ingénierie inverse ou décompiler l'Applica
 
 ## 9. Services de tiers
 
-L'Application s'appuie sur des services tiers que vous choisissez ou que votre région sélectionne (y compris les fournisseurs de cartes et la boutique d'applications), ainsi que sur des plateformes LLM agrégées tierces préconfigurées par le développeur selon la région. Votre utilisation de ces services est régie par leurs propres conditions, et nous ne sommes pas responsables de leurs actes ou omissions.
+L'Application met en jeu les services tiers suivants : les fournisseurs de cartes, les plateformes LLM agrégées tierces attribuées à votre région, la boutique d'applications, ainsi que — lorsque vous utilisez le mode **apport de votre propre clé (BYOK)** — **tout fournisseur d'IA que vous configurez vous-même**. Les trois premiers sont choisis par nous ou par votre région ; un **fournisseur BYOK est choisi et configuré par vous seul, et c'est vous qui décidez où votre contenu est envoyé**. Ses conditions, prix et sécurité relèvent de votre relation avec lui ; nous ne sommes pas responsables de ses actes ou omissions. Votre utilisation de ces services est régie par leurs propres conditions, et nous ne sommes pas responsables de leurs actes ou omissions.
 
 ## 10. Disponibilité et modifications
 

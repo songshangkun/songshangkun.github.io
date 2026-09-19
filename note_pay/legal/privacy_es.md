@@ -47,20 +47,21 @@ No conservamos ninguna copia en servidor de lo anterior y no podemos restaurárs
 Solo en estos casos:
 
 1. **Geocodificación inversa** — la coordenada que usted selecciona se envía a AMap o a Google Maps para obtener un nombre de lugar.
-2. **Tratamiento de IA** — si habilita la IA remota, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a una **plataforma LLM agregada de terceros** preconfigurada por el desarrollador para su región. Esa plataforma selecciona el modelo que usa en cada solicitud (el modelo no lo fija NotePay y puede variar). Ese proveedor trata el contenido conforme a su propia política de privacidad. Usted no configura esa dirección ni esa clave usted mismo y no puede hacerlo.
-3. **Verificación de compra** — las compras integradas las verifican Apple o Google. Solo recibimos una confirmación de compra, nunca los datos de su tarjeta de pago.
-4. **Configuración remota y descargas de modelos** — la App obtiene archivos de configuración, modelos de voz y, cuando proceda, documentos legales actualizados. Estas solicitudes no llevan el contenido de su libro de cuentas.
+2. **Tratamiento de IA** — si habilita la IA remota, el texto, la transcripción o la imagen del recibo que usted envía se transmiten a una **plataforma LLM agregada de terceros** preconfigurada por el desarrollador para su región. Esa plataforma selecciona el modelo que usa en cada solicitud (el modelo no lo fija NotePay y puede variar). Ese proveedor trata el contenido conforme a su propia política de privacidad. Esto se aplica **únicamente al canal nube del sistema**; los otros dos canales se describen en la sección 4.
+3. **Verificación de compra** — las compras integradas las verifica la tienda de aplicaciones de su dispositivo (actualmente la Apple App Store). Solo recibimos una confirmación de compra, nunca los datos de su tarjeta de pago.
+4. **Configuración remota y descargas de modelos** — la App obtiene archivos de configuración, modelos de reconocimiento de voz, **modelos de IA en el dispositivo** y, cuando proceda, documentos legales actualizados. Estas solicitudes no llevan el contenido de su libro de cuentas.
 
 No operamos SDK de publicidad ni de analítica, por lo que ningún identificador se comparte con redes publicitarias.
 
 ## 4. Funciones de IA, en pocas palabras
 
-La App puede ejecutar IA **en su dispositivo** o a través de un **punto final remoto**.
+La App ofrece **tres canales de IA independientes**. Puede cambiar entre ellos, o desactivar la IA, en cualquier momento desde Ajustes.
 
-- **Modo en el dispositivo:** su contenido permanece en su dispositivo. Nada se transmite.
-- **Modo remoto:** su contenido se transmite a una **plataforma LLM agregada de terceros** seleccionada para su región. Esa plataforma puede estar ubicada fuera de su país y, para cada solicitud, envía su contenido al modelo que ella misma selecciona — el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. La plataforma procesa su contenido bajo su propia política de privacidad y puede retenerlo según sus propias reglas de conservación, a las que debe remitirse. **NotePay no opera ningún servidor, no conserva copia alguna de su contenido y no registra nada de lo que usted envía.** No envíe en modo remoto información que considere confidencial.
+- **Modelo en el dispositivo:** la IA se ejecuta en su dispositivo con un modelo que usted descarga y funciona sin conexión. **Su contenido no sale de su dispositivo: no se transmite nada.**
+- **Clave propia (BYOK):** usted introduce la dirección y la clave de un servicio de IA de su elección. Su contenido se envía **directamente a ese proveedor**. El proveedor lo elige usted: no lo operamos y no podemos leer la dirección ni la clave que configure. Consulte la política de privacidad de ese proveedor.
+- **Nube del sistema:** su contenido se transmite a una **plataforma LLM agregada de terceros** seleccionada para su región. Esa plataforma puede estar ubicada fuera de su país y, para cada solicitud, envía su contenido al modelo que ella misma selecciona — el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. La plataforma procesa su contenido bajo su propia política de privacidad y puede retenerlo según sus propias reglas de conservación, a las que debe remitirse. **NotePay no opera ningún servidor, no conserva copia alguna de su contenido y no registra nada de lo que usted envía.** No envíe por este canal información que considere confidencial.
 
-Puede cambiar al modo en el dispositivo o dejar de usar las funciones de IA en cualquier momento en Ajustes.
+Las cuotas de uso se aplican únicamente al canal **nube del sistema**; el modelo en el dispositivo y el BYOK no son medidos por nosotros.
 
 ## 5. Por qué tratamos su información
 
@@ -75,7 +76,8 @@ No usamos el contenido de su libro de cuentas para entrenar modelos, para perfil
 | AMap (Gaode) — región de la China continental | Coordenada que usted selecciona | Geocodificación inversa |
 | Google Maps — demás regiones | Coordenada que usted selecciona | Geocodificación inversa |
 | La plataforma LLM agregada de terceros preconfigurada por el desarrollador para su región | Texto, transcripción o imagen que usted envía | Tratamiento de IA que usted solicitó |
-| Apple App Store / Google Play | Testigo de compra | Verificación de compra |
+| El proveedor de IA que usted mismo configura en modo BYOK | Texto, transcripción o imagen que usted envía | Tratamiento de IA que usted solicitó |
+| Apple App Store | Testigo de compra | Verificación de compra |
 
 Cada destinatario se rige por su propia política de privacidad. No vendemos ni alquilamos información personal a nadie.
 

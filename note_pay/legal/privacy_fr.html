@@ -21,7 +21,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <li>Nous ne <strong>vendons</strong> pas vos données à caractère personnel et ne les utilisons <strong>pas</strong> à des fins de publicité comportementale.</li>
 <li>Cette version de l'Application <strong>ne contient ni SDK publicitaire ni SDK d'analyse</strong>.</li>
 <li>La localisation, l'appareil photo, la photothèque et le microphone sont <strong>facultatifs</strong> et utilisés uniquement lorsque vous invoquez la fonction correspondante. Nous ne suivons jamais votre position en arrière-plan.</li>
-<li>Les fonctions d'IA facultatives peuvent envoyer ce que vous écrivez, dites ou photographiez à un plateforme LLM agrégée tierce externe — voir section 4. Vous pouvez les désactiver.</li>
+<li>Les fonctions d'IA facultatives peuvent envoyer ce que vous écrivez, dites ou photographiez à une plateforme LLM agrégée tierce préconfigurée par le développeur pour votre région — voir section 4. Vous ne configurez pas vous-même cette adresse ni cette clé et vous ne le pouvez pas. Vous pouvez les désactiver.</li>
 </ul>
 <h2>3. Données que nous traitons</h2>
 <p>Puisque l'Application est de type « local-first », la plupart des informations ne quittent jamais votre appareil.</p>
@@ -56,7 +56,7 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <td>Base de données locale et notifications locales</td>
 </tr>
 <tr>
-<td>Clé du fournisseur d'IA, si vous en configurez une</td>
+<td>Clé du fournisseur d'IA (préconfigurée par le développeur selon la région)</td>
 <td>Pour appeler les fonctions d'IA que vous activez</td>
 <td>Sur l'appareil, <strong>chiffrée</strong> ; nous ne pouvons pas la lire</td>
 </tr>
@@ -73,18 +73,19 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <p>Uniquement dans les cas suivants :</p>
 <ol>
 <li><strong>Géocodage inverse</strong> — la coordonnée que vous sélectionnez est envoyée à AMap ou à Google Maps afin d'obtenir un nom de lieu.</li>
-<li><strong>Traitement par l'IA</strong> — si vous activez un plateforme LLM agrégée tierce distant, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à ce point de terminaison, que vous configurez vous-même ou qui est sélectionné selon votre région. Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité.</li>
-<li><strong>Vérification d'achat</strong> — les achats intégrés sont vérifiés par Apple ou Google. Nous ne recevons qu'une confirmation d'achat, jamais les coordonnées de votre carte de paiement.</li>
-<li><strong>Configuration à distance et téléchargements de modèles</strong> — l'Application récupère des fichiers de configuration, des modèles vocaux et, le cas échéant, des documents juridiques mis à jour. Ces requêtes ne contiennent pas le contenu de votre registre.</li>
+<li><strong>Traitement par l'IA</strong> — si vous activez l'IA distante, le texte, la transcription vocale ou l'image de reçu que vous soumettez est envoyé à une <strong>plateforme LLM agrégée tierce</strong> préconfigurée par le développeur pour votre région. Cette plateforme choisit le modèle utilisé pour chaque requête (le modèle n'est pas fixé par NotePay et peut varier). Ce fournisseur traite le contenu conformément à sa propre politique de confidentialité. Ceci s'applique <strong>uniquement au canal cloud système</strong> — les deux autres canaux sont décrits à la section 4.</li>
+<li><strong>Vérification d'achat</strong> — les achats intégrés sont vérifiés par la boutique d'applications de votre appareil (actuellement l'Apple App Store). Nous ne recevons qu'une confirmation d'achat, jamais les coordonnées de votre carte de paiement.</li>
+<li><strong>Configuration à distance et téléchargements de modèles</strong> — l'Application récupère des fichiers de configuration, des modèles de reconnaissance vocale, des <strong>modèles d'IA pour l'appareil</strong> et, le cas échéant, des documents juridiques mis à jour. Ces requêtes ne contiennent pas le contenu de votre registre.</li>
 </ol>
 <p>Nous n'exploitons ni SDK publicitaire ni SDK d'analyse ; aucun identifiant n'est donc partagé avec des réseaux publicitaires.</p>
 <h2>4. Les fonctions d'IA, en termes simples</h2>
-<p>L'Application peut exécuter l'IA soit <strong>sur votre appareil</strong>, soit via un <strong>point de terminaison distant</strong>.</p>
+<p>L'Application propose <strong>trois canaux d'IA indépendants</strong>. Vous pouvez passer de l'un à l'autre, ou désactiver l'IA, à tout moment dans les Paramètres.</p>
 <ul>
-<li><strong>Mode sur appareil :</strong> votre contenu reste sur votre appareil. Rien n'est transmis.</li>
-<li>- **Mode distant :** votre contenu est transmis à une **plateforme LLM agrégée tierce** sélectionnée pour votre région. Cette plateforme peut être située hors de votre pays et, pour chaque requête, achemine votre contenu vers le modèle qu'elle sélectionne — le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. La plateforme traite votre contenu conformément à sa propre politique de confidentialité et peut le conserver selon ses propres règles de conservation, auxquelles vous devez vous référer. **NotePay n'exploite aucun serveur, ne conserve aucune copie de votre contenu et n'enregistre rien de ce que vous soumettez.** Ne soumettez pas en mode distant des informations que vous considérez comme confidentielles.</li>
+<li><strong>Modèle sur l'appareil :</strong> l'IA s'exécute sur votre appareil avec un modèle que vous téléchargez et fonctionne hors ligne. <strong>Votre contenu ne quitte pas votre appareil — rien n'est transmis.</strong></li>
+<li><strong>Apport de votre propre clé (BYOK) :</strong> vous saisissez l'adresse et la clé d'un service d'IA de votre choix. Votre contenu est envoyé <strong>directement à ce fournisseur</strong>. Le fournisseur est choisi par vous : nous ne l'exploitons pas et ne pouvons pas lire l'adresse ou la clé que vous configurez. Veuillez consulter la politique de confidentialité de ce fournisseur.</li>
+<li><strong>Cloud système :</strong> votre contenu est transmis à une <strong>plateforme LLM agrégée tierce</strong> sélectionnée pour votre région. Cette plateforme peut être située hors de votre pays et, pour chaque requête, achemine votre contenu vers le modèle qu'elle sélectionne — le modèle précis n'est pas choisi par NotePay et peut varier d'une requête à l'autre. La plateforme traite votre contenu conformément à sa propre politique de confidentialité et peut le conserver selon ses propres règles de conservation, auxquelles vous devez vous référer. <strong>NotePay n'exploite aucun serveur, ne conserve aucune copie de votre contenu et n'enregistre rien de ce que vous soumettez.</strong> Ne soumettez pas d'informations que vous considérez comme confidentielles par ce canal.</li>
 </ul>
-<p>Vous pouvez passer en mode sur appareil ou cesser d'utiliser les fonctions d'IA à tout moment dans les Paramètres.</p>
+<p>Les quotas d'utilisation s'appliquent uniquement au canal <strong>cloud système</strong> ; le modèle sur l'appareil et le BYOK ne sont pas comptés par nous.</p>
 <h2>5. Pourquoi nous traitons vos informations</h2>
 <p>Nous ne traitons vos informations que pour : enregistrer et afficher vos dépenses ; produire des statistiques, des budgets et des rappels ; résoudre des noms de lieux ; reconnaître les reçus et la voix lorsque vous le demandez ; vérifier les achats ; et maintenir l'Application en fonctionnement et en sécurité.</p>
 <p>Nous n'utilisons pas le contenu de votre registre pour entraîner des modèles, pour établir votre profil ou pour cibler de la publicité.</p>
@@ -109,12 +110,17 @@ h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px
 <td>Géocodage inverse</td>
 </tr>
 <tr>
-<td>Le plateforme LLM agrégée tierce que vous utilisez</td>
+<td>La plateforme LLM agrégée tierce préconfigurée par le développeur pour votre région</td>
 <td>Texte, transcription ou image que vous soumettez</td>
 <td>Traitement par l'IA que vous avez demandé</td>
 </tr>
 <tr>
-<td>Apple App Store / Google Play</td>
+<td>Le fournisseur d'IA que vous configurez vous-même en mode BYOK</td>
+<td>Texte, transcription ou image que vous soumettez</td>
+<td>Traitement par l'IA que vous avez demandé</td>
+</tr>
+<tr>
+<td>Apple App Store</td>
 <td>Jeton d'achat</td>
 <td>Vérification d'achat</td>
 </tr>

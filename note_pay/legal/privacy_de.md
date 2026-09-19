@@ -47,20 +47,21 @@ Wir halten keine serverseitige Kopie der obigen Daten vor und können sie für S
 Nur in folgenden Fällen:
 
 1. **Reverse Geocoding** — die von Ihnen ausgewählten Koordinaten werden an AMap oder Google Maps gesendet, um einen Ortsnamen zu erhalten.
-2. **KI-Verarbeitung** — wenn Sie die Remote-KI aktivieren, werden der von Ihnen übermittelte Text, das Transkript oder das Belegbild an eine **aggregierende Drittanbieter-LLM-Plattform** gesendet, die vom Entwickler für Ihre Region vorkonfiguriert ist. Diese Plattform wählt für jede Anfrage das Modell, das sie verwendet (das Modell ist nicht von NotePay festgelegt und kann variieren). Der Anbieter verarbeitet den Inhalt unter seiner eigenen Datenschutzerklärung. Sie konfigurieren diese Adresse oder diesen Schlüssel selbst nicht und können es auch nicht.
-3. **Kaufnachweis** — In-App-Käufe werden von Apple oder Google verifiziert. Wir erhalten lediglich eine Kaufbestätigung, niemals Ihre Zahlungskartendaten.
-4. **Remote-Konfiguration und Modell-Downloads** — die App ruft Konfigurationsdateien, Sprachmodelle und — sofern zutreffend — aktualisierte Rechtsdokumente ab. Diese Anfragen enthalten keinen Inhalt Ihres Hauptbuchs.
+2. **KI-Verarbeitung** — wenn Sie die Remote-KI aktivieren, werden der von Ihnen übermittelte Text, das Transkript oder das Belegbild an eine **aggregierende Drittanbieter-LLM-Plattform** gesendet, die vom Entwickler für Ihre Region vorkonfiguriert ist. Diese Plattform wählt für jede Anfrage das Modell, das sie verwendet (das Modell ist nicht von NotePay festgelegt und kann variieren). Der Anbieter verarbeitet den Inhalt unter seiner eigenen Datenschutzerklärung. Dies gilt **nur für den Kanal System-Cloud** — die beiden anderen Kanäle sind in Abschnitt 4 beschrieben.
+3. **Kaufnachweis** — In-App-Käufe werden vom App-Store auf Ihrem Gerät verifiziert (derzeit der Apple App Store). Wir erhalten lediglich eine Kaufbestätigung, niemals Ihre Zahlungskartendaten.
+4. **Remote-Konfiguration und Modell-Downloads** — die App ruft Konfigurationsdateien, Spracherkennungsmodelle, **KI-Modelle für das Gerät** und — sofern zutreffend — aktualisierte Rechtsdokumente ab. Diese Anfragen enthalten keinen Inhalt Ihres Hauptbuchs.
 
 Wir betreiben keine Werbe- oder Analyse-SDKs, sodass keine Kennung mit Werbenetzwerken geteilt wird.
 
 ## 4. KI-Funktionen, einfach erklärt
 
-Die App kann KI entweder **auf Ihrem Gerät** oder über einen **aggregierende Drittanbieter-LLM-Plattform** ausführen.
+Die App bietet **drei voneinander unabhängige KI-Kanäle**. Sie können jederzeit in den Einstellungen zwischen ihnen wechseln oder die KI-Funktionen abschalten.
 
-- **Gerätemodus:** Ihr Inhalt verbleibt auf Ihrem Gerät. Es wird nichts übertragen.
-- **Remote-Modus:** Ihr Inhalt wird an eine für Ihre Region ausgewählte **aggregierende Drittanbieter-LLM-Plattform** übertragen. Diese Plattform kann sich außerhalb Ihres Landes befinden und wählt für jede Anfrage selbst das Modell, das sie aufruft — das konkrete Modell wird nicht von NotePay bestimmt und kann von Anfrage zu Anfrage variieren. Die Plattform verarbeitet Ihren Inhalt unter ihrer eigenen Datenschutzerklärung und kann ihn nach ihren eigenen Aufbewahrungsregeln speichern; bitte lesen Sie deren Richtlinie. **NotePay selbst betreibt keinen Server, behält keine Kopie Ihres Inhalts und protokolliert nichts von dem, was Sie übermitteln.** Übermitteln Sie im Remote-Modus keine Informationen, die Sie für vertraulich halten.
+- **Modell auf dem Gerät:** die KI läuft auf Ihrem Gerät mit einem Modell, das Sie herunterladen; sie funktioniert offline. **Ihr Inhalt verlässt Ihr Gerät nicht — es wird nichts übertragen.**
+- **Eigener Schlüssel (BYOK):** Sie geben Adresse und Schlüssel eines KI-Dienstes Ihrer Wahl ein. Ihr Inhalt wird **direkt an diesen Anbieter** übermittelt. Der Anbieter ist von Ihnen gewählt — wir betreiben ihn nicht und können die von Ihnen konfigurierte Adresse oder den Schlüssel nicht lesen. Bitte prüfen Sie die Datenschutzerklärung dieses Anbieters.
+- **System-Cloud:** Ihr Inhalt wird an eine für Ihre Region ausgewählte **aggregierende Drittanbieter-LLM-Plattform** übertragen. Diese Plattform kann sich außerhalb Ihres Landes befinden und wählt für jede Anfrage selbst das Modell, das sie aufruft — das konkrete Modell wird nicht von NotePay bestimmt und kann von Anfrage zu Anfrage variieren. Die Plattform verarbeitet Ihren Inhalt unter ihrer eigenen Datenschutzerklärung und kann ihn nach ihren eigenen Aufbewahrungsregeln speichern; bitte lesen Sie deren Richtlinie. **NotePay selbst betreibt keinen Server, behält keine Kopie Ihres Inhalts und protokolliert nichts von dem, was Sie übermitteln.** Übermitteln Sie über diesen Kanal keine Informationen, die Sie für vertraulich halten.
 
-Sie können jederzeit in den Gerätemodus wechseln oder die Nutzung von KI-Funktionen in den Einstellungen beenden.
+Nutzungskontingente gelten ausschließlich für den Kanal **System-Cloud**; Modell auf dem Gerät und BYOK werden von uns nicht gezählt.
 
 ## 5. Warum wir Ihre Informationen verarbeiten
 
@@ -75,7 +76,8 @@ Wir nutzen den Inhalt Ihres Hauptbuchs nicht, um Modelle zu trainieren, ein Prof
 | AMap (Gaode) — Region Festlandchina | Von Ihnen ausgewählte Koordinaten | Reverse Geocoding |
 | Google Maps — andere Regionen | Von Ihnen ausgewählte Koordinaten | Reverse Geocoding |
 | Die für Ihre Region vom Entwickler vorkonfigurierte aggregierende Drittanbieter-LLM-Plattform | Von Ihnen übermittelter Text, Transkript oder Bild | Von Ihnen angeforderte KI-Verarbeitung |
-| Apple App Store / Google Play | Kauf-Token | Kaufverifizierung |
+| Der von Ihnen selbst konfigurierte KI-Anbieter im BYOK-Modus | Von Ihnen übermittelter Text, Transkript oder Bild | Von Ihnen angeforderte KI-Verarbeitung |
+| Apple App Store | Kauf-Token | Kaufverifizierung |
 
 Jeder Empfänger unterliegt seiner eigenen Datenschutzerklärung. Wir verkaufen oder vermieten personenbezogene Daten an niemanden.
 

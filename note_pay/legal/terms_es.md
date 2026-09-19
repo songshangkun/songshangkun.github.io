@@ -4,7 +4,7 @@ title: Términos del servicio
 
 # Términos del Servicio
 
-**Última actualización:** 2026-09-09 · **En vigor:** 2026-09-09
+**Última actualización:** 2026-09-19 · **En vigor:** 2026-09-19
 
 ## 1. Acuerdo
 
@@ -34,8 +34,12 @@ La App puede sugerir asientos a partir de su texto, voz o imágenes de recibos. 
 
 - La salida de la IA es un **borrador**. Cada registro se le muestra para su confirmación antes de guardarse, y usted sigue siendo responsable de lo que se registra.
 - Los registros financieros producidos con la App **no** constituyen asesoramiento contable, fiscal, jurídico ni de inversión. Verifique cualquier dato en el que se apoye para fines oficiales.
-- En modo remoto, su contenido se transmite a una **plataforma LLM agregada de terceros** preconfigurada por el desarrollador para su región. Estas plataformas envían cada solicitud al modelo que ellas mismas seleccionan, y el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. NotePay no opera ningún servidor y no retiene ninguno de sus contenidos. No envíe en modo remoto información que considere confidencial.
-- Las funciones de IA están sujetas a límites de uso que pueden variar según el plan, el dispositivo y la región.
+- La App ofrece **tres canales de IA independientes**; cuál utilizar lo elige usted en Ajustes:
+  - **Modelo en el dispositivo:** la IA se ejecuta en su dispositivo con un modelo que usted descarga y funciona sin conexión. **Su contenido no sale de su dispositivo** — no se transmite nada.
+  - **Clave propia (BYOK):** usted introduce la dirección y la clave de un servicio de IA de su elección, y su contenido se envía **directamente a ese proveedor**. El proveedor lo elige usted; no lo operamos y no podemos leer la dirección ni la clave que configure.
+  - **Nube del sistema:** su contenido se transmite a una **plataforma LLM agregada de terceros** preconfigurada por el desarrollador para su región. Estas plataformas envían cada solicitud al modelo que ellas mismas seleccionan, y el modelo concreto no lo elige NotePay y puede variar de una solicitud a otra. NotePay no opera ningún servidor y no retiene ninguno de sus contenidos. No envíe por este canal información que considere confidencial.
+- Cuando usa BYOK, **es usted quien decide a dónde se envía su contenido**. Los términos, precios y seguridad del destinatario se rigen por su relación con ese proveedor; no somos parte de ella y no asumimos responsabilidad alguna al respecto.
+- Los límites de uso se aplican únicamente al canal **nube del sistema**. Los canales modelo en el dispositivo y BYOK no son medidos ni limitados por nosotros.
 
 ## 6. Funciones opcionales del dispositivo
 
@@ -45,7 +49,15 @@ La búsqueda de nombres de lugares en el mapa la proporcionan AMap (Gaode) en la
 
 ## 7. Compras, periodos de prueba y reembolsos
 
-Algunas funciones pueden requerir una compra o estar limitadas hasta que usted compre. Todos los pagos los procesa la tienda de aplicaciones de su dispositivo (Apple App Store o Google Play), y **los propios términos de la tienda rigen la transacción, la facturación y los reembolsos**. Las solicitudes de reembolso deben realizarse a través de esa tienda.
+Algunas funciones pueden requerir una compra o estar limitadas hasta que usted compre. Las funciones ofrecidas actualmente son **desbloqueos únicos**: no son suscripciones y no se renuevan automáticamente.
+
+Todos los pagos los procesa la **tienda de aplicaciones** de su dispositivo (actualmente la **Apple App Store**), y **los propios términos de esa tienda rigen la transacción, la facturación y los reembolsos**. Las solicitudes de reembolso deben realizarse a través de esa tienda.
+
+Sobre sus derechos:
+
+- Un desbloqueo único corresponde al artículo mostrado en la App en el momento de la compra y sigue siendo válido después. Si reinstala, puede restaurar sus derechos mediante la función de restauración de la tienda de aplicaciones, con sujeción a sus normas.
+- Algunos derechos pueden incluir una ventana de prueba de un número determinado de días. Su duración y las cuotas correspondientes son las que se muestran en la App.
+- **Comprar no hace que la salida de la IA sea más precisa.** Las sugerencias siguen siendo borradores que usted confirma antes de guardar nada.
 
 Los precios, los productos disponibles, las cuotas gratuitas y las condiciones de prueba son los que se le muestran en la App en el momento de la compra.
 
@@ -57,7 +69,7 @@ Usted no debe: realizar ingeniería inversa o descompilar la App salvo en la med
 
 ## 9. Servicios de terceros
 
-La App se apoya en servicios de terceros que usted elige o que su región selecciona (incluidos los proveedores de mapas y la tienda de aplicaciones), así como en plataformas LLM agregadas de terceros preconfiguradas por el desarrollador según la región. Su uso de dichos servicios se rige por sus propios términos, y no somos responsables de sus actos u omisiones.
+La App involucra los siguientes servicios de terceros: proveedores de mapas, plataformas LLM agregadas de terceros asignadas a su región, la tienda de aplicaciones y — cuando usa el modo **clave propia (BYOK)** — **cualquier proveedor de IA que configure usted mismo**. Los tres primeros los elegimos nosotros o su región; un **proveedor BYOK lo elige y configura usted solo, y es usted quien decide a dónde se envía su contenido**. Sus términos, precios y seguridad dependen de su relación con él; no somos responsables de sus actos u omisiones. Su uso de dichos servicios se rige por sus propios términos, y no somos responsables de sus actos u omisiones.
 
 ## 10. Disponibilidad y cambios
 

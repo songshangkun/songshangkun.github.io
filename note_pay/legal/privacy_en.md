@@ -47,20 +47,21 @@ We hold no server-side copy of the above and cannot restore it for you. Please k
 Only in these cases:
 
 1. **Reverse geocoding** — the coordinate you select is sent to AMap or Google Maps to obtain a place name.
-2. **AI processing** — if you enable remote AI, the text, voice transcript or receipt image you submit is sent to a **third-party aggregate LLM platform** preconfigured by the developer for your region. That platform selects the model used for each request (the model is not fixed by NotePay and may vary). The platform processes your content under its own privacy policy. You do not configure that address or key yourself and cannot.
-3. **Purchase verification** — in-app purchases are verified by Apple or Google. We receive only a purchase confirmation, never your payment card details.
-4. **Remote configuration and model downloads** — the App fetches configuration files, speech models and, where applicable, updated legal documents. These requests do not carry your ledger content.
+2. **AI processing** — if you enable remote AI, the text, voice transcript or receipt image you submit is sent to a **third-party aggregate LLM platform** preconfigured by the developer for your region. That platform selects the model used for each request (the model is not fixed by NotePay and may vary). That platform processes your content under its own privacy policy. This applies **only to the system cloud channel** — see section 4 for the other two channels.
+3. **Purchase verification** — in-app purchases are verified by the app store on your device (currently the Apple App Store). We receive only a purchase confirmation, never your payment card details.
+4. **Remote configuration and model downloads** — the App fetches configuration files, speech recognition models, on-device AI models and, where applicable, updated legal documents. These requests do not carry your ledger content.
 
 We do not operate advertising or analytics SDKs, so no identifier is shared with advertising networks.
 
 ## 4. AI features, in plain words
 
-The App can run AI either **on your device** or through a **remote AI (third-party aggregate LLM platform)**.
+The App offers **three independent AI channels**. You can switch between them, or turn AI off, at any time in Settings.
 
-- **On-device mode:** your content stays on your device. Nothing is transmitted.
-- **Remote mode:** your content is transmitted to a **third-party aggregate LLM platform** selected for your region. That platform may be located outside your country and, for each request, dispatches your content to whichever model it selects — the specific model is not chosen by NotePay and may differ from request to request. The platform processes your content under its own privacy policy and may retain it under its own retention rules, to which you should refer. **NotePay itself operates no server, keeps no copy of your content, and logs nothing about what you submit.** Do not submit information you consider confidential in remote mode.
+- **On-device model:** AI runs on your device with a model you download, and works offline. **Your content does not leave your device — nothing is transmitted.**
+- **Bring your own key (BYOK):** you enter the address and key of an AI service of your own choosing. Your content is sent **directly to that provider**. The provider is chosen by you — we neither operate it nor can we read the address or key you configure. Please review that provider's privacy policy.
+- **System cloud:** your content is transmitted to a **third-party aggregate LLM platform** selected for your region. That platform may be located outside your country and, for each request, dispatches your content to whichever model it selects — the specific model is not chosen by NotePay and may differ from request to request. The platform processes your content under its own privacy policy and may retain it under its own retention rules, to which you should refer. **NotePay itself operates no server, keeps no copy of your content, and logs nothing about what you submit.** Do not submit information you consider confidential through this channel.
 
-You can switch to on-device mode or stop using AI features at any time in Settings.
+Usage quotas apply to the **system cloud** channel only; the on-device and BYOK channels are not metered by us.
 
 ## 5. Why we process your information
 
@@ -75,7 +76,8 @@ We do not use your ledger content to train models, to profile you, or to target 
 | AMap (Gaode) — mainland China region | Coordinate you select | Reverse geocoding |
 | Google Maps — other regions | Coordinate you select | Reverse geocoding |
 | The third-party aggregate LLM platform you use | Text, transcript or image you submit | AI processing you requested |
-| Apple App Store / Google Play | Purchase token | Purchase verification |
+| The AI provider you configure yourself, in BYOK mode | Text, transcript or image you submit | AI processing you requested |
+| Apple App Store | Purchase token | Purchase verification |
 
 Each recipient is governed by its own privacy policy. We do not sell or rent personal information to anyone.
 
