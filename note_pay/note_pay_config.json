@@ -484,7 +484,7 @@
   "limits": {
     "_comment": "每日加权单位额度（共享单一 'ai' 池，按通道权重扣减：entry=1 / photo=2 / agent=3，stats 走 agent 权重）。null = 不限。**仅约束系统云通道**（端侧模型与自有 API Key 不扣任何配额）：free = 无系统云权益时的日上限（即 30 天试用窗内每天 5 单位）；premium = 持 'ai_cloud' 权益（$9.9 pro_lifetime_intl / 国内 pro_6m）时的日上限，再由 ai_monthly_cap 封月。注意：$3.9 档（pro_lite_intl）**不授予** 'ai_cloud'，故它永远落在 free 档，且仅在试用窗内有云可用。",
     "free": {
-      "ai": 5
+      "ai": 20
     },
     "premium": {
       "ai": null
