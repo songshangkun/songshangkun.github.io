@@ -23,6 +23,7 @@
           "ko"
         ],
         "size": 61257463,
+        "required_ram_mb": 1024,
         "sha256": "4a320ccc6db2a80c881ba5e222cedcda3003cc09e088ebdd902b481f86fb1a1a",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip",
         "url_by_region": {
@@ -68,6 +69,7 @@
           "en"
         ],
         "size": 62914076,
+        "required_ram_mb": 1024,
         "sha256": "842e5d4eed5964ffdf40253d3d6325a6bbd090d2974ebb1aa29130241c4233fc",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.en.zip",
         "url_by_region": {
@@ -118,9 +120,9 @@
           "ja",
           "ko"
         ],
-        "size": 0,
-        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
-        "sha256": "",
+        "size": 231357581,
+        "required_ram_mb": 2048,
+        "sha256": "f51f579d9a4210fe81118da007e4c170d35a7fe1191e8be242ee461860fe76c1",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.zip",
         "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
         "url_by_region": {
@@ -165,9 +167,9 @@
         "langs": [
           "en"
         ],
-        "size": 0,
-        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
-        "sha256": "",
+        "size": 226924607,
+        "required_ram_mb": 2048,
+        "sha256": "88805e55797d811189b7367fe5d0d7b25f0aa349c87f1c5a3ca7b0ac700a894c",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.en.zip",
         "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
         "url_by_region": {
@@ -218,9 +220,9 @@
           "ja",
           "ko"
         ],
-        "size": 0,
-        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
-        "sha256": "",
+        "size": 600832047,
+        "required_ram_mb": 3072,
+        "sha256": "86fd893ab385903d91d71d3d1bc267acb5514cd0807c94c0bd8a0415ee63fff0",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium.zip",
         "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
         "url_by_region": {
@@ -265,9 +267,9 @@
         "langs": [
           "zh"
         ],
-        "size": 0,
-        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
-        "sha256": "",
+        "size": 681455645,
+        "required_ram_mb": 3072,
+        "sha256": "5d21f07ef5f02cb7d910b99ea0242ba9cb69a8fb556f079ee74b792bb03eebb3",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium-aishell.zip",
         "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
         "url_by_region": {
@@ -318,9 +320,9 @@
           "ja",
           "ko"
         ],
-        "size": 0,
-        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
-        "sha256": "",
+        "size": 1109579561,
+        "required_ram_mb": 6144,
+        "sha256": "4e12a7c5be4b5dbd8b0adce7a7d06d88fbb062687758d63be12cca70c08b4248",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-large-v3.zip",
         "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
         "url_by_region": {
