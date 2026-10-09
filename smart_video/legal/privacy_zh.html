@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Video — 隐私政策</title>
+<style>
+body{max-width:760px;margin:2rem auto;padding:0 1rem;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:#1d1d1f}
+h1,h2,h3{color:#000} table{border-collapse:collapse;width:100%} th,td{border:1px solid #ccc;padding:6px 10px;text-align:left} blockquote{border-left:3px solid #ccc;margin:1em 0;padding:0 1em;color:#555}
+footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid #d2d2d7;font-size:.9rem} footer .langs a{margin-right:.4rem;text-decoration:none} footer a{color:#0a7afe} .muted{color:#6e6e73}
+</style>
+</head>
+<body>
+<h1>隐私政策</h1>
+<p><strong>最后更新：</strong>2026-10-09 · <strong>生效：</strong>2026-10-09</p>
+<h2>1. 我们是谁</h2>
+<p>Smart Video 是一款面向语言学习者的本地优先智能媒体播放器（"本应用"）。负责您个人信息的个人信息处理者是 <strong>songshangkun</strong>（"我们"），联系地址：<strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong>。</p>
+<p>任何隐私问题、请求或投诉，请联系：<strong>13808875@qq.com</strong>。</p>
+<h2>2. 简而言之</h2>
+<ul>
+<li>您的媒体库、字幕、笔记和学习记录<strong>保存在您的设备上</strong>。我们不运行账号系统，也没有存储您学习数据的后端。</li>
+<li>我们<strong>不出售</strong>您的个人信息，也<strong>不</strong>将其用于行为广告。</li>
+<li>本版本应用<strong>不含广告 SDK 与分析 SDK</strong>。</li>
+<li>相册与文件访问为<strong>可选</strong>，仅在您导入或导出媒体时使用。我们绝不访问相机、麦克风或您的位置。</li>
+<li>AI 功能会把您选中的文本发送到<strong>您自己配置的 LLM 端点</strong>——见第 4 节。设备端语音识别不会离开您的设备。</li>
+</ul>
+<h2>3. 我们处理的信息</h2>
+<p>由于本应用是本地优先的，绝大多数信息不会离开您的设备。</p>
+<h3>3.1 存储在设备上的信息</h3>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>用途</th>
+<th>留存位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>媒体库条目：文件引用、名称、导入的 URL / HLS 链接、播放进度</td>
+<td>让您重新打开并续播学习媒体</td>
+<td>设备数据库（应用沙盒）</td>
+</tr>
+<tr>
+<td>字幕文件与转录缓存</td>
+<td>显示字幕并支持查词</td>
+<td>设备数据库</td>
+</tr>
+<tr>
+<td>AI 解释与总结缓存（单词、句子、媒体总结）</td>
+<td>避免重复调用 AI，直接展示历史结果</td>
+<td>设备数据库</td>
+</tr>
+<tr>
+<td>单词 / 卡片学习记录与复习计划</td>
+<td>驱动间隔重复复习</td>
+<td>设备数据库</td>
+</tr>
+<tr>
+<td>您创建的笔记</td>
+<td>保存学习笔记</td>
+<td>设备（内存 / 本地存储）</td>
+</tr>
+<tr>
+<td>应用设置，含主题、语言与字幕样式</td>
+<td>记住您的偏好</td>
+<td>设备偏好</td>
+</tr>
+<tr>
+<td>LLM 端点地址与密钥（若您配置）</td>
+<td>调用您启用的 AI 功能</td>
+<td>设备端，<strong>加密</strong>存储；我们无法读取</td>
+</tr>
+</tbody>
+</table>
+<p>我们不在服务端保留上述任何内容的副本，也无法为您恢复。请自行备份。</p>
+<h3>3.2 仅在您使用特定功能时处理的信息</h3>
+<ul>
+<li><strong>相册（可选）。</strong>导入媒体时，应用读取您从相册选择的视频 / 音频；导出学习素材时，应用写入您的相册。我们绝不在后台扫描您的相册。您可以拒绝该权限，其余功能照常工作。</li>
+<li><strong>文件 / 文稿（可选）。</strong>导入本地媒体或文稿时，应用读取您从"文件"App /"我的 iPhone"中选取的文件。不会上传到我们运营的服务器。</li>
+<li><strong>无麦克风、无相机、无位置。</strong>Smart Video 不申请也不使用麦克风、相机或定位服务。语音识别在您导入媒体文件<em>已有的音频</em>上使用设备端模型运行——绝不通过麦克风录音。</li>
+</ul>
+<h3>3.3 传出设备的信息</h3>
+<p>仅以下情况：</p>
+<ol>
+<li><strong>AI 处理。</strong>使用 AI 功能（字幕翻译、单词与句子解释、总结与追问）时，您选中的文本会被发送到您在"设置 → 模型库 → LLM 服务"中<strong>自己配置的 LLM 端点</strong>。接收方是您选择的提供商；我们不运营它，无法读取您配置的地址或密钥，也不保留您提交内容的副本。请查阅该提供商的隐私政策。</li>
+<li><strong>语音识别（设备端）。</strong>转录在设备端用您下载的 sherpa 模型运行。音频与文本<strong>不</strong>发送至任何地方。</li>
+<li><strong>购买验证。</strong>应用内购买由设备上的应用商店（当前为 Apple App Store）验证。我们仅收到购买确认，绝不会收到您的支付卡信息。</li>
+<li><strong>远程配置与模型下载。</strong>应用从开发者的 GitHub Pages / GitHub 获取配置文件与设备端 ASR（sherpa）模型。这些请求不包含您的媒体或学习内容。</li>
+</ol>
+<p>我们不运营广告或分析 SDK，因此不会向广告网络共享任何标识符。</p>
+<h2>4. AI 功能，通俗说明</h2>
+<p>Smart Video 提供两类 AI 处理：</p>
+<ul>
+<li><strong>设备端语音识别（ASR）：</strong>转录在设备端用您下载的 sherpa 模型运行。<strong>您的音频与文本永远不会离开设备——不会传输任何内容。</strong></li>
+<li><strong>用户配置的 LLM 端点（BYOK）：</strong>翻译、解释与总结通过把选中文本发送到您在"设置 → 模型库 → LLM 服务"中<strong>自行填入的 LLM 地址与密钥</strong>来生成。提供商由您选择——我们不运营它，也无法读取您配置的地址或密钥。请查阅该提供商的隐私与留存政策，不要通过此通道提交您认为机密的信息。</li>
+</ul>
+<p>您可以随时在设置中关闭 AI 功能；关闭后播放器、字幕与本地学习工具仍可正常使用。</p>
+<h2>5. 我们处理信息的原因</h2>
+<p>我们处理信息仅用于：导入并播放您的媒体；显示字幕并支持查词；运行您请求的本地转录；调用您配置的 AI 端点；验证购买；以及保持应用可用与安全。</p>
+<p>我们不会用您的学习内容训练模型、刻画用户画像或定向广告。</p>
+<h2>6. 可能接收信息的第三方</h2>
+<table>
+<thead>
+<tr>
+<th>接收方</th>
+<th>收到的内容</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>您自行配置的 LLM 提供商</td>
+<td>您为翻译 / 解释 / 总结提交的文本</td>
+<td>您请求的 AI 处理</td>
+</tr>
+<tr>
+<td>Apple App Store</td>
+<td>购买令牌</td>
+<td>购买验证</td>
+</tr>
+<tr>
+<td>GitHub Pages / GitHub（开发者）</td>
+<td>配置与模型下载请求（不含媒体内容）</td>
+<td>远程配置与设备端 ASR 模型分发</td>
+</tr>
+</tbody>
+</table>
+<p>每个接收方受其自身隐私政策约束。我们不向任何人出售或出租个人信息。</p>
+<h2>7. 信息保留时长</h2>
+<p>您的库、字幕、笔记与学习记录在设备上保留，直到您删除它们、清除数据或卸载应用。删除或卸载会永久移除它们；我们不保留副本且无法恢复。</p>
+<p>您提交给所配置 LLM 提供商的内容按其留存政策保留。</p>
+<h2>8. 安全</h2>
+<p>您的数据存储在受设备自身安全（设备密码、磁盘加密）保护的本地数据库中。LLM 端点地址与密钥在设备端加密存储，绝不传输给我们。没有绝对安全的存储方式，请保护好您的设备并自行备份。</p>
+<h2>9. 儿童</h2>
+<p>本应用不面向儿童。我们不会明知而收集未满所在司法辖区数字同意年龄儿童的个人信息（美国为 13 岁，欧洲经济区多数为 16 岁，其他地方依当地规定）。若您认为有儿童向我们提供了信息，请联系我们，我们将协助删除。</p>
+<h2>10. 您的权利</h2>
+<p>您的权利取决于居住地；本文件下方按地区列出的章节详述。无论您身处何地，您可随时：拒绝或撤销可选权限；在应用内导出或删除您的数据；停止使用 AI 功能；或向我们提出请求。</p>
+<p>由于您的数据在本地，行使访问、更正、可携或删除权的最快方式是在应用内直接操作。</p>
+<h2>11. 本政策的变更</h2>
+<p>我们可能更新本政策。更新时我们会更改上方日期，重大变更会在应用内通知您。更新后继续使用即表示您接受修订后的政策。</p>
+<h2>12. 联系方式</h2>
+<p>隐私问题与请求：<strong>13808875@qq.com</strong><br>
+邮寄地址：<strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong></p>
+
+<footer>
+  <p class="langs">
+    <a href="privacy_en.html">English</a>·
+    <a href="privacy_zh.html" class="active">中文</a>·
+    <a href="privacy_de.html">Deutsch</a>·
+    <a href="privacy_es.html">Español</a>·
+    <a href="privacy_fr.html">Français</a>·
+    <a href="privacy_ja.html">日本語</a>·
+    <a href="privacy_ko.html">한국어</a>
+  </p>
+  <p><a href="../support.html">支持</a> · <a href="terms.html">服务条款</a> · <a href="addendum.html">地区条款</a></p>
+  <p class="muted">&copy; 2026 songshangkun. 保留所有权利。</p>
+</footer>
+</body>
+</html>

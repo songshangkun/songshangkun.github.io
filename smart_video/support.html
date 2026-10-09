@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Video Support</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 720px; margin: 2rem auto; padding: 0 1rem;
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         line-height: 1.7; color: #1d1d1f; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #f5f5f7; background: #000; } }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 1.8rem; }
+  a { color: #0a7afe; }
+  .muted { color: #6e6e73; font-size: .95rem; }
+  details { border: 1px solid #d2d2d7; border-radius: 10px; padding: .6rem .9rem; margin: .6rem 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #d2d2d7; font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Smart Video Support</h1>
+  <p class="muted">Local-first intelligent media player for language learners — auto subtitles, word lookup, and LLM-assisted study.</p>
+
+  <h2>Contact</h2>
+  <!-- TODO: 把下面邮箱替换成你的真实支持邮箱（与法律文档保持一致） -->
+  <p>Email: <a href="mailto:13808875@qq.com">13808875@qq.com</a></p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>How do I restore my purchase (lifetime unlock)?</summary>
+    <p>Open the app → <strong>Settings → Restore Purchases</strong>. The lifetime unlock is tied to your App Store
+       account, so it re-activates automatically on any device where you sign in with the same Apple ID.
+       No account or password is required.</p>
+  </details>
+
+  <details>
+    <summary>How do I import media to study?</summary>
+    <p>Smart Video can play media from three sources: <strong>Files</strong> on your device, your
+       <strong>Photo Library</strong>, and a remote <strong>URL / HLS stream</strong> you paste in.
+       Imported media stays on your device; we never upload it to a server.</p>
+  </details>
+
+  <details>
+    <summary>Is my data private? Do you show ads?</summary>
+    <p>Yes — privacy is the core design. Smart Video is <strong>local-first with no account system</strong>:
+       your media library, subtitles, notes and study records are stored on your device and are not uploaded
+       to a cloud we control. The iOS version contains <strong>no ads and no third-party analytics SDKs</strong>.
+       See our <a href="legal/privacy.html">Privacy Policy</a> for details.</p>
+  </details>
+
+  <details>
+    <summary>The AI features (translation / explanation / summary) are not responding.</summary>
+    <p>AI features send the selected text to the <strong>LLM endpoint you configure yourself</strong> in
+       <strong>Settings → Model Library → LLM Server</strong>. Please check that the address and key are correct
+       and that your device has network access. We do not operate that endpoint and cannot read what you configure.
+       Still stuck? Email us with your device model and iOS version.</p>
+  </details>
+
+  <details>
+    <summary>Transcription / subtitles are not generated.</summary>
+    <p>On-device speech recognition uses sherpa models you download once in
+       <strong>Settings → Model Library</strong>. After a model is installed, transcription runs entirely on your
+       device and nothing is sent to a server. Make sure the media already has (or can produce) a transcript.</p>
+  </details>
+
+  <footer>
+    <p><a href="legal/privacy.html">Privacy Policy</a> · <a href="legal/terms.html">Terms of Use</a> · <a href="legal/addendum.html">Regional provisions</a></p>
+    <p class="muted">&copy; 2026 songshangkun. All rights reserved.</p>
+  </footer>
+</main>
+</body>
+</html>

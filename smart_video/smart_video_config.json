@@ -1,0 +1,411 @@
+{
+  "_comment": "smart_video 远程配置模板（推送到 GitHub Pages 仓库 /smart_video/smart_video_config.json 的那份）。与 App 内置 assets/config/app_config.json **同构**：远程写了的 key 覆盖内置，远程没写的 key 保留内置值（内置即兜底）。因此本文件可以只写「想改的那几段」，也可以写全——下面给的是写全的示例。",
+  "schema_version": 1,
+  "remote_config": {
+    "enabled": true,
+    "url": "https://songshangkun.github.io/smart_video/smart_video_config.json",
+    "interval_hours": 24
+  },
+  "asr": {
+    "default_mode": "local",
+    "default_model_id": "whisper-tiny",
+    "models": [
+      {
+        "id": "whisper-tiny",
+        "kind": "whisper",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "ja",
+          "ko"
+        ],
+        "size": 61257463,
+        "sha256": "4a320ccc6db2a80c881ba5e222cedcda3003cc09e088ebdd902b481f86fb1a1a",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip"
+        ],
+        "files": {
+          "encoder": "tiny-encoder.int8.onnx",
+          "decoder": "tiny-decoder.int8.onnx",
+          "tokens": "tiny-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Tiny (Multilingual)",
+          "zh": "Whisper Tiny（多语种）",
+          "de": "Whisper Tiny (mehrsprachig)",
+          "es": "Whisper Tiny (multilingüe)",
+          "fr": "Whisper Tiny (multilingue)",
+          "ja": "Whisper Tiny（多言語）",
+          "ko": "Whisper Tiny (다국어)"
+        },
+        "descriptions": {
+          "en": "Small and fast multilingual model. Covers all 7 app languages in one download.",
+          "zh": "体积最小、速度最快的多语种模型，一次下载即可识别 App 全部 7 种语言。",
+          "de": "Kleinstes und schnellstes mehrsprachiges Modell. Deckt alle 7 App-Sprachen ab.",
+          "es": "Modelo multilingüe pequeño y rápido. Cubre los 7 idiomas de la app.",
+          "fr": "Modèle multilingue petit et rapide. Couvre les 7 langues de l'app.",
+          "ja": "最小・最速の多言語モデル。アプリの 7 言語すべてに対応します。",
+          "ko": "작고 빠른 다국어 모델입니다. 앱의 7개 언어를 모두 인식합니다."
+        },
+        "tags": [
+          "多语种",
+          "int8"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-tiny.en",
+        "kind": "whisper",
+        "langs": [
+          "en"
+        ],
+        "size": 62914076,
+        "sha256": "842e5d4eed5964ffdf40253d3d6325a6bbd090d2974ebb1aa29130241c4233fc",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.en.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.en.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.en.zip"
+        ],
+        "files": {
+          "encoder": "tiny.en-encoder.int8.onnx",
+          "decoder": "tiny.en-decoder.int8.onnx",
+          "tokens": "tiny.en-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Tiny (English)",
+          "zh": "Whisper Tiny（纯英文）",
+          "de": "Whisper Tiny (Englisch)",
+          "es": "Whisper Tiny (inglés)",
+          "fr": "Whisper Tiny (anglais)",
+          "ja": "Whisper Tiny（英語専用）",
+          "ko": "Whisper Tiny (영어 전용)"
+        },
+        "descriptions": {
+          "en": "English-only model. More accurate than the multilingual tiny when your media is pure English.",
+          "zh": "纯英文专用模型。素材是纯英文时，比多语种 tiny 识别更准。",
+          "de": "Nur Englisch. Bei rein englischem Material genauer als das mehrsprachige Tiny.",
+          "es": "Solo inglés. Más preciso que el tiny multilingüe para material en inglés puro.",
+          "fr": "Anglais uniquement. Plus précis que le tiny multilingue pour du contenu anglais.",
+          "ja": "英語専用モデル。純粋な英語の素材では多言語 tiny より高精度です。",
+          "ko": "영어 전용 모델입니다. 순수 영어 미디어에서는 다국어 tiny보다 정확합니다."
+        },
+        "tags": [
+          "英文优化",
+          "int8"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-small",
+        "kind": "whisper",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "ja",
+          "ko"
+        ],
+        "size": 0,
+        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
+        "sha256": "",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.zip",
+        "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.zip"
+        ],
+        "files": {
+          "encoder": "small-encoder.int8.onnx",
+          "decoder": "small-decoder.int8.onnx",
+          "tokens": "small-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Small (Multilingual)",
+          "zh": "Whisper Small（多语种）",
+          "de": "Whisper Small (mehrsprachig)",
+          "es": "Whisper Small (multilingüe)",
+          "fr": "Whisper Small (multilingue)",
+          "ja": "Whisper Small（多言語）",
+          "ko": "Whisper Small (다국어)"
+        },
+        "descriptions": {
+          "en": "Bigger and more accurate than tiny, still fast on phone. Covers all 7 app languages.",
+          "zh": "比 tiny 更大更准，手机上依然快，覆盖全部 7 种语言。",
+          "de": "Größer und genauer als tiny, auf dem Handy dennoch schnell. Alle 7 Sprachen.",
+          "es": "Más grande y preciso que tiny, aún rápido en el móvil. Cubre los 7 idiomas.",
+          "fr": "Plus grand et précis que tiny, tout en restant rapide sur mobile. Les 7 langues.",
+          "ja": "tiny より大きく高精度、スマホでも十分速い。7 言語対応。",
+          "ko": "tiny보다 크고 정확하지만 폰에서도 빠릅니다. 7개 언어 지원."
+        },
+        "tags": [
+          "多语种",
+          "int8"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-small.en",
+        "kind": "whisper",
+        "langs": [
+          "en"
+        ],
+        "size": 0,
+        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
+        "sha256": "",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.en.zip",
+        "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.en.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-small.en.zip"
+        ],
+        "files": {
+          "encoder": "small.en-encoder.int8.onnx",
+          "decoder": "small.en-decoder.int8.onnx",
+          "tokens": "small.en-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Small (English)",
+          "zh": "Whisper Small（纯英文）",
+          "de": "Whisper Small (Englisch)",
+          "es": "Whisper Small (inglés)",
+          "fr": "Whisper Small (anglais)",
+          "ja": "Whisper Small（英語専用）",
+          "ko": "Whisper Small (영어 전용)"
+        },
+        "descriptions": {
+          "en": "English-only small model. More accurate than multilingual small on pure English.",
+          "zh": "纯英文 small 模型。素材为纯英文时比多语种 small 更准。",
+          "de": "Nur Englisch. Bei rein englischem Material genauer als das mehrsprachige Small.",
+          "es": "Solo inglés. Más preciso que el small multilingüe con inglés puro.",
+          "fr": "Anglais uniquement. Plus précis que le small multilingue sur anglais.",
+          "ja": "英語専用 small。純粋な英語では多言語 small より高精度。",
+          "ko": "영어 전용 small 모델. 순수 영어에서는 다국어 small보다 정확합니다."
+        },
+        "tags": [
+          "英文优化",
+          "int8"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-medium",
+        "kind": "whisper",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "ja",
+          "ko"
+        ],
+        "size": 0,
+        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
+        "sha256": "",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium.zip",
+        "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium.zip"
+        ],
+        "files": {
+          "encoder": "medium-encoder.int8.onnx",
+          "decoder": "medium-decoder.int8.onnx",
+          "tokens": "medium-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Medium (Multilingual)",
+          "zh": "Whisper Medium（多语种）",
+          "de": "Whisper Medium (mehrsprachig)",
+          "es": "Whisper Medium (multilingüe)",
+          "fr": "Whisper Medium (multilingue)",
+          "ja": "Whisper Medium（多言語）",
+          "ko": "Whisper Medium (다국어)"
+        },
+        "descriptions": {
+          "en": "High-accuracy multilingual model. Larger download and slower on phone, but much better on hard audio.",
+          "zh": "高精度的多语种模型。体积更大、手机上更慢，但对难识别音频明显更好。",
+          "de": "Sehr genaues mehrsprachiges Modell. Größer und langsamer, aber besser bei schwierigem Audio.",
+          "es": "Modelo multilingüe de alta precisión. Más grande y lento, pero mejor con audio difícil.",
+          "fr": "Modèle multilingue très précis. Plus lourd et lent, mais bien meilleur sur audio difficile.",
+          "ja": "高精度な多言語モデル。大きく遅いが、難しい音声で格段に向上します。",
+          "ko": "고정확 다국어 모델. 크고 느리지만 어려운 오디오에서 훨씬 낫습니다."
+        },
+        "tags": [
+          "多语种",
+          "高精度"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-medium-aishell",
+        "kind": "whisper",
+        "langs": [
+          "zh"
+        ],
+        "size": 0,
+        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
+        "sha256": "",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium-aishell.zip",
+        "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium-aishell.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-medium-aishell.zip"
+        ],
+        "files": {
+          "encoder": "medium-aishell-encoder.int8.onnx",
+          "decoder": "medium-aishell-decoder.int8.onnx",
+          "tokens": "medium-aishell-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Medium AISHELL (Chinese)",
+          "zh": "Whisper Medium AISHELL（中文）",
+          "de": "Whisper Medium AISHELL (Chinesisch)",
+          "es": "Whisper Medium AISHELL (chino)",
+          "fr": "Whisper Medium AISHELL (chinois)",
+          "ja": "Whisper Medium AISHELL（中国語）",
+          "ko": "Whisper Medium AISHELL (중국어)"
+        },
+        "descriptions": {
+          "en": "Chinese-optimized medium model (AISHELL fine-tune). Best accuracy for Chinese media.",
+          "zh": "中文优化 medium 模型（AISHELL 微调），中文素材识别最准。",
+          "de": "Chinesisch optimiertes Medium-Modell (AISHELL). Beste Genauigkeit für chinesisches Material.",
+          "es": "Modelo medium optimizado para chino (AISHELL). Mejor precisión con material chino.",
+          "fr": "Medium optimisé chinois (AISHELL). Meilleure précision sur contenu chinois.",
+          "ja": "中国語最適化 medium モデル（AISHELL）。中国語音声で最高精度。",
+          "ko": "중국어 최적화 medium 모델(AISHELL). 중국어 미디어에서 가장 정확합니다."
+        },
+        "tags": [
+          "中文优化",
+          "高精度"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-large-v3",
+        "kind": "whisper",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "ja",
+          "ko"
+        ],
+        "size": 0,
+        "_todo": "size / sha256 为占位值：沙箱无网络出口，无法 stat -f%z / shasum -a 256 取真实值。请替换后再视为完整校验。",
+        "sha256": "",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-large-v3.zip",
+        "_note_url": "用户于 2026-10-09 上传至该 HF 仓库，地址由用户提供。",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-large-v3.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-large-v3.zip"
+        ],
+        "files": {
+          "encoder": "large-encoder.int8.onnx",
+          "decoder": "large-decoder.int8.onnx",
+          "tokens": "large-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Large v3 (Multilingual)",
+          "zh": "Whisper Large v3（多语种）",
+          "de": "Whisper Large v3 (mehrsprachig)",
+          "es": "Whisper Large v3 (multilingüe)",
+          "fr": "Whisper Large v3 (multilingue)",
+          "ja": "Whisper Large v3（多言語）",
+          "ko": "Whisper Large v3 (다국어)"
+        },
+        "descriptions": {
+          "en": "Top accuracy, all 7 languages. Very large download and slow on phone — use for the hardest audio.",
+          "zh": "精度最高、覆盖全部 7 种语言。体积非常大、手机上很慢，仅用于最难识别的音频。",
+          "de": "Höchste Genauigkeit, alle 7 Sprachen. Sehr groß und langsam — nur für schwerstes Audio.",
+          "es": "Máxima precisión, los 7 idiomas. Descarga muy grande y lento en móvil — solo para audio difícil.",
+          "fr": "Précision maximale, les 7 langues. Très lourd et lent — réservé à l'audio le plus difficile.",
+          "ja": "最高精度・7 言語対応。非常に大きく遅い。最も難しい音声に限定。",
+          "ko": "최고 정확도, 7개 언어. 매우 크고 느림 — 가장 어려운 오디오에만 사용."
+        },
+        "tags": [
+          "多语种",
+          "最高精度"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "whisper-base",
+        "kind": "whisper",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "ja",
+          "ko"
+        ],
+        "size": 0,
+        "sha256": "",
+        "url": "",
+        "_todo": "示例条目：size / sha256 / url 都是占位，**必须先上传 zip 并把这三个值换成真实值再改 enabled=true**。url 为空串时 App 侧应显示「暂不可用」而不是让人点了半天才失败。",
+        "url_by_region": {},
+        "fallback_urls": [],
+        "files": {
+          "encoder": "base-encoder.int8.onnx",
+          "decoder": "base-decoder.int8.onnx",
+          "tokens": "base-tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "names": {
+          "en": "Whisper Base (Multilingual)",
+          "zh": "Whisper Base（多语种）"
+        },
+        "descriptions": {
+          "en": "Larger and more accurate than tiny, at the cost of download size and speed.",
+          "zh": "比 tiny 更大更准，代价是下载体积与识别速度。"
+        },
+        "tags": [
+          "多语种",
+          "高精度"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "llm": {
+    "_comment": "🔴 LLM 服务不进远程配置：地址 / 密钥 / 模型都是用户私有数据，只在 App 内由用户自己填、只存本地 SQLite。远程**不得下发**任何 api_key 与 base_url（解析层会忽略 services 键）。这里只能放参数初值。",
+    "defaults": {
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "top_k": 40,
+      "deep_thinking": false
+    }
+  }
+}
