@@ -4,7 +4,7 @@
   "remote_config": {
     "enabled": true,
     "url": "https://songshangkun.github.io/smart_video/smart_video_config.json",
-    "interval_hours": 24
+    "interval_minutes": 60
   },
   "asr": {
     "default_mode": "local",
