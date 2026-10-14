@@ -4,7 +4,7 @@ title: Política de privacidad
 
 # Política de privacidad
 
-**Última actualización:** 2026-10-09 · **Vigencia:** 2026-10-09
+**Última actualización:** 2026-10-13 · **Vigencia:** 2026-10-13
 
 ## 1\. Quiénes somos
 
@@ -45,6 +45,7 @@ No conservamos ninguna copia en servidor de lo anterior y no podemos restaurárs
   * **Biblioteca de fotos (opcional).** Cuando importa contenido multimedia, la App lee los vídeos / audios que selecciona de su Biblioteca de fotos. Cuando exporta material de estudio, la App escribe en su Biblioteca de fotos. Nunca exploramos su biblioteca en segundo plano. Puede denegar el permiso; el resto de la App sigue funcionando.
   * **Archivos / Documentos (opcional).** Cuando importa contenido multimedia o documentos locales, la App lee los archivos que elige en la app Archivos / En mi iPhone. Nada se carga en un servidor que nosotros operamos.
   * **Sin micrófono, sin cámara, sin ubicación.** Smart Video no solicita ni utiliza el micrófono, la cámara ni los servicios de ubicación. El reconocimiento de voz se ejecuta sobre audio _ya presente en su archivo multimedia importado_ mediante modelos en el dispositivo; nunca graba desde el micrófono.
+  * **Diagnóstico opcional (desactivado por defecto).** La App ofrece un interruptor opcional "Compartir diagnóstico" en Ajustes. Permanece desactivado hasta que lo encienda. Cuando está activado, la App puede preparar un breve informe de diagnóstico no personal y ayudarle a enviarlo por correo al desarrollador — véase el punto 5 de la sección 3.3.
 
 
 
@@ -56,6 +57,7 @@ Solo en estos casos:
   2. **Reconocimiento de voz (en el dispositivo).** La transcripción se ejecuta localmente con modelos sherpa que usted descarga en la Biblioteca de modelos. El audio y el texto **no** se envían a ningún lugar.
   3. **Verificación de compras.** Las compras dentro de la app las verifica la tienda de aplicaciones en su dispositivo (actualmente la Apple App Store). Solo recibimos una confirmación de compra, nunca los datos de su tarjeta de pago.
   4. **Configuración remota y descargas de modelos.** La App obtiene archivos de configuración y modelos ASR (sherpa) en el dispositivo desde las GitHub Pages / GitHub del desarrollador. Estas solicitudes no transportan su contenido multimedia ni de estudio.
+  5. **Diagnóstico opcional (solo si lo activa).** Si activa "Compartir diagnóstico" en Ajustes, la App puede recopilar a lo sumo cada 7 días una instantánea mínima y no personal — versión de la app, versión del sistema operativo, idioma del dispositivo, un identificador anónimo aleatorio, el tipo de evento y una marca de tiempo — y abrir un borrador de correo prellenado en su app de correo dirigido al buzón del desarrollador. **Nada se transmite automáticamente: el correo se envía solo cuando usted pulsa explícitamente enviar.** Nunca recopilamos su dirección de correo, dirección IP, ubicación GPS, identificador publicitario, número de serie del dispositivo o información de cuenta, y no operamos ningún servidor que reciba estos datos.
 
 
 

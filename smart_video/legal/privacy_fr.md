@@ -4,7 +4,7 @@ title: Politique de confidentialité
 
 # Politique de confidentialité
 
-**Dernière mise à jour :** 2026-10-09 · **Entrée en vigueur :** 2026-10-09
+**Dernière mise à jour :** 2026-10-13 · **Entrée en vigueur :** 2026-10-13
 
 ## 1\. Qui nous sommes
 
@@ -45,6 +45,7 @@ Nous ne détenons aucune copie côté serveur des éléments ci-dessus et ne pou
   * **Photothèque (facultatif).** Lorsque vous importez des médias, l'Application lit les vidéos / l'audio que vous sélectionnez dans votre photothèque. Lorsque vous exportez du matériel d'étude, l'Application écrit dans votre photothèque. Nous ne parcourons jamais votre photothèque en arrière-plan. Vous pouvez refuser l'autorisation ; le reste de l'Application continue de fonctionner.
   * **Fichiers / Documents (facultatif).** Lorsque vous importez des médias ou des documents locaux, l'Application lit les fichiers que vous choisissez dans l'application Fichiers / Sur mon iPhone. Rien n'est téléversé vers un serveur que nous exploitons.
   * **Aucun microphone, aucun appareil photo, aucune localisation.** Smart Video ne demande ni n'utilise le microphone, l'appareil photo ou les services de localisation. La reconnaissance vocale s'exécute sur l'audio _déjà présent dans votre fichier multimédia importé_ à l'aide de modèles sur l'appareil — elle n'enregistre jamais depuis le microphone.
+  * **Diagnostic optionnel (désactivé par défaut).** L'Application propose un commutateur optionnel « Partager les diagnostics » dans les Réglages. Il reste désactivé jusqu'à ce que vous l'activiez. Lorsqu'il est activé, l'Application peut préparer un court rapport de diagnostic non personnel et vous aider à l'envoyer par e-mail au développeur — voir le point 5 de la section 3.3.
 
 
 
@@ -56,6 +57,7 @@ Uniquement dans les cas suivants :
   2. **Reconnaissance vocale (sur l'appareil).** La transcription s'exécute localement avec les modèles sherpa que vous téléchargez dans la Bibliothèque de modèles. L'audio et le texte **ne sont pas** envoyés nulle part.
   3. **Vérification d'achat.** Les achats intégrés sont vérifiés par la boutique d'applications sur votre appareil (actuellement l'Apple App Store). Nous recevons uniquement une confirmation d'achat, jamais les coordonnées de votre carte de paiement.
   4. **Configuration à distance et téléchargements de modèles.** L'Application récupère des fichiers de configuration et les modèles ASR (sherpa) sur l'appareil depuis les GitHub Pages / GitHub du développeur. Ces requêtes ne transportent ni vos médias ni votre contenu d'étude.
+  5. **Diagnostic optionnel (uniquement si vous l'activez).** Si vous activez « Partager les diagnostics » dans les Réglages, l'Application peut collecter au plus tous les 7 jours un instantané minimal et non personnel — version de l'application, version du système d'exploitation, langue de l'appareil, un identifiant anonyme aléatoire, le type d'événement et un horodatage — et ouvrir un brouillon d'e-mail prérempli dans votre application de messagerie adressé à la boîte du développeur. **Rien n'est transmis automatiquement : l'e-mail n'est envoyé que lorsque vous appuyez explicitement sur envoyer.** Nous ne collectons jamais votre adresse e-mail, adresse IP, localisation GPS, identifiant publicitaire, numéro de série de l'appareil ou informations de compte, et nous n'exploitons aucun serveur recevant ces données.
 
 
 

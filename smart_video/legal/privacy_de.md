@@ -4,7 +4,7 @@ title: Datenschutzrichtlinie
 
 # Datenschutzrichtlinie
 
-**Zuletzt aktualisiert:** 2026-10-09 · **In Kraft:** 2026-10-09
+**Zuletzt aktualisiert:** 2026-10-13 · **In Kraft:** 2026-10-13
 
 ## 1\. Wer wir sind
 
@@ -45,6 +45,7 @@ Wir halten keine serverseitige Kopie der obigen Daten und können sie für Sie n
   * **Fotobibliothek (freiwillig).** Beim Import von Medien liest die App die von Ihnen ausgewählten Videos / Audiodateien aus Ihrer Fotobibliothek. Beim Export von Lernmaterial schreibt die App in Ihre Fotobibliothek. Wir durchsuchen Ihre Bibliothek niemals im Hintergrund. Sie können die Berechtigung verweigern; der Rest der App funktioniert weiterhin.
   * **Dateien / Dokumente (freiwillig).** Beim Import lokaler Medien oder Dokumente liest die App die von Ihnen in der Dateien-App / „Auf meinem iPhone" ausgewählten Dateien. Es wird nichts auf einen von uns betriebenen Server hochgeladen.
   * **Kein Mikrofon, keine Kamera, kein Standort.** Smart Video fordert das Mikrofon, die Kamera oder Standortdienste nicht an und nutzt sie nicht. Die Spracherkennung erfolgt auf Audio, _das sich bereits in Ihrer importierten Mediendatei befindet_ , mithilfe von Modellen auf dem Gerät — sie nimmt niemals über das Mikrofon auf.
+  * **Optionale Diagnose (standardmäßig aus).** Die App bietet in den Einstellungen einen optionalen Schalter „Diagnose teilen". Er bleibt deaktiviert, bis Sie ihn einschalten. Wenn aktiviert, kann die App einen kurzen, nicht-personalisierten Diagnosebericht erstellen und Ihnen beim E-Mail-Versand an den Entwickler helfen — siehe Punkt 5 in Abschnitt 3.3.
 
 
 
@@ -56,6 +57,7 @@ Nur in diesen Fällen:
   2. **Spracherkennung (auf dem Gerät).** Die Transkription erfolgt lokal mit sherpa-Modellen, die Sie in der Modellbibliothek herunterladen. Audio und Text werden **nicht** irgendwohin gesendet.
   3. **Kaufbestätigung.** In-App-Käufe werden vom App Store auf Ihrem Gerät verifiziert (derzeit der Apple App Store). Wir erhalten nur eine Kaufbestätigung, niemals die Daten Ihrer Zahlungskarte.
   4. **Remote-Konfiguration und Modell-Downloads.** Die App ruft Konfigurationsdateien und auf dem Gerät laufende ASR-Modelle (sherpa) von den GitHub Pages / GitHub des Entwicklers ab. Diese Anfragen enthalten weder Ihre Medien noch Ihre Lerninhalte.
+  5. **Optionale Diagnose (nur mit Ihrer Zustimmung).** Wenn Sie „Diagnose teilen" in den Einstellungen aktivieren, erfasst die App höchstens alle 7 Tage eine minimale, nicht-personenbezogene Momentaufnahme — App-Version, Betriebssystemversion, Gerätesprache, eine zufällige anonyme Kennung, Ereignistyp und Zeitstempel — und öffnet einen vorbefüllten E-Mail-Entwurf in Ihrer E-Mail-App, adressiert an das Entwickler-Postfach. **Es wird nichts automatisch übertragen: Die E-Mail wird erst gesendet, wenn Sie ausdrücklich auf Senden tippen.** Wir erfassen niemals Ihre E-Mail-Adresse, IP-Adresse, GPS-Position, Werbe-ID, Geräteseriennummer oder Kontoinformationen und betreiben keinen Server, der diese Daten empfängt.
 
 
 

@@ -4,7 +4,7 @@ title: Privacy Policy
 
 # Privacy Policy
 
-**Last updated:** 2026-10-09 · **Effective:** 2026-10-09
+**Last updated:** 2026-10-13 · **Effective:** 2026-10-13
 
 ## 1\. Who we are
 
@@ -45,6 +45,7 @@ We hold no server-side copy of the above and cannot restore it for you. Please k
   * **Photo Library (optional).** When you import media, the App reads videos / audio you select from your Photo Library. When you export study material, the App writes to your Photo Library. We never scan your library in the background. You may decline the permission; the rest of the App keeps working.
   * **Files / Documents (optional).** When you import local media or documents, the App reads the files you pick from the Files app / On My iPhone. Nothing is uploaded to a server we operate.
   * **No microphone, no camera, no location.** Smart Video does not request or use the microphone, camera or location services. Speech recognition runs on audio _already in your imported media file_ using on-device models — it never records from the microphone.
+  * **Optional diagnostics (off by default).** The App offers an optional "Share diagnostics" toggle in Settings. It stays off until you turn it on. When enabled, the App may prepare a short, non-personal diagnostic report and help you email it to the developer — see item 5 in section 3.3.
 
 
 
@@ -56,6 +57,7 @@ Only in these cases:
   2. **Speech recognition (on-device).** Transcription runs locally with sherpa models you download in Model Library. Audio and text are **not** sent anywhere.
   3. **Purchase verification.** In-app purchases are verified by the app store on your device (currently the Apple App Store). We receive only a purchase confirmation, never your payment card details.
   4. **Remote configuration and model downloads.** The App fetches configuration files and on-device ASR (sherpa) models from the developer's GitHub Pages / GitHub. These requests do not carry your media or study content.
+  5. **Optional diagnostics (only if you opt in).** If you enable "Share diagnostics" in Settings, at most once every 7 days the App may collect a minimal, non-personal snapshot — app version, operating-system version, device language, a random anonymous identifier, the event type and a timestamp — and open a pre-filled email draft in your mail app addressed to the developer's mailbox. **Nothing is transmitted automatically: the email is sent only when you explicitly tap send.** We never collect your email address, IP address, GPS location, advertising ID, device serial or account information, and we operate no server that receives this data.
 
 
 
