@@ -398,6 +398,60 @@
           "高精度"
         ],
         "enabled": false
+      },
+      {
+        "id": "sense-voice-5lang",
+        "kind": "sense_voice",
+        "_note_kind": "🔴 **单文件家族**（model.int8.onnx + tokens.txt，无 encoder/decoder）——与 whisper 是两套文件形状。asr_model_roles.dart 的 complete 判定已支持两套形状取或；sherpa_asr_engine.dart 按本 kind 选 SherpaOfflineFamily.senseVoice 并打开 ITN。langs 只列 App 7 语域内的 zh/en/ja/ko（模型另支持粤语 yue，但 yue 不是 App 界面语言，按 _note_langs 口径不列）。",
+        "langs": [
+          "zh",
+          "en",
+          "ja",
+          "ko"
+        ],
+        "size": 160815473,
+        "required_ram_mb": 1536,
+        "_note_required_ram_mb": "建议起步值（int8 主体 228MB，介于 tiny 的 1024 与 small 的 2048 之间），**待真机实测后定稿**，不拍死。",
+        "sha256": "d4b4059cdb81e9adb5d916508325af2bf2f4e413f14ea936d9111c82b246eebc",
+        "_note_sha256": "2026-10-14 实测：经 hf-mirror 流式下载完整文件（字节数 160815473 与 HF X-Linked-Size 双验一致）后计算。mirror 与 HF 官方域是同一份 LFS 对象，sha256 相同，故两条地址可共用本值。",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sense/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.zip",
+        "_note_url": "用户于 2026-10-14 上传至该 HF 仓库（路径 sense/），地址由用户提供。",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sense/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sense/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.zip"
+        ],
+        "files": {
+          "model": "model.int8.onnx",
+          "tokens": "tokens.txt",
+          "vad": "silero_vad.onnx"
+        },
+        "_note_files": "zip 由用户 2026-10-14 打包上传，仅 4 个文件：model.int8.onnx + tokens.txt + silero_vad.onnx + LICENSE（894MB 的 fp32 model.onnx **未打入**，插件角色解析也优先 int8）。🔴 silero_vad.onnx 必须同包：缺它 → planKey 从 vad3|… 退化成 fix3|sec25 固定切片 → 该媒体已落的续传检查点全部作废。",
+        "names": {
+          "en": "SenseVoice (5 languages)",
+          "zh": "SenseVoice（五语种）",
+          "de": "SenseVoice (5 Sprachen)",
+          "es": "SenseVoice (5 idiomas)",
+          "fr": "SenseVoice (5 langues)",
+          "ja": "SenseVoice（5言語）",
+          "ko": "SenseVoice(5개 언어)"
+        },
+        "descriptions": {
+          "en": "Fast multilingual model (zh/en/ja/ko/yue) with built-in inverse text normalization. Much faster than Whisper on phone; no word-level timestamps (segment boundaries come from VAD, which matches this app's design).",
+          "zh": "五语种（中/英/日/韩/粤）高速模型，自带数字日期规范化（「二零二四年」→「2024 年」）。手机上比 Whisper 快得多；无词级时间戳（段边界由 VAD 决定，与本项目口径一致）。",
+          "de": "Schnelles mehrsprachiges Modell (zh/en/ja/ko/yue) mit integrierter Textnormalisierung. Deutlich schneller als Whisper; keine Wort-Zeitstempel.",
+          "es": "Modelo multilingüe rápido (zh/en/ja/ko/yue) con normalización de texto integrada. Mucho más rápido que Whisper; sin marcas de tiempo por palabra.",
+          "fr": "Modèle multilingue rapide (zh/en/ja/ko/yue) avec normalisation de texte intégrée. Bien plus rapide que Whisper ; pas d'horodatage par mot.",
+          "ja": "多言語（zh/en/ja/ko/yue）高速モデル、テキスト正規化（ITN）内蔵。Whisper より大幅に高速。語単位のタイムスタンプは非対応。",
+          "ko": "다국어(zh/en/ja/ko/yue) 고속 모델, 텍스트 정규화(ITN) 내장. Whisper보다 훨씬 빠름. 단어 단위 타임스탬프 미지원."
+        },
+        "tags": [
+          "多语种",
+          "int8",
+          "高速"
+        ],
+        "enabled": true
       }
     ]
   },
