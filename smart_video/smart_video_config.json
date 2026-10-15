@@ -455,6 +455,762 @@
       }
     ]
   },
+  "tts": {
+    "_comment": "端侧语音合成（TTS）模型注册表（与 asr.models 同构）。App 安装后不带任何 TTS 模型，用户在「模型」页按需下载；选中结果持久化。🔴 日/韩（ja/ko）目前**没有**模型：官方 Kokoro v1.1 仅 en+zh、Piper 无 ja/ko int8，必须等 Supertonic 3.0（插件已支持，但 zip 尚未上传 HF）补上后才可用。",
+    "default_model_id": "tts_piper_zh_chaowen_int8",
+    "_note_default_model_id": "首次启动默认选中的 TTS 模型 id。本 App 主力市场是中国大陆，故选最轻量、CC0 的中文 int8（超文，14MB）。用户切换后以持久化值为准。",
+    "models": [
+      {
+        "id": "tts_kitten_en",
+        "_note_id": "模型唯一 id，同时用作解压目录名（<应用文档目录>/sherpa_models/<id>/）。",
+        "family": "kitten",
+        "langs": [
+          "en"
+        ],
+        "size": 32692694,
+        "required_ram_mb": 0,
+        "_note_required_ram_mb": "0 = 由 FallbackTtsEngine 的 RTF 探针实测定档；kitten 专为 CPU 边缘设备设计，手机上预计可用。",
+        "sha256": "bb1e172ef6c2701c14e0560808213a6df5fca3279c9362fc20fcc567c8f2ea4d",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/kitten-nano-en-v0_8-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kitten-nano-en-v0_8-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kitten-nano-en-v0_8-int8.zip"
+        ],
+        "files": {
+          "model": "model.int8.onnx",
+          "tokens": "tokens.txt",
+          "voices": "voices.bin",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "model.int8.onnx",
+          "tokens.txt",
+          "voices.bin"
+        ],
+        "optional_files": [
+          "espeak-ng-data"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 24000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Kitten Nano (English)",
+          "zh": "Kitten Nano（英文）"
+        },
+        "descriptions": {
+          "en": "Compact CPU-friendly English TTS. Small and fast for on-device reading.",
+          "zh": "超轻量、专为 CPU 边缘设备设计的英文 TTS，体积小、速度快，适合端侧朗读。"
+        },
+        "tags": [
+          "int8",
+          "en",
+          "kitten"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_kokoro_multilingual",
+        "_note_id": "kokoro-int8-multi-lang-v1_1，覆盖 en+zh（美/英口音 + 中文）。🔴 不是 ja/ko。",
+        "family": "kokoro",
+        "langs": [
+          "en",
+          "zh"
+        ],
+        "size": 146582144,
+        "required_ram_mb": 0,
+        "sha256": "9597f1b1d911a30a2aab2a6e2e48c42f3cb9273ed751145a739a2e11e4ec23b9",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/kokoro-int8-multi-lang-v1_1.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kokoro-int8-multi-lang-v1_1.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kokoro-int8-multi-lang-v1_1.zip"
+        ],
+        "files": {
+          "model": "model.int8.onnx",
+          "voices": "voices.bin",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "model.int8.onnx",
+          "voices.bin",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "lexicon-us-en.txt",
+          "lexicon-gb-en.txt",
+          "lexicon-zh.txt",
+          "number-zh.fst",
+          "date-zh.fst",
+          "phone-zh.fst"
+        ],
+        "rule_fsts": [
+          "number-zh.fst",
+          "date-zh.fst",
+          "phone-zh.fst"
+        ],
+        "sample_rate": 24000,
+        "num_speakers": 1,
+        "default_language": "",
+        "_note_default_language": "空串 = 引擎默认（en-us）。UI 语言为中文时控制器应传 'zh' 切中文；为英文时传 'en-us'/'en-gb'。",
+        "names": {
+          "en": "Kokoro (English + Chinese)",
+          "zh": "Kokoro（英文 + 中文）"
+        },
+        "descriptions": {
+          "en": "Multilingual Kokoro covering English (US/UK accents) and Chinese. Switch language in settings.",
+          "zh": "多语 Kokoro 模型，覆盖英文（美/英口音）与中文；可在设置里切换语言。"
+        },
+        "tags": [
+          "int8",
+          "multilingual",
+          "kokoro"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_de_thorsten_int8",
+        "family": "vits",
+        "langs": [
+          "de"
+        ],
+        "size": 22637334,
+        "required_ram_mb": 0,
+        "sha256": "cfde0207ced1def24278e250de9700fa723344edacc7f40c051482a56dff9e7b",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-de_DE-thorsten-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-de_DE-thorsten-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-de_DE-thorsten-low-int8.zip"
+        ],
+        "files": {
+          "model": "de_DE-thorsten-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "de_DE-thorsten-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "de_DE-thorsten-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "_note_rule_fsts": "espeak 路由包（法/德/西/意/英）**没有 FST 文件**——数字会被静默丢弃，挂 FST 反而加载失败。",
+        "names": {
+          "en": "German (Thorsten)",
+          "zh": "德语（Thorsten）",
+          "de": "Deutsch (Thorsten)"
+        },
+        "descriptions": {
+          "en": "German Piper voice (Thorsten, CC0). Note: numbers are silently dropped (no FST in this package).",
+          "zh": "德语 Piper 声音（Thorsten，CC0）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "de",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_en_amy_int8",
+        "family": "vits",
+        "langs": [
+          "en"
+        ],
+        "size": 22480635,
+        "required_ram_mb": 0,
+        "sha256": "9f13d4a0e7a17bca66ec84d4a10119dc5f363667ff6e196c4d41a5bb4bdc595d",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-amy-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-amy-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-amy-low-int8.zip"
+        ],
+        "files": {
+          "model": "en_US-amy-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "en_US-amy-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "en_US-amy-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "English (Amy)",
+          "zh": "英语（Amy）"
+        },
+        "descriptions": {
+          "en": "English Piper voice (Amy, low). Note: numbers silently dropped (no FST).",
+          "zh": "英语 Piper 声音（Amy，low）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "en",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_es_sharvard_int8",
+        "family": "vits",
+        "langs": [
+          "es"
+        ],
+        "size": 24736859,
+        "required_ram_mb": 0,
+        "sha256": "bdeef80ef521c2cad9753eff83cad0d39c54433a6c7bb548a4ae50be42732583",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-sharvard-medium-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-sharvard-medium-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-sharvard-medium-int8.zip"
+        ],
+        "files": {
+          "model": "es_ES-sharvard-medium.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "es_ES-sharvard-medium.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "es_ES-sharvard-medium.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 22050,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Spanish (Sharvard)",
+          "zh": "西班牙语（Sharvard）",
+          "es": "Español (Sharvard)"
+        },
+        "descriptions": {
+          "en": "Spanish Piper voice (Sharvard, medium). Note: numbers silently dropped (no FST).",
+          "zh": "西班牙语 Piper 声音（Sharvard，medium）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "es",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_fr_gilles_int8",
+        "family": "vits",
+        "langs": [
+          "fr"
+        ],
+        "size": 22605390,
+        "required_ram_mb": 0,
+        "sha256": "4143afe3a765a8e1015942e0088c997dd3d3f9f6ede0a7d2ba5f2a8db4716e47",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low-int8.zip"
+        ],
+        "files": {
+          "model": "fr_FR-gilles-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "fr_FR-gilles-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "fr_FR-gilles-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "French (Gilles)",
+          "zh": "法语（Gilles）",
+          "fr": "Français (Gilles)"
+        },
+        "descriptions": {
+          "en": "French Piper voice (Gilles, low, CC0). Note: numbers silently dropped (no FST).",
+          "zh": "法语 Piper 声音（Gilles，low，CC0）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "fr",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_fr_gilles",
+        "_note_id": "fp32 全精度版；与 int8 同包文件名（fr_FR-gilles-low.onnx），仅 zip 字节数/sha256 不同，注册 id 区分。",
+        "family": "vits",
+        "langs": [
+          "fr"
+        ],
+        "size": 67268658,
+        "required_ram_mb": 0,
+        "sha256": "d557c4f515fc0513b464a337c0c4c9322ca6a441447e1d3c4b534eea1a166a66",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low.zip"
+        ],
+        "files": {
+          "model": "fr_FR-gilles-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "fr_FR-gilles-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "fr_FR-gilles-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "French (Gilles, fp32)",
+          "zh": "法语（Gilles，fp32）",
+          "fr": "Français (Gilles, fp32)"
+        },
+        "descriptions": {
+          "en": "French Piper voice (Gilles, full-precision). Larger but slightly higher quality; numbers silently dropped.",
+          "zh": "法语 Piper 声音（Gilles，fp32 全精度）。体积更大但音质略好；数字会被静默丢弃。"
+        },
+        "tags": [
+          "fp32",
+          "fr",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_it_riccardo_int8",
+        "family": "vits",
+        "langs": [
+          "it"
+        ],
+        "size": 14922171,
+        "required_ram_mb": 0,
+        "sha256": "0a68b4d6f21c77935af55348657170b5a3910881424e98995c3dd16c8bbe5752",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-it_IT-riccardo-x_low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-it_IT-riccardo-x_low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-it_IT-riccardo-x_low-int8.zip"
+        ],
+        "files": {
+          "model": "it_IT-riccardo-x_low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "it_IT-riccardo-x_low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "it_IT-riccardo-x_low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Italian (Riccardo)",
+          "zh": "意大利语（Riccardo）",
+          "it": "Italiano (Riccardo)"
+        },
+        "descriptions": {
+          "en": "Italian Piper voice (Riccardo, x_low). Note: numbers silently dropped (no FST).",
+          "zh": "意大利语 Piper 声音（Riccardo，x_low）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "it",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_zh_chaowen_int8",
+        "_note_id": "中文 Piper 超文（CC0）。本 App 默认 TTS 模型（最轻量）。",
+        "family": "vits",
+        "langs": [
+          "zh"
+        ],
+        "size": 13798957,
+        "required_ram_mb": 0,
+        "sha256": "b77b4291fa4b54e088decbd1479a6529c50e251fca0058acfb238cc9a258890c",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-chaowen-medium-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-chaowen-medium-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-chaowen-medium-int8.zip"
+        ],
+        "files": {
+          "model": "zh_CN-chaowen-medium.onnx",
+          "tokens": "tokens.txt",
+          "lexicon": "lexicon.txt"
+        },
+        "required_files": [
+          "zh_CN-chaowen-medium.onnx",
+          "tokens.txt",
+          "lexicon.txt"
+        ],
+        "optional_files": [
+          "number.fst",
+          "date.fst",
+          "phone.fst",
+          "zh_CN-chaowen-medium.onnx.json"
+        ],
+        "rule_fsts": [
+          "number.fst",
+          "date.fst",
+          "phone.fst"
+        ],
+        "sample_rate": 22050,
+        "num_speakers": 1,
+        "default_language": "",
+        "_note_rule_fsts": "中文 lexicon 路由包自带 number/date/phone.fst —— 金额日期能正确朗读，与 espeak 路由包（无 FST、数字静默丢弃）相反。",
+        "names": {
+          "en": "Chinese (Chaowen)",
+          "zh": "中文（超文）"
+        },
+        "descriptions": {
+          "en": "Chinese Piper voice (Chaowen, CC0). Includes number/date FST so digits are read correctly.",
+          "zh": "中文 Piper 声音（超文，CC0 许可）。自带数字/日期 FST，金额日期能正确朗读。"
+        },
+        "tags": [
+          "int8",
+          "zh",
+          "lexicon"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_zh_xiao_ya",
+        "_note_id": "中文 Piper 小雅 fp32（Non-commercial 许可，商用 App 慎选）；与超文同包文件名结构，体积更大。",
+        "family": "vits",
+        "langs": [
+          "zh"
+        ],
+        "size": 58972589,
+        "required_ram_mb": 0,
+        "sha256": "3bfd63b06947a565d3afd6053e66120841acb68f640eb09a062394164a0ce828",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-xiao_ya-medium.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-xiao_ya-medium.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-xiao_ya-medium.zip"
+        ],
+        "files": {
+          "model": "zh_CN-xiao_ya-medium.onnx",
+          "tokens": "tokens.txt",
+          "lexicon": "lexicon.txt"
+        },
+        "required_files": [
+          "zh_CN-xiao_ya-medium.onnx",
+          "tokens.txt",
+          "lexicon.txt"
+        ],
+        "optional_files": [
+          "number.fst",
+          "date.fst",
+          "phone.fst",
+          "zh_CN-xiao_ya-medium.onnx.json"
+        ],
+        "rule_fsts": [
+          "number.fst",
+          "date.fst",
+          "phone.fst"
+        ],
+        "sample_rate": 22050,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Chinese (Xiaoya, fp32)",
+          "zh": "中文（小雅，fp32）"
+        },
+        "descriptions": {
+          "en": "Chinese Piper voice (Xiaoya, full-precision, non-commercial). Includes FST so digits are read correctly.",
+          "zh": "中文 Piper 声音（小雅，fp32 全精度，Non-commercial 许可）。自带 FST，金额日期能正确朗读。"
+        },
+        "tags": [
+          "fp32",
+          "zh",
+          "lexicon"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_supertonic_3",
+        "_note_id": "Supertonic 3.0 多语 TTS（int8，118MB）。🔴 官方唯一覆盖日/韩的端侧 TTS：Piper 无 ja/ko int8、Kokoro v1.1 仅 en+zh。31 语种，此处 langs 按本 App 用到的 8 种登记。",
+        "family": "supertonic",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ja",
+          "ko"
+        ],
+        "size": 123845916,
+        "required_ram_mb": 0,
+        "_note_required_ram_mb": "0 = 由 RTF 探针实测定档；supertonic 为非自回归向量估计路线，端侧速度需真机验证。",
+        "sha256": "6fc3667e1fa9b2c074f7b8fa029a5e3b8f6a146a31ffd92e637dd79627f3dece",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.zip"
+        ],
+        "files": {},
+        "required_files": [
+          "duration_predictor.int8.onnx",
+          "text_encoder.int8.onnx",
+          "vector_estimator.int8.onnx",
+          "vocoder.int8.onnx",
+          "tts.json",
+          "unicode_indexer.bin",
+          "voice.bin"
+        ],
+        "optional_files": [
+          "README.md"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 24000,
+        "num_speakers": 10,
+        "default_language": "en",
+        "supertonic_files": {
+          "durationPredictor": "duration_predictor.int8.onnx",
+          "textEncoder": "text_encoder.int8.onnx",
+          "vectorEstimator": "vector_estimator.int8.onnx",
+          "vocoder": "vocoder.int8.onnx",
+          "ttsJson": "tts.json",
+          "unicodeIndexer": "unicode_indexer.bin",
+          "voiceStyle": "voice.bin"
+        },
+        "_note_supertonic_files": "7 角色文件与官方包逐字对齐（已核对 zip 内容）。supertonic 无单一 model.onnx，files 留空走 supertonic_files 映射。语言在生成期经 extra['language'] 透传（ja/ko 等），真机待验证该 key。",
+        "names": {
+          "en": "Supertonic 3.0 (Multilingual)",
+          "zh": "Supertonic 3.0（多语种，含日/韩）"
+        },
+        "descriptions": {
+          "en": "Multilingual TTS covering 31 languages incl. Japanese/Korean. The only on-device ja/ko option.",
+          "zh": "多语种 TTS，31 语种（含日语/韩语）。端侧日韩朗读的唯一选择。"
+        },
+        "tags": [
+          "int8",
+          "multilingual",
+          "supertonic",
+          "ja",
+          "ko"
+        ],
+        "enabled": true,
+        "_note_num_speakers": "supertonic 3 官方支持 sid 0-9 共 10 个说话人（voice.bin 角色向量）。",
+        "_note_default_language": "supertonic 生成期必须经 extra[\"lang\"] 指定 ISO 639-1 码；留空则默认英语。"
+      },
+      {
+        "id": "tts_piper_en_ryan_int8",
+        "_note_id": "英语 Piper Ryan（美音，espeak 路由）int8。与 amy 同为英语备选，给用户音色选择。",
+        "family": "vits",
+        "langs": [
+          "en"
+        ],
+        "size": 22589995,
+        "required_ram_mb": 0,
+        "sha256": "3be83af59340b63b6a660ffcaa1112b96d33697600a16d660f7d31d2c0d3ab2f",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-ryan-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-ryan-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-ryan-low-int8.zip"
+        ],
+        "files": {
+          "model": "en_US-ryan-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "en_US-ryan-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "en_US-ryan-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "English (Ryan, US)",
+          "zh": "英语（Ryan，美音）"
+        },
+        "descriptions": {
+          "en": "American English Piper voice (Ryan). espeak-routed, 16kHz.",
+          "zh": "美式英语 Piper 音色（Ryan）。espeak 路由，16kHz。"
+        },
+        "tags": [
+          "int8",
+          "en",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_es_carlfm_int8",
+        "_note_id": "西班牙语 Piper carlfm（espeak 路由）int8。与 sharvard 同为西语备选。",
+        "family": "vits",
+        "langs": [
+          "es"
+        ],
+        "size": 14929261,
+        "required_ram_mb": 0,
+        "sha256": "5569610f57319de783d0898bdd3d2d7c00da359725e45088b05ff5d6274943c3",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-carlfm-x_low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-carlfm-x_low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-carlfm-x_low-int8.zip"
+        ],
+        "files": {
+          "model": "es_ES-carlfm-x_low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "es_ES-carlfm-x_low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "es_ES-carlfm-x_low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Spanish (Carlfm)",
+          "zh": "西班牙语（Carlfm）"
+        },
+        "descriptions": {
+          "en": "Spanish Piper voice (Carlfm). espeak-routed, 16kHz.",
+          "zh": "西班牙语 Piper 音色（Carlfm）。espeak 路由，16kHz。"
+        },
+        "tags": [
+          "int8",
+          "es",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_fr_siwis_int8",
+        "_note_id": "法语 Piper Siwis（espeak 路由）int8。与 gilles 同为法语备选（gilles 另有 fp32 变体）。",
+        "family": "vits",
+        "langs": [
+          "fr"
+        ],
+        "size": 14908360,
+        "required_ram_mb": 0,
+        "sha256": "1312b8835e81c9496b4999f60afdd5d5ef7dd5e1cbd898a861c3c1ad807e1a47",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-siwis-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-siwis-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-siwis-low-int8.zip"
+        ],
+        "files": {
+          "model": "fr_FR-siwis-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "fr_FR-siwis-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "fr_FR-siwis-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "French (Siwis)",
+          "zh": "法语（Siwis）"
+        },
+        "descriptions": {
+          "en": "French Piper voice (Siwis). espeak-routed, 16kHz.",
+          "zh": "法语 Piper 音色（Siwis）。espeak 路由，16kHz。"
+        },
+        "tags": [
+          "int8",
+          "fr",
+          "espeak"
+        ],
+        "enabled": true
+      }
+    ],
+    "lang_model_id": {
+      "zh": "tts_piper_zh_chaowen_int8",
+      "en": "tts_piper_en_amy_int8",
+      "de": "tts_piper_de_thorsten_int8",
+      "es": "tts_piper_es_sharvard_int8",
+      "fr": "tts_piper_fr_gilles_int8",
+      "it": "tts_piper_it_riccardo_int8",
+      "ja": "tts_supertonic_3",
+      "ko": "tts_supertonic_3"
+    }
+  },
   "llm": {
     "_comment": "🔴 LLM 服务不进远程配置：地址 / 密钥 / 模型都是用户私有数据，只在 App 内由用户自己填、只存本地 SQLite。远程**不得下发**任何 api_key 与 base_url（解析层会忽略 services 键）。这里只能放参数初值。",
     "defaults": {
