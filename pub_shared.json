@@ -1,7 +1,7 @@
 {
   "promo_catalog": {
     "schemaVersion": 2,
-    "updatedAt": "2026-10-15",
+    "updatedAt": "2026-10-23",
     "blocks": [
       {
         "type": "hero_banner",
@@ -9,26 +9,53 @@
         "visible": true,
         "app": {
           "id": "notepay",
-          "icon": "icons/notepay.png",
-          "appStoreId": "6448310001",
-          "appStoreUrl": "https://apps.apple.com/app/id6448310001",
-          "urlScheme": "notepay://",
+          "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ff/3b/23/ff3b2389-9f37-dc51-9f2e-b4ccdbe374e7/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+          "appStoreId": "6811820402",
+          "appStoreUrl": "https://apps.apple.com/us/app/notepay-ai-expense-tracker/id6811820402",
           "name": {
-            "zh": "小鱼记账",
-            "en": "NotePay"
+            "zh": "NotePay：AI 记账",
+            "en": "NotePay: AI Expense Tracker",
+            "de": "NotePay: KI-Haushaltsbuch",
+            "fr": "NotePay: Dépenses & Budget IA",
+            "es": "NotePay: Gastos con IA",
+            "ja": "NotePay: AI Expense Tracker",
+            "ko": "NotePay: AI Expense Tracker"
           },
           "tagline": {
-            "zh": "说一句话就记好的账",
-            "en": "Voice-first bookkeeping"
+            "zh": "语音、拍照、端侧 AI 记账",
+            "en": "Voice, Photo & On-Device AI",
+            "de": "KI-Buchhaltung, lokal & privat",
+            "fr": "Voix, Photo & Comptabilité IA",
+            "es": "Voz, foto y presupuesto fácil",
+            "ja": "音声・写真・オンデバイスAI",
+            "ko": "음성·사진·온디바이스 AI"
           },
           "category": {
-            "zh": "财务",
-            "en": "Finance"
+            "zh": "工具",
+            "en": "Utilities",
+            "de": "Dienstprogramme",
+            "fr": "Utilitaires",
+            "es": "Utilidades",
+            "ja": "ユーティリティ",
+            "ko": "유틸리티"
           },
           "detail": {
-            "zh": "本地 AI 帮你记账，语音记账零门槛，隐私不出设备。",
-            "en": "Local-AI bookkeeping with voice input, privacy kept on-device."
+            "zh": "本地优先的记账应用：AI 助手用文字、语音或一张小票照片完成记账、改账与分析；支持端侧模型，一次买断、无订阅、无广告。",
+            "en": "Local-first expense tracker with an AI agent that records, edits and analyzes your ledger by text, voice or a receipt photo. On-device AI, one-time purchase, no subscription.",
+            "de": "Lokaler Ausgabentracker mit KI-Agent: per Text, Sprache oder Belegfoto erfassen, verwalten und auswerten. KI auf dem Gerät, Einmalkauf statt Abo.",
+            "fr": "Suivi de dépenses local avec un agent IA : saisie par texte, voix ou photo de reçu, gestion et analyse du budget. IA sur l'appareil, achat unique, sans abonnement.",
+            "es": "Registro de gastos local con un agente de IA: apunta por texto, voz o foto del recibo y analiza tu presupuesto. IA en el dispositivo, pago único, sin suscripción.",
+            "ja": "ローカル優先の家計簿。テキスト・音声・レシート写真からAIエージェントが記帳・修正・分析します。オンデバイスAI対応、買い切りでサブスクなし。",
+            "ko": "로컬 우선 가계부 앱. 텍스트·음성·영수증 사진으로 AI 에이전트가 기록·수정·분석합니다. 온디바이스 AI 지원, 1회 구매, 구독 없음."
           },
+          "screenshots": [
+            "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/96/6d/1e/966d1e0f-038b-5881-9211-60b742c49c91/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.21.08.png/750x1624bb.jpg",
+            "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/99/c9/8e/99c98e1b-1eaf-9515-23da-671be5e00d06/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.25.05.png/750x1624bb.jpg",
+            "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/9d/f8/ee9df8d4-33a8-6741-761d-7aa152ddea46/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.23.04.png/750x1624bb.jpg",
+            "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/68/a4/d2/68a4d2f4-d023-ed75-cf7f-fec470d7b869/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.20.41.png/750x1624bb.jpg",
+            "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e2/bf/47/e2bf47d5-6b36-385a-a7fe-d393bd139102/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.24.14.png/750x1624bb.jpg",
+            "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d9/53/58/d953587d-eaa4-dc9d-0a12-837a88003921/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.23.38.png/750x1624bb.jpg"
+          ],
           "pinned": false
         }
       },
@@ -37,147 +64,63 @@
         "id": "list-all",
         "title": {
           "zh": "全部应用",
-          "en": "All Apps"
+          "en": "All Apps",
+          "de": "Alle Apps",
+          "fr": "Toutes les apps",
+          "es": "Todas las apps",
+          "ja": "すべてのアプリ",
+          "ko": "모든 앱"
         },
         "apps": [
           {
-            "id": "smartvideo",
-            "icon": "icons/smartvideo.png",
-            "appStoreId": "6448310002",
-            "appStoreUrl": "https://apps.apple.com/app/id6448310002",
-            "urlScheme": "smartvideo://",
+            "id": "notepay",
+            "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ff/3b/23/ff3b2389-9f37-dc51-9f2e-b4ccdbe374e7/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+            "appStoreId": "6811820402",
+            "appStoreUrl": "https://apps.apple.com/us/app/notepay-ai-expense-tracker/id6811820402",
             "name": {
-              "zh": "智能视频",
-              "en": "SmartVideo"
+              "zh": "NotePay：AI 记账",
+              "en": "NotePay: AI Expense Tracker",
+              "de": "NotePay: KI-Haushaltsbuch",
+              "fr": "NotePay: Dépenses & Budget IA",
+              "es": "NotePay: Gastos con IA",
+              "ja": "NotePay: AI Expense Tracker",
+              "ko": "NotePay: AI Expense Tracker"
             },
             "tagline": {
-              "zh": "看视频，学语言",
-              "en": "Watch videos, learn languages"
+              "zh": "语音、拍照、端侧 AI 记账",
+              "en": "Voice, Photo & On-Device AI",
+              "de": "KI-Buchhaltung, lokal & privat",
+              "fr": "Voix, Photo & Comptabilité IA",
+              "es": "Voz, foto y presupuesto fácil",
+              "ja": "音声・写真・オンデバイスAI",
+              "ko": "음성·사진·온디바이스 AI"
             },
             "category": {
-              "zh": "教育",
-              "en": "Education"
+              "zh": "工具",
+              "en": "Utilities",
+              "de": "Dienstprogramme",
+              "fr": "Utilitaires",
+              "es": "Utilidades",
+              "ja": "ユーティリティ",
+              "ko": "유틸리티"
             },
             "detail": {
-              "zh": "自动字幕、单词查询、知识库与 LLM 交互于一体。",
-              "en": "Auto subtitles, word lookup, knowledge base and LLM chat in one player."
+              "zh": "本地优先的记账应用：AI 助手用文字、语音或一张小票照片完成记账、改账与分析；支持端侧模型，一次买断、无订阅、无广告。",
+              "en": "Local-first expense tracker with an AI agent that records, edits and analyzes your ledger by text, voice or a receipt photo. On-device AI, one-time purchase, no subscription.",
+              "de": "Lokaler Ausgabentracker mit KI-Agent: per Text, Sprache oder Belegfoto erfassen, verwalten und auswerten. KI auf dem Gerät, Einmalkauf statt Abo.",
+              "fr": "Suivi de dépenses local avec un agent IA : saisie par texte, voix ou photo de reçu, gestion et analyse du budget. IA sur l'appareil, achat unique, sans abonnement.",
+              "es": "Registro de gastos local con un agente de IA: apunta por texto, voz o foto del recibo y analiza tu presupuesto. IA en el dispositivo, pago único, sin suscripción.",
+              "ja": "ローカル優先の家計簿。テキスト・音声・レシート写真からAIエージェントが記帳・修正・分析します。オンデバイスAI対応、買い切りでサブスクなし。",
+              "ko": "로컬 우선 가계부 앱. 텍스트·음성·영수증 사진으로 AI 에이전트가 기록·수정·분석합니다. 온디바이스 AI 지원, 1회 구매, 구독 없음."
             },
-            "pinned": false
-          },
-          {
-            "id": "woai",
-            "icon": "icons/woai.png",
-            "appStoreId": "6448310003",
-            "appStoreUrl": "https://apps.apple.com/app/id6448310003",
-            "urlScheme": "woai://",
-            "name": {
-              "zh": "我爱学",
-              "en": "WoAi"
-            },
-            "tagline": {
-              "zh": "给孩子的安全学习空间",
-              "en": "A safe learning space for kids"
-            },
-            "category": {
-              "zh": "儿童",
-              "en": "Kids"
-            },
-            "detail": {
-              "zh": "家长门控的儿童学习应用，内容经过筛选。",
-              "en": "Parent-gated kids learning app with curated content."
-            },
-            "pinned": false
-          },
-          {
-            "id": "musicbp",
-            "icon": "icons/musicbp.png",
-            "appStoreId": "6448310004",
-            "appStoreUrl": "https://apps.apple.com/app/id6448310004",
-            "urlScheme": "musicbp://",
-            "name": {
-              "zh": "音乐节拍",
-              "en": "MusicBP"
-            },
-            "tagline": {
-              "zh": "练耳与节拍训练",
-              "en": "Ear training and metronome"
-            },
-            "category": {
-              "zh": "音乐",
-              "en": "Music"
-            },
-            "detail": {
-              "zh": "内置节拍器与练耳练习，陪你每日练琴。",
-              "en": "Built-in metronome and ear-training drills for daily practice."
-            },
-            "pinned": false
-          }
-        ]
-      },
-      {
-        "type": "featured",
-        "id": "featured-learn",
-        "title": {
-          "zh": "学习与创作",
-          "en": "Learn & Create"
-        },
-        "apps": [
-          {
-            "id": "woai",
-            "icon": "icons/woai.png",
-            "appStoreId": "6448310003",
-            "appStoreUrl": "https://apps.apple.com/app/id6448310003",
-            "urlScheme": "woai://",
-            "name": {
-              "zh": "我爱学",
-              "en": "WoAi"
-            },
-            "tagline": {
-              "zh": "给孩子的安全学习空间",
-              "en": "A safe learning space for kids"
-            },
-            "category": {
-              "zh": "儿童",
-              "en": "Kids"
-            },
-            "detail": {
-              "zh": "家长门控的儿童学习应用，内容经过筛选。",
-              "en": "Parent-gated kids learning app with curated content."
-            },
-            "pinned": false
-          }
-        ]
-      },
-      {
-        "type": "section",
-        "id": "sec-tools",
-        "title": {
-          "zh": "效率工具",
-          "en": "Productivity"
-        },
-        "apps": [
-          {
-            "id": "musicbp",
-            "icon": "icons/musicbp.png",
-            "appStoreId": "6448310004",
-            "appStoreUrl": "https://apps.apple.com/app/id6448310004",
-            "urlScheme": "musicbp://",
-            "name": {
-              "zh": "音乐节拍",
-              "en": "MusicBP"
-            },
-            "tagline": {
-              "zh": "练耳与节拍训练",
-              "en": "Ear training and metronome"
-            },
-            "category": {
-              "zh": "音乐",
-              "en": "Music"
-            },
-            "detail": {
-              "zh": "内置节拍器与练耳练习，陪你每日练琴。",
-              "en": "Built-in metronome and ear-training drills for daily practice."
-            },
+            "screenshots": [
+              "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/96/6d/1e/966d1e0f-038b-5881-9211-60b742c49c91/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.21.08.png/750x1624bb.jpg",
+              "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/99/c9/8e/99c98e1b-1eaf-9515-23da-671be5e00d06/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.25.05.png/750x1624bb.jpg",
+              "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/9d/f8/ee9df8d4-33a8-6741-761d-7aa152ddea46/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.23.04.png/750x1624bb.jpg",
+              "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/68/a4/d2/68a4d2f4-d023-ed75-cf7f-fec470d7b869/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.20.41.png/750x1624bb.jpg",
+              "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e2/bf/47/e2bf47d5-6b36-385a-a7fe-d393bd139102/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.24.14.png/750x1624bb.jpg",
+              "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d9/53/58/d953587d-eaa4-dc9d-0a12-837a88003921/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2026-09-14_at_12.23.38.png/750x1624bb.jpg"
+            ],
             "pinned": false
           }
         ]
