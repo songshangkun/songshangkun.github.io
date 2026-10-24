@@ -1,18 +1,25 @@
 {
-  "_comment": "smart_video 远程配置模板（推送到 GitHub Pages 仓库 /smart_video/smart_video_config.json 的那份）。与 App 内置 assets/config/app_config.json **同构**：远程写了的 key 覆盖内置，远程没写的 key 保留内置值（内置即兜底）。因此本文件可以只写「想改的那几段」，也可以写全——下面给的是写全的示例。",
+  "_comment": "smart_video 配置（内置兜底版，随包打进 assets/config/app_config.json）。与远程 config.json **同构**：启动后定期从 GitHub Pages 拉取远程版本，落盘到独立远程文件；读取时三层合并（打包 assets → 远程文件 → 本地开发覆盖），远程同 key 覆盖本地，远程未写的 key 原样保留（即本文件是兜底）。本文件只放「不发版即可调整」的字段：ASR 模型注册表 + LLM 服务预设。",
   "schema_version": 1,
+  "_note_schema_version": "配置结构版本。App 读到比自身支持更高的版本时**忽略整份远程配置**（而不是硬解析未知的段），保证老版本 App 不会被新配置搞崩。将来加新段（如 tts / ocr）时递增此值。",
   "remote_config": {
+    "_comment": "远程配置中心。enabled=false 时 App 完全读本文件（开发期默认）。url 指向 GitHub Pages 仓库 /smart_video/ 下的那份（推送后生效取决于 CDN 收敛，通常 ≤10 分钟；仓库根的 _headers 对 GitHub Pages 不生效，别按 1 分钟预期）。interval_minutes=60：App 启动固定拉一次（force，不受此限），之后每 60 分钟至多再拉一次；断网/出错一律保留本地落盘或本文件兜底。⚠️ 远程地址本身不能靠远程下发——它必须写在本文件里，这就是为什么这段只由内置兜底提供。",
     "enabled": true,
     "url": "https://songshangkun.github.io/smart_video/smart_video_config.json",
     "interval_minutes": 60
   },
   "asr": {
+    "_comment": "端侧语音识别（ASR）模型注册表。App 安装后**不带**任何模型（内置 asset 仅测试期保留），用户点转录时若当前模型未下载 → 提示去「模型」页下载；也可从模型页主动下载多个模型并指定当前使用哪一个，选择结果持久化，重启不变。",
     "default_mode": "local",
+    "_note_default_mode": "转录走哪条路：local=端侧 sherpa-onnx 模型（离线，本段 models 驱动）；remote=远程 ASR 服务（App 内 asr_configs 表，用户自填 OpenAI-Whisper 兼容接口）。本键只是**首次启动的默认值**，用户改过之后以持久化值为准。",
     "default_model_id": "whisper-tiny",
+    "_note_default_model_id": "首次启动默认选中的模型 id。用户手动切换后以持久化值为准；若持久化的 id 在新注册表里已下架，回退到本值。",
     "models": [
       {
         "id": "whisper-tiny",
+        "_note_id": "模型唯一 id，**同时用作解压目录名**（<应用文档目录>/sherpa_models/<id>/）。id 一旦发布就不要改，改了等于让用户重下一遍。",
         "kind": "whisper",
+        "_note_kind": "引擎类型：whisper（encoder+decoder+tokens）/ transducer（+joiner）/ paraformer / sense_voice。决定 SherpaAsrEngine 用哪个 OfflineModelConfig 组装，新增模型类型时只需加一个分支。",
         "langs": [
           "en",
           "zh",
@@ -22,22 +29,29 @@
           "ja",
           "ko"
         ],
+        "_note_langs": "该模型能识别的语言。取值域就是 App 支持的 7 种界面语言（en/zh/de/es/fr/ja/ko）—— App 目前只有这 7 语，不在此列的语种 UI 上不承诺可用。多语模型（如本条）一次下载覆盖全部；单语模型只写 1 个。",
         "size": 61257463,
         "required_ram_mb": 1024,
+        "_note_size": "zip 字节数（不是解压后大小）。UI 展示下载体积 + 下载完的大小校验。取法：stat -f%z xxx.zip",
         "sha256": "4a320ccc6db2a80c881ba5e222cedcda3003cc09e088ebdd902b481f86fb1a1a",
+        "_note_sha256": "zip 的 sha256（小写 hex）。取法：shasum -a 256 xxx.zip。🔴 强烈建议必填：托管在 GitHub Pages 时若仓库启用了 Git LFS，直链下载到的可能是 100 多字节的**指针文本**而非真模型，解压必然失败——sha256 是唯一能拦下它的手段。空串 = 跳过校验（不推荐）。",
         "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip",
+        "_note_url": "全球默认下载地址（Hugging Face 官方）。⚠️ 本条地址**尚未验证**（zip 还没上传到该仓库），上传后才会真正可用；上传前 App 里该模型应显示为「暂不可用」。",
         "url_by_region": {
           "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip"
         },
+        "_note_url_by_region": "按地区的地址覆盖（key = 地区名）。用途：**国内无法直连 Hugging Face**（官方域名返回 502/超时），故 cn 单独指向 hf-mirror（路径与官方完全一致，是同一份 LFS 对象，sha256 相同）。未命中的地区回退 url，因此只需给需要加速的地区配一条。",
         "fallback_urls": [
           "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.zip"
         ],
+        "_note_fallback_urls": "兜底镜像（有序地址链的后续项）。**拍板口径（2026-10-04）**：中国地区主用 hf-mirror、兜底回原地址；其他地区主用原地址、兜底回 hf-mirror。用本结构天然达成——链 = `url_by_region[地区]` → `url` → `fallback_urls`：cn 得到「mirror → 原地址」，其他地区得到「原地址 → mirror」。",
         "files": {
           "encoder": "tiny-encoder.int8.onnx",
           "decoder": "tiny-decoder.int8.onnx",
           "tokens": "tiny-tokens.txt",
           "vad": "silero_vad.onnx"
         },
+        "_note_files": "zip 解压后「哪个文件当哪个角色」的显式映射。**这是解决各模型文件名不一致的正解**：tiny 用 tiny-encoder.int8.onnx、tiny.en 用 tiny.en-encoder.int8.onnx，映射写清楚后引擎不需要猜。解析顺序：① 本段显式映射 → ② 按后缀模式猜（*-encoder*.onnx / *-decoder*.onnx / *-tokens.txt / silero_vad*.onnx）→ ③ 规范化名（encoder.int8.onnx 等）。三段兜底意味着：以后按「扁平 + 规范名」重新打包的 zip 也能直接吃，不用改代码。vad 可省略（部分包不带）。",
         "names": {
           "en": "Whisper Tiny (Multilingual)",
           "zh": "Whisper Tiny（多语种）",
@@ -48,19 +62,21 @@
           "ko": "Whisper Tiny (다국어)"
         },
         "descriptions": {
-          "en": "Small and fast multilingual model. Covers all 7 app languages in one download.",
-          "zh": "体积最小、速度最快的多语种模型，一次下载即可识别 App 全部 7 种语言。",
-          "de": "Kleinstes und schnellstes mehrsprachiges Modell. Deckt alle 7 App-Sprachen ab.",
-          "es": "Modelo multilingüe pequeño y rápido. Cubre los 7 idiomas de la app.",
-          "fr": "Modèle multilingue petit et rapide. Couvre les 7 langues de l'app.",
-          "ja": "最小・最速の多言語モデル。アプリの 7 言語すべてに対応します。",
-          "ko": "작고 빠른 다국어 모델입니다. 앱의 7개 언어를 모두 인식합니다."
+          "en": "Small and fast multilingual model. Covers all 7 app languages in one download. Good for everyday transcription on phone.",
+          "zh": "体积最小、速度最快的多语种模型，一次下载即可识别 App 全部 7 种语言，适合手机日常转录。",
+          "de": "Kleinstes und schnellstes mehrsprachiges Modell. Deckt alle 7 App-Sprachen mit einem Download ab.",
+          "es": "Modelo multilingüe pequeño y rápido. Cubre los 7 idiomas de la app con una sola descarga.",
+          "fr": "Modèle multilingue petit et rapide. Couvre les 7 langues de l'app en un seul téléchargement.",
+          "ja": "最小・最速の多言語モデル。1 回のダウンロードでアプリの 7 言語すべてに対応します。",
+          "ko": "작고 빠른 다국어 모델입니다. 한 번 내려받으면 앱의 7개 언어를 모두 인식합니다."
         },
+        "_note_descriptions": "下载/管理页的模型简介（按 App 当前语言取，缺 key 回退 en，再回退首个有值语言）。与 names 同理。",
         "tags": [
           "多语种",
           "int8"
         ],
-        "enabled": true
+        "enabled": true,
+        "_note_enabled": "远程可把单个模型改成 false 就地**下架**（例：镜像挂了 / 该模型有质量问题），用户侧不再展示，已下载的保留但不可选。默认 true。"
       },
       {
         "id": "whisper-tiny.en",
@@ -75,6 +91,7 @@
         "url_by_region": {
           "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.en.zip"
         },
+        "_note_url_by_region": "按地区的地址覆盖（key = 地区名）。**拍板口径（2026-10-04）**：国内（cn）无法直连 Hugging Face（官方域名返回 502/超时），故 cn 首选 hf-mirror（路径与官方完全一致，同一份 LFS 对象、sha256 相同），失败再回退 url；其他地区反过来：首选 url、失败回退 mirror。",
         "fallback_urls": [
           "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/whisper/sherpa-onnx-whisper-tiny.en.zip"
         ],
@@ -97,9 +114,9 @@
           "en": "English-only model. More accurate than the multilingual tiny when your media is pure English.",
           "zh": "纯英文专用模型。素材是纯英文时，比多语种 tiny 识别更准。",
           "de": "Nur Englisch. Bei rein englischem Material genauer als das mehrsprachige Tiny.",
-          "es": "Solo inglés. Más preciso que el tiny multilingüe para material en inglés puro.",
-          "fr": "Anglais uniquement. Plus précis que le tiny multilingue pour du contenu anglais.",
-          "ja": "英語専用モデル。純粋な英語の素材では多言語 tiny より高精度です。",
+          "es": "Solo inglés. Más preciso que el tiny multilingüe cuando el material es inglés puro.",
+          "fr": "Anglais uniquement. Plus précis que le tiny multilingue pour du contenu purement anglais.",
+          "ja": "英語専用モデル。素材が純粋な英語の場合、多言語 tiny より認識精度が高いです。",
           "ko": "영어 전용 모델입니다. 순수 영어 미디어에서는 다국어 tiny보다 정확합니다."
         },
         "tags": [
@@ -362,44 +379,6 @@
         "enabled": true
       },
       {
-        "id": "whisper-base",
-        "kind": "whisper",
-        "langs": [
-          "en",
-          "zh",
-          "de",
-          "es",
-          "fr",
-          "ja",
-          "ko"
-        ],
-        "size": 0,
-        "sha256": "",
-        "url": "",
-        "_todo": "示例条目：size / sha256 / url 都是占位，**必须先上传 zip 并把这三个值换成真实值再改 enabled=true**。url 为空串时 App 侧应显示「暂不可用」而不是让人点了半天才失败。",
-        "url_by_region": {},
-        "fallback_urls": [],
-        "files": {
-          "encoder": "base-encoder.int8.onnx",
-          "decoder": "base-decoder.int8.onnx",
-          "tokens": "base-tokens.txt",
-          "vad": "silero_vad.onnx"
-        },
-        "names": {
-          "en": "Whisper Base (Multilingual)",
-          "zh": "Whisper Base（多语种）"
-        },
-        "descriptions": {
-          "en": "Larger and more accurate than tiny, at the cost of download size and speed.",
-          "zh": "比 tiny 更大更准，代价是下载体积与识别速度。"
-        },
-        "tags": [
-          "多语种",
-          "高精度"
-        ],
-        "enabled": false
-      },
-      {
         "id": "sense-voice-5lang",
         "kind": "sense_voice",
         "_note_kind": "🔴 **单文件家族**（model.int8.onnx + tokens.txt，无 encoder/decoder）——与 whisper 是两套文件形状。asr_model_roles.dart 的 complete 判定已支持两套形状取或；sherpa_asr_engine.dart 按本 kind 选 SherpaOfflineFamily.senseVoice 并打开 ITN。langs 只列 App 7 语域内的 zh/en/ja/ko（模型另支持粤语 yue，但 yue 不是 App 界面语言，按 _note_langs 口径不列）。",
@@ -427,7 +406,7 @@
           "tokens": "tokens.txt",
           "vad": "silero_vad.onnx"
         },
-        "_note_files": "zip 由用户 2026-10-14 打包上传，仅 4 个文件：model.int8.onnx + tokens.txt + silero_vad.onnx + LICENSE（894MB 的 fp32 model.onnx **未打入**，插件角色解析也优先 int8）。🔴 silero_vad.onnx 必须同包：缺它 → planKey 从 vad3|… 退化成 fix3|sec25 固定切片 → 该媒体已落的续传检查点全部作废。",
+        "_note_files": "zip 由用户 2026-10-14 打包上传，仅 4 个文件：model.int8.onnx + tokens.txt + silero_vad.onnx + LICENSE（894MB 的 fp32 model.onnx **未打入**，插件角色解析也优先 int8）。🔴 silero_vad.onnx 必须同包：缺它 → planKey 从 vad4|… 退化成 fix4|sec25 固定切片 → 该媒体已落的续传检查点全部作废。",
         "names": {
           "en": "SenseVoice (5 languages)",
           "zh": "SenseVoice（五语种）",
@@ -453,7 +432,18 @@
         ],
         "enabled": true
       }
-    ]
+    ],
+    "segment": {
+      "_comment": "转写切分参数（VAD 候选层 + 组装决断层，字段与 flutter_sherpa 的 SherpaSegmentPlanConfig 同构）。改这里即可调字幕粒度，不用改代码：min_silence_sec=静音多久算候选边界（调小→停顿处更容易断句，0.22 为 2026-10-19 拍板值，原 0.35）；target_seg_sec=贪心拼岛的目标段长（调小→字幕更短但识别次数变多，段数≈编码次数，8s→4s 约慢一倍）；vad_threshold=帧级语音概率门槛（调高→更严格，轻微语音判静音）。任何值变了 planKey 就变 → 旧断点续传检查点自动作废（正确行为：段边界变了拼不到一起）。坏值/缺字段逐项回落代码兜底常量，不会把 VAD 打死。远程 config.json 若下发同 key 会自动覆盖本段（本地兜底语义不变）。",
+      "target_seg_sec": 8.0,
+      "min_orphan_sec": 1.2,
+      "vad_threshold": 0.5,
+      "vad_min_speech_sec": 0.25,
+      "vad_min_silence_sec": 0.22,
+      "vad_max_speech_sec": 8.0,
+      "fixed_chunk_sec": 25,
+      "hard_seg_sec": 25.0
+    }
   },
   "tts": {
     "_comment": "端侧语音合成（TTS）模型注册表（与 asr.models 同构）。App 安装后不带任何 TTS 模型，用户在「模型」页按需下载；选中结果持久化。🔴 日/韩（ja/ko）目前**没有**模型：官方 Kokoro v1.1 仅 en+zh、Piper 无 ja/ko int8，必须等 Supertonic 3.0（插件已支持，但 zip 尚未上传 HF）补上后才可用。",
@@ -1212,12 +1202,61 @@
     }
   },
   "llm": {
-    "_comment": "🔴 LLM 服务不进远程配置：地址 / 密钥 / 模型都是用户私有数据，只在 App 内由用户自己填、只存本地 SQLite。远程**不得下发**任何 api_key 与 base_url（解析层会忽略 services 键）。这里只能放参数初值。",
+    "_comment": "🔴 **LLM 服务是用户私有数据，不进远程配置的业务语义**：地址 / 密钥 / 模型全部由用户在 App 内自己填，只落本地 SQLite（llm_configs 表）。远程配置**不得携带**任何用户或官方的 api_key 与 base_url，也**不得覆盖**用户已保存的服务——它拿不到、也不该拿到这些数据。本段因此只剩「新建服务时的参数初值」这一类产品口径。",
     "defaults": {
       "temperature": 0.3,
       "max_tokens": 4096,
       "top_k": 40,
       "deep_thinking": false
+    },
+    "_note_defaults": "用户在设置页「新建 LLM 服务」时，这几个值作为表单初值写入（对齐 LlmConfig 字段）。用户改过之后一律以本地数据为准，远程改这里只影响「以后新建的服务」，动不了任何已存在的服务。",
+    "_note_no_services": "这里**故意没有** services 数组：服务列表 100% 来自本地库。远程若下发 services 段，App 应直接忽略（解析层不读该键）。"
+  },
+  "memory": {
+    "_comment": "内存档位（**只走本地**：hardy 2026-10-22 定，不需要远程）。用途两件：① 开发时查「多少内存能做什么」；② 决定内存不足时**警告的档位与措辞**。🔴 口径：内存不足**只警告、不阻止** —— 主动权归用户，App 负责把风险讲清。",
+    "_note_usage": "改这里即可调阈值，不用改代码。两道闸：① **警告闸**（HeavyTaskGate，弹窗但照样跑）：预计峰值 = 当前已用 + max(min_model_extra_mb, 模型zipMB × model_peak_factor)；允许上限 = 设备内存 × ceiling_ratio；② **native 硬红线**（AsrLoadMemoryGate，踩线直接拒绝加载）：当前已用 + 模型目录字节 × native_guard_factor > 设备内存 × native_guard_ratio ⇒ 抛友好异常，绝不让 C++ bad_alloc 泄出 FFI 边界 abort 进程。系数依据见 lib/services/heavy_task_gate.dart 与 lib/services/asr_load_memory_gate.dart 顶部文档（XR 真机实测）。若某字段缺失或写坏，代码逐字段回落内置兜底值（0.5 / 4.5 / 192 / 0.5 / 2.0），不会因配置错误瘫痪。",
+    "ceiling_ratio": 0.5,
+    "_note_ceiling_ratio": "允许的 footprint 峰值上限 = 设备物理内存 × 该比例。0.5 来自实测：iPhone XR（2840MB）在 footprint ≈1559MB 被 Jetsam 杀，取 1420 留 ~139MB 余量。",
+    "model_peak_factor": 4.5,
+    "_note_model_peak_factor": "模型额外峰值的推算系数（相对 zip 体积）。🔴 2026-10-22 15:05 XR 猝死复盘后从 3.0 上调：3.0 的标定起点是「已有一个模型加载的 880MB」（旧实测：880→1559，增量 680≈3.1），但**冷态起算**（未加载模型的 ~450MB）时它不够——15:05 实测冷态 450MB + whisper-small（zip 220.6MB）真实峰值 1591MB，增量 1141MB ≈ 5.2×zip。取 4.5：XR+small ⇒ projected 1443 > 1420 判 risky（必弹强警告）；XR+tiny ⇒ 706 判 ok（不误弹）。",
+    "native_guard_ratio": 0.5,
+    "_note_native_guard_ratio": "native 加载硬红线：当前已用 + 模型预计占用 ≤ 设备内存 × 该比例才允许调 SherpaOnnxCreateOfflineRecognizer。踩线还调 = C++ bad_alloc 泄出 FFI 边界 → 整个进程 SIGABRT（2026-10-22 15:05 实测），Dart catch 接不住。与 ceiling_ratio 同源（XR ≈1600MB Jetsam 线，取 0.5 = 1420MB）。",
+    "native_guard_factor": 2.0,
+    "_note_native_guard_factor": "native 红线里模型占用系数：int8 权重映射 + onnxruntime arena ≈ zip × 1.6，取 2.0 留余量。whisper-small 220.6MB ⇒ 441MB。",
+    "min_model_extra_mb": 192,
+    "_note_min_model_extra_mb": "额外峰值的下限：再小的模型也要解码缓冲 / VAD / 音频重采样。",
+    "features": {
+      "_comment": "每个重功能一行。min_device_mb = 设备内存低于此值 → 「很可能中断」强警告；comfortable_device_mb = 低于此值 → 「可能卡顿」轻警告。⚠️ 两档都**不阻止**运行。目前 transcription 由代码实际使用（另叠加模型自身的 required_ram_mb 与峰值闸）；playback / tts 两行是**档位参考**（开发查阅、后续接线用）。",
+      "playback": {
+        "min_device_mb": 1024,
+        "comfortable_device_mb": 1536,
+        "_note": "mpv 硬解 + 字幕渲染的最低门槛。低于 1GB 的机型连播放都可能被系统杀掉。"
+      },
+      "transcription": {
+        "min_device_mb": 1024,
+        "comfortable_device_mb": 2048,
+        "_note": "端侧 ASR 的机型下限。真正的判据还要叠加「模型 required_ram_mb」与「预计峰值 ≤ 上限」，见上面的算术说明。"
+      },
+      "tts": {
+        "min_device_mb": 1024,
+        "comfortable_device_mb": 1536,
+        "_note": "端侧 TTS 模型通常比 ASR 小，但长文本朗读会同时驻留播放器与合成引擎。"
+      }
     }
+  },
+  "free_limits": {
+    "_comment": "免费层额度（远程可调，本地兜底）。见 docs/readme/盈利与授权设计.md。免费用户：转录 ≤ transcribe_max_minutes 分钟、翻译 llm_translate_daily 次/天、解释 llm_explain_daily 次/天、总结 llm_summary_daily 次/天、对话 llm_chat_daily 次/天、pdf_export=false 禁止 PDF 导出/分享。付费（pro_lifetime 买断）全部不限。计数按设备本地自然日；预取不计数；远程调小当日不追溯、次日生效。",
+    "transcribe_max_minutes": 12,
+    "llm_translate_daily": 1,
+    "llm_explain_daily": 20,
+    "llm_summary_daily": 1,
+    "llm_chat_daily": 20,
+    "pdf_export": false
+  },
+  "diagnostics": {
+    "_comment": "启动诊断上报（合规：默认关闭、需用户在设置里显式同意；仅经 mailto 由用户主动发送，零三方服务器、零跨境）。target_email 改为你自己的收件地址；不配置时回退占位符。",
+    "enabled": true,
+    "target_email": "13808875@qq.com",
+    "rate_limit_days": 7
   }
 }
