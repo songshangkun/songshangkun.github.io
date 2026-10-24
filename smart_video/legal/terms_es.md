@@ -8,13 +8,13 @@ title: Términos del servicio
 
 ## 1\. Acuerdo
 
-Estos Términos del servicio («Términos») constituyen un acuerdo entre usted y **songshangkun** («nosotros») relativo al uso de Smart Video (la «App»). Al instalar o usar la App, acepta estos Términos. Si no los acepta, no use la App.
+Estos Términos del servicio («Términos») constituyen un acuerdo entre usted y **songshangkun** («nosotros») relativo al uso de Watchlingo (la «App»). Al instalar o usar la App, acepta estos Términos. Si no los acepta, no use la App.
 
 Preguntas: **13808875@qq.com**
 
 ## 2\. Qué es la App
 
-Smart Video es un reproductor multimedia inteligente de **almacenamiento local** para estudiantes de idiomas. Le ayuda a importar y reproducir vídeo / audio, leer subtítulos, buscar palabras y estudiar con transcripción en el dispositivo y traducción, explicación y resumen asistidos por IA.
+Watchlingo es un reproductor multimedia inteligente de **almacenamiento local** para estudiantes de idiomas. Le ayuda a importar y reproducir vídeo / audio, leer subtítulos, buscar palabras y estudiar con transcripción en el dispositivo y traducción, explicación y resumen asistidos por IA.
 
 Su biblioteca multimedia, subtítulos, notas y registros de estudio se almacenan en su dispositivo. No operamos un sistema de cuentas de usuario ni conservamos una copia en servidor de sus datos de estudio.
 
@@ -36,7 +36,7 @@ La App puede traducir subtítulos, explicar palabras y frases, y producir resúm
 
   * La salida de la IA es una **sugerencia**. Usted sigue siendo responsable de cómo la usa, y debe verificar cualquier cosa importante contra el contenido multimedia original u otra fuente.
   * La salida de la IA **no** constituye asesoramiento profesional de enseñanza de idiomas, jurídico, médico ni de ningún otro tipo. Úsela para estudiar bajo su propio criterio.
-  * Smart Video ofrece dos tipos de procesamiento de IA:
+  * Watchlingo ofrece dos tipos de procesamiento de IA:
   * **Reconocimiento de voz en el dispositivo (ASR):** la transcripción se ejecuta en su dispositivo con un modelo que usted descarga, y funciona sin conexión. **Su audio y su texto nunca salen de su dispositivo.**
   * **Punto de conexión LLM configurado por el usuario (BYOK):** la traducción, la explicación y el resumen se generan enviando el texto seleccionado a la **dirección y clave LLM que usted introduce** en Ajustes → Biblioteca de modelos → Servidor LLM. El proveedor lo elige usted; nosotros ni lo operamos ni podemos leer la dirección o la clave que configure, y no conservamos copia de lo que envía.
   * Cuando usa BYOK, **usted es la parte que decide a dónde se envía su contenido**. Los términos, precios y seguridad del destinatario se rigen por su propia relación con ese proveedor; nosotros no somos parte de ella y no aceptamos responsabilidad alguna por ella.
@@ -45,7 +45,7 @@ La App puede traducir subtítulos, explicar palabras y frases, y producir resúm
 
 ## 6\. Funciones opcionales del dispositivo
 
-El acceso a la Biblioteca de fotos y a Archivos / Documentos es opcional. Si deniega un permiso, la importación desde esa fuente no funcionará, pero el resto de la App sí. Smart Video **no** solicita ni utiliza el micrófono, la cámara ni los servicios de ubicación.
+El acceso a la Biblioteca de fotos y a Archivos / Documentos es opcional. Si deniega un permiso, la importación desde esa fuente no funcionará, pero el resto de la App sí. Watchlingo **no** solicita ni utiliza el micrófono, la cámara ni los servicios de ubicación.
 
 ## 7\. Compras, pruebas y reembolsos
 

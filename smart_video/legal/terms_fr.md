@@ -8,13 +8,13 @@ title: Conditions de service
 
 ## 1\. Contrat
 
-Les présentes Conditions de service (« Conditions ») constituent un accord entre vous et **songshangkun** (« nous ») concernant votre utilisation de Smart Video (l'« Application »). En installant ou en utilisant l'Application, vous acceptez les présentes Conditions. Si vous ne les acceptez pas, n'utilisez pas l'Application.
+Les présentes Conditions de service (« Conditions ») constituent un accord entre vous et **songshangkun** (« nous ») concernant votre utilisation de Watchlingo (l'« Application »). En installant ou en utilisant l'Application, vous acceptez les présentes Conditions. Si vous ne les acceptez pas, n'utilisez pas l'Application.
 
 Questions : **13808875@qq.com**
 
 ## 2\. De quoi il s'agit
 
-Smart Video est un lecteur multimédia intelligent **local-first** (Stocké localement en priorité) pour apprenants en langues. Il vous aide à importer et à lire des vidéos / de l'audio, à lire des sous-titres, à rechercher des mots, et à étudier grâce à la transcription sur l'appareil et à la traduction, l'explication et la synthèse assistées par IA.
+Watchlingo est un lecteur multimédia intelligent **local-first** (Stocké localement en priorité) pour apprenants en langues. Il vous aide à importer et à lire des vidéos / de l'audio, à lire des sous-titres, à rechercher des mots, et à étudier grâce à la transcription sur l'appareil et à la traduction, l'explication et la synthèse assistées par IA.
 
 Votre bibliothèque multimédia, vos sous-titres, vos notes et vos dossiers d'étude sont stockés sur votre appareil. Nous n'exploitons pas de système de compte utilisateur et ne détenons aucune copie côté serveur de vos données d'étude.
 
@@ -36,7 +36,7 @@ L'Application peut traduire des sous-titres, expliquer des mots et des phrases, 
 
   * Le résultat de l'IA est une **suggestion**. Vous restez responsable de la façon dont vous l'utilisez, et vous devez vérifier tout élément important par rapport au média source ou à une autre source.
   * Le résultat de l'IA **n'est pas** un enseignement linguistique professionnel, ni un conseil juridique, médical ou d'un autre ordre professionnel. Utilisez-le pour étudier à votre propre discrétion.
-  * Smart Video propose deux types de traitement par IA :
+  * Watchlingo propose deux types de traitement par IA :
   * **Reconnaissance vocale sur l'appareil (ASR) :** la transcription s'exécute sur votre appareil avec un modèle que vous téléchargez, et fonctionne hors ligne. **Votre audio et votre texte ne quittent jamais votre appareil.**
   * **Point de terminaison LLM configuré par l'utilisateur (BYOK) :** la traduction, l'explication et le résumé sont produits en envoyant le texte sélectionné à l'**adresse et à la clé LLM que vous saisissez vous-même** dans Réglages → Bibliothèque de modèles → Serveur LLM. Le fournisseur est choisi par vous ; nous ne l'exploitons pas et ne pouvons pas lire l'adresse ou la clé que vous configurez, et nous ne conservons aucune copie de ce que vous soumettez.
   * Lorsque vous utilisez le BYOK, **vous êtes la partie qui décide où votre contenu est envoyé**. Les conditions, la tarification et la sécurité du destinataire sont régies par votre propre relation avec ce fournisseur ; nous n'y sommes pas partie et n'en acceptons aucune responsabilité.
@@ -45,7 +45,7 @@ L'Application peut traduire des sous-titres, expliquer des mots et des phrases, 
 
 ## 6\. Fonctions d'appareil facultatives
 
-L'accès à la photothèque et aux fichiers / documents est facultatif. Si vous refusez une autorisation, l'importation depuis cette source ne fonctionnera pas, mais le reste de l'Application fonctionnera. Smart Video ne demande ni n'utilise le microphone, l'appareil photo ou les services de localisation.
+L'accès à la photothèque et aux fichiers / documents est facultatif. Si vous refusez une autorisation, l'importation depuis cette source ne fonctionnera pas, mais le reste de l'Application fonctionnera. Watchlingo ne demande ni n'utilise le microphone, l'appareil photo ou les services de localisation.
 
 ## 7\. Achats, essais et remboursements
 

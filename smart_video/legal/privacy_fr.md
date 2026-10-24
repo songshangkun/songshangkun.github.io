@@ -8,7 +8,7 @@ title: Politique de confidentialité
 
 ## 1\. Qui nous sommes
 
-Smart Video est un lecteur multimédia intelligent local-first (Stocké localement en priorité) pour apprenants en langues (« l'Application »). Le responsable du traitement de vos informations personnelles est **songshangkun** (« nous »), joignable à l'adresse **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
+Watchlingo est un lecteur multimédia intelligent local-first (Stocké localement en priorité) pour apprenants en langues (« l'Application »). Le responsable du traitement de vos informations personnelles est **songshangkun** (« nous »), joignable à l'adresse **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
 
 Pour toute question, demande ou réclamation relative à la confidentialité, contactez-nous à **13808875@qq.com**.
 
@@ -44,7 +44,7 @@ Nous ne détenons aucune copie côté serveur des éléments ci-dessus et ne pou
 
   * **Photothèque (facultatif).** Lorsque vous importez des médias, l'Application lit les vidéos / l'audio que vous sélectionnez dans votre photothèque. Lorsque vous exportez du matériel d'étude, l'Application écrit dans votre photothèque. Nous ne parcourons jamais votre photothèque en arrière-plan. Vous pouvez refuser l'autorisation ; le reste de l'Application continue de fonctionner.
   * **Fichiers / Documents (facultatif).** Lorsque vous importez des médias ou des documents locaux, l'Application lit les fichiers que vous choisissez dans l'application Fichiers / Sur mon iPhone. Rien n'est téléversé vers un serveur que nous exploitons.
-  * **Aucun microphone, aucun appareil photo, aucune localisation.** Smart Video ne demande ni n'utilise le microphone, l'appareil photo ou les services de localisation. La reconnaissance vocale s'exécute sur l'audio _déjà présent dans votre fichier multimédia importé_ à l'aide de modèles sur l'appareil — elle n'enregistre jamais depuis le microphone.
+  * **Aucun microphone, aucun appareil photo, aucune localisation.** Watchlingo ne demande ni n'utilise le microphone, l'appareil photo ou les services de localisation. La reconnaissance vocale s'exécute sur l'audio _déjà présent dans votre fichier multimédia importé_ à l'aide de modèles sur l'appareil — elle n'enregistre jamais depuis le microphone.
   * **Diagnostic optionnel (désactivé par défaut).** L'Application propose un commutateur optionnel « Partager les diagnostics » dans les Réglages. Il reste désactivé jusqu'à ce que vous l'activiez. Lorsqu'il est activé, l'Application peut préparer un court rapport de diagnostic non personnel et vous aider à l'envoyer par e-mail au développeur — voir le point 5 de la section 3.3.
 
 
@@ -65,7 +65,7 @@ Nous n'exploitons pas de SDK publicitaires ou d'analyse, donc aucun identifiant 
 
 ## 4\. Les fonctions d'IA, en termes simples
 
-Smart Video propose deux types de traitement par IA :
+Watchlingo propose deux types de traitement par IA :
 
   * **Reconnaissance vocale sur l'appareil (ASR) :** la transcription s'exécute sur votre appareil avec un modèle sherpa que vous téléchargez. **Votre audio et votre texte ne quittent jamais votre appareil — rien n'est transmis.**
   * **Point de terminaison LLM configuré par l'utilisateur (BYOK) :** la traduction, l'explication et le résumé sont produits en envoyant le texte sélectionné à l'**adresse et à la clé LLM que vous saisissez vous-même** dans Réglages → Bibliothèque de modèles → Serveur LLM. Le fournisseur est choisi par vous — nous ne l'exploitons pas et ne pouvons pas lire l'adresse ou la clé que vous configurez. Veuillez consulter la politique de confidentialité et de conservation de ce fournisseur, et ne soumettez pas par ce canal des informations que vous considérez comme confidentielles.

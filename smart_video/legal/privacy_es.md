@@ -8,7 +8,7 @@ title: Política de privacidad
 
 ## 1\. Quiénes somos
 
-Smart Video es un reproductor multimedia inteligente de almacenamiento local («la App») para estudiantes de idiomas. El responsable del tratamiento de sus datos personales es **songshangkun** («nosotros»), al que puede contactar en **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
+Watchlingo es un reproductor multimedia inteligente de almacenamiento local («la App») para estudiantes de idiomas. El responsable del tratamiento de sus datos personales es **songshangkun** («nosotros»), al que puede contactar en **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
 
 Para cualquier duda, solicitud o reclamación relacionada con la privacidad, contáctenos en **13808875@qq.com**.
 
@@ -44,7 +44,7 @@ No conservamos ninguna copia en servidor de lo anterior y no podemos restaurárs
 
   * **Biblioteca de fotos (opcional).** Cuando importa contenido multimedia, la App lee los vídeos / audios que selecciona de su Biblioteca de fotos. Cuando exporta material de estudio, la App escribe en su Biblioteca de fotos. Nunca exploramos su biblioteca en segundo plano. Puede denegar el permiso; el resto de la App sigue funcionando.
   * **Archivos / Documentos (opcional).** Cuando importa contenido multimedia o documentos locales, la App lee los archivos que elige en la app Archivos / En mi iPhone. Nada se carga en un servidor que nosotros operamos.
-  * **Sin micrófono, sin cámara, sin ubicación.** Smart Video no solicita ni utiliza el micrófono, la cámara ni los servicios de ubicación. El reconocimiento de voz se ejecuta sobre audio _ya presente en su archivo multimedia importado_ mediante modelos en el dispositivo; nunca graba desde el micrófono.
+  * **Sin micrófono, sin cámara, sin ubicación.** Watchlingo no solicita ni utiliza el micrófono, la cámara ni los servicios de ubicación. El reconocimiento de voz se ejecuta sobre audio _ya presente en su archivo multimedia importado_ mediante modelos en el dispositivo; nunca graba desde el micrófono.
   * **Diagnóstico opcional (desactivado por defecto).** La App ofrece un interruptor opcional "Compartir diagnóstico" en Ajustes. Permanece desactivado hasta que lo encienda. Cuando está activado, la App puede preparar un breve informe de diagnóstico no personal y ayudarle a enviarlo por correo al desarrollador — véase el punto 5 de la sección 3.3.
 
 
@@ -65,7 +65,7 @@ No operamos SDK de publicidad ni de analítica, por lo que ningún identificador
 
 ## 4\. Funciones de IA, en palabras sencillas
 
-Smart Video ofrece dos tipos de procesamiento de IA:
+Watchlingo ofrece dos tipos de procesamiento de IA:
 
   * **Reconocimiento de voz en el dispositivo (ASR):** la transcripción se ejecuta en su dispositivo con un modelo sherpa que usted descarga. **Su audio y su texto nunca salen de su dispositivo — nada se transmite.**
   * **Punto de conexión LLM configurado por el usuario (BYOK):** la traducción, la explicación y el resumen se generan enviando el texto seleccionado a la **dirección y clave LLM que usted introduce** en Ajustes → Biblioteca de modelos → Servidor LLM. El proveedor lo elige usted — nosotros ni lo operamos ni podemos leer la dirección o la clave que configure. Revise la política de privacidad y de retención de ese proveedor, y no envíe información que considere confidencial a través de este canal.

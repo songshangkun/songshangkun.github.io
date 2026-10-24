@@ -8,13 +8,13 @@ title: Terms of Service
 
 ## 1\. Agreement
 
-These Terms of Service ("Terms") are an agreement between you and **songshangkun** ("we", "us") concerning your use of Smart Video (the "App"). By installing or using the App you accept these Terms. If you do not accept them, do not use the App.
+These Terms of Service ("Terms") are an agreement between you and **songshangkun** ("we", "us") concerning your use of Watchlingo (the "App"). By installing or using the App you accept these Terms. If you do not accept them, do not use the App.
 
 Questions: **13808875@qq.com**
 
 ## 2\. What the App is
 
-Smart Video is a **local-first** intelligent media player for language learners. It helps you import and play video / audio, read subtitles, look up words, and study with on-device transcription and AI-assisted translation, explanation and summarisation.
+Watchlingo is a **local-first** intelligent media player for language learners. It helps you import and play video / audio, read subtitles, look up words, and study with on-device transcription and AI-assisted translation, explanation and summarisation.
 
 Your media library, subtitles, notes and study records are stored on your device. We do not operate a user account system and do not hold a server-side copy of your study data.
 
@@ -36,7 +36,7 @@ The App can translate subtitles, explain words and sentences, and produce summar
 
   * AI output is a **suggestion**. You remain responsible for how you use it, and you should verify anything important against the source media or another source.
   * AI output is **not** professional language-teaching, legal, medical or any other professional advice. Use it for study at your own discretion.
-  * Smart Video offers two kinds of AI processing:
+  * Watchlingo offers two kinds of AI processing:
   * **On-device speech recognition (ASR):** transcription runs on your device with a model you download, and works offline. **Your audio and text never leave your device.**
   * **User-configured LLM endpoint (BYOK):** translation, explanation and summary are produced by sending the selected text to the **LLM address and key you enter yourself** in Settings → Model Library → LLM Server. The provider is chosen by you; we neither operate it nor can we read the address or key you configure, and we keep no copy of what you submit.
   * When you use BYOK, **you are the party deciding where your content is sent**. The recipient's terms, pricing and security are governed by your own relationship with that provider; we are not a party to it and accept no responsibility for it.
@@ -45,7 +45,7 @@ The App can translate subtitles, explain words and sentences, and produce summar
 
 ## 6\. Optional device features
 
-Photo Library and Files / Documents access are optional. If you decline a permission, importing from that source will not work but the rest of the App will. Smart Video does **not** request or use the microphone, camera or location services.
+Photo Library and Files / Documents access are optional. If you decline a permission, importing from that source will not work but the rest of the App will. Watchlingo does **not** request or use the microphone, camera or location services.
 
 ## 7\. Purchases, trials and refunds
 

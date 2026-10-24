@@ -8,13 +8,13 @@ title: Nutzungsbedingungen
 
 ## 1\. Vereinbarung
 
-Diese Nutzungsbedingungen („Bedingungen") sind eine Vereinbarung zwischen Ihnen und **songshangkun** („wir", „uns") bezüglich Ihrer Nutzung von Smart Video (der „App"). Durch Installation oder Nutzung der App akzeptieren Sie diese Bedingungen. Wenn Sie sie nicht akzeptieren, nutzen Sie die App nicht.
+Diese Nutzungsbedingungen („Bedingungen") sind eine Vereinbarung zwischen Ihnen und **songshangkun** („wir", „uns") bezüglich Ihrer Nutzung von Watchlingo (der „App"). Durch Installation oder Nutzung der App akzeptieren Sie diese Bedingungen. Wenn Sie sie nicht akzeptieren, nutzen Sie die App nicht.
 
 Fragen: **13808875@qq.com**
 
 ## 2\. Was die App ist
 
-Smart Video ist ein **lokal ausgerichteter** intelligenter Medienplayer für Sprachlernende. Er hilft Ihnen, Video- / Audiodateien zu importieren und abzuspielen, Untertitel zu lesen, Wörter nachzuschlagen und mit Transkription auf dem Gerät sowie KI-unterstützter Übersetzung, Erklärung und Zusammenfassung zu lernen.
+Watchlingo ist ein **lokal ausgerichteter** intelligenter Medienplayer für Sprachlernende. Er hilft Ihnen, Video- / Audiodateien zu importieren und abzuspielen, Untertitel zu lesen, Wörter nachzuschlagen und mit Transkription auf dem Gerät sowie KI-unterstützter Übersetzung, Erklärung und Zusammenfassung zu lernen.
 
 Ihre Mediathek, Untertitel, Notizen und Lernaufzeichnungen werden auf Ihrem Gerät gespeichert. Wir betreiben kein Benutzerkontosystem und halten keine serverseitige Kopie Ihrer Lernedaten.
 
@@ -36,7 +36,7 @@ Die App kann Untertitel übersetzen, Wörter und Sätze erklären sowie Zusammen
 
   * KI-Ausgabe ist eine **Empfehlung**. Sie tragen die Verantwortung für deren Nutzung, und Sie sollten alles Wichtige anhand der Quellmedien oder einer anderen Quelle überprüfen.
   * KI-Ausgabe ist **keine** professionelle Sprachvermittlung, Rechts-, Medizin- oder sonstige Fachberatung. Nutzen Sie sie zum Lernen nach eigenem Ermessen.
-  * Smart Video bietet zwei Arten der KI-Verarbeitung:
+  * Watchlingo bietet zwei Arten der KI-Verarbeitung:
   * **Spracherkennung auf dem Gerät (ASR):** Die Transkription erfolgt auf Ihrem Gerät mit einem von Ihnen heruntergeladenen Modell und funktioniert offline. **Ihr Audio und Text verlassen Ihr Gerät niemals.**
   * **Von Ihnen konfigurierter LLM-Endpunkt (BYOK):** Übersetzung, Erklärung und Zusammenfassung werden erzeugt, indem der ausgewählte Text an die **von Ihnen selbst in Einstellungen → Modellbibliothek → LLM-Server eingegebene LLM-Adresse und den Schlüssel** gesendet wird. Der Anbieter wird von Ihnen gewählt; wir betreiben ihn weder, noch können wir die von Ihnen konfigurierte Adresse oder den Schlüssel lesen, und wir halten keine Kopie dessen, was Sie übermitteln.
   * Wenn Sie BYOK nutzen, **sind Sie die Partei, die entscheidet, wohin Ihre Inhalte gesendet werden**. Die Bedingungen, Preise und die Sicherheit des Empfängers richten sich nach Ihrer eigenen Beziehung zu diesem Anbieter; wir sind keine Partei derselben und übernehmen keine Verantwortung dafür.
@@ -45,7 +45,7 @@ Die App kann Untertitel übersetzen, Wörter und Sätze erklären sowie Zusammen
 
 ## 6\. Optionale Gerätefunktionen
 
-Der Zugriff auf die Fotobibliothek und Dateien / Dokumente ist freiwillig. Wenn Sie eine Berechtigung verweigern, funktioniert der Import aus dieser Quelle nicht, der Rest der App jedoch schon. Smart Video fordert das Mikrofon, die Kamera oder Standortdienste **nicht** an und nutzt sie nicht.
+Der Zugriff auf die Fotobibliothek und Dateien / Dokumente ist freiwillig. Wenn Sie eine Berechtigung verweigern, funktioniert der Import aus dieser Quelle nicht, der Rest der App jedoch schon. Watchlingo fordert das Mikrofon, die Kamera oder Standortdienste **nicht** an und nutzt sie nicht.
 
 ## 7\. Käufe, Testphasen und Rückerstattung
 

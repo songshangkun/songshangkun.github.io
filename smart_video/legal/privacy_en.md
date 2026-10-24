@@ -8,7 +8,7 @@ title: Privacy Policy
 
 ## 1\. Who we are
 
-Smart Video is a local-first intelligent media player for language learners ("the App"). The data controller responsible for your personal information is **songshangkun** ("we", "us"), reachable at **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
+Watchlingo is a local-first intelligent media player for language learners ("the App"). The data controller responsible for your personal information is **songshangkun** ("we", "us"), reachable at **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
 
 For any privacy question, request or complaint, contact us at **13808875@qq.com**.
 
@@ -44,7 +44,7 @@ We hold no server-side copy of the above and cannot restore it for you. Please k
 
   * **Photo Library (optional).** When you import media, the App reads videos / audio you select from your Photo Library. When you export study material, the App writes to your Photo Library. We never scan your library in the background. You may decline the permission; the rest of the App keeps working.
   * **Files / Documents (optional).** When you import local media or documents, the App reads the files you pick from the Files app / On My iPhone. Nothing is uploaded to a server we operate.
-  * **No microphone, no camera, no location.** Smart Video does not request or use the microphone, camera or location services. Speech recognition runs on audio _already in your imported media file_ using on-device models — it never records from the microphone.
+  * **No microphone, no camera, no location.** Watchlingo does not request or use the microphone, camera or location services. Speech recognition runs on audio _already in your imported media file_ using on-device models — it never records from the microphone.
   * **Optional diagnostics (off by default).** The App offers an optional "Share diagnostics" toggle in Settings. It stays off until you turn it on. When enabled, the App may prepare a short, non-personal diagnostic report and help you email it to the developer — see item 5 in section 3.3.
 
 
@@ -65,7 +65,7 @@ We do not operate advertising or analytics SDKs, so no identifier is shared with
 
 ## 4\. AI features, in plain words
 
-Smart Video offers two kinds of AI processing:
+Watchlingo offers two kinds of AI processing:
 
   * **On-device speech recognition (ASR):** transcription runs on your device with a sherpa model you download. **Your audio and text never leave your device — nothing is transmitted.**
   * **User-configured LLM endpoint (BYOK):** translation, explanation and summary are produced by sending the selected text to the **LLM address and key you enter yourself** in Settings → Model Library → LLM Server. The provider is chosen by you — we neither operate it nor can we read the address or key you configure. Please review that provider's privacy and retention policy, and do not submit information you consider confidential through this channel.

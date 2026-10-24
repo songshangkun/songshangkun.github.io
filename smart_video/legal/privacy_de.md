@@ -8,7 +8,7 @@ title: Datenschutzrichtlinie
 
 ## 1\. Wer wir sind
 
-Smart Video ist ein lokal ausgerichteter intelligenter Medienplayer für Sprachlernende („die App"). Die für Ihre personenbezogenen Daten verantwortliche Stelle ist **songshangkun** („wir", „uns"), erreichbar unter **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
+Watchlingo ist ein lokal ausgerichteter intelligenter Medienplayer für Sprachlernende („die App"). Die für Ihre personenbezogenen Daten verantwortliche Stelle ist **songshangkun** („wir", „uns"), erreichbar unter **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
 
 Für datenschutzbezogene Fragen, Anträge oder Beschwerden kontaktieren Sie uns unter **13808875@qq.com**.
 
@@ -44,7 +44,7 @@ Wir halten keine serverseitige Kopie der obigen Daten und können sie für Sie n
 
   * **Fotobibliothek (freiwillig).** Beim Import von Medien liest die App die von Ihnen ausgewählten Videos / Audiodateien aus Ihrer Fotobibliothek. Beim Export von Lernmaterial schreibt die App in Ihre Fotobibliothek. Wir durchsuchen Ihre Bibliothek niemals im Hintergrund. Sie können die Berechtigung verweigern; der Rest der App funktioniert weiterhin.
   * **Dateien / Dokumente (freiwillig).** Beim Import lokaler Medien oder Dokumente liest die App die von Ihnen in der Dateien-App / „Auf meinem iPhone" ausgewählten Dateien. Es wird nichts auf einen von uns betriebenen Server hochgeladen.
-  * **Kein Mikrofon, keine Kamera, kein Standort.** Smart Video fordert das Mikrofon, die Kamera oder Standortdienste nicht an und nutzt sie nicht. Die Spracherkennung erfolgt auf Audio, _das sich bereits in Ihrer importierten Mediendatei befindet_ , mithilfe von Modellen auf dem Gerät — sie nimmt niemals über das Mikrofon auf.
+  * **Kein Mikrofon, keine Kamera, kein Standort.** Watchlingo fordert das Mikrofon, die Kamera oder Standortdienste nicht an und nutzt sie nicht. Die Spracherkennung erfolgt auf Audio, _das sich bereits in Ihrer importierten Mediendatei befindet_ , mithilfe von Modellen auf dem Gerät — sie nimmt niemals über das Mikrofon auf.
   * **Optionale Diagnose (standardmäßig aus).** Die App bietet in den Einstellungen einen optionalen Schalter „Diagnose teilen". Er bleibt deaktiviert, bis Sie ihn einschalten. Wenn aktiviert, kann die App einen kurzen, nicht-personalisierten Diagnosebericht erstellen und Ihnen beim E-Mail-Versand an den Entwickler helfen — siehe Punkt 5 in Abschnitt 3.3.
 
 
@@ -65,7 +65,7 @@ Wir betreiben keine Werbe- oder Analyse-SDKs, daher wird kein Kennzeichen mit We
 
 ## 4\. KI-Funktionen, einfach erklärt
 
-Smart Video bietet zwei Arten der KI-Verarbeitung:
+Watchlingo bietet zwei Arten der KI-Verarbeitung:
 
   * **Spracherkennung auf dem Gerät (ASR):** Die Transkription erfolgt auf Ihrem Gerät mit einem von Ihnen heruntergeladenen sherpa-Modell. **Ihr Audio und Text verlassen Ihr Gerät niemals — es wird nichts übertragen.**
   * **Von Ihnen konfigurierter LLM-Endpunkt (BYOK):** Übersetzung, Erklärung und Zusammenfassung werden erzeugt, indem der ausgewählte Text an die **von Ihnen selbst in Einstellungen → Modellbibliothek → LLM-Server eingegebene LLM-Adresse und den Schlüssel** gesendet wird. Der Anbieter wird von Ihnen gewählt — wir betreiben ihn weder, noch können wir die von Ihnen konfigurierte Adresse oder den Schlüssel lesen. Bitte prüfen Sie die Datenschutz- und Aufbewahrungsrichtlinie dieses Anbieters und übermitteln Sie über diesen Kanal keine Informationen, die Sie für vertraulich halten.
