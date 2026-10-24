@@ -4,6 +4,8 @@ title: Region-specific provisions
 
 # Region-specific provisions
 
+**Last updated:** 2026-10-24 · **Effective:** 2026-10-24
+
 The section that matches your region applies in addition to the documents above.
 
 ## cn

@@ -4,6 +4,8 @@ title: Dispositions spécifiques à la région
 
 # Dispositions spécifiques à la région
 
+**Dernière mise à jour :** 2026-10-24 · **Entrée en vigueur :** 2026-10-24
+
 La section correspondant à votre région s'applique en complément des documents ci-dessus.
 
 ## cn

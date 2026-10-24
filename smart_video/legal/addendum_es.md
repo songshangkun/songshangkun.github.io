@@ -4,6 +4,8 @@ title: Disposiciones específicas por región
 
 # Disposiciones específicas por región
 
+**Última actualización:** 2026-10-24 · **Vigencia:** 2026-10-24
+
 La sección que corresponda a su región se aplica además de los documentos anteriores.
 
 ## cn

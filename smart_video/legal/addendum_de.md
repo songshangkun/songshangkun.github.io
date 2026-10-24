@@ -4,6 +4,8 @@ title: Regionsspezifische Bestimmungen
 
 # Regionsspezifische Bestimmungen
 
+**Zuletzt aktualisiert:** 2026-10-24 · **In Kraft:** 2026-10-24
+
 Der mit Ihrer Region übereinstimmende Abschnitt gilt zusätzlich zu den obigen Dokumenten.
 
 ## cn
