@@ -482,7 +482,7 @@
     }
   },
   "limits": {
-    "_comment": "每日加权单位额度（共享单一 'ai' 池，按通道权重扣减：entry=1 / photo=2 / agent=3，stats 走 agent 权重）。null = 不限。**仅约束系统云通道**（端侧模型与自有 API Key 不扣任何配额）：free = 无系统云权益时的日上限（即 30 天试用窗内每天 5 单位）；premium = 持 'ai_cloud' 权益（$9.9 pro_lifetime_intl / 国内 pro_6m）时的日上限，再由 ai_monthly_cap 封月。注意：$3.9 档（pro_lite_intl）**不授予** 'ai_cloud'，故它永远落在 free 档，且仅在试用窗内有云可用。",
+    "_comment": "每日加权单位额度（共享单一 'ai' 池，按通道权重扣减：entry=1 / photo=2 / agent=3，stats 走 agent 权重）。null = 不限。**仅约束系统云通道**（端侧模型与自有 API Key 不扣任何配额）：free = 无系统云权益时的日上限（即 30 天试用窗内每天 5 单位）；premium = 持 'ai_cloud' 权益（pro_lifetime_intl / 国内 pro_6m）时的日上限，再由 ai_monthly_cap 封月。注意：pro_lite_intl 档**不授予** 'ai_cloud'，故它永远落在 free 档，且仅在试用窗内有云可用。",
     "free": {
       "ai": 20
     },
@@ -569,7 +569,7 @@
   "platforms": {
     "_comment": "平台分治：iOS / Android 付费与广告策略完全不同（见 flutter-skills/monetization_scenarios.md §8）。limits 两端相同留在顶层共享；此处只拆真正有差异的 ad_gate / pay。AppConfig 按 Platform.isIOS 选对应段，缺失回退顶层同名段。",
     "ios": {
-      "_comment": "iOS：两条并列的商品档 —— ① pro_lite_intl（$3.9）解锁端侧本地模型 + 自有 API Key（零成本、不扣配额），**不含系统云**；② pro_lifetime_intl（$9.9）含①全部 + 系统云（持 ai_cloud 权益，300 加权单位/月）。系统云的另外一条来源是 30 天试用窗：由 local_trial provider（非 IAP/非订阅）按 AppTransaction.originalPurchaseDate 锚定，窗内每天 5 加权单位，与是否购买 $3.9 无关，窗外且未购 $9.9 则无云可用。无广告（ad_gate 为空）。",
+      "_comment": "iOS：两条并列的商品档 —— ① pro_lite_intl 解锁端侧本地模型 + 自有 API Key（零成本、不扣配额），**不含系统云**；② pro_lifetime_intl 含①全部 + 系统云（持 ai_cloud 权益，300 加权单位/月）。系统云的另外一条来源是 30 天试用窗：由 local_trial provider（非 IAP/非订阅）按 AppTransaction.originalPurchaseDate 锚定，窗内每天 5 加权单位，与是否购买 pro_lite_intl 无关，窗外且未购 pro_lifetime_intl 则无云可用。无广告（ad_gate 为空）。⚠️ 价格以 App Store Connect 实际配置为准，**此处不编码价格**（文案里写死会与商店价脱钩）。",
       "ad_gate": {
         "required_before": [],
         "reward_feature": "no_ad_session"
