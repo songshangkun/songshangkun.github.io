@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隐私政策</title>
+<style>
+:root{color-scheme:light dark;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.7;color:#1a1a1a;background:#fff;margin:0;padding:0;}
+.container{max-width:760px;margin:0 auto;padding:32px 20px 64px;}
+h1{font-size:1.8rem;margin:0 0 0.5em;} h2{font-size:1.35rem;margin:1.6em 0 0.5em;} h3{font-size:1.1rem;margin:1.4em 0 0.4em;} h4{font-size:1rem;margin:1.2em 0 0.4em;}
+p{margin:0 0 1em;}
+ul,ol{margin:0 0 1em;padding-left:1.4em;} li{margin:0.3em 0;}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:0.95rem;} th,td{border:1px solid #ddd;padding:8px 10px;text-align:left;vertical-align:top;} th{background:#f6f6f6;}
+code{background:#f2f2f2;padding:1px 5px;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.9em;}
+a{color:#0a58ca;text-decoration:none;} a:hover{text-decoration:underline;}
+hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
+@media (prefers-color-scheme:dark){body{background:#111;color:#e8e8e8;} th{background:#1c1c1c;} th,td{border-color:#333;} code{background:#1c1c1c;} a{color:#6ea8fe;}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>隐私政策</h1>
+<p><strong>最后更新：</strong> 2026-10-31 · <strong>生效：</strong> 2026-10-31</p>
+<h2>1. 我们是谁</h2>
+<p>智能读书（Smart Reader，下称"本应用"）是一款本地优先的阅读与学习应用。负责您个人信息的个人信息处理者是 <strong>songshangkun</strong>（"我们"），联系地址：<strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong>。</p>
+<p>任何隐私问题、请求或投诉，请联系：<strong>13808875@qq.com</strong>。</p>
+<h2>2. 简而言之</h2>
+<ul>
+<li>您的阅读库、导入的文档、笔记、总结与设置<strong>保存在您的设备上</strong>。我们不运行账号系统，也没有存储您阅读数据的后端。</li>
+<li>我们<strong>不出售</strong>您的个人信息，也<strong>不</strong>将其用于行为广告。</li>
+<li>本版本应用<strong>不含广告 SDK 与分析 SDK</strong>，<strong>没有应用内购买</strong>。</li>
+<li>本应用<strong>不申请相机、麦克风、相册或定位权限</strong>。文档与图片仅通过系统文件选择器导入，文字识别（OCR）<strong>完全在本机运行</strong>。</li>
+<li>AI 功能只会把您选中的文本发送到<strong>您自己配置的 LLM 端点</strong>——见第 4 节。</li>
+</ul>
+<h2>3. 我们处理的信息</h2>
+<p>由于本应用是本地优先的，绝大多数信息不会离开您的设备。</p>
+<h3>3.1 存储在设备上的信息</h3>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>用途</th>
+<th>留存位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>导入的文档（PDF、EPUB、Office、文本、图片）及其提取出的文字</td>
+<td>打开、重排并再次阅读</td>
+<td>应用沙盒（应用支持目录）</td>
+</tr>
+<tr>
+<td>阅读库记录：标题、格式、导入时间、阅读进度</td>
+<td>展示阅读库并从上次位置继续</td>
+<td>设备数据库</td>
+</tr>
+<tr>
+<td>本地全文 / 检索索引与 AI 结果缓存（解释、总结、问答）</td>
+<td>搜索文档并避免重复调用 AI</td>
+<td>设备数据库与索引目录</td>
+</tr>
+<tr>
+<td>阅读与外观设置（主题、语言、字体、翻页方式、快捷操作）</td>
+<td>记住您的偏好</td>
+<td>设备偏好</td>
+</tr>
+<tr>
+<td>已下载的语音（TTS）模型</td>
+<td>离线朗读文档</td>
+<td>应用沙盒（模型目录）</td>
+</tr>
+<tr>
+<td>LLM 端点地址、模型名与 API Key（若您配置）</td>
+<td>调用您启用的 AI 功能</td>
+<td>设备端，以混淆形式存储；我们无法读取</td>
+</tr>
+</tbody>
+</table>
+<p>我们不在服务端保留上述任何内容的副本，也无法为您恢复。请自行备份。</p>
+<h3>3.2 仅在您使用特定功能时处理的信息</h3>
+<ul>
+<li><strong>文件 / 文稿（可选）。</strong> 导入文档或图片时，应用只读取您在系统文件选择器中选中的文件。不会上传到我们运营的服务器。</li>
+<li><strong>本机文字识别（OCR）。</strong> 图片与扫描版 PDF 页面由设备端的 ML Kit 文字识别组件在本地识别。图片绝不离开您的设备。</li>
+<li><strong>本机语音合成（TTS）。</strong> 文档由您下载并运行在本机的语音模型朗读，文本不会发送到任何地方。</li>
+<li><strong>无麦克风、无相机、无位置。</strong> 本应用不录音、不拍照、不申请定位。</li>
+</ul>
+<h3>3.3 传出设备的信息</h3>
+<p>仅以下情况：</p>
+<ol>
+<li><strong>AI 处理（可选）。</strong> 使用 AI 解释、总结、追问或快捷操作时，您选中的文本或相关片段会被发送到您在"设置 → AI 服务"中<strong>自己配置的 LLM 端点</strong>。接收方是您选择的提供商；我们不运营它，无法读取您配置的地址或密钥，也不保留您提交内容的副本。请查阅该提供商的隐私政策。</li>
+<li><strong>远程配置与文档分发。</strong> 应用从开发者的 GitHub Pages 获取配置文件与法律文档，从模型仓库（Hugging Face / hf-mirror）下载语音模型。这些请求不包含您的文档内容、阅读历史或个人标识。</li>
+<li><strong>由您发起的网络访问。</strong> 在文档内打开图片或链接本身不会上传任何内容；应用不包含浏览、追踪或广告组件。</li>
+</ol>
+<h2>4. AI 功能，通俗说明</h2>
+<ul>
+<li><strong>用户配置的 LLM 端点（BYOK）：</strong> 解释、总结、翻译与问答通过把选中文本发送到您在设置中<strong>自行填入的 LLM 地址与密钥</strong>来生成。提供商由您选择——我们不运营它，也无法读取您配置的地址或密钥。请查阅该提供商的隐私与留存政策，不要通过此通道提交您认为机密的信息。</li>
+<li><strong>本机处理：</strong> 文字提取、OCR、全文索引与语音合成都运行在您的设备本地。<strong>这些功能不会上传您的文档与图片。</strong></li>
+</ul>
+<p>您可以随时关闭 AI 功能；关闭后阅读、搜索与离线朗读仍可正常使用。</p>
+<h2>5. 我们处理信息的原因</h2>
+<p>我们处理信息仅用于：导入并展示您的文档；提取与重排文字；让您搜索、批注与整理阅读库；运行您请求的本机 OCR 与语音合成；调用您配置的 AI 端点；以及保持应用可用与安全。</p>
+<p>我们不会用您的文档或阅读历史训练模型、刻画用户画像或定向广告。</p>
+<h2>6. 可能接收信息的第三方</h2>
+<table>
+<thead>
+<tr>
+<th>接收方</th>
+<th>收到的内容</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>您自行配置的 LLM 提供商</td>
+<td>您为解释、总结或问答提交的文本</td>
+<td>您请求的 AI 处理</td>
+</tr>
+<tr>
+<td>GitHub Pages / GitHub（开发者）</td>
+<td>配置与法律文档请求（不含文档内容）</td>
+<td>远程配置与文档分发</td>
+</tr>
+<tr>
+<td>Hugging Face / hf-mirror</td>
+<td>语音模型下载请求（不含文档内容）</td>
+<td>本机 TTS 模型分发</td>
+</tr>
+</tbody>
+</table>
+<p>每个接收方受其自身隐私政策约束。我们不向任何人出售或出租个人信息。</p>
+<h2>7. 信息保留时长</h2>
+<p>您的文档、索引、批注、AI 缓存与设置在设备上保留，直到您删除它们、从阅读库删除该文档或卸载应用。从阅读库删除文档会移除其记录、原始文件与索引条目。卸载会永久移除全部数据；我们不保留副本且无法恢复。</p>
+<p>您提交给所配置 LLM 提供商的内容按其留存政策保留。</p>
+<h2>8. 安全</h2>
+<p>您的数据存储在应用沙盒中，受设备自身安全（设备密码、磁盘加密）保护。LLM 端点地址与密钥在设备端以混淆形式存储，绝不传输给我们。没有绝对安全的存储方式，请保护好您的设备并自行备份。</p>
+<h2>9. 儿童</h2>
+<p>本应用不面向儿童。我们不会明知而收集未满所在司法辖区数字同意年龄儿童的个人信息（美国为 13 岁，欧洲经济区多数为 16 岁，其他地方依当地规定）。若您认为有儿童向我们提供了信息，请联系我们，我们将协助删除。</p>
+<h2>10. 您的权利</h2>
+<p>您的权利取决于居住地。无论您身处何地，您可随时：拒绝或撤销可选权限；在应用内删除文档及其数据；停止使用 AI 功能；或向我们提出请求。</p>
+<p>由于您的数据在本地，行使访问、更正、可携或删除权的最快方式是在应用内直接操作。</p>
+<h2>11. 本政策的变更</h2>
+<p>我们可能更新本政策。更新时我们会更改上方日期，重大变更会在应用内通知您。更新后继续使用即表示您接受修订后的政策。</p>
+<h2>12. 联系方式</h2>
+<p>隐私问题与请求：<strong>13808875@qq.com</strong>
+邮寄地址：<strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong></p>
+</div>
+</body>
+</html>
