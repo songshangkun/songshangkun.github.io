@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy</title>
+<style>
+:root{color-scheme:light dark;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.7;color:#1a1a1a;background:#fff;margin:0;padding:0;}
+.container{max-width:760px;margin:0 auto;padding:32px 20px 64px;}
+h1{font-size:1.8rem;margin:0 0 0.5em;} h2{font-size:1.35rem;margin:1.6em 0 0.5em;} h3{font-size:1.1rem;margin:1.4em 0 0.4em;} h4{font-size:1rem;margin:1.2em 0 0.4em;}
+p{margin:0 0 1em;}
+ul,ol{margin:0 0 1em;padding-left:1.4em;} li{margin:0.3em 0;}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:0.95rem;} th,td{border:1px solid #ddd;padding:8px 10px;text-align:left;vertical-align:top;} th{background:#f6f6f6;}
+code{background:#f2f2f2;padding:1px 5px;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.9em;}
+a{color:#0a58ca;text-decoration:none;} a:hover{text-decoration:underline;}
+hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
+@media (prefers-color-scheme:dark){body{background:#111;color:#e8e8e8;} th{background:#1c1c1c;} th,td{border-color:#333;} code{background:#1c1c1c;} a{color:#6ea8fe;}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Privacy Policy</h1>
+<p><strong>Last updated:</strong> 2026-11-08 · <strong>Effective:</strong> 2026-11-08</p>
+<h2>1. Who we are</h2>
+<p>Smart Reader (the "App") is a local-first reading and study app. The data controller responsible for your personal information is <strong>songshangkun</strong> ("we", "us", "our"), reachable at <strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong>.</p>
+<p>For any privacy question, request or complaint, contact us at <strong>13808875@qq.com</strong>.</p>
+<h2>2. The short version</h2>
+<ul>
+<li>Your reading library, imported documents, annotations, summaries and settings live <strong>on your device</strong>. We run no account system and no backend that stores your reading data.</li>
+<li>We <strong>do not sell</strong> your personal information and <strong>do not</strong> use it for behavioural advertising.</li>
+<li>This version of the App <strong>contains no advertising SDK and no analytics SDK</strong>, and has <strong>no in-app purchases</strong>.</li>
+<li>The App requests <strong>only the microphone permission</strong>, used solely for optional voice input and note recordings that are transcribed <strong>on your device</strong> by the streaming speech-recognition model. Audio is never uploaded. Camera, photo-library and location permissions are not requested. Documents and images are imported through the system file picker, and OCR runs <strong>entirely on your device</strong>.</li>
+<li>AI features run either on an <strong>LLM endpoint you configure yourself</strong> or with an <strong>on-device model you download to your device</strong> — see section 4.</li>
+</ul>
+<h2>3. Information we handle</h2>
+<p>Because the App is local-first, almost all information never leaves your device.</p>
+<h3>3.1 Information stored on your device</h3>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Why</th>
+<th>Where it stays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imported documents (PDF, EPUB, Office, text, images) and their extracted text</td>
+<td>To open, reflow and read them again</td>
+<td>App sandbox (application support directory)</td>
+</tr>
+<tr>
+<td>Reading library records: titles, formats, import time, reading position</td>
+<td>To show your library and resume where you stopped</td>
+<td>On-device database</td>
+</tr>
+<tr>
+<td>On-device full-text / retrieval index and AI result cache (explanations, summaries, Q&amp;A)</td>
+<td>To search your documents and avoid repeated AI calls</td>
+<td>On-device database and index directory</td>
+</tr>
+<tr>
+<td>Reading and appearance settings (theme, language, font, page-turn mode, quick actions)</td>
+<td>To remember your preferences</td>
+<td>On-device preferences</td>
+</tr>
+<tr>
+<td>Downloaded speech (TTS) models</td>
+<td>To read documents aloud offline</td>
+<td>App sandbox (model directory)</td>
+</tr>
+<tr>
+<td>LLM endpoint address, model name and API key, if you configure one</td>
+<td>To call the AI features you enable</td>
+<td>On-device, stored obfuscated; we cannot read it</td>
+</tr>
+<tr>
+<td>Downloaded speech-recognition (ASR), on-device LLM and embedding models</td>
+<td>Voice input, offline Q&amp;A and semantic search</td>
+<td>App sandbox (model directory)</td>
+</tr>
+<tr>
+<td>Note recordings, chat history, summaries and shared notes</td>
+<td>Replay recordings and continue studying</td>
+<td>On-device database and app sandbox</td>
+</tr>
+</tbody>
+</table>
+<p>We hold no server-side copy of the above and cannot restore it for you. Please keep your own backups.</p>
+<h3>3.2 Information handled only when you use a specific feature</h3>
+<ul>
+<li><strong>Files / Documents (optional).</strong> When you import a document or an image, the App reads only the files you pick in the system file picker. Nothing is uploaded to a server we operate.</li>
+<li><strong>On-device text recognition (OCR).</strong> Images and scanned PDF pages are recognised locally by the on-device ML Kit text-recognition component. Images never leave your device.</li>
+<li><strong>On-device speech synthesis (TTS).</strong> Documents are read aloud by speech models you download and run locally. Text is not sent anywhere.</li>
+<li><strong>Voice input and note recordings (optional).</strong> When you dictate text or attach a recording to a note, the App uses the microphone and a streaming speech-recognition model that runs <strong>entirely on your device</strong>. Audio is converted to text locally and is not uploaded. You may decline the microphone permission; reading, AI and other features keep working.</li>
+<li><strong>On-device models (optional).</strong> You may download speech-recognition, speech-synthesis, embedding and small language models (GGUF). These files are stored in the App sandbox and run locally; your text and audio are not sent to us or to a model provider.</li>
+</ul>
+<h3>3.3 Information sent outside your device</h3>
+<p>Only in these cases:</p>
+<ol>
+<li><strong>AI processing (optional).</strong> When you use AI explanations, summaries, follow-up questions or quick actions, the text you selected or the relevant excerpt is sent to the <strong>LLM endpoint you configured yourself</strong> in Settings → AI Service. The recipient is the provider you choose; we do not operate it, cannot read the address or key you configure, and keep no copy of what you submit. Please review that provider's privacy policy.</li>
+<li><strong>Remote configuration and document delivery.</strong> The App fetches configuration files, legal documents and the optional app-recommendation list from the developer's GitHub Pages, and downloads speech, speech-recognition, embedding and on-device language models from the model repository (Hugging Face / hf-mirror). These requests carry no document content, reading history, audio or personal identifiers.</li>
+<li><strong>Network requests you trigger.</strong> Opening an image or link inside a document does not upload anything by itself; the App does not include browsing, tracking or advertising components.</li>
+</ol>
+<h2>4. AI features, in plain words</h2>
+<ul>
+<li><strong>User-configured LLM endpoint (BYOK):</strong> explanations, summaries, translations and Q&amp;A are produced by sending the selected text to the <strong>LLM address and key you enter yourself</strong>. The provider is chosen by you — we neither operate it nor can we read the address or key you configure. Please review that provider's privacy and retention policy, and do not submit information you consider confidential through this channel.</li>
+<li><strong>On-device LLM model (optional):</strong> explanations, summaries and Q&amp;A can also be produced by a small GGUF model that you download and run locally. In that mode the text stays on your device and is not sent anywhere.</li>
+<li><strong>On-device processing:</strong> text extraction, OCR, full-text and semantic indexing, speech synthesis, speech recognition and on-device model inference all run locally on your device. <strong>Your documents, images and audio are not uploaded by these features.</strong></li>
+</ul>
+<p>You can turn AI features off at any time; reading, search and offline speech keep working without them.</p>
+<h2>5. Why we process your information</h2>
+<p>We process information only to: import and display your documents; extract and reflow text; let you search, annotate and organise your library; run on-device OCR and speech synthesis you request; call the AI endpoint you configure; and keep the App working and secure.</p>
+<p>We do not use your documents or reading history to train models, to profile you, or to target advertising.</p>
+<h2>6. Third parties that may receive information</h2>
+<table>
+<thead>
+<tr>
+<th>Recipient</th>
+<th>What it receives</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The LLM provider you configure yourself</td>
+<td>The text you submit for explanation, summary or Q&amp;A</td>
+<td>AI processing you requested</td>
+</tr>
+<tr>
+<td>GitHub Pages / GitHub (developer)</td>
+<td>Configuration, legal-document and app-recommendation requests (no document content)</td>
+<td>Remote configuration, document delivery and app promotion</td>
+</tr>
+<tr>
+<td>Hugging Face / hf-mirror</td>
+<td>Speech, speech-recognition, embedding and on-device LLM model downloads (no document content)</td>
+<td>On-device model delivery</td>
+</tr>
+</tbody>
+</table>
+<p>Each recipient is governed by its own privacy policy. We do not sell or rent personal information to anyone.</p>
+<h2>7. How long we keep information</h2>
+<p>Your documents, index, annotations, AI cache and settings remain on your device until you delete them, delete the document from your library, or uninstall the App. Deleting a document from the library removes its record, its original file and its index entries. Uninstalling removes everything permanently; we keep no copy and cannot recover it.</p>
+<p>Content you submit to your configured LLM provider is retained according to that provider's retention policy.</p>
+<h2>8. Security</h2>
+<p>Your data is stored in the App's sandbox, protected by your device's own security (device passcode, disk encryption). The LLM endpoint address and key are stored obfuscated on the device and are never transmitted to us. No method of storage is perfectly secure, so please protect your device and keep backups.</p>
+<h2>9. Children</h2>
+<p>The App is not directed to children. We do not knowingly collect personal information from children under the age of digital consent in their jurisdiction (13 in the United States, 16 in much of the EEA, and as defined locally elsewhere). If you believe a child has provided us information, contact us and we will help remove it.</p>
+<h2>10. Your rights</h2>
+<p>Your rights depend on where you live. Wherever you are, you may at any time: decline or revoke optional permissions; delete documents and their data from within the App; stop using AI features; or contact us with a request.</p>
+<p>Because your data is local, the fastest way to exercise access, correction, portability or deletion is directly in the App.</p>
+<h2>11. Changes to this policy</h2>
+<p>We may update this policy. When we do, we change the date above and, for material changes, notify you in the App. Continuing to use the App after an update means you accept the revised policy.</p>
+<h2>12. Contact</h2>
+<p>Privacy questions and requests: <strong>13808875@qq.com</strong>
+Postal address: <strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong></p>
+</div>
+</body>
+</html>

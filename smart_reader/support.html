@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Reader Support</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 720px; margin: 2rem auto; padding: 0 1rem;
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         line-height: 1.7; color: #1d1d1f; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #f5f5f7; background: #000; } }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 1.8rem; }
+  a { color: #0a7afe; }
+  .muted { color: #6e6e73; font-size: .95rem; }
+  details { border: 1px solid #d2d2d7; border-radius: 10px; padding: .6rem .9rem; margin: .6rem 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #d2d2d7; font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Smart Reader Support</h1>
+  <p class="muted">A local-first reading and study app for iPhone and Android — import documents, read and annotate, listen with on-device speech, and study with AI you control.</p>
+
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:13808875@qq.com">13808875@qq.com</a></p>
+  <p class="muted">Please include your device model, OS version, app version and the steps that led to the issue.</p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>How do I import a document?</summary>
+    <p>Open the app → <strong>Library → + (Import)</strong> and pick one or more files with the system file picker.
+       Supported formats are PDF, EPUB, DOCX, PPTX, XLSX, TXT, Markdown, HTML, CSV and images
+       (PNG, JPG, JPEG, GIF, WEBP, BMP). Imported files and their extracted text stay on your device and are
+       never uploaded to a server we operate.</p>
+  </details>
+
+  <details>
+    <summary>A document will not open or looks incomplete.</summary>
+    <p>The app has safety limits per document: up to <strong>200 pages</strong> and
+       <strong>30,000 elements</strong>. Password-protected or damaged PDFs cannot be parsed.
+       Scanned PDFs and images are processed with on-device OCR (ML Kit), so the text layer depends on image quality.
+       Very large or unusual files may hit the element limit; splitting the document usually helps.</p>
+  </details>
+
+  <details>
+    <summary>How do I set up the AI features (explain, translate, summarise, Q&amp;A)?</summary>
+    <p>Open <strong>Settings → AI Service → LLM Settings</strong>. You have two options:</p>
+    <ul>
+      <li><strong>Your own LLM endpoint (BYOK)</strong> — enter an OpenAI-compatible address, model name and API key.
+          The provider is chosen by you; we do not operate it and cannot read your address or key.</li>
+      <li><strong>On-device model (GGUF)</strong> — download a small model and run it locally. No text leaves the device,
+          but the model needs enough free memory on your phone.</li>
+    </ul>
+    <p>If neither is configured, AI actions stay disabled; reading, search, OCR and speech still work.</p>
+  </details>
+
+  <details>
+    <summary>The AI features are not responding, or the app says the model is too large.</summary>
+    <p>For a BYOK endpoint: check the address, model name and API key in
+       <strong>Settings → AI Service → LLM Settings</strong>, and make sure the device has network access.
+       For an on-device model: close other apps, choose a smaller model, or switch to a BYOK endpoint.
+       The app may warn you when free memory is low; you can still choose to force-load the model at your own risk.
+       Still stuck? Email us with the exact error message.</p>
+  </details>
+
+  <details>
+    <summary>Voice input or note recording does not work.</summary>
+    <p>First download a speech-recognition model in <strong>Settings → AI Service → Speech Models</strong>.
+       Then allow microphone access when the system asks. The microphone is used only while you dictate text or
+       attach a recording to a note; audio is transcribed <strong>on your device</strong> and is never uploaded.
+       If you decline the microphone permission, all other features keep working.</p>
+  </details>
+
+  <details>
+    <summary>How do I listen to a document (text-to-speech)?</summary>
+    <p>No TTS model is bundled with the app. Open <strong>Settings → AI Service → TTS Models</strong>, download a
+       voice model (for example Kitten Nano for English or Kokoro for English and Chinese), then select it.
+       Reading aloud runs entirely on your device and works offline.</p>
+  </details>
+
+  <details>
+    <summary>Model downloads are slow or fail.</summary>
+    <p>Models are downloaded from the model repository (Hugging Face, or the hf-mirror mirror in mainland China).
+       Check your network and free storage, then retry from the model page. Downloads can be resumed; partial files
+       are kept until the download completes or you delete the model.</p>
+  </details>
+
+  <details>
+    <summary>Where is my data stored? Can I back it up?</summary>
+    <p>Your library, imported files, notes, summaries, chat history, recordings and settings are stored on your device.
+       We run no account system and keep no server-side copy. Uninstalling the app removes this data, so keep your own
+       backups of the original documents and any notes you need.</p>
+  </details>
+
+  <details>
+    <summary>Does the app collect data, show ads or use analytics?</summary>
+    <p>No. This version contains <strong>no ads and no third-party analytics SDK</strong>, and no in-app purchases.
+       The only outbound requests are: optional AI calls to the endpoint you configure, fetching remote configuration
+       and legal documents from the developer's GitHub Pages, downloading models from Hugging Face / hf-mirror, and
+       loading the optional app-recommendation list. None of these requests include your document content.
+       See our <a href="legal/privacy_en.md">Privacy Policy</a> for details.</p>
+  </details>
+
+  <details>
+    <summary>How do I change the language, theme or reading font?</summary>
+    <p>Open <strong>Settings → Reading &amp; Interface</strong>. The app supports eight interface languages
+       (English, 简体中文, Deutsch, Español, Français, Italiano, 日本語, 한국어), light / dark / system themes,
+       paper presets and six font-size steps. Page numbers and AI citations use the same page projection, so they
+       stay consistent when you change the font size.</p>
+  </details>
+
+  <details>
+    <summary>The app is in the wrong language or a feature is missing.</summary>
+    <p>Some features depend on downloaded components: OCR (ML Kit), on-device speech recognition, TTS voices,
+       the embedding model and optional LLM models. Check <strong>Settings → AI Service</strong> for the status of
+       each component, then retry the download. If a feature is still unavailable, email us with the screen name.</p>
+  </details>
+
+  <footer>
+    <p>
+      <a href="legal/privacy_en.md">Privacy Policy</a> ·
+      <a href="legal/terms_en.md">Terms of Service</a>
+    </p>
+    <p class="muted">Smart Reader is provided by songshangkun. Last updated: 2026-11-08.</p>
+  </footer>
+</main>
+</body>
+</html>

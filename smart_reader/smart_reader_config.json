@@ -1,0 +1,1783 @@
+{
+  "_comment": "Smart Reader 远程配置层（GitHub Pages）。仅下发【需要远程控制的模型注册表】：tts.models、asr.models、llm.models/presets/default_params、rag.on_device_files。列表一律全量下发（App 的 deepMerge 对 List 是整体替换，缺项会丢失本地其余元素）。不含 remote_config、parser、reader、summary、chat、ui 等本地配置。",
+  "schema_version": 1,
+  "tts": {
+    "default_model_id": "",
+    "models": [
+      {
+        "id": "tts_kitten_en",
+        "family": "kitten",
+        "langs": [
+          "en"
+        ],
+        "size": 32692694,
+        "required_ram_mb": 0,
+        "sha256": "bb1e172ef6c2701c14e0560808213a6df5fca3279c9362fc20fcc567c8f2ea4d",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/kitten-nano-en-v0_8-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kitten-nano-en-v0_8-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kitten-nano-en-v0_8-int8.zip"
+        ],
+        "files": {
+          "model": "model.int8.onnx",
+          "tokens": "tokens.txt",
+          "voices": "voices.bin",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "model.int8.onnx",
+          "tokens.txt",
+          "voices.bin"
+        ],
+        "optional_files": [
+          "espeak-ng-data"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 24000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Kitten Nano (English)",
+          "zh": "Kitten Nano（英文）"
+        },
+        "descriptions": {
+          "en": "Compact CPU-friendly English TTS. Small and fast for on-device reading.",
+          "zh": "超轻量、专为 CPU 边缘设备设计的英文 TTS，体积小、速度快，适合端侧朗读。"
+        },
+        "tags": [
+          "int8",
+          "en",
+          "kitten"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_kokoro_multilingual",
+        "family": "kokoro",
+        "langs": [
+          "en",
+          "zh"
+        ],
+        "size": 146582144,
+        "required_ram_mb": 0,
+        "sha256": "9597f1b1d911a30a2aab2a6e2e48c42f3cb9273ed751145a739a2e11e4ec23b9",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/kokoro-int8-multi-lang-v1_1.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kokoro-int8-multi-lang-v1_1.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/kokoro-int8-multi-lang-v1_1.zip"
+        ],
+        "files": {
+          "model": "model.int8.onnx",
+          "voices": "voices.bin",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "model.int8.onnx",
+          "voices.bin",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "lexicon-us-en.txt",
+          "lexicon-gb-en.txt",
+          "lexicon-zh.txt",
+          "number-zh.fst",
+          "date-zh.fst",
+          "phone-zh.fst"
+        ],
+        "rule_fsts": [
+          "number-zh.fst",
+          "date-zh.fst",
+          "phone-zh.fst"
+        ],
+        "sample_rate": 24000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Kokoro (English + Chinese)",
+          "zh": "Kokoro（英文 + 中文）"
+        },
+        "descriptions": {
+          "en": "Multilingual Kokoro covering English (US/UK accents) and Chinese. Switch language in settings.",
+          "zh": "多语 Kokoro 模型，覆盖英文（美/英口音）与中文；可在设置里切换语言。"
+        },
+        "tags": [
+          "int8",
+          "multilingual",
+          "kokoro"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_de_thorsten_int8",
+        "family": "vits",
+        "langs": [
+          "de"
+        ],
+        "size": 22637334,
+        "required_ram_mb": 0,
+        "sha256": "cfde0207ced1def24278e250de9700fa723344edacc7f40c051482a56dff9e7b",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-de_DE-thorsten-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-de_DE-thorsten-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-de_DE-thorsten-low-int8.zip"
+        ],
+        "files": {
+          "model": "de_DE-thorsten-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "de_DE-thorsten-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "de_DE-thorsten-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "German (Thorsten)",
+          "zh": "德语（Thorsten）",
+          "de": "Deutsch (Thorsten)"
+        },
+        "descriptions": {
+          "en": "German Piper voice (Thorsten, CC0). Note: numbers are silently dropped (no FST in this package).",
+          "zh": "德语 Piper 声音（Thorsten，CC0）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "de",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_en_amy_int8",
+        "family": "vits",
+        "langs": [
+          "en"
+        ],
+        "size": 22480635,
+        "required_ram_mb": 0,
+        "sha256": "9f13d4a0e7a17bca66ec84d4a10119dc5f363667ff6e196c4d41a5bb4bdc595d",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-amy-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-amy-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-amy-low-int8.zip"
+        ],
+        "files": {
+          "model": "en_US-amy-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "en_US-amy-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "en_US-amy-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "English (Amy)",
+          "zh": "英语（Amy）"
+        },
+        "descriptions": {
+          "en": "English Piper voice (Amy, low). Note: numbers silently dropped (no FST).",
+          "zh": "英语 Piper 声音（Amy，low）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "en",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_es_sharvard_int8",
+        "family": "vits",
+        "langs": [
+          "es"
+        ],
+        "size": 24736859,
+        "required_ram_mb": 0,
+        "sha256": "bdeef80ef521c2cad9753eff83cad0d39c54433a6c7bb548a4ae50be42732583",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-sharvard-medium-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-sharvard-medium-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-sharvard-medium-int8.zip"
+        ],
+        "files": {
+          "model": "es_ES-sharvard-medium.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "es_ES-sharvard-medium.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "es_ES-sharvard-medium.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 22050,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Spanish (Sharvard)",
+          "zh": "西班牙语（Sharvard）",
+          "es": "Español (Sharvard)"
+        },
+        "descriptions": {
+          "en": "Spanish Piper voice (Sharvard, medium). Note: numbers silently dropped (no FST).",
+          "zh": "西班牙语 Piper 声音（Sharvard，medium）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "es",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_fr_gilles_int8",
+        "family": "vits",
+        "langs": [
+          "fr"
+        ],
+        "size": 22605390,
+        "required_ram_mb": 0,
+        "sha256": "4143afe3a765a8e1015942e0088c997dd3d3f9f6ede0a7d2ba5f2a8db4716e47",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low-int8.zip"
+        ],
+        "files": {
+          "model": "fr_FR-gilles-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "fr_FR-gilles-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "fr_FR-gilles-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "French (Gilles)",
+          "zh": "法语（Gilles）",
+          "fr": "Français (Gilles)"
+        },
+        "descriptions": {
+          "en": "French Piper voice (Gilles, low, CC0). Note: numbers silently dropped (no FST).",
+          "zh": "法语 Piper 声音（Gilles，low，CC0）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "fr",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_fr_gilles",
+        "family": "vits",
+        "langs": [
+          "fr"
+        ],
+        "size": 67268658,
+        "required_ram_mb": 0,
+        "sha256": "d557c4f515fc0513b464a337c0c4c9322ca6a441447e1d3c4b534eea1a166a66",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-gilles-low.zip"
+        ],
+        "files": {
+          "model": "fr_FR-gilles-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "fr_FR-gilles-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "fr_FR-gilles-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "French (Gilles, fp32)",
+          "zh": "法语（Gilles，fp32）",
+          "fr": "Français (Gilles, fp32)"
+        },
+        "descriptions": {
+          "en": "French Piper voice (Gilles, full-precision). Larger but slightly higher quality; numbers silently dropped.",
+          "zh": "法语 Piper 声音（Gilles，fp32 全精度）。体积更大但音质略好；数字会被静默丢弃。"
+        },
+        "tags": [
+          "fp32",
+          "fr",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_it_riccardo_int8",
+        "family": "vits",
+        "langs": [
+          "it"
+        ],
+        "size": 14922171,
+        "required_ram_mb": 0,
+        "sha256": "0a68b4d6f21c77935af55348657170b5a3910881424e98995c3dd16c8bbe5752",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-it_IT-riccardo-x_low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-it_IT-riccardo-x_low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-it_IT-riccardo-x_low-int8.zip"
+        ],
+        "files": {
+          "model": "it_IT-riccardo-x_low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "it_IT-riccardo-x_low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "it_IT-riccardo-x_low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Italian (Riccardo)",
+          "zh": "意大利语（Riccardo）",
+          "it": "Italiano (Riccardo)"
+        },
+        "descriptions": {
+          "en": "Italian Piper voice (Riccardo, x_low). Note: numbers silently dropped (no FST).",
+          "zh": "意大利语 Piper 声音（Riccardo，x_low）。注意：本包无 FST，数字会被静默丢弃。"
+        },
+        "tags": [
+          "int8",
+          "it",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_zh_chaowen_int8",
+        "family": "vits",
+        "langs": [
+          "zh"
+        ],
+        "size": 13798957,
+        "required_ram_mb": 0,
+        "sha256": "b77b4291fa4b54e088decbd1479a6529c50e251fca0058acfb238cc9a258890c",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-chaowen-medium-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-chaowen-medium-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-chaowen-medium-int8.zip"
+        ],
+        "files": {
+          "model": "zh_CN-chaowen-medium.onnx",
+          "tokens": "tokens.txt",
+          "lexicon": "lexicon.txt"
+        },
+        "required_files": [
+          "zh_CN-chaowen-medium.onnx",
+          "tokens.txt",
+          "lexicon.txt"
+        ],
+        "optional_files": [
+          "number.fst",
+          "date.fst",
+          "phone.fst",
+          "zh_CN-chaowen-medium.onnx.json"
+        ],
+        "rule_fsts": [
+          "number.fst",
+          "date.fst",
+          "phone.fst"
+        ],
+        "sample_rate": 22050,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Chinese (Chaowen)",
+          "zh": "中文（超文）"
+        },
+        "descriptions": {
+          "en": "Chinese Piper voice (Chaowen, CC0). Includes number/date FST so digits are read correctly.",
+          "zh": "中文 Piper 声音（超文，CC0 许可）。自带数字/日期 FST，金额日期能正确朗读。"
+        },
+        "tags": [
+          "int8",
+          "zh",
+          "lexicon"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_zh_xiao_ya",
+        "family": "vits",
+        "langs": [
+          "zh"
+        ],
+        "size": 58972589,
+        "required_ram_mb": 0,
+        "sha256": "3bfd63b06947a565d3afd6053e66120841acb68f640eb09a062394164a0ce828",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-xiao_ya-medium.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-xiao_ya-medium.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-zh_CN-xiao_ya-medium.zip"
+        ],
+        "files": {
+          "model": "zh_CN-xiao_ya-medium.onnx",
+          "tokens": "tokens.txt",
+          "lexicon": "lexicon.txt"
+        },
+        "required_files": [
+          "zh_CN-xiao_ya-medium.onnx",
+          "tokens.txt",
+          "lexicon.txt"
+        ],
+        "optional_files": [
+          "number.fst",
+          "date.fst",
+          "phone.fst",
+          "zh_CN-xiao_ya-medium.onnx.json"
+        ],
+        "rule_fsts": [
+          "number.fst",
+          "date.fst",
+          "phone.fst"
+        ],
+        "sample_rate": 22050,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Chinese (Xiaoya, fp32)",
+          "zh": "中文（小雅，fp32）"
+        },
+        "descriptions": {
+          "en": "Chinese Piper voice (Xiaoya, full-precision, non-commercial). Includes FST so digits are read correctly.",
+          "zh": "中文 Piper 声音（小雅，fp32 全精度，Non-commercial 许可）。自带 FST，金额日期能正确朗读。"
+        },
+        "tags": [
+          "fp32",
+          "zh",
+          "lexicon"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_supertonic_3",
+        "family": "supertonic",
+        "langs": [
+          "en",
+          "zh",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "ja",
+          "ko"
+        ],
+        "size": 123845916,
+        "required_ram_mb": 0,
+        "sha256": "6fc3667e1fa9b2c074f7b8fa029a5e3b8f6a146a31ffd92e637dd79627f3dece",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.zip"
+        ],
+        "files": {},
+        "required_files": [
+          "duration_predictor.int8.onnx",
+          "text_encoder.int8.onnx",
+          "vector_estimator.int8.onnx",
+          "vocoder.int8.onnx",
+          "tts.json",
+          "unicode_indexer.bin",
+          "voice.bin"
+        ],
+        "optional_files": [
+          "README.md"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 24000,
+        "num_speakers": 10,
+        "default_language": "en",
+        "supertonic_files": {
+          "durationPredictor": "duration_predictor.int8.onnx",
+          "textEncoder": "text_encoder.int8.onnx",
+          "vectorEstimator": "vector_estimator.int8.onnx",
+          "vocoder": "vocoder.int8.onnx",
+          "ttsJson": "tts.json",
+          "unicodeIndexer": "unicode_indexer.bin",
+          "voiceStyle": "voice.bin"
+        },
+        "names": {
+          "en": "Supertonic 3.0 (Multilingual)",
+          "zh": "Supertonic 3.0（多语种，含日/韩）"
+        },
+        "descriptions": {
+          "en": "Multilingual TTS covering 31 languages incl. Japanese/Korean. The only on-device ja/ko option.",
+          "zh": "多语种 TTS，31 语种（含日语/韩语）。端侧日韩朗读的唯一选择。"
+        },
+        "tags": [
+          "int8",
+          "multilingual",
+          "supertonic",
+          "ja",
+          "ko"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_en_ryan_int8",
+        "family": "vits",
+        "langs": [
+          "en"
+        ],
+        "size": 22589995,
+        "required_ram_mb": 0,
+        "sha256": "3be83af59340b63b6a660ffcaa1112b96d33697600a16d660f7d31d2c0d3ab2f",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-ryan-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-ryan-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-en_US-ryan-low-int8.zip"
+        ],
+        "files": {
+          "model": "en_US-ryan-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "en_US-ryan-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "en_US-ryan-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "English (Ryan, US)",
+          "zh": "英语（Ryan，美音）"
+        },
+        "descriptions": {
+          "en": "American English Piper voice (Ryan). espeak-routed, 16kHz.",
+          "zh": "美式英语 Piper 音色（Ryan）。espeak 路由，16kHz。"
+        },
+        "tags": [
+          "int8",
+          "en",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_es_carlfm_int8",
+        "family": "vits",
+        "langs": [
+          "es"
+        ],
+        "size": 14929261,
+        "required_ram_mb": 0,
+        "sha256": "5569610f57319de783d0898bdd3d2d7c00da359725e45088b05ff5d6274943c3",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-carlfm-x_low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-carlfm-x_low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-es_ES-carlfm-x_low-int8.zip"
+        ],
+        "files": {
+          "model": "es_ES-carlfm-x_low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "es_ES-carlfm-x_low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "es_ES-carlfm-x_low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "Spanish (Carlfm)",
+          "zh": "西班牙语（Carlfm）"
+        },
+        "descriptions": {
+          "en": "Spanish Piper voice (Carlfm). espeak-routed, 16kHz.",
+          "zh": "西班牙语 Piper 音色（Carlfm）。espeak 路由，16kHz。"
+        },
+        "tags": [
+          "int8",
+          "es",
+          "espeak"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "tts_piper_fr_siwis_int8",
+        "family": "vits",
+        "langs": [
+          "fr"
+        ],
+        "size": 14908360,
+        "required_ram_mb": 0,
+        "sha256": "1312b8835e81c9496b4999f60afdd5d5ef7dd5e1cbd898a861c3c1ad807e1a47",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-siwis-low-int8.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-siwis-low-int8.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/tts/vits-piper-fr_FR-siwis-low-int8.zip"
+        ],
+        "files": {
+          "model": "fr_FR-siwis-low.onnx",
+          "tokens": "tokens.txt",
+          "dataDir": "espeak-ng-data"
+        },
+        "required_files": [
+          "fr_FR-siwis-low.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "espeak-ng-data",
+          "fr_FR-siwis-low.onnx.json"
+        ],
+        "rule_fsts": [],
+        "sample_rate": 16000,
+        "num_speakers": 1,
+        "default_language": "",
+        "names": {
+          "en": "French (Siwis)",
+          "zh": "法语（Siwis）"
+        },
+        "descriptions": {
+          "en": "French Piper voice (Siwis). espeak-routed, 16kHz.",
+          "zh": "法语 Piper 音色（Siwis）。espeak 路由，16kHz。"
+        },
+        "tags": [
+          "int8",
+          "fr",
+          "espeak"
+        ],
+        "enabled": true
+      }
+    ]
+  },
+  "asr": {
+    "default_model_id": "",
+    "models": [
+      {
+        "id": "zh-14M",
+        "family": "streaming-transducer",
+        "langs": [
+          "zh"
+        ],
+        "size": 20946231,
+        "required_ram_mb": 60,
+        "sha256": "03032665f86771f667195504771b8e6ebc26069fbf05303e0999f1758f461b7b",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-zh-14M.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "中文 · zipformer 14M",
+          "en": "Chinese · zipformer 14M",
+          "de": "Chinesisch · zipformer 14M",
+          "es": "Chino · zipformer 14M",
+          "fr": "Chinois · zipformer 14M",
+          "it": "Cinese · zipformer 14M",
+          "ja": "中国語 · zipformer 14M",
+          "ko": "중국어 · zipformer 14M"
+        },
+        "descriptions": {
+          "zh": "体积最小的中文流式模型，日常记笔记够用。",
+          "en": "Smallest Chinese streaming model — enough for everyday notes.",
+          "de": "Kleinstes chinesisches Streaming-Modell – für alltägliche Notizen ausreichend.",
+          "es": "El modelo chino en streaming más pequeño; suficiente para notas diarias.",
+          "fr": "Le plus petit modèle chinois en streaming — suffisant pour des notes quotidiennes.",
+          "it": "Il più piccolo modello cinese in streaming: sufficiente per note quotidiane.",
+          "ja": "最小の中国語ストリーミングモデル。日常のメモに十分です。",
+          "ko": "가장 작은 중국어 스트리밍 모델로 일상 메모에 충분합니다."
+        },
+        "tags": [
+          "int8",
+          "zh",
+          "zipformer"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "en-20M",
+        "family": "streaming-transducer",
+        "langs": [
+          "en"
+        ],
+        "size": 38277116,
+        "required_ram_mb": 90,
+        "sha256": "1de01f128c5a02e90fc59e01aeb3e3c0ecca78e591d00f1e6836d6bec5996f00",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/sherpa-en-20M.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "英文 · zipformer 20M",
+          "en": "English · zipformer 20M",
+          "de": "Englisch · zipformer 20M",
+          "es": "Inglés · zipformer 20M",
+          "fr": "Anglais · zipformer 20M",
+          "it": "Inglese · zipformer 20M",
+          "ja": "英語 · zipformer 20M",
+          "ko": "영어 · zipformer 20M"
+        },
+        "descriptions": {
+          "zh": "轻量英文流式模型，识别快。",
+          "en": "Lightweight English streaming model, fast.",
+          "de": "Leichtes englisches Streaming-Modell, schnell.",
+          "es": "Modelo inglés en streaming ligero y rápido.",
+          "fr": "Modèle anglais en streaming léger et rapide.",
+          "it": "Modello inglese in streaming leggero e veloce.",
+          "ja": "軽量な英語ストリーミングモデル。高速です。",
+          "ko": "가벼운 영어 스트리밍 모델로 빠릅니다."
+        },
+        "tags": [
+          "int8",
+          "en",
+          "zipformer"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "zh-multi-70M",
+        "family": "streaming-transducer",
+        "langs": [
+          "zh"
+        ],
+        "size": 59326993,
+        "required_ram_mb": 140,
+        "sha256": "f11835c417f3a019cc3fb9506f19cdda9346744c67352586f8601d6dee1b1761",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-multi-70M.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "中文 · zipformer 70M (BPE)",
+          "en": "Chinese · zipformer 70M (BPE)",
+          "de": "Chinesisch · zipformer 70M (BPE)",
+          "es": "Chino · zipformer 70M (BPE)",
+          "fr": "Chinois · zipformer 70M (BPE)",
+          "it": "Cinese · zipformer 70M (BPE)",
+          "ja": "中国語 · zipformer 70M (BPE)",
+          "ko": "중국어 · zipformer 70M (BPE)"
+        },
+        "descriptions": {
+          "zh": "中文多口音增强版，准确率更高（带 BPE）。",
+          "en": "Enhanced Chinese multi-accent model with higher accuracy (uses BPE).",
+          "de": "Verbessertes chinesisches Modell mit vielen Akzenten und höherer Genauigkeit (nutzt BPE).",
+          "es": "Modelo chino mejorado con múltiples acentos y mayor precisión (usa BPE).",
+          "fr": "Modèle chinois multi-accent amélioré, plus précis (utilise le BPE).",
+          "it": "Modello cinese migliorato multi-accento, più preciso (usa BPE).",
+          "ja": "中国語の多アクセント強化モデル。精度が高く、BPE を使用します。",
+          "ko": "중국어 다중 억양 강화 모델로 정확도가 높습니다(BPE 사용)."
+        },
+        "tags": [
+          "int8",
+          "zh",
+          "zipformer",
+          "bpe"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "de-kroko-2025-08-06",
+        "family": "streaming-transducer",
+        "langs": [
+          "de"
+        ],
+        "size": 55197225,
+        "required_ram_mb": 120,
+        "sha256": "c92f14c8d25151bfbd7ec71e768a89c9c08d3ad647cf5592fc83a856fe5070ed",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/de-kroko-2025-08-06.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "德语 · Kroko",
+          "en": "German · Kroko",
+          "de": "Deutsch · Kroko",
+          "es": "Alemán · Kroko",
+          "fr": "Allemand · Kroko",
+          "it": "Tedesco · Kroko",
+          "ja": "ドイツ語 · Kroko",
+          "ko": "독일어 · Kroko"
+        },
+        "descriptions": {
+          "zh": "德语流式模型（Kroko），按需下载后离线识别。",
+          "en": "German streaming model (Kroko); download once, then transcribe offline.",
+          "de": "Deutsches Streaming-Modell (Kroko); einmal laden, dann offline transkribieren.",
+          "es": "Modelo alemán en streaming (Kroko); descárgalo y transcribe sin conexión.",
+          "fr": "Modèle allemand en streaming (Kroko) ; téléchargez puis transcrivez hors ligne.",
+          "it": "Modello tedesco in streaming (Kroko); scaricalo e trascrivi offline.",
+          "ja": "ドイツ語ストリーミングモデル（Kroko）。一度ダウンロードすればオフラインで認識します。",
+          "ko": "독일어 스트리밍 모델(Kroko)로, 한 번 내려받으면 오프라인으로 인식합니다."
+        },
+        "tags": [
+          "int8",
+          "de",
+          "kroko"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "fr-kroko-2025-08-06",
+        "family": "streaming-transducer",
+        "langs": [
+          "fr"
+        ],
+        "size": 54801828,
+        "required_ram_mb": 120,
+        "sha256": "d42e0c8d6b9805fecfc467d028773bfcfb2f899ab3b037ff409bfaa2866355d3",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/fr-kroko-2025-08-06.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "法语 · Kroko",
+          "en": "French · Kroko",
+          "de": "Französisch · Kroko",
+          "es": "Francés · Kroko",
+          "fr": "Français · Kroko",
+          "it": "Francese · Kroko",
+          "ja": "フランス語 · Kroko",
+          "ko": "프랑스어 · Kroko"
+        },
+        "descriptions": {
+          "zh": "法语流式模型（Kroko），按需下载后离线识别。",
+          "en": "French streaming model (Kroko); download once, then transcribe offline.",
+          "de": "Französisches Streaming-Modell (Kroko); einmal laden, dann offline transkribieren.",
+          "es": "Modelo francés en streaming (Kroko); descárgalo y transcribe sin conexión.",
+          "fr": "Modèle français en streaming (Kroko) ; téléchargez puis transcrivez hors ligne.",
+          "it": "Modello francese in streaming (Kroko); scaricalo e trascrivi offline.",
+          "ja": "フランス語ストリーミングモデル（Kroko）。一度ダウンロードすればオフラインで認識します。",
+          "ko": "프랑스어 스트리밍 모델(Kroko)로, 한 번 내려받으면 오프라인으로 인식합니다."
+        },
+        "tags": [
+          "int8",
+          "fr",
+          "kroko"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "es-kroko-2025-08-06",
+        "family": "streaming-transducer",
+        "langs": [
+          "es"
+        ],
+        "size": 119581787,
+        "required_ram_mb": 260,
+        "sha256": "18e44eb8d81f7d4d53db1e955719ad8693617b166b54d48c178390d5239ae6ae",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/es-kroko-2025-08-06.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "西班牙语 · Kroko",
+          "en": "Spanish · Kroko",
+          "de": "Spanisch · Kroko",
+          "es": "Español · Kroko",
+          "fr": "Espagnol · Kroko",
+          "it": "Spagnolo · Kroko",
+          "ja": "スペイン語 · Kroko",
+          "ko": "스페인어 · Kroko"
+        },
+        "descriptions": {
+          "zh": "西班牙语流式模型（Kroko），建议 3GB 以上内存设备。",
+          "en": "Spanish streaming model (Kroko); best on devices with 3GB+ RAM.",
+          "de": "Spanisches Streaming-Modell (Kroko); ideal ab 3GB RAM.",
+          "es": "Modelo español en streaming (Kroko); mejor en dispositivos con 3GB+ de RAM.",
+          "fr": "Modèle espagnol en streaming (Kroko) ; idéal avec 3Go de RAM ou plus.",
+          "it": "Modello spagnolo in streaming (Kroko); ideale con 3GB+ di RAM.",
+          "ja": "スペイン語ストリーミングモデル（Kroko）。3GB 以上のメモリを推奨します。",
+          "ko": "스페인어 스트리밍 모델(Kroko)로, 3GB 이상 메모리 기기를 권장합니다."
+        },
+        "tags": [
+          "int8",
+          "es",
+          "kroko"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "korean-2024-06-16-mobile",
+        "family": "streaming-transducer",
+        "langs": [
+          "ko"
+        ],
+        "size": 100596025,
+        "required_ram_mb": 220,
+        "sha256": "20d600cb9190914de5ed121d86c696505099ff493cf30cd068b48705e1c41035",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/korean-2024-06-16-mobile.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "韩语 · mobile 2024",
+          "en": "Korean · mobile 2024",
+          "de": "Koreanisch · mobile 2024",
+          "es": "Coreano · mobile 2024",
+          "fr": "Coréen · mobile 2024",
+          "it": "Coreano · mobile 2024",
+          "ja": "韓国語 · mobile 2024",
+          "ko": "한국어 · mobile 2024"
+        },
+        "descriptions": {
+          "zh": "韩语移动端流式模型，适合手机离线识别。",
+          "en": "Korean mobile streaming model tuned for on-device recognition.",
+          "de": "Koreanisches Mobil-Streaming-Modell für die Erkennung auf dem Gerät.",
+          "es": "Modelo coreano móvil en streaming optimizado para el dispositivo.",
+          "fr": "Modèle coréen mobile en streaming, optimisé pour l’appareil.",
+          "it": "Modello coreano mobile in streaming ottimizzato per il dispositivo.",
+          "ja": "韓国語のモバイル向けストリーミングモデル。端末上での認識に最適化されています。",
+          "ko": "한국어 모바일 스트리밍 모델로, 기기에서 오프라인 인식에 적합합니다."
+        },
+        "tags": [
+          "int8",
+          "ko",
+          "mobile"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "ar_en_id_ja_ru_th_vi_zh-2025-02-10",
+        "family": "streaming-transducer",
+        "langs": [
+          "zh",
+          "en",
+          "ja",
+          "de",
+          "es",
+          "fr",
+          "ko",
+          "ar",
+          "id",
+          "ru",
+          "th",
+          "vi"
+        ],
+        "size": 225329782,
+        "required_ram_mb": 420,
+        "sha256": "e2160cb762322f831d87714bc048a28810f246fab96c6b093fad2c3353811b01",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/ar_en_id_ja_ru_th_vi_zh-2025-02-10.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "多语 · zipformer 2025-02",
+          "en": "Multilingual · zipformer 2025-02",
+          "de": "Mehrsprachig · zipformer 2025-02",
+          "es": "Multilingüe · zipformer 2025-02",
+          "fr": "Multilingue · zipformer 2025-02",
+          "it": "Multilingue · zipformer 2025-02",
+          "ja": "多言語 · zipformer 2025-02",
+          "ko": "다국어 · zipformer 2025-02"
+        },
+        "descriptions": {
+          "zh": "12 语流式模型（含日/韩，不含意大利语），一次下载无需切换。",
+          "en": "12-language streaming model (includes Japanese/Korean, no Italian); one download, no switching.",
+          "de": "12-Sprachen-Streaming-Modell (inkl. Japanisch/Koreanisch, ohne Italienisch); ein Download genügt.",
+          "es": "Modelo en streaming de 12 idiomas (incluye japonés/coreano, sin italiano); una sola descarga.",
+          "fr": "Modèle en streaming 12 langues (japonais/coréen inclus, pas d’italien) ; un seul téléchargement.",
+          "it": "Modello in streaming a 12 lingue (include giapponese/coreano, non italiano); un solo download.",
+          "ja": "12 言語のストリーミングモデル（日韓を含み、イタリア語は含みません）。一度のダウンロードで済みます。",
+          "ko": "12개 언어 스트리밍 모델(일본어/한국어 포함, 이탈리아어 제외)로 한 번만 받으면 됩니다."
+        },
+        "tags": [
+          "int8",
+          "multi",
+          "zipformer",
+          "no-it"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "en-70M",
+        "family": "streaming-transducer",
+        "langs": [
+          "en"
+        ],
+        "size": 243002880,
+        "required_ram_mb": 450,
+        "sha256": "45d15a63b24b80cec08d1176af2d4d78dbbaac0dd6fc42d2975c271c1c87fb09",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/en-70M.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "英文 · zipformer 70M",
+          "en": "English · zipformer 70M",
+          "de": "Englisch · zipformer 70M",
+          "es": "Inglés · zipformer 70M",
+          "fr": "Anglais · zipformer 70M",
+          "it": "Inglese · zipformer 70M",
+          "ja": "英語 · zipformer 70M",
+          "ko": "영어 · zipformer 70M"
+        },
+        "descriptions": {
+          "zh": "英文增强版，准确率更高（带 BPE），建议大内存设备。",
+          "en": "Enhanced English model with higher accuracy (uses BPE); best on devices with more RAM.",
+          "de": "Verbessertes englisches Modell mit höherer Genauigkeit (nutzt BPE); ideal für Geräte mit mehr RAM.",
+          "es": "Modelo inglés mejorado con mayor precisión (usa BPE); mejor en dispositivos con más RAM.",
+          "fr": "Modèle anglais amélioré, plus précis (utilise le BPE) ; idéal sur les appareils avec plus de RAM.",
+          "it": "Modello inglese migliorato, più preciso (usa BPE); ideale su dispositivi con più RAM.",
+          "ja": "英語の強化モデル。精度が高く、BPE を使用します。メモリの多い端末に最適です。",
+          "ko": "영어 강화 모델로 정확도가 높으며(BPE 사용), 메모리가 넉넉한 기기에 적합합니다."
+        },
+        "tags": [
+          "int8",
+          "en",
+          "zipformer",
+          "bpe"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "zh-en-150",
+        "family": "streaming-transducer",
+        "langs": [
+          "zh",
+          "en"
+        ],
+        "size": 317891921,
+        "required_ram_mb": 560,
+        "sha256": "1486df55e166e8bbab3491a5637e23502ecef24d7387fa902030bcf44a611d84",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip"
+        },
+        "fallback_urls": [
+          "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/zh-en-150.zip"
+        ],
+        "required_files": [
+          "encoder.int8.onnx",
+          "decoder.int8.onnx",
+          "joiner.int8.onnx",
+          "tokens.txt"
+        ],
+        "optional_files": [
+          "bpe.model"
+        ],
+        "sample_rate": 16000,
+        "names": {
+          "zh": "中英 · zipformer 150M",
+          "en": "Chinese-English · zipformer 150M",
+          "de": "Chinesisch-Englisch · zipformer 150M",
+          "es": "Chino-inglés · zipformer 150M",
+          "fr": "Chinois-anglais · zipformer 150M",
+          "it": "Cinese-inglese · zipformer 150M",
+          "ja": "中英 · zipformer 150M",
+          "ko": "중국어-영어 · zipformer 150M"
+        },
+        "descriptions": {
+          "zh": "中英双语高精度模型（带 BPE），适合中英混说。",
+          "en": "High-accuracy bilingual Chinese-English model (uses BPE) for mixed speech.",
+          "de": "Hochpräzises zweisprachiges Chinesisch-Englisch-Modell (nutzt BPE) für gemischte Sprache.",
+          "es": "Modelo bilingüe chino-inglés de alta precisión (usa BPE) para habla mixta.",
+          "fr": "Modèle bilingue chinois-anglais de haute précision (utilise le BPE) pour la parole mixte.",
+          "it": "Modello bilingue cinese-inglese ad alta precisione (usa BPE) per parlato misto.",
+          "ja": "中英バイリンガルの高精度モデル。BPE を使用し、混在した発話に適しています。",
+          "ko": "중국어-영어 고정밀 양언어 모델로(BPE 사용), 섞어 말할 때 적합합니다."
+        },
+        "tags": [
+          "int8",
+          "zh",
+          "en",
+          "zipformer",
+          "bpe"
+        ],
+        "enabled": true
+      }
+    ]
+  },
+  "llm": {
+    "default_params": {
+      "temperature": 0.3,
+      "top_p": 0.9,
+      "max_tokens": 2048
+    },
+    "models": [
+      {
+        "id": "qwen3",
+        "names": {
+          "en": "Qwen3",
+          "zh": "Qwen3（通义千问 3）"
+        },
+        "descriptions": {
+          "en": "Alibaba Qwen3 instruct models (Apache-2.0). Strong Chinese and multilingual quality; thinking is disabled on-device via /no_think so answers stay short and fast.",
+          "zh": "阿里通义千问 3 指令模型（Apache-2.0）。中文与多语质量好；端侧用 /no_think 关闭思考，输出更短更快。"
+        },
+        "tags": [
+          "apache-2.0",
+          "中文",
+          "多语"
+        ],
+        "sort_order": 0,
+        "enabled": true,
+        "variants": [
+          {
+            "id": "0_6b_q4km",
+            "file": "Qwen3-0.6B-Q4_K_M.gguf",
+            "size": 396705472,
+            "sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+            "url": "https://huggingface.co/unsloth/Qwen3-0.6B-GGUF/resolve/main/Qwen3-0.6B-Q4_K_M.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/unsloth/Qwen3-0.6B-GGUF/resolve/main/Qwen3-0.6B-Q4_K_M.gguf"
+            },
+            "names": {
+              "en": "0.6B · Q4_K_M",
+              "zh": "0.6B · Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~378 MB. Fastest option; recommended for selection actions and short summaries.",
+              "zh": "约 378 MB。最快的一档，适合划词动作与短文本总结。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "378 MB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": true,
+            "recommended_ram_mb": 3072,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 256,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          },
+          {
+            "id": "1_7b_q4km",
+            "file": "Qwen3-1.7B-Q4_K_M.gguf",
+            "size": 1107409472,
+            "sha256": "b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897",
+            "url": "https://huggingface.co/unsloth/Qwen3-1.7B-GGUF/resolve/main/Qwen3-1.7B-Q4_K_M.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/unsloth/Qwen3-1.7B-GGUF/resolve/main/Qwen3-1.7B-Q4_K_M.gguf"
+            },
+            "names": {
+              "en": "1.7B · Q4_K_M",
+              "zh": "1.7B · Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~1.03 GB. Noticeably better comprehension; needs a 6 GB+ device.",
+              "zh": "约 1.03 GB。理解力明显更好，建议 6 GB 及以上内存设备。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "1.03 GB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": true,
+            "recommended_ram_mb": 6144,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 512,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": "qwen25",
+        "names": {
+          "en": "Qwen2.5 Instruct",
+          "zh": "Qwen2.5 指令版"
+        },
+        "descriptions": {
+          "en": "Alibaba Qwen2.5 instruct models (Apache-2.0). No built-in thinking step, so first answers arrive sooner on older devices.",
+          "zh": "阿里 Qwen2.5 指令模型（Apache-2.0）。没有内置思考步骤，老设备首字更快。"
+        },
+        "tags": [
+          "apache-2.0",
+          "中文",
+          "轻量"
+        ],
+        "sort_order": 1,
+        "enabled": true,
+        "variants": [
+          {
+            "id": "0_5b_q4km",
+            "file": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "size": 491400032,
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+            "url": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf"
+            },
+            "names": {
+              "en": "0.5B · Q4_K_M",
+              "zh": "0.5B · Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~469 MB. Quiet, no thinking step; best for low-RAM devices.",
+              "zh": "约 469 MB。无思考步骤、稳定，低内存设备首选。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "469 MB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": false,
+            "recommended_ram_mb": 3072,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 256,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          },
+          {
+            "id": "1_5b_q4km",
+            "file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+            "size": 1117320736,
+            "sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+            "url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf"
+            },
+            "names": {
+              "en": "1.5B · Q4_K_M",
+              "zh": "1.5B · Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~1.04 GB. Balanced quality and speed for summarising longer documents.",
+              "zh": "约 1.04 GB。质量与速度平衡，适合较长材料的摘要。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "1.04 GB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": false,
+            "recommended_ram_mb": 6144,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 512,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": "qwen35",
+        "names": {
+          "en": "Qwen3.5",
+          "zh": "Qwen3.5（通义千问 3.5）"
+        },
+        "descriptions": {
+          "en": "Alibaba Qwen3.5 instruct model (Apache-2.0). 0.8B Q4_K_M build; thinking is disabled on-device via /no_think. Only the main weights are listed: this app does not load the mmproj vision projector yet, so it is used for text-only inference.",
+          "zh": "阿里通义千问 3.5 指令模型（Apache-2.0）。0.8B 的 Q4_K_M 小体积版本，端侧用 /no_think 关闭思考。这里只登记主权重：本应用暂不加载 mmproj 视觉投影，按纯文本推理使用。"
+        },
+        "tags": [
+          "apache-2.0",
+          "中文",
+          "轻量"
+        ],
+        "sort_order": 2,
+        "enabled": true,
+        "variants": [
+          {
+            "id": "0_8b_q4km",
+            "file": "Qwen3.5-0.8B-Q4_K_M.gguf",
+            "size": 532517120,
+            "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517",
+            "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/qwen3.5-0.8/Qwen3.5-0.8B-Q4_K_M.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/qwen3.5-0.8/Qwen3.5-0.8B-Q4_K_M.gguf"
+            },
+            "names": {
+              "en": "0.8B · Q4_K_M",
+              "zh": "0.8B · Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~508 MB. Small and quick; a good default for selection actions on 4 GB devices.",
+              "zh": "约 508 MB。体积小、响应快，4 GB 设备上适合划词动作与短总结。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "508 MB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": true,
+            "recommended_ram_mb": 3072,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 256,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": "qwen38",
+        "names": {
+          "en": "Qwen3.8",
+          "zh": "Qwen3.8（通义千问 3.8）"
+        },
+        "descriptions": {
+          "en": "Alibaba Qwen3.8 instruct model (Apache-2.0). 2B Q4_K_M build with noticeably better comprehension; thinking is disabled on-device via /no_think.",
+          "zh": "阿里通义千问 3.8 指令模型（Apache-2.0）。2B 的 Q4_K_M 版本，理解力明显更好；端侧用 /no_think 关闭思考。"
+        },
+        "tags": [
+          "apache-2.0",
+          "中文",
+          "高质量"
+        ],
+        "sort_order": 3,
+        "enabled": true,
+        "variants": [
+          {
+            "id": "2b_q4km",
+            "file": "Qwen3.8-2B-Q4_K_M.gguf",
+            "size": 1312164224,
+            "sha256": "4aa0fb13c431514262f259d420ecc95a8714df58ac2a2384514e20b93983f0ff",
+            "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/Qwen3.8/Qwen3.8-2B-Q4_K_M.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/Qwen3.8/Qwen3.8-2B-Q4_K_M.gguf"
+            },
+            "names": {
+              "en": "2B · Q4_K_M",
+              "zh": "2B · Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~1.22 GB. Best comprehension in this registry; needs a 6 GB+ device.",
+              "zh": "约 1.22 GB。本清单里理解力最好的一档，建议 6 GB 及以上内存设备。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "1.22 GB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": true,
+            "recommended_ram_mb": 6144,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 512,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": "minicpm_v46",
+        "names": {
+          "en": "MiniCPM-V 4.6",
+          "zh": "MiniCPM-V 4.6（面壁智能）"
+        },
+        "descriptions": {
+          "en": "OpenBMB MiniCPM-V 4.6 (Apache-2.0). Compact multimodal family; only the main text weights are listed because this app does not load the mmproj vision projector yet.",
+          "zh": "面壁智能 MiniCPM-V 4.6（Apache-2.0）。小体积多模态模型；本应用暂不加载 mmproj 视觉投影，这里只登记主文本权重。"
+        },
+        "tags": [
+          "apache-2.0",
+          "中文",
+          "多模态"
+        ],
+        "sort_order": 4,
+        "enabled": true,
+        "variants": [
+          {
+            "id": "q4km",
+            "file": "MiniCPM-V-4_6-Q4_K_M.gguf",
+            "size": 529101504,
+            "sha256": "6b0c74962c44bc6bf4b655b9b02c13eda9d5a0491543ae976d1ac18e4b7892e2",
+            "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/MiniCPM-V-4_6/MiniCPM-V-4_6-Q4_K_M.gguf",
+            "url_by_region": {
+              "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/MiniCPM-V-4_6/MiniCPM-V-4_6-Q4_K_M.gguf"
+            },
+            "names": {
+              "en": "Q4_K_M",
+              "zh": "Q4_K_M"
+            },
+            "descriptions": {
+              "en": "~505 MB. Compact and fast; text-only on this app (no vision projector yet).",
+              "zh": "约 505 MB。体积小、速度快；本应用按纯文本使用（暂不接视觉投影）。"
+            },
+            "tags": [
+              "Q4_K_M",
+              "505 MB",
+              "端侧"
+            ],
+            "prompt_format": "chatml",
+            "no_think": false,
+            "recommended_ram_mb": 3072,
+            "recommended_params": {
+              "n_ctx": 4096,
+              "n_batch": 256,
+              "n_gpu_layers": 0
+            },
+            "enabled": true
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "key": "deepseek",
+        "label_i18n": {
+          "en": "DeepSeek",
+          "zh": "深度求索（DeepSeek）",
+          "fr": "DeepSeek",
+          "de": "DeepSeek",
+          "es": "DeepSeek",
+          "it": "DeepSeek",
+          "ja": "DeepSeek",
+          "ko": "DeepSeek"
+        },
+        "mode": "url",
+        "base_url": "https://api.deepseek.com/v1",
+        "model_name": "deepseek-chat",
+        "support_image": false,
+        "prompt_format": "chatml",
+        "default_params": {
+          "temperature": 0.3,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        },
+        "notes": "OpenAI 兼容端点（POST {base_url}/chat/completions + Bearer + SSE）。deepseek-chat = 非思考模式，deepseek-reasoner = 思考模式。官方称旧名将逐步弃用，届时改 deepseek-v4-flash。兼容层的 known-good 参数：temperature / top_p / max_tokens / stream。",
+        "unsupported_params": []
+      },
+      {
+        "key": "openai",
+        "label_i18n": {
+          "en": "OpenAI",
+          "zh": "OpenAI",
+          "fr": "OpenAI",
+          "de": "OpenAI",
+          "es": "OpenAI",
+          "it": "OpenAI",
+          "ja": "OpenAI",
+          "ko": "OpenAI"
+        },
+        "mode": "url",
+        "base_url": "https://api.openai.com/v1",
+        "model_name": "gpt-4o",
+        "support_image": true,
+        "prompt_format": "chatml",
+        "default_params": {
+          "temperature": 0.3,
+          "top_p": 0.9,
+          "max_tokens": 4096
+        },
+        "notes": "OpenAI 官方。gpt-4o / gpt-4o-mini 稳定可用；推理系模型要改用 max_completion_tokens（本期不默认）。",
+        "unsupported_params": [
+          "top_k"
+        ]
+      },
+      {
+        "key": "claude",
+        "label_i18n": {
+          "en": "Claude (OpenAI-compatible)",
+          "zh": "Claude（OpenAI 兼容层）",
+          "fr": "Claude (compatible OpenAI)",
+          "de": "Claude (OpenAI-kompatibel)",
+          "es": "Claude (compatible con OpenAI)",
+          "it": "Claude (compatibile OpenAI)",
+          "ja": "Claude（OpenAI 互換）",
+          "ko": "Claude(OpenAI 호환)"
+        },
+        "mode": "url",
+        "base_url": "https://api.anthropic.com/v1/",
+        "model_name": "claude-sonnet-4-6",
+        "support_image": true,
+        "prompt_format": "chatml",
+        "default_params": {
+          "temperature": 0.3,
+          "top_p": 0.9,
+          "max_tokens": 4096,
+          "n": 1
+        },
+        "notes": "Anthropic 官方 OpenAI SDK 兼容层，端点即 POST https://api.anthropic.com/v1/chat/completions（Authorization: Bearer + SSE 流式），flutter_llm_client 的 url 模式可直接对接。模型名必须是 Claude 模型（非 gpt-*），示例取 claude-sonnet-4-6，以官方模型表为准、用户可改。",
+        "unsupported_params": [
+          "response_format",
+          "seed",
+          "logprobs",
+          "reasoning_effort",
+          "top_k"
+        ],
+        "constraints": [
+          "response_format 被静默忽略 —— JSON 输出【只能靠提示词约束】，禁止依赖 response_format / json_object（提示词规范已按此设计）",
+          "reasoning_effort 被静默忽略 —— 禁止为 Claude 传该参数（推理系请改用 thinking:{type:disabled} 或省略）",
+          "seed / logprobs 被静默忽略",
+          "temperature 上限为 1（超过会被截到 1）",
+          "n 必须为 1",
+          "工具调用的 strict 被忽略",
+          "官方声明该兼容层非『长期 / 生产就绪』；若被限或不可用，引导用户改用自定义 OpenAI 兼容端点（如 https://openrouter.ai/api/v1 + anthropic/claude-*）"
+        ]
+      },
+      {
+        "key": "ollama",
+        "label_i18n": {
+          "en": "Ollama",
+          "zh": "Ollama",
+          "fr": "Ollama",
+          "de": "Ollama",
+          "es": "Ollama",
+          "it": "Ollama",
+          "ja": "Ollama",
+          "ko": "Ollama"
+        },
+        "mode": "url",
+        "base_url": "",
+        "model_name": "",
+        "support_image": false,
+        "prompt_format": "chatml",
+        "default_params": {
+          "temperature": 0.3,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        },
+        "notes": "局域网 / 本机 Ollama。base_url 故意留空：表单里用户只填「主机 / IP」，地址由模板 http://{host}:11434/v1 拼出（绝不预填 localhost —— 手机上它指向手机自己）。拉取模型走 GET {host}/api/tags（原生接口优先，/v1/models 作兼容兜底）。Ollama 默认会思考，本项目「思考」开关默认关闭，关闭时发 reasoning_effort: none（布尔 reasoning:false 会被 Ollama 400）。",
+        "unsupported_params": []
+      },
+      {
+        "key": "lmstudio",
+        "label_i18n": {
+          "en": "LM Studio",
+          "zh": "LM Studio",
+          "fr": "LM Studio",
+          "de": "LM Studio",
+          "es": "LM Studio",
+          "it": "LM Studio",
+          "ja": "LM Studio",
+          "ko": "LM Studio"
+        },
+        "mode": "url",
+        "base_url": "",
+        "model_name": "",
+        "support_image": false,
+        "prompt_format": "chatml",
+        "default_params": {
+          "temperature": 0.3,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        },
+        "notes": "局域网 / 本机 LM Studio（底层为 llama.cpp server）。base_url 由模板 http://{host}:1234/v1 拼出。拉取模型走 GET {host}/api/v0/models（原生接口优先，/v1/models 作兼容兜底）。LM Studio 需要先在应用里开启 Local Server；思考关闭时发 reasoning_effort: none。",
+        "unsupported_params": []
+      }
+    ]
+  },
+  "rag": {
+    "on_device_files": [
+      {
+        "file": "onnx/model_qint8_avx512_vnni.onnx",
+        "size": 118346824,
+        "sha256": "dd476dd0c2514e9b9be83aeb3853fac0763e0bdf4a71645407587d77c48a2d88",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/embedding/model_qint8_avx512_vnni.onnx",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/embedding/model_qint8_avx512_vnni.onnx"
+        }
+      },
+      {
+        "file": "onnx/tokenizer.json",
+        "size": 17082730,
+        "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/embedding/tokenizer.json",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/embedding/tokenizer.json"
+        }
+      }
+    ]
+  }
+}
