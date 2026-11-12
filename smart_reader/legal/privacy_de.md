@@ -4,11 +4,11 @@ title: Datenschutzerklärung
 
 # Datenschutzerklärung
 
-**Zuletzt aktualisiert:** 2026-11-08 · **Inkrafttreten:** 2026-11-08
+**Zuletzt aktualisiert:** 2026-11-12 · **Inkrafttreten:** 2026-11-12
 
 ## 1. Wer wir sind
 
-Smart Reader (die „App") ist eine lokal arbeitende Lese- und Lern-App. Verantwortlicher für Ihre personenbezogenen Daten ist **songshangkun** („wir"), erreichbar unter **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
+RomeoAI (die „App") ist eine lokal arbeitende Lese- und Lern-App. Verantwortlicher für Ihre personenbezogenen Daten ist **songshangkun** („wir"), erreichbar unter **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
 
 Bei Fragen, Anfragen oder Beschwerden zum Datenschutz erreichen Sie uns unter **13808875@qq.com**.
 

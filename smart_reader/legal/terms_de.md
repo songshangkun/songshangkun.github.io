@@ -4,17 +4,17 @@ title: Nutzungsbedingungen
 
 # Nutzungsbedingungen
 
-**Zuletzt aktualisiert:** 2026-11-08 · **Inkrafttreten:** 2026-11-08
+**Zuletzt aktualisiert:** 2026-11-12 · **Inkrafttreten:** 2026-11-12
 
 ## 1. Vereinbarung
 
-Diese Nutzungsbedingungen („Bedingungen") sind eine Vereinbarung zwischen Ihnen und **songshangkun** („wir") über die Nutzung von Smart Reader (die „App"). Mit der Installation oder Nutzung der App akzeptieren Sie diese Bedingungen. Wenn Sie sie nicht akzeptieren, nutzen Sie die App bitte nicht.
+Diese Nutzungsbedingungen („Bedingungen") sind eine Vereinbarung zwischen Ihnen und **songshangkun** („wir") über die Nutzung von RomeoAI (die „App"). Mit der Installation oder Nutzung der App akzeptieren Sie diese Bedingungen. Wenn Sie sie nicht akzeptieren, nutzen Sie die App bitte nicht.
 
 Fragen: **13808875@qq.com**
 
 ## 2. Was die App ist
 
-Smart Reader ist eine **lokal arbeitende** Lese- und Lern-App. Sie hilft Ihnen, Dokumente (PDF, EPUB, Office, Text und Bilder) zu importieren, neu umzubrechen und zu lesen, Ihre Bibliothek zu durchsuchen, Inhalte zu kommentieren und zusammenzufassen sowie Dokumente mit auf dem Gerät laufender Sprachsynthese vorlesen zu lassen. Sie unterstützt zudem optionale Spracheingabe und Notizaufnahmen, semantische Suche (RAG), Dokument-Chat, Volltext-Zusammenfassungen und KI-Schnellaktionen. KI-Funktionen können auf einem von Ihnen konfigurierten LLM-Endpunkt oder auf einem kleinen, auf Ihr Gerät heruntergeladenen Modell laufen.
+RomeoAI ist eine **lokal arbeitende** Lese- und Lern-App. Sie hilft Ihnen, Dokumente (PDF, EPUB, Office, Text und Bilder) zu importieren, neu umzubrechen und zu lesen, Ihre Bibliothek zu durchsuchen, Inhalte zu kommentieren und zusammenzufassen sowie Dokumente mit auf dem Gerät laufender Sprachsynthese vorlesen zu lassen. Sie unterstützt zudem optionale Spracheingabe und Notizaufnahmen, semantische Suche (RAG), Dokument-Chat, Volltext-Zusammenfassungen und KI-Schnellaktionen. KI-Funktionen können auf einem von Ihnen konfigurierten LLM-Endpunkt oder auf einem kleinen, auf Ihr Gerät heruntergeladenen Modell laufen.
 
 Ihre Lesebibliothek, importierten Dateien, Notizen, Zusammenfassungen und Einstellungen werden auf Ihrem Gerät gespeichert. Wir betreiben kein Benutzerkonto-System und halten keine serverseitige Kopie Ihrer Lesedaten.
 
@@ -36,7 +36,7 @@ Die App kann Passagen erklären, übersetzen, zusammenfassen und Fragen beantwor
 
 - KI-Ergebnisse sind **Vorschläge**. Sie bleiben dafür verantwortlich, wie Sie sie verwenden, und sollten Wichtiges anhand des Quelldokuments oder einer anderen Quelle prüfen.
 - KI-Ergebnisse sind **keine** professionelle, rechtliche, medizinische oder sonstige fachliche Beratung.
-- Smart Reader bietet zwei Arten der Verarbeitung:
+- RomeoAI bietet zwei Arten der Verarbeitung:
   - **Verarbeitung auf dem Gerät:** Textextraktion, OCR, Volltextindexierung und Sprachsynthese laufen lokal mit Komponenten und Modellen auf Ihrem Gerät. **Ihre Dokumente und Bilder verlassen für diese Vorgänge Ihr Gerät nicht.**
   - **Vom Nutzer konfigurierter LLM-Endpunkt (BYOK):** Erklärungen, Zusammenfassungen, Übersetzungen und Fragen & Antworten entstehen durch Senden des ausgewählten Textes an die **LLM-Adresse und den Schlüssel, die Sie selbst** unter Einstellungen → KI-Dienst **eingeben**. Der Anbieter wird von Ihnen gewählt; wir betreiben ihn nicht, können die konfigurierte Adresse oder den Schlüssel nicht lesen und bewahren keine Kopie Ihrer Übermittlung auf.
   - **Lokales Modell (optional):** Statt eines BYOK-Endpunkts können Sie ein kleines GGUF-Modell herunterladen und lokal ausführen. In diesem Modus wird der ausgewählte Text auf Ihrem Gerät verarbeitet und nicht an einen Server gesendet.

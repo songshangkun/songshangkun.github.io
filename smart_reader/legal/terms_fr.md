@@ -4,17 +4,17 @@ title: Conditions d'utilisation
 
 # Conditions d'utilisation
 
-**Dernière mise à jour :** 2026-11-08 · **Entrée en vigueur :** 2026-11-08
+**Dernière mise à jour :** 2026-11-12 · **Entrée en vigueur :** 2026-11-12
 
 ## 1. Accord
 
-Les présentes Conditions d'utilisation (les « Conditions ») constituent un accord entre vous et **songshangkun** (« nous ») concernant votre utilisation de Smart Reader (l'« Application »). En installant ou en utilisant l'Application, vous acceptez ces Conditions. Si vous ne les acceptez pas, n'utilisez pas l'Application.
+Les présentes Conditions d'utilisation (les « Conditions ») constituent un accord entre vous et **songshangkun** (« nous ») concernant votre utilisation de RomeoAI (l'« Application »). En installant ou en utilisant l'Application, vous acceptez ces Conditions. Si vous ne les acceptez pas, n'utilisez pas l'Application.
 
 Questions : **13808875@qq.com**
 
 ## 2. Ce qu'est l'Application
 
-Smart Reader est une application de lecture et d'étude qui fonctionne **en local**. Elle vous aide à importer des documents (PDF, EPUB, Office, texte et images), à les remettre en page et à les lire, à rechercher dans votre bibliothèque, à annoter et résumer des contenus, et à écouter vos documents grâce à la synthèse vocale exécutée sur l'appareil. Elle prend aussi en charge la saisie vocale et les enregistrements de notes facultatifs, la recherche sémantique (RAG), la discussion avec les documents, les résumés complets et les actions rapides d'IA. Les fonctions d'IA peuvent s'exécuter sur un point de terminaison LLM que vous configurez vous-même ou sur un petit modèle que vous téléchargez et exécutez sur votre appareil.
+RomeoAI est une application de lecture et d'étude qui fonctionne **en local**. Elle vous aide à importer des documents (PDF, EPUB, Office, texte et images), à les remettre en page et à les lire, à rechercher dans votre bibliothèque, à annoter et résumer des contenus, et à écouter vos documents grâce à la synthèse vocale exécutée sur l'appareil. Elle prend aussi en charge la saisie vocale et les enregistrements de notes facultatifs, la recherche sémantique (RAG), la discussion avec les documents, les résumés complets et les actions rapides d'IA. Les fonctions d'IA peuvent s'exécuter sur un point de terminaison LLM que vous configurez vous-même ou sur un petit modèle que vous téléchargez et exécutez sur votre appareil.
 
 Votre bibliothèque de lecture, les fichiers importés, les notes, les résumés et les réglages sont stockés sur votre appareil. Nous n'exploitons aucun système de compte utilisateur et ne conservons aucune copie serveur de vos données de lecture.
 
@@ -36,7 +36,7 @@ L'Application peut expliquer des passages, traduire, résumer et répondre à de
 
 - Les résultats d'IA sont des **suggestions**. Vous restez responsable de leur utilisation et devez vérifier tout élément important à l'aide du document source ou d'une autre source.
 - Les résultats d'IA **ne constituent pas** un conseil professionnel, juridique, médical ou autre.
-- Smart Reader propose deux types de traitement :
+- RomeoAI propose deux types de traitement :
   - **Traitement sur l'appareil :** l'extraction de texte, l'OCR, l'indexation plein texte et la synthèse vocale s'exécutent localement avec des composants et des modèles présents sur votre appareil. **Vos documents et images ne quittent pas votre appareil pour ces opérations.**
   - **Point de terminaison LLM configuré par l'utilisateur (BYOK) :** les explications, résumés, traductions et questions-réponses sont produits en envoyant le texte sélectionné à l'**adresse et à la clé LLM que vous saisissez vous-même** dans Réglages → Service d'IA. Le fournisseur est choisi par vous ; nous ne l'exploitons pas, nous ne pouvons pas lire l'adresse ou la clé que vous configurez et nous ne conservons aucune copie de ce que vous soumettez.
   - **Modèle local (facultatif) :** au lieu d'un point de terminaison BYOK, vous pouvez télécharger un petit modèle GGUF et l'exécuter localement. Dans ce mode, le texte sélectionné est traité sur votre appareil et n'est envoyé à aucun serveur.

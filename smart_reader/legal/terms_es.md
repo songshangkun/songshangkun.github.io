@@ -4,17 +4,17 @@ title: Términos del servicio
 
 # Términos del servicio
 
-**Última actualización:** 2026-11-08 · **Vigencia:** 2026-11-08
+**Última actualización:** 2026-11-12 · **Vigencia:** 2026-11-12
 
 ## 1. Acuerdo
 
-Estos Términos del servicio (los «Términos») constituyen un acuerdo entre tú y **songshangkun** («nosotros») sobre el uso de Smart Reader (la «App»). Al instalar o usar la App aceptas estos Términos. Si no los aceptas, no uses la App.
+Estos Términos del servicio (los «Términos») constituyen un acuerdo entre tú y **songshangkun** («nosotros») sobre el uso de RomeoAI (la «App»). Al instalar o usar la App aceptas estos Términos. Si no los aceptas, no uses la App.
 
 Preguntas: **13808875@qq.com**
 
 ## 2. Qué es la App
 
-Smart Reader es una app de lectura y estudio que funciona **en local**. Te ayuda a importar documentos (PDF, EPUB, Office, texto e imágenes), reajustarlos y leerlos, buscar en tu biblioteca, anotar y resumir contenidos, y escuchar documentos con síntesis de voz en el dispositivo. También admite entrada de voz y grabaciones de notas opcionales, recuperación semántica (RAG), chat con documentos, resúmenes completos y acciones rápidas de IA. Las funciones de IA pueden ejecutarse en un servidor LLM que configures tú mismo o en un modelo pequeño que descargues y ejecutes en tu dispositivo.
+RomeoAI es una app de lectura y estudio que funciona **en local**. Te ayuda a importar documentos (PDF, EPUB, Office, texto e imágenes), reajustarlos y leerlos, buscar en tu biblioteca, anotar y resumir contenidos, y escuchar documentos con síntesis de voz en el dispositivo. También admite entrada de voz y grabaciones de notas opcionales, recuperación semántica (RAG), chat con documentos, resúmenes completos y acciones rápidas de IA. Las funciones de IA pueden ejecutarse en un servidor LLM que configures tú mismo o en un modelo pequeño que descargues y ejecutes en tu dispositivo.
 
 Tu biblioteca de lectura, los archivos importados, las notas, los resúmenes y los ajustes se guardan en tu dispositivo. No gestionamos cuentas de usuario ni conservamos en servidores una copia de tus datos de lectura.
 
@@ -36,7 +36,7 @@ La App puede explicar pasajes, traducir, resumir y responder preguntas. Estos re
 
 - Los resultados de IA son una **sugerencia**. Sigues siendo responsable de cómo los usas y deberías verificar lo importante con el documento original u otra fuente.
 - Los resultados de IA **no** son asesoramiento profesional, legal, médico ni de ningún otro tipo.
-- Smart Reader ofrece dos tipos de procesamiento:
+- RomeoAI ofrece dos tipos de procesamiento:
   - **Procesamiento en el dispositivo:** la extracción de texto, el OCR, la indexación de texto completo y la síntesis de voz se ejecutan localmente con componentes y modelos de tu dispositivo. **Tus documentos e imágenes no salen del dispositivo para estas operaciones.**
   - **Servidor LLM configurado por el usuario (BYOK):** las explicaciones, los resúmenes, las traducciones y las preguntas y respuestas se generan enviando el texto seleccionado a la **dirección y la clave del LLM que tú mismo introduces** en Ajustes → Servicio de IA. El proveedor lo eliges tú; no lo operamos, no podemos leer la dirección o la clave que configures y no conservamos copia de lo que envíes.
   - **Modelo local (opcional):** en lugar de un servidor BYOK, puedes descargar un modelo GGUF pequeño y ejecutarlo localmente. En ese modo, el texto seleccionado se procesa en tu dispositivo y no se envía a ningún servidor.

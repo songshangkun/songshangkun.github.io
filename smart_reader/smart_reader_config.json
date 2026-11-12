@@ -1,6 +1,33 @@
 {
-  "_comment": "Smart Reader 远程配置层（GitHub Pages）。仅下发【需要远程控制的模型注册表】：tts.models、asr.models、llm.models/presets/default_params、rag.on_device_files。列表一律全量下发（App 的 deepMerge 对 List 是整体替换，缺项会丢失本地其余元素）。不含 remote_config、parser、reader、summary、chat、ui 等本地配置。",
+  "_comment": "RomeoAI 远程配置层（GitHub Pages）。仅下发【需要远程控制的模型注册表 + 免费/Pro 每日配额】：tts.models、asr.models、llm.models/presets/default_params、rag.on_device_files、limits。列表一律全量下发（App 的 deepMerge 对 List 是整体替换，缺项会丢失本地其余元素）；limits 按 key 逐项覆盖，缺键回退打包默认。不含 remote_config、parser、reader、summary、chat、ui 等本地配置。",
   "schema_version": 1,
+  "limits": {
+    "_comment": "免费/Pro 每日配额（远程覆盖层）。null = 不限；缺键回退 assets/config/app_config.json。付费墙展示与 QuotaGate 计数共用本段。",
+    "free": {
+      "quick_action_per_day": 20,
+      "chat_rounds_per_day": 15,
+      "doc_note_per_day": 3,
+      "summary_per_day": 5,
+      "mind_map_per_day": 3,
+      "summary_max_levels": 2,
+      "tts_minutes_per_day": 10,
+      "related_sources": 5,
+      "local_model_slots": 1,
+      "llm_endpoints": 2
+    },
+    "pro": {
+      "quick_action_per_day": null,
+      "chat_rounds_per_day": null,
+      "doc_note_per_day": null,
+      "summary_per_day": null,
+      "mind_map_per_day": null,
+      "summary_max_levels": 5,
+      "tts_minutes_per_day": null,
+      "related_sources": null,
+      "local_model_slots": null,
+      "llm_endpoints": null
+    }
+  },
   "tts": {
     "default_model_id": "",
     "models": [

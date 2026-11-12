@@ -4,11 +4,11 @@ title: Privacy Policy
 
 # Privacy Policy
 
-**Last updated:** 2026-11-08 · **Effective:** 2026-11-08
+**Last updated:** 2026-11-12 · **Effective:** 2026-11-12
 
 ## 1. Who we are
 
-Smart Reader (the "App") is a local-first reading and study app. The data controller responsible for your personal information is **songshangkun** ("we", "us", "our"), reachable at **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
+RomeoAI (the "App") is a local-first reading and study app. The data controller responsible for your personal information is **songshangkun** ("we", "us", "our"), reachable at **中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园**.
 
 For any privacy question, request or complaint, contact us at **13808875@qq.com**.
 
