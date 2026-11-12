@@ -1,6 +1,10 @@
 {
-  "_comment": "RomeoAI 远程配置层（GitHub Pages）。仅下发【需要远程控制的模型注册表 + 免费/Pro 每日配额】：tts.models、asr.models、llm.models/presets/default_params、rag.on_device_files、limits。列表一律全量下发（App 的 deepMerge 对 List 是整体替换，缺项会丢失本地其余元素）；limits 按 key 逐项覆盖，缺键回退打包默认。不含 remote_config、parser、reader、summary、chat、ui 等本地配置。",
+  "_comment": "RomeoAI 远程配置层（GitHub Pages）。仅下发【需要远程控制的模型注册表 + 付费开关 + 免费/Pro 每日配额】：tts.models、asr.models、llm.models/presets/default_params、rag.on_device_files、pay.enabled、limits。列表一律全量下发（App 的 deepMerge 对 List 是整体替换，缺项会丢失本地其余元素）；pay/limits 按 key 逐项覆盖，缺键回退打包默认。不含 remote_config、parser、reader、summary、chat、ui 等本地配置。",
   "schema_version": 1,
+  "pay": {
+    "_comment": "付费总开关：true = 免费用户按 limits.free 限额；false = 全部放行（应急回滚）。商品定义仍取本地打包配置，此处不下发 products。",
+    "enabled": true
+  },
   "limits": {
     "_comment": "免费/Pro 每日配额（远程覆盖层）。null = 不限；缺键回退 assets/config/app_config.json。付费墙展示与 QuotaGate 计数共用本段。",
     "free": {
