@@ -1,39 +1,121 @@
 {
-  "_comment": "RomeoAI 远程配置层（GitHub Pages）。仅下发【需要远程控制的模型注册表 + 付费开关 + 免费/Pro 每日配额】：tts.models、asr.models、llm.models/presets/default_params、rag.on_device_files、pay.enabled、limits。列表一律全量下发（App 的 deepMerge 对 List 是整体替换，缺项会丢失本地其余元素）；pay/limits 按 key 逐项覆盖，缺键回退打包默认。不含 remote_config、parser、reader、summary、chat、ui 等本地配置。",
+  "_comment": "RomeoAI 远程配置层（GitHub Pages）。本文件把【App 支持远程覆盖的全部配置键】按段列全，数值默认与 assets/config/app_config.json 的打包层完全一致，直接改数值即可生效（App 下次启动或定时同步后；远程层优先级最高，缺键自动回退本地打包值）。\n\n【列表是整体替换，不是合并】tts.models / asr.models / llm.models / llm.presets / rag.on_device_files / parser.allowed_formats / reader.url_allowlist 必须全量下发，少写一项就等于从 App 里删掉那一项；增删模型请整段复制后改。\n\n【不在本文件的段】remote_config（自举开关 / URL / 间隔，恒取本地层，防止远程决定是否用远程）、app（仅本地读 min_supported_schema 做兼容判定）。这两段改了远程也不生效，需改本地打包配置。\n\n【注释约定】所有 _comment / _xxx_comment 键仅为人类可读说明，App 完全忽略；可随意增删。schema_version 保持 >= 本地 app.min_supported_schema（当前 1），否则整份远程配置被软失效回退本地。\n\n【段内覆盖粒度】除列表外，段内按 key 逐项覆盖：只想改一个值就只留那一个键，其余删掉即回退本地值。",
   "schema_version": 1,
-  "pay": {
-    "_comment": "付费总开关：true = 免费用户按 limits.free 限额；false = 全部放行（应急回滚）。商品定义仍取本地打包配置，此处不下发 products。",
-    "enabled": true
+  "feedback": {
+    "_comment": "用户反馈邮箱。远程配置中心下发 feedback.email 即整体替换本值（无需发版）；缺失 / 空串回落 app_constants.kDefaultFeedbackEmail。只用于打开本机邮件客户端撰写反馈草稿：App 不持有 SMTP、不自动发送、不上传日志，用户点「发送」后邮件才离开设备（Apple 5.1.1 合规口径）。",
+    "email": "13808875@qq.com"
   },
-  "limits": {
-    "_comment": "免费/Pro 每日配额（远程覆盖层）。null = 不限；缺键回退 assets/config/app_config.json。付费墙展示与 QuotaGate 计数共用本段。",
-    "free": {
-      "quick_action_per_day": 20,
-      "chat_rounds_per_day": 15,
-      "doc_note_per_day": 3,
-      "summary_per_day": 5,
-      "mind_map_per_day": 3,
-      "summary_max_levels": 2,
-      "tts_minutes_per_day": 10,
-      "related_sources": 5,
-      "local_model_slots": 1,
-      "llm_endpoints": 2
-    },
-    "pro": {
-      "quick_action_per_day": null,
-      "chat_rounds_per_day": null,
-      "doc_note_per_day": null,
-      "summary_per_day": null,
-      "mind_map_per_day": null,
-      "summary_max_levels": 5,
-      "tts_minutes_per_day": null,
-      "related_sources": null,
-      "local_model_slots": null,
-      "llm_endpoints": null
-    }
+  "parser": {
+    "_comment": "解析配额，映射 UnifiedDocConfig（F-06 / F-24）。数值必须与 lib/constants/app_constants.dart 的 kParserMaxPages / kParserMaxElementsPerDoc 一致。allowed_formats 必须与 lib/models/doc_format.dart 的 DocFormat 枚举对齐；其中 .epub 由 App 侧自研解析器（services/epub_parser.dart）承载，【必须显式放行】，否则在 L2 安全层被 SE0004 拦掉。F-24（pptx / xlsx / image）零额外改造：仅在此放行后缀 + 复用既有解析与渲染通道。",
+    "max_pages": 200,
+    "max_elements_per_doc": 30000,
+    "allowed_formats": [
+      ".txt",
+      ".md",
+      ".markdown",
+      ".html",
+      ".htm",
+      ".csv",
+      ".pdf",
+      ".epub",
+      ".docx",
+      ".pptx",
+      ".xlsx",
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".gif",
+      ".webp",
+      ".bmp"
+    ]
+  },
+  "reader": {
+    "_comment": "阅读器与加载安全（F-05 / F-14）。target_chars_per_page 是页码投影的主口径：总结叶子页码、RAG 引用页码、阅读器翻页必须三者同源，禁止改字号时重算分页（app_constants / reader_typography 铁律）。max_download_mb、url_allowlist、allow_private_network_url 映射 loader 安全层。default_font_size 与 ReaderFontScale.baseFontSize 一致。",
+    "default_font_size": 17,
+    "target_chars_per_page": 1200,
+    "rows_per_page": 40,
+    "max_download_mb": 50,
+    "allow_private_network_url": false,
+    "url_allowlist": []
+  },
+  "rag": {
+    "_comment": "RAG 检索层默认（F-20 / F-21 / F-22）。top_k / oversample 与 app_constants.dart 的 kRagDefaultTopK / kRagOversample 一致（oversample 用于「仅当前文档」的结果侧过滤：先取 top_k*oversample 再按 docRefId 过滤后截断）。embedder 固定 ondevice（smart_reader 只用 multilingual-e5-small，不回落 simple）；切换 embedder 会改变向量维度 → 必须清空重建该用户库（维度混用会污染，RG0005 不静默降级）。refId 约定恒为 document.id.toString()（纯数字），禁止加 doc: 前缀。on_device_files 是端侧模型的下载清单（file/size/sha256/url，url_by_region 为镜像），走三层配置：远程层可整体覆盖本地。",
+    "enabled": true,
+    "user_id": "local",
+    "store_dir_relative": "rag_store",
+    "vector_store": "sqlite",
+    "embedder": "ondevice",
+    "embedding_dim": 384,
+    "on_device_model": "multilingual-e5-small",
+    "on_device_model_dir": "embedding_models",
+    "on_device_model_path": "",
+    "on_device_tokenizer_path": "",
+    "on_device_files": [
+      {
+        "file": "onnx/model_qint8_avx512_vnni.onnx",
+        "size": 118346824,
+        "sha256": "dd476dd0c2514e9b9be83aeb3853fac0763e0bdf4a71645407587d77c48a2d88",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/embedding/model_qint8_avx512_vnni.onnx",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/embedding/model_qint8_avx512_vnni.onnx"
+        }
+      },
+      {
+        "file": "onnx/tokenizer.json",
+        "size": 17082730,
+        "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/embedding/tokenizer.json",
+        "url_by_region": {
+          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/embedding/tokenizer.json"
+        }
+      }
+    ],
+    "on_device_backend": "onnxruntime",
+    "on_device_max_tokens": 512,
+    "on_device_threads": 2,
+    "on_device_fallback_to_simple": false,
+    "embed_base_url": "",
+    "embed_model": "",
+    "chunk_strategy": "merged",
+    "chunk_size": 396,
+    "chunk_overlap": 80,
+    "index_batch_size": 4,
+    "index_batch_pause_ms": 120,
+    "hybrid": true,
+    "vector_weight": 0.6,
+    "top_k": 8,
+    "_min_score_comment": "问答的召回质量门（cosine，0~1）。低于该分数的片段不注入上下文，直接判定「资料里没有相关内容」并给用户「用通用知识回答」的出口；0 表示关闭。只在问答链路生效，「找相似」不过滤。e5-small 相关片段通常 0.7+，无关片段 0.3~0.5，故默认 0.45。",
+    "min_score": 0.45,
+    "oversample": 3,
+    "max_chunks_per_user": 0,
+    "max_context_tokens": 6000
+  },
+  "summary": {
+    "_comment": "两段式多级总结（F-19）。策略：先分段并行总结（map），再把分段结果合并为一层 (reduce)，自底向上直到根节点；层级方向为「总体 → 分段 → 更小分段」，每个叶子节点必须带页码范围 [page_start, page_end]。max_levels / leaf_token_budget 与 app_constants.dart 的 kSummaryMaxLevels / kSummaryLeafTokenBudget 一致。",
+    "max_levels": 3,
+    "leaf_token_budget": 6000,
+    "concurrency": 3,
+    "retry_per_node": 1,
+    "algorithm_version": 2
+  },
+  "chat": {
+    "_comment": "文档对话（F-20 / Q-07）。每文档仅保留最近 1 个会话，本地持久化、可手动清空、不自动过期；单会话消息上限 200 条，超出由 chat_repository 在写入时滚动淘汰最早消息。memory_enabled 为全局对话记忆开关（默认关闭）；history_turns = 注入提示词的最近 N 轮问答（一轮 = user + assistant，代码侧 clamp 1~12），关闭记忆时不注入。",
+    "message_limit_per_session": 200,
+    "memory_enabled": false,
+    "history_turns": 3
+  },
+  "ui": {
+    "_comment": "首次启动的外观默认值（F-10 / F-11 / F-12），写入后由 settings_repository 的 SharedPreferences 接管，本段只在偏好缺失时兜底。theme_mode 三态取 models/reader_settings.dart 的 AppThemeMode（system / light / dark）。font_step 六档取字号档位，默认值必须与 app_constants.dart 的 kReaderFontStepDefault 一致；档位的合法区间由 kReaderFontStepMin / kReaderFontStepMax 在代码侧钳制（ConfigService.uiFontStep 已做 clamp），不在本文件重复声明，避免与编译期常量漂移。paper_preset 取 theme/reader_typography.dart 的 PaperPreset（plain / cream / gray / green / night）。language_code 空串 = 跟随系统。",
+    "theme_mode": "system",
+    "font_step": 2,
+    "paper_preset": "plain",
+    "text_color": "followTheme",
+    "language_code": ""
   },
   "tts": {
+    "_comment": "端侧 TTS 语音合成模型注册表（D-3 听书）。App 安装后【不带任何 TTS 模型】，用户在「TTS 模型」页按需下载；当前选中的模型 id 与本机落地状态持久化在 tts_voice_state 表。🔴 【默认未配置】—— P19/P18 在用户主动选择前一律显示「未选择模型」，绝不预填某个模型名，也绝不自动下载任何模型。模型清单与下载地址与 smart_video 同源（HF HardyCamila/hardy_sherpa + hf-mirror 国内镜像），远程层可整体替换本段（List 整体替换，远程下发时必须写全量）。字段口径与 models/tts_model_entry.dart 的 TtsModelEntry 严格一致（21 字段，snake_case 键）。",
     "default_model_id": "",
+    "_note_default_model_id": "留空 = 绝不预选模型（对齐 PRD「默认未配置」）。即便填了某个 id，也只作为「用户主动下载时排到列表首位」的排序提示，【不会】触发自动下载。",
     "models": [
       {
         "id": "tts_kitten_en",
@@ -760,7 +842,9 @@
     ]
   },
   "asr": {
+    "_comment": "端侧流式语音识别（ASR）模型注册表（F-27 语音录入笔记）。🔴 只收 sherpa 流式 transducer（encoder/decoder/joiner.int8.onnx + tokens.txt[+bpe.model]）；whisper 等非流式模型禁止入表（OnlineRecognizer 加载不了）。🔴【默认未配置】—— 用户主动选择前一律显示「未选择模型」，绝不预填、绝不自动下载。目录 <ApplicationSupport>/sherpa_models/<id>/；清单与下载地址与 TTS 同源（HF HardyCamila/hardy_sherpa + hf-mirror 国内镜像），远程层可整体替换本段（List 整体替换，远程下发时必须写全量）。字段口径与 models/asr_model_entry.dart 严格一致。",
     "default_model_id": "",
+    "_note_default_model_id": "留空 = 绝不预选模型。即便填了某个 id，也只作为排序提示，【不会】触发自动下载。",
     "models": [
       {
         "id": "zh-14M",
@@ -1312,11 +1396,16 @@
     ]
   },
   "llm": {
+    "_comment": "LLM 服务接入（F-13）。本段是【填表预设】的基础 truth（只写「添加服务」表单初值，绝不写库、绝不播种），可用远程层整体覆盖（列表项写全量）。用户的实时地址 / Key / 模型最终落在 llm_server 表（name 为主键，全部由用户自己添加，项目没有任何内置服务）。严禁在此写入任何 api_key（Q-08 / N-05）：Key 一律由用户在设置页录入，简单混淆后入 llm_server.api_key_cipher。",
+    "default_server": "deepseek",
+    "request_timeout_ms": 120000,
+    "thinking_enabled": false,
     "default_params": {
       "temperature": 0.3,
       "top_p": 0.9,
       "max_tokens": 2048
     },
+    "_models_comment": "端侧 GGUF 模型注册表（形态 C，族 -> 变体）。本段与 lib/constants/llm_models.dart 兜底同构：族/变体 id 即落盘目录名（发布后不可改）；size 为上游精确字节数，下载后先比大小再比 sha256；url_by_region.cn 指向 hf-mirror（HF 直连实测超时）；no_think 仅 Qwen3 系；recommended_ram_mb 只作软提示、不构成门控。全部模型 Apache-2.0；Qwen3.5 / Qwen3.8 / MiniCPM-V 4.6 来自 HardyCamila/hardy_sherpa 仓库，只登记主权重（本项目 schema 与推理链路均未接入 mmproj 视觉投影，按纯文本使用）。",
     "models": [
       {
         "id": "qwen3",
@@ -1789,26 +1878,62 @@
       }
     ]
   },
-  "rag": {
-    "on_device_files": [
+  "pay": {
+    "_comment": "付费总开关与商品（F-26）。enabled=true：免费用户按 limits.free 每日限额；false：全部放行（应急回滚）。features/grants 只声明权益；价格绝不写在这里，一律取 StoreKit Product.price。products[].id 必须与 App Store Connect 的商品 ID 完全一致，改错会导致查不到商品（付费墙为空）；如无绝对必要，商品定义建议保持与本地一致。远程覆盖在下次启动同步后生效。",
+    "enabled": true,
+    "features": [
+      "pro"
+    ],
+    "products": [
       {
-        "file": "onnx/model_qint8_avx512_vnni.onnx",
-        "size": 118346824,
-        "sha256": "dd476dd0c2514e9b9be83aeb3853fac0763e0bdf4a71645407587d77c48a2d88",
-        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/embedding/model_qint8_avx512_vnni.onnx",
-        "url_by_region": {
-          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/embedding/model_qint8_avx512_vnni.onnx"
-        }
-      },
-      {
-        "file": "onnx/tokenizer.json",
-        "size": 17082730,
-        "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
-        "url": "https://huggingface.co/HardyCamila/hardy_sherpa/resolve/main/embedding/tokenizer.json",
-        "url_by_region": {
-          "cn": "https://hf-mirror.com/HardyCamila/hardy_sherpa/resolve/main/embedding/tokenizer.json"
-        }
+        "id": "pro_lifetime_smr",
+        "type": "oneTime",
+        "title": {
+          "zh": "RomeoAI Pro（永久）",
+          "en": "RomeoAI Pro (Lifetime)",
+          "fr": "RomeoAI Pro (à vie)",
+          "de": "RomeoAI Pro (Dauerhaft)",
+          "es": "RomeoAI Pro (de por vida)",
+          "it": "RomeoAI Pro (a vita)",
+          "ja": "RomeoAI Pro（永久）",
+          "ko": "RomeoAI Pro (평생)"
+        },
+        "grants": [
+          "pro"
+        ]
       }
     ]
+  },
+  "limits": {
+    "_comment": "免费版每日限额（F-26）。null = 不限。数字只是默认值，远程可逐键覆盖；本机按自然日计数，跨零点重置。pay.enabled=false（应急回滚）时全部放行，不读取本段。",
+    "free": {
+      "quick_action_per_day": 20,
+      "chat_rounds_per_day": 15,
+      "doc_note_per_day": 3,
+      "summary_per_day": 5,
+      "mind_map_per_day": 3,
+      "summary_max_levels": 2,
+      "tts_minutes_per_day": 10,
+      "related_sources": 5,
+      "local_model_slots": 1,
+      "llm_endpoints": 2
+    },
+    "pro": {
+      "quick_action_per_day": null,
+      "chat_rounds_per_day": null,
+      "doc_note_per_day": null,
+      "summary_per_day": null,
+      "mind_map_per_day": null,
+      "summary_max_levels": 5,
+      "tts_minutes_per_day": null,
+      "related_sources": null,
+      "local_model_slots": null,
+      "llm_endpoints": null
+    }
+  },
+  "security": {
+    "_comment": "隐私与安全（N-05 / Q-08）。block_private_network=true 时 loader 的 blockPrivateNetwork 为 true，私网地址默认拦截（SE0001）；放开需用户显式确认（allow_private_network_url）。log_api_key=false 时 Logger 与所有日志输出对 API Key 一律脱敏（只保留后 4 位或全 ****）。",
+    "block_private_network": true,
+    "log_api_key": false
   }
 }
