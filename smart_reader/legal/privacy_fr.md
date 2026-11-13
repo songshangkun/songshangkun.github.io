@@ -4,7 +4,7 @@ title: Politique de confidentialité
 
 # Politique de confidentialité
 
-**Dernière mise à jour :** 2026-11-12 · **Entrée en vigueur :** 2026-11-12
+**Dernière mise à jour :** 2026-11-13 · **Entrée en vigueur :** 2026-11-12
 
 ## 1. Qui nous sommes
 
@@ -16,8 +16,9 @@ Pour toute question, demande ou réclamation relative à la confidentialité, co
 
 - Votre bibliothèque de lecture, les documents importés, les notes, les résumés et les réglages restent **sur votre appareil**. Nous n'exploitons aucun système de compte ni aucun serveur qui stockerait vos données de lecture.
 - Nous **ne vendons pas** vos données personnelles et **ne** les utilisons **pas** pour de la publicité comportementale.
-- Cette version de l'Application **ne contient ni SDK publicitaire ni SDK d'analyse** et **ne propose aucun achat intégré**.
-- L'Application **ne demande que l'autorisation du microphone**, utilisée uniquement pour la saisie vocale facultative et les enregistrements de notes, transcrits **sur votre appareil** par le modèle de reconnaissance vocale en streaming. L'audio n'est jamais téléversé. Aucune autorisation pour l'appareil photo, la photothèque ou la localisation n'est demandée. Les documents et images sont importés uniquement via le sélecteur de fichiers du système, et l'OCR s'exécute **entièrement sur votre appareil**.
+- Cette version de l'Application **ne contient ni SDK publicitaire ni SDK d'analyse**. Pro est un déverrouillage à paiement unique acheté via l'App Store ; Apple traite le paiement et nous ne voyons jamais vos données de paiement.
+- La **recherche web** est facultative et désactivée par défaut. Lorsque vous l'activez, seule la question que vous avez saisie — jamais vos documents — est envoyée à un moteur de recherche public, et les résultats sont toujours signalés comme **source externe (non vérifiée)**.
+- L'Application demande **l'autorisation du microphone**, utilisée uniquement pour la saisie vocale facultative et les enregistrements de notes, transcrits **sur votre appareil** par le modèle de reconnaissance vocale en streaming, ainsi que **l'autorisation de l'appareil photo**, utilisée uniquement lorsque vous choisissez « Scanner et envoyer » pour lire le code QR affiché par un autre appareil RomeoAI. L'audio et les images de la caméra ne sont jamais téléversés. Aucune autorisation pour la photothèque ou la localisation n'est demandée. Les documents et images sont importés uniquement via le sélecteur de fichiers du système, et l'OCR s'exécute **entièrement sur votre appareil**.
 - Les fonctions d'IA s'exécutent sur un **point de terminaison LLM que vous configurez vous-même** ou avec un **modèle local que vous téléchargez sur votre appareil** — voir la section 4.
 
 ## 3. Informations que nous traitons
@@ -54,12 +55,14 @@ Uniquement dans les cas suivants :
 1. **Traitement par IA (facultatif).** Lorsque vous utilisez les explications, résumés, questions complémentaires ou actions rapides par IA, le texte sélectionné ou l'extrait pertinent est envoyé au **point de terminaison LLM que vous avez configuré** dans Réglages → Service d'IA. Le destinataire est le fournisseur que vous choisissez ; nous ne l'exploitons pas, nous ne pouvons pas lire l'adresse ni la clé que vous configurez et nous ne conservons aucune copie de ce que vous soumettez. Veuillez consulter la politique de confidentialité de ce fournisseur.
 2. **Configuration à distance et fourniture de documents.** L'Application récupère des fichiers de configuration, des textes juridiques et la liste facultative d'applications recommandées depuis les GitHub Pages du développeur, et télécharge des modèles vocaux, de reconnaissance vocale, d'embeddings et de langage locaux depuis le dépôt de modèles (Hugging Face / hf-mirror). Ces requêtes ne contiennent ni le contenu de vos documents, ni votre historique de lecture, ni d'audio, ni d'identifiant personnel.
 3. **Accès réseau que vous déclenchez.** L'ouverture d'une image ou d'un lien dans un document ne téléverse rien en soi ; l'Application n'intègre aucun composant de navigation, de suivi ou de publicité.
+4. **Recherche web (facultative).** Lorsque vous activez la recherche web dans un écran de questions-réponses, la question que vous avez saisie (tronquée à 200 caractères) est envoyée à un moteur de recherche public — Bing pour la Chine continentale, DuckDuckGo ou Bing ailleurs — pour récupérer des résultats. Seuls les titres et les courts extraits des résultats sont analysés ; les pages de résultats elles-mêmes ne sont ni téléchargées ni stockées. Vos documents, extraits, historique de lecture et annotations ne sont jamais inclus dans cette requête. Les requêtes ne sont écrites dans aucune base de données que nous contrôlons ; poser la même question dans les 15 minutes peut réutiliser un cache local en mémoire. Les résultats web sont marqués **source externe (non vérifiée)** — vérifiez toujours la page d'origine.
 
 ## 4. Les fonctions d'IA, en clair
 
 - **Point de terminaison LLM configuré par l'utilisateur (BYOK) :** les explications, résumés, traductions et questions-réponses sont produits en envoyant le texte sélectionné à l'**adresse et à la clé LLM que vous saisissez vous-même**. Le fournisseur est choisi par vous — nous ne l'exploitons pas et nous ne pouvons pas lire l'adresse ni la clé que vous configurez. Veuillez consulter la politique de confidentialité et de conservation de ce fournisseur, et ne transmettez pas par ce canal des informations que vous considérez comme confidentielles.
 - **Modèle LLM local (facultatif) :** les explications, résumés et questions-réponses peuvent aussi être produits par un petit modèle GGUF que vous téléchargez et exécutez localement. Dans ce mode, le texte reste sur votre appareil et n'est envoyé nulle part.
 - **Traitement sur l'appareil :** l'extraction de texte, l'OCR, l'indexation plein texte et sémantique, la synthèse vocale, la reconnaissance vocale et l'inférence de modèles locaux s'exécutent localement sur votre appareil. **Ces fonctions ne téléversent ni vos documents, ni vos images, ni votre audio.**
+- **Recherche web :** il s'agit d'un commutateur distinct. Elle est désactivée par défaut, fonctionne indépendamment des fonctions d'IA et peut être désactivée à tout moment. Lorsqu'elle est désactivée, les questions et les documents ne quittent jamais votre appareil à des fins de recherche.
 
 Vous pouvez désactiver les fonctions d'IA à tout moment ; la lecture, la recherche et la lecture à voix haute hors connexion continuent de fonctionner.
 
@@ -76,6 +79,8 @@ Nous n'utilisons ni vos documents ni votre historique de lecture pour entraîner
 | Le fournisseur LLM que vous configurez | Le texte que vous soumettez pour une explication, un résumé ou des questions-réponses | Le traitement par IA que vous demandez |
 | GitHub Pages / GitHub (développeur) | Requêtes de configuration, de textes juridiques et d'applications recommandées (sans contenu de document) | Configuration à distance, fourniture de documents et promotion d'applications |
 | Hugging Face / hf-mirror | Requêtes de téléchargement de modèles vocaux, de reconnaissance vocale, d'embeddings et de LLM locaux (sans contenu de document) | Fourniture de modèles pour l'appareil |
+| Le moteur de recherche que vous atteignez via la recherche web (Bing / DuckDuckGo) | La question que vous avez soumise, uniquement lorsque la recherche web est activée | Récupérer les résultats externes que vous avez demandés |
+| Apple (App Store) | Données d'achat et de reçu pour le déverrouillage Pro à paiement unique | Traiter votre paiement |
 
 Chaque destinataire est soumis à sa propre politique de confidentialité. Nous ne vendons ni ne louons de données personnelles à quiconque.
 
@@ -83,7 +88,7 @@ Chaque destinataire est soumis à sa propre politique de confidentialité. Nous 
 
 Vos documents, index, notes, caches d'IA et réglages restent sur votre appareil jusqu'à ce que vous les supprimiez, que vous retiriez le document de la bibliothèque ou que vous désinstalliez l'Application. Supprimer un document de la bibliothèque efface sa fiche, son fichier original et ses entrées d'index. La désinstallation efface tout définitivement ; nous ne conservons aucune copie et ne pouvons rien restaurer.
 
-Le contenu que vous soumettez à votre fournisseur LLM est conservé selon la politique de conservation de ce fournisseur.
+Le contenu que vous soumettez à votre fournisseur LLM est conservé selon la politique de conservation de ce fournisseur. Les requêtes de recherche envoyées via la recherche web ne sont pas conservées par nous ; seul un cache en mémoire de courte durée sur votre appareil est utilisé.
 
 ## 8. Sécurité
 

@@ -44,11 +44,11 @@ L'Application peut expliquer des passages, traduire, résumer et répondre à de
 
 ## 6. Fonctions facultatives de l'appareil
 
-L'accès aux fichiers, aux documents et au microphone est facultatif. L'accès aux fichiers n'est utilisé que lorsque vous importez ou ouvrez un document. Le microphone n'est utilisé que lorsque vous démarrez la saisie vocale ou joignez un enregistrement à une note ; l'audio est transcrit **sur votre appareil** par le modèle de reconnaissance vocale en streaming et n'est jamais téléversé. L'Application **ne demande pas et n'utilise pas** l'appareil photo, la photothèque ni les services de localisation. Si vous refusez une autorisation, la fonction concernée ne fonctionnera pas, mais le reste de l'Application continuera de fonctionner.
+L'accès aux fichiers, aux documents, au microphone et à l'appareil photo est facultatif. L'accès aux fichiers n'est utilisé que lorsque vous importez ou ouvrez un document. Le microphone n'est utilisé que lorsque vous démarrez la saisie vocale ou joignez un enregistrement à une note ; l'audio est transcrit **sur votre appareil** par le modèle de reconnaissance vocale en streaming et n'est jamais téléversé. L'appareil photo n'est utilisé que lorsque vous choisissez « Scanner et envoyer » pour lire le code QR affiché par un autre appareil RomeoAI ; les images sont traitées **sur votre appareil** et ne sont jamais téléversées. L'Application **ne demande pas et n'utilise pas** la photothèque ni les services de localisation. Si vous refusez une autorisation, la fonction concernée ne fonctionnera pas, mais le reste de l'Application continuera de fonctionner.
 
 ## 7. Prix et achats
 
-Cette version de l'Application **ne propose ni achat intégré ni abonnement**. Si une version future propose des achats, ils seront traités par la boutique d'applications de votre appareil et ses propres conditions régiront la facturation et les remboursements.
+Pro est proposé en achat unique via l'App Store de votre appareil. Apple traite le paiement et les conditions de la boutique régissent la facturation et les remboursements. L'Application elle-même ne propose aucun abonnement.
 
 ## 8. Licence et restrictions
 

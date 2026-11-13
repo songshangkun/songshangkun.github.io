@@ -22,7 +22,7 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <body>
 <div class="container">
 <h1>Privacy Policy</h1>
-<p><strong>Last updated:</strong> 2026-11-12 · <strong>Effective:</strong> 2026-11-12</p>
+<p><strong>Last updated:</strong> 2026-11-13 · <strong>Effective:</strong> 2026-11-12</p>
 <h2>1. Who we are</h2>
 <p>RomeoAI (the "App") is a local-first reading and study app. The data controller responsible for your personal information is <strong>songshangkun</strong> ("we", "us", "our"), reachable at <strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong>.</p>
 <p>For any privacy question, request or complaint, contact us at <strong>13808875@qq.com</strong>.</p>
@@ -30,8 +30,9 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <ul>
 <li>Your reading library, imported documents, annotations, summaries and settings live <strong>on your device</strong>. We run no account system and no backend that stores your reading data.</li>
 <li>We <strong>do not sell</strong> your personal information and <strong>do not</strong> use it for behavioural advertising.</li>
-<li>This version of the App <strong>contains no advertising SDK and no analytics SDK</strong>, and has <strong>no in-app purchases</strong>.</li>
-<li>The App requests <strong>only the microphone permission</strong>, used solely for optional voice input and note recordings that are transcribed <strong>on your device</strong> by the streaming speech-recognition model. Audio is never uploaded. Camera, photo-library and location permissions are not requested. Documents and images are imported through the system file picker, and OCR runs <strong>entirely on your device</strong>.</li>
+<li>This version of the App <strong>contains no advertising SDK and no analytics SDK</strong>. <strong>Pro</strong> is a one-time unlock purchased through the <strong>App Store</strong>; <strong>Apple</strong> processes the payment and we never see your payment details.</li>
+<li><strong>Web search</strong> is optional and off by default. When you switch it on, only the question you typed — never your documents — is sent to a public search engine, and the results are always labelled <strong>external source (unverified)</strong>.</li>
+<li>The App requests the <strong>microphone permission</strong>, used solely for optional voice input and note recordings that are transcribed <strong>on your device</strong> by the streaming speech-recognition model, and the <strong>camera permission</strong>, used only when you choose "Scan &amp; Send" to read the QR code shown by another RomeoAI device. Audio and camera frames are never uploaded. Photo-library and location permissions are not requested. Documents and images are imported through the system file picker, and OCR runs <strong>entirely on your device</strong>.</li>
 <li>AI features run either on an <strong>LLM endpoint you configure yourself</strong> or with an <strong>on-device model you download to your device</strong> — see section 4.</li>
 </ul>
 <h2>3. Information we handle</h2>
@@ -103,12 +104,14 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <li><strong>AI processing (optional).</strong> When you use AI explanations, summaries, follow-up questions or quick actions, the text you selected or the relevant excerpt is sent to the <strong>LLM endpoint you configured yourself</strong> in Settings → AI Service. The recipient is the provider you choose; we do not operate it, cannot read the address or key you configure, and keep no copy of what you submit. Please review that provider's privacy policy.</li>
 <li><strong>Remote configuration and document delivery.</strong> The App fetches configuration files, legal documents and the optional app-recommendation list from the developer's GitHub Pages, and downloads speech, speech-recognition, embedding and on-device language models from the model repository (Hugging Face / hf-mirror). These requests carry no document content, reading history, audio or personal identifiers.</li>
 <li><strong>Network requests you trigger.</strong> Opening an image or link inside a document does not upload anything by itself; the App does not include browsing, tracking or advertising components.</li>
+<li><strong>Web search (optional).</strong> When you switch on web search in a Q&amp;A screen, the question you typed (truncated to 200 characters) is sent to a public search engine — Bing for mainland China, DuckDuckGo or Bing elsewhere — to fetch results. Only result titles and short snippets are parsed; result pages themselves are not downloaded or stored. Your documents, excerpts, reading history and annotations are never included in that request. Queries are not written to any database we control; repeating the same question within 15 minutes may reuse a local in-memory cache. Web results are marked <strong>external source (unverified)</strong> — always check the original page.</li>
 </ol>
 <h2>4. AI features, in plain words</h2>
 <ul>
 <li><strong>User-configured LLM endpoint (BYOK):</strong> explanations, summaries, translations and Q&amp;A are produced by sending the selected text to the <strong>LLM address and key you enter yourself</strong>. The provider is chosen by you — we neither operate it nor can we read the address or key you configure. Please review that provider's privacy and retention policy, and do not submit information you consider confidential through this channel.</li>
 <li><strong>On-device LLM model (optional):</strong> explanations, summaries and Q&amp;A can also be produced by a small GGUF model that you download and run locally. In that mode the text stays on your device and is not sent anywhere.</li>
 <li><strong>On-device processing:</strong> text extraction, OCR, full-text and semantic indexing, speech synthesis, speech recognition and on-device model inference all run locally on your device. <strong>Your documents, images and audio are not uploaded by these features.</strong></li>
+<li><strong>Web search is a separate switch.</strong> It is off by default, works independently of AI features, and can be turned off at any time. With it off, questions and documents never leave your device for search purposes.</li>
 </ul>
 <p>You can turn AI features off at any time; reading, search and offline speech keep working without them.</p>
 <h2>5. Why we process your information</h2>
@@ -139,12 +142,22 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <td>Speech, speech-recognition, embedding and on-device LLM model downloads (no document content)</td>
 <td>On-device model delivery</td>
 </tr>
+<tr>
+<td>The search engine you reach through web search (Bing / DuckDuckGo)</td>
+<td>The question you submitted, only while web search is switched on</td>
+<td>Retrieving external results you asked for</td>
+</tr>
+<tr>
+<td>Apple (App Store)</td>
+<td>Purchase and receipt data for the one-time Pro unlock</td>
+<td>Processing your payment</td>
+</tr>
 </tbody>
 </table>
 <p>Each recipient is governed by its own privacy policy. We do not sell or rent personal information to anyone.</p>
 <h2>7. How long we keep information</h2>
 <p>Your documents, index, annotations, AI cache and settings remain on your device until you delete them, delete the document from your library, or uninstall the App. Deleting a document from the library removes its record, its original file and its index entries. Uninstalling removes everything permanently; we keep no copy and cannot recover it.</p>
-<p>Content you submit to your configured LLM provider is retained according to that provider's retention policy.</p>
+<p>Content you submit to your configured LLM provider is retained according to that provider's retention policy. Search queries sent through web search are not stored by us; only a short-lived in-memory cache on your device is used.</p>
 <h2>8. Security</h2>
 <p>Your data is stored in the App's sandbox, protected by your device's own security (device passcode, disk encryption). The LLM endpoint address and key are stored obfuscated on the device and are never transmitted to us. No method of storage is perfectly secure, so please protect your device and keep backups.</p>
 <h2>9. Children</h2>

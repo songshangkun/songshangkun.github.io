@@ -90,6 +90,48 @@
     "max_chunks_per_user": 0,
     "max_context_tokens": 6000
   },
+  "web_search": {
+    "_comment": "联网搜索（Pro 能力，仅问答链路生效）。无后台方案：直接解析搜索引擎公开结果页，不抓正文，只取标题 + 摘要。region.cn / region.default 各给一份【有序】端点表，运行时按序 fallback（首个成功即用），因此 locale 判错地区也能自愈。合并口径：region 做深合并（远程缺哪个地区就用本地那份），endpoints 数组整体替换（禁止新旧端点混用）。parser 取值见 lib/services/web_search_service.dart 的 kWebSearchParsers。发送给第三方的只有用户问题（截断 query_max_chars），绝不上传文档内容。",
+    "enabled": true,
+    "max_results": 5,
+    "max_snippet_chars": 220,
+    "max_context_chars": 900,
+    "timeout_ms": 6000,
+    "cache_ttl_min": 15,
+    "min_interval_ms": 1000,
+    "query_max_chars": 200,
+    "region": {
+      "cn": {
+        "endpoints": [
+          {
+            "id": "bing_cn",
+            "url": "https://cn.bing.com/search?q={q}",
+            "parser": "bing_html"
+          }
+        ]
+      },
+      "default": {
+        "endpoints": [
+          {
+            "id": "ddg_html",
+            "url": "https://html.duckduckgo.com/html/?q={q}",
+            "parser": "ddg_html"
+          },
+          {
+            "id": "bing_com",
+            "url": "https://www.bing.com/search?q={q}",
+            "parser": "bing_html"
+          }
+        ]
+      }
+    },
+    "_blocked_domains_comment": "搜索结果里属于搜索引擎自身/聚合跳转的域名，一律丢弃（避免引用卡点回到搜索页）。",
+    "blocked_domains": [
+      "bing.com",
+      "duckduckgo.com",
+      "microsoft.com"
+    ]
+  },
   "summary": {
     "_comment": "两段式多级总结（F-19）。策略：先分段并行总结（map），再把分段结果合并为一层 (reduce)，自底向上直到根节点；层级方向为「总体 → 分段 → 更小分段」，每个叶子节点必须带页码范围 [page_start, page_end]。max_levels / leaf_token_budget 与 app_constants.dart 的 kSummaryMaxLevels / kSummaryLeafTokenBudget 一致。",
     "max_levels": 3,

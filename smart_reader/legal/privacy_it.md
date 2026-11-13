@@ -4,7 +4,7 @@ title: Informativa sulla privacy
 
 # Informativa sulla privacy
 
-**Ultimo aggiornamento:** 2026-11-12 · **In vigore dal:** 2026-11-12
+**Ultimo aggiornamento:** 2026-11-13 · **In vigore dal:** 2026-11-12
 
 ## 1. Chi siamo
 
@@ -16,8 +16,9 @@ Per qualsiasi domanda, richiesta o reclamo in materia di privacy, scrivici a **1
 
 - La tua libreria di lettura, i documenti importati, le note, i riassunti e le impostazioni restano **sul tuo dispositivo**. Non gestiamo account né server che memorizzano i tuoi dati di lettura.
 - **Non vendiamo** i tuoi dati personali e **non** li usiamo per pubblicità comportamentale.
-- Questa versione dell'App **non contiene SDK pubblicitari né di analisi** e **non prevede acquisti in-app**.
-- L'App **richiede solo il permesso del microfono**, usato esclusivamente per l'input vocale facoltativo e le registrazioni delle note, trascritte **sul tuo dispositivo** dal modello di riconoscimento vocale in streaming. L'audio non viene mai caricato. Non vengono richiesti permessi per fotocamera, libreria foto o posizione. I documenti e le immagini vengono importati solo tramite il selettore file di sistema e l'OCR viene eseguito **interamente sul tuo dispositivo**.
+- Questa versione dell'App **non contiene SDK pubblicitari né di analisi**. Pro è uno sblocco una tantum acquistato tramite l'App Store; Apple elabora il pagamento e noi non vediamo mai i tuoi dati di pagamento.
+- La **ricerca web** è facoltativa e disattivata per impostazione predefinita. Quando la attivi, solo la domanda che hai digitato — mai i tuoi documenti — viene inviata a un motore di ricerca pubblico e i risultati sono sempre contrassegnati come **fonte esterna (non verificata)**.
+- L'App richiede il **permesso del microfono**, usato esclusivamente per l'input vocale facoltativo e le registrazioni delle note, trascritte **sul tuo dispositivo** dal modello di riconoscimento vocale in streaming, e il **permesso della fotocamera**, usato solo quando scegli «Scansiona e invia» per leggere il codice QR mostrato da un altro dispositivo RomeoAI. L'audio e le immagini della fotocamera non vengono mai caricati. Non vengono richiesti permessi per la libreria foto o la posizione. I documenti e le immagini vengono importati solo tramite il selettore file di sistema e l'OCR viene eseguito **interamente sul tuo dispositivo**.
 - Le funzioni di IA vengono eseguite su un **endpoint LLM che configuri tu stesso** oppure con un **modello locale che scarichi sul tuo dispositivo** — vedi la sezione 4.
 
 ## 3. Informazioni che trattiamo
@@ -54,12 +55,14 @@ Solo nei seguenti casi:
 1. **Elaborazione con IA (facoltativo).** Quando usi spiegazioni, riassunti, domande di approfondimento o azioni rapide con IA, il testo selezionato o l'estratto pertinente viene inviato all'**endpoint LLM che hai configurato** in Impostazioni → Servizio IA. Il destinatario è il fornitore che scegli; non lo gestiamo, non possiamo leggere l'indirizzo o la chiave che configuri e non conserviamo copia di ciò che invii. Consulta l'informativa sulla privacy di quel fornitore.
 2. **Configurazione remota e distribuzione dei documenti.** L'App scarica file di configurazione, testi legali e l'elenco facoltativo di app consigliate dalle GitHub Pages dello sviluppatore, e modelli vocali, di riconoscimento vocale, di embedding e linguistici locali dal repository dei modelli (Hugging Face / hf-mirror). Queste richieste non contengono il contenuto dei tuoi documenti, la cronologia di lettura, audio o identificatori personali.
 3. **Accessi di rete avviati da te.** Aprire un'immagine o un link all'interno di un documento non carica nulla di per sé; l'App non include componenti di navigazione, tracciamento o pubblicità.
+4. **Ricerca web (facoltativa).** Quando attivi la ricerca web in una schermata di domande e risposte, la domanda che hai digitato (troncata a 200 caratteri) viene inviata a un motore di ricerca pubblico — Bing per la Cina continentale, DuckDuckGo o Bing altrove — per recuperare i risultati. Vengono analizzati solo i titoli e i brevi estratti dei risultati; le pagine dei risultati stesse non vengono scaricate né memorizzate. I tuoi documenti, estratti, cronologia di lettura e annotazioni non sono mai inclusi in quella richiesta. Le query non vengono scritte in alcun database che controlliamo; ripetere la stessa domanda entro 15 minuti può riutilizzare una cache locale in memoria. I risultati web sono contrassegnati come **fonte esterna (non verificata)**: controlla sempre la pagina originale.
 
 ## 4. Funzioni di IA, in parole semplici
 
 - **Endpoint LLM configurato dall'utente (BYOK):** spiegazioni, riassunti, traduzioni e domande e risposte vengono prodotti inviando il testo selezionato all'**indirizzo e alla chiave LLM che inserisci tu stesso**. Il fornitore lo scegli tu: non lo gestiamo e non possiamo leggere l'indirizzo o la chiave che configuri. Consulta l'informativa sulla privacy e sulla conservazione di quel fornitore e non inviare tramite questo canale informazioni che ritieni riservate.
 - **Modello LLM locale (facoltativo):** spiegazioni, riassunti e domande e risposte possono essere prodotti anche da un piccolo modello GGUF che scarichi ed esegui localmente. In questa modalità il testo resta sul tuo dispositivo e non viene inviato da nessuna parte.
 - **Elaborazione sul dispositivo:** estrazione del testo, OCR, indicizzazione full-text e semantica, sintesi vocale, riconoscimento vocale e inferenza di modelli locali vengono eseguite localmente sul tuo dispositivo. **Queste funzioni non caricano i tuoi documenti, le tue immagini né il tuo audio.**
+- **Ricerca web:** è un interruttore separato. È disattivata per impostazione predefinita, funziona indipendentemente dalle funzioni di IA e può essere disattivata in qualsiasi momento. Quando è disattivata, domande e documenti non lasciano mai il tuo dispositivo per finalità di ricerca.
 
 Puoi disattivare le funzioni di IA in qualsiasi momento; lettura, ricerca e ascolto offline continuano a funzionare.
 
@@ -76,6 +79,8 @@ Non usiamo i tuoi documenti o la cronologia di lettura per addestrare modelli, p
 | Il fornitore LLM che configuri | Il testo che invii per spiegazioni, riassunti o domande e risposte | L'elaborazione IA che richiedi |
 | GitHub Pages / GitHub (sviluppatore) | Richieste di configurazione, testi legali e app consigliate (senza contenuto dei documenti) | Configurazione remota, distribuzione dei documenti e promozione delle app |
 | Hugging Face / hf-mirror | Richieste di download di modelli vocali, di riconoscimento vocale, di embedding e LLM locali (senza contenuto dei documenti) | Distribuzione dei modelli per il dispositivo |
+| Il motore di ricerca che raggiungi tramite la ricerca web (Bing / DuckDuckGo) | La domanda che hai inviato, solo mentre la ricerca web è attiva | Recuperare i risultati esterni che hai richiesto |
+| Apple (App Store) | Dati di acquisto e ricevuta per lo sblocco Pro una tantum | Elaborare il tuo pagamento |
 
 Ciascun destinatario è soggetto alla propria informativa sulla privacy. Non vendiamo né affittiamo dati personali a nessuno.
 
@@ -83,7 +88,7 @@ Ciascun destinatario è soggetto alla propria informativa sulla privacy. Non ven
 
 I tuoi documenti, indici, note, cache IA e impostazioni restano sul dispositivo finché non li elimini, non rimuovi il documento dalla libreria o non disinstalli l'App. Eliminare un documento dalla libreria rimuove la sua voce, il file originale e le voci dell'indice. La disinstallazione rimuove tutto definitivamente; non conserviamo copie e non possiamo recuperare nulla.
 
-Il contenuto che invii al fornitore LLM configurato viene conservato secondo la politica di conservazione di quel fornitore.
+Il contenuto che invii al fornitore LLM configurato viene conservato secondo la politica di conservazione di quel fornitore. Le query di ricerca inviate tramite la ricerca web non vengono memorizzate da noi; viene usata solo una cache in memoria di breve durata sul tuo dispositivo.
 
 ## 8. Sicurezza
 

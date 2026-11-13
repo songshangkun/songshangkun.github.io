@@ -22,7 +22,7 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <body>
 <div class="container">
 <h1>Política de privacidad</h1>
-<p><strong>Última actualización:</strong> 2026-11-12 · <strong>Vigencia:</strong> 2026-11-12</p>
+<p><strong>Última actualización:</strong> 2026-11-13 · <strong>Vigencia:</strong> 2026-11-12</p>
 <h2>1. Quiénes somos</h2>
 <p>RomeoAI (la «App») es una aplicación de lectura y estudio que funciona en local. El responsable del tratamiento de tus datos personales es <strong>songshangkun</strong> («nosotros»), con dirección de contacto: <strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong>.</p>
 <p>Para cualquier pregunta, solicitud o reclamación sobre privacidad, escríbenos a <strong>13808875@qq.com</strong>.</p>
@@ -30,8 +30,9 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <ul>
 <li>Tu biblioteca de lectura, los documentos importados, las notas, los resúmenes y los ajustes se guardan <strong>en tu dispositivo</strong>. No gestionamos cuentas ni tenemos un servidor que almacene tus datos de lectura.</li>
 <li><strong>No vendemos</strong> tus datos personales y <strong>no</strong> los usamos para publicidad conductual.</li>
-<li>Esta versión de la App <strong>no incluye SDK de publicidad ni de analítica</strong> y <strong>no tiene compras dentro de la app</strong>.</li>
-<li>La App <strong>solo solicita el permiso de micrófono</strong>, usado exclusivamente para la entrada de voz opcional y las grabaciones de notas, que se transcriben <strong>en tu dispositivo</strong> con el modelo de reconocimiento de voz en streaming. El audio nunca se sube. No se solicitan permisos de cámara, fototeca ni ubicación. Los documentos e imágenes se importan mediante el selector de archivos del sistema, y el OCR se ejecuta <strong>íntegramente en tu dispositivo</strong>.</li>
+<li>Esta versión de la App <strong>no incluye SDK de publicidad ni de analítica</strong>. <strong>Pro</strong> es un desbloqueo único que se compra a través del <strong>App Store</strong>; <strong>Apple</strong> procesa el pago y nosotros nunca vemos los datos de tu pago.</li>
+<li>La <strong>búsqueda web</strong> es opcional y está desactivada por defecto. Cuando la activas, solo la pregunta que escribiste —nunca tus documentos— se envía a un motor de búsqueda público, y los resultados siempre se etiquetan como <strong>fuente externa (no verificada)</strong>.</li>
+<li>La App solicita el <strong>permiso de micrófono</strong>, usado exclusivamente para la entrada de voz opcional y las grabaciones de notas, que se transcriben <strong>en tu dispositivo</strong> con el modelo de reconocimiento de voz en streaming, y el <strong>permiso de cámara</strong>, usado solo cuando eliges «Escanear y enviar» para leer el código QR que muestra otro dispositivo RomeoAI. El audio y las imágenes de la cámara nunca se suben. No se solicitan permisos de fototeca ni ubicación. Los documentos e imágenes se importan mediante el selector de archivos del sistema, y el OCR se ejecuta <strong>íntegramente en tu dispositivo</strong>.</li>
 <li>Las funciones de IA se ejecutan en un <strong>servidor LLM que tú mismo configuras</strong> o con un <strong>modelo local que descargas en tu dispositivo</strong>; consulta la sección 4.</li>
 </ul>
 <h2>3. Información que tratamos</h2>
@@ -103,12 +104,14 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <li><strong>Procesamiento con IA (opcional).</strong> Cuando usas explicaciones, resúmenes, preguntas de seguimiento o acciones rápidas con IA, el texto seleccionado o el fragmento relevante se envía al <strong>servidor LLM que tú has configurado</strong> en Ajustes → Servicio de IA. El destinatario es el proveedor que elijas; no lo operamos, no podemos leer la dirección ni la clave que configures y no conservamos copia de lo que envíes. Revisa la política de privacidad de ese proveedor.</li>
 <li><strong>Configuración remota y entrega de documentos.</strong> La App obtiene archivos de configuración, textos legales y la lista opcional de apps recomendadas de las GitHub Pages del desarrollador, y descarga modelos de voz, reconocimiento de voz, embeddings y modelos de lenguaje locales del repositorio de modelos (Hugging Face / hf-mirror). Estas solicitudes no incluyen el contenido de tus documentos, tu historial de lectura, audio ni identificadores personales.</li>
 <li><strong>Accesos a la red que tú inicias.</strong> Abrir una imagen o un enlace dentro de un documento no sube nada por sí mismo; la App no incluye componentes de navegación, seguimiento ni publicidad.</li>
+<li><strong>Búsqueda web (opcional).</strong> Cuando activas la búsqueda web en una pantalla de preguntas y respuestas, la pregunta que escribiste (truncada a 200 caracteres) se envía a un motor de búsqueda público —Bing para China continental, DuckDuckGo o Bing en el resto del mundo— para obtener resultados. Solo se analizan los títulos y los fragmentos breves de los resultados; las páginas de resultados en sí no se descargan ni se almacenan. Tus documentos, fragmentos, historial de lectura y anotaciones nunca se incluyen en esa solicitud. Las consultas no se escriben en ninguna base de datos que controlemos; repetir la misma pregunta en un plazo de 15 minutos puede reutilizar una caché local en memoria. Los resultados web se marcan como <strong>fuente externa (no verificada)</strong>; comprueba siempre la página original.</li>
 </ol>
 <h2>4. Funciones de IA, en palabras sencillas</h2>
 <ul>
 <li><strong>Servidor LLM configurado por el usuario (BYOK):</strong> las explicaciones, los resúmenes, las traducciones y las preguntas y respuestas se generan enviando el texto seleccionado a la <strong>dirección y la clave del LLM que tú mismo introduces</strong>. El proveedor lo eliges tú: no lo operamos ni podemos leer la dirección o la clave que configures. Revisa la política de privacidad y retención de ese proveedor y no envíes por este canal información que consideres confidencial.</li>
 <li><strong>Modelo LLM local (opcional):</strong> las explicaciones, los resúmenes y las preguntas y respuestas también pueden generarse con un modelo GGUF pequeño que descargues y ejecutes localmente. En ese modo, el texto permanece en tu dispositivo y no se envía a ninguna parte.</li>
 <li><strong>Procesamiento en el dispositivo:</strong> la extracción de texto, el OCR, la indexación de texto completo y semántica, la síntesis de voz, el reconocimiento de voz y la inferencia de modelos locales se ejecutan localmente en tu dispositivo. <strong>Estas funciones no suben tus documentos, imágenes ni audio.</strong></li>
+<li><strong>La búsqueda web es un interruptor aparte.</strong> Está desactivada por defecto, funciona con independencia de las funciones de IA y puede desactivarse en cualquier momento. Con ella desactivada, las preguntas y los documentos nunca salen de tu dispositivo con fines de búsqueda.</li>
 </ul>
 <p>Puedes desactivar las funciones de IA en cualquier momento; la lectura, la búsqueda y la lectura en voz alta sin conexión siguen funcionando.</p>
 <h2>5. Por qué tratamos tu información</h2>
@@ -139,12 +142,22 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <td>Solicitudes de descarga de modelos de voz, reconocimiento de voz, embeddings y LLM locales (sin contenido de documentos)</td>
 <td>Entrega de modelos para el dispositivo</td>
 </tr>
+<tr>
+<td>El motor de búsqueda al que accedes mediante la búsqueda web (Bing / DuckDuckGo)</td>
+<td>La pregunta que enviaste, solo mientras la búsqueda web está activada</td>
+<td>Obtener los resultados externos que solicitaste</td>
+</tr>
+<tr>
+<td>Apple (App Store)</td>
+<td>Datos de compra y recibo del desbloqueo único de Pro</td>
+<td>Procesar tu pago</td>
+</tr>
 </tbody>
 </table>
 <p>Cada destinatario se rige por su propia política de privacidad. No vendemos ni alquilamos datos personales a nadie.</p>
 <h2>7. Cuánto tiempo conservamos la información</h2>
 <p>Tus documentos, índices, notas, cachés de IA y ajustes permanecen en tu dispositivo hasta que los borres, elimines el documento de la biblioteca o desinstales la App. Eliminar un documento de la biblioteca borra su registro, su archivo original y sus entradas de índice. La desinstalación lo elimina todo de forma permanente; no conservamos copia y no podemos recuperarlo.</p>
-<p>El contenido que envíes a tu proveedor LLM se conserva según la política de retención de ese proveedor.</p>
+<p>El contenido que envíes a tu proveedor LLM se conserva según la política de retención de ese proveedor. Las consultas de búsqueda enviadas mediante la búsqueda web no las almacenamos nosotros; solo se utiliza una caché en memoria de corta duración en tu dispositivo.</p>
 <h2>8. Seguridad</h2>
 <p>Tus datos se guardan en el sandbox de la App, protegidos por la seguridad del propio dispositivo (código de acceso, cifrado del disco). La dirección y la clave del LLM se almacenan de forma ofuscada en el dispositivo y nunca se nos transmiten. Ningún método de almacenamiento es perfectamente seguro; protege tu dispositivo y haz copias de seguridad.</p>
 <h2>9. Menores</h2>

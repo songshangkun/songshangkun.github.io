@@ -4,7 +4,7 @@ title: Privacy Policy
 
 # Privacy Policy
 
-**Last updated:** 2026-11-12 · **Effective:** 2026-11-12
+**Last updated:** 2026-11-13 · **Effective:** 2026-11-12
 
 ## 1. Who we are
 
@@ -16,8 +16,9 @@ For any privacy question, request or complaint, contact us at **13808875@qq.com*
 
 - Your reading library, imported documents, annotations, summaries and settings live **on your device**. We run no account system and no backend that stores your reading data.
 - We **do not sell** your personal information and **do not** use it for behavioural advertising.
-- This version of the App **contains no advertising SDK and no analytics SDK**, and has **no in-app purchases**.
-- The App requests **only the microphone permission**, used solely for optional voice input and note recordings that are transcribed **on your device** by the streaming speech-recognition model. Audio is never uploaded. Camera, photo-library and location permissions are not requested. Documents and images are imported through the system file picker, and OCR runs **entirely on your device**.
+- This version of the App **contains no advertising SDK and no analytics SDK**. **Pro** is a one-time unlock purchased through the **App Store**; **Apple** processes the payment and we never see your payment details.
+- **Web search** is optional and off by default. When you switch it on, only the question you typed — never your documents — is sent to a public search engine, and the results are always labelled **external source (unverified)**.
+- The App requests the **microphone permission**, used solely for optional voice input and note recordings that are transcribed **on your device** by the streaming speech-recognition model, and the **camera permission**, used only when you choose "Scan & Send" to read the QR code shown by another RomeoAI device. Audio and camera frames are never uploaded. Photo-library and location permissions are not requested. Documents and images are imported through the system file picker, and OCR runs **entirely on your device**.
 - AI features run either on an **LLM endpoint you configure yourself** or with an **on-device model you download to your device** — see section 4.
 
 ## 3. Information we handle
@@ -54,12 +55,14 @@ Only in these cases:
 1. **AI processing (optional).** When you use AI explanations, summaries, follow-up questions or quick actions, the text you selected or the relevant excerpt is sent to the **LLM endpoint you configured yourself** in Settings → AI Service. The recipient is the provider you choose; we do not operate it, cannot read the address or key you configure, and keep no copy of what you submit. Please review that provider's privacy policy.
 2. **Remote configuration and document delivery.** The App fetches configuration files, legal documents and the optional app-recommendation list from the developer's GitHub Pages, and downloads speech, speech-recognition, embedding and on-device language models from the model repository (Hugging Face / hf-mirror). These requests carry no document content, reading history, audio or personal identifiers.
 3. **Network requests you trigger.** Opening an image or link inside a document does not upload anything by itself; the App does not include browsing, tracking or advertising components.
+4. **Web search (optional).** When you switch on web search in a Q&A screen, the question you typed (truncated to 200 characters) is sent to a public search engine — Bing for mainland China, DuckDuckGo or Bing elsewhere — to fetch results. Only result titles and short snippets are parsed; result pages themselves are not downloaded or stored. Your documents, excerpts, reading history and annotations are never included in that request. Queries are not written to any database we control; repeating the same question within 15 minutes may reuse a local in-memory cache. Web results are marked **external source (unverified)** — always check the original page.
 
 ## 4. AI features, in plain words
 
 - **User-configured LLM endpoint (BYOK):** explanations, summaries, translations and Q&A are produced by sending the selected text to the **LLM address and key you enter yourself**. The provider is chosen by you — we neither operate it nor can we read the address or key you configure. Please review that provider's privacy and retention policy, and do not submit information you consider confidential through this channel.
 - **On-device LLM model (optional):** explanations, summaries and Q&A can also be produced by a small GGUF model that you download and run locally. In that mode the text stays on your device and is not sent anywhere.
 - **On-device processing:** text extraction, OCR, full-text and semantic indexing, speech synthesis, speech recognition and on-device model inference all run locally on your device. **Your documents, images and audio are not uploaded by these features.**
+- **Web search is a separate switch.** It is off by default, works independently of AI features, and can be turned off at any time. With it off, questions and documents never leave your device for search purposes.
 
 You can turn AI features off at any time; reading, search and offline speech keep working without them.
 
@@ -76,6 +79,8 @@ We do not use your documents or reading history to train models, to profile you,
 | The LLM provider you configure yourself | The text you submit for explanation, summary or Q&A | AI processing you requested |
 | GitHub Pages / GitHub (developer) | Configuration, legal-document and app-recommendation requests (no document content) | Remote configuration, document delivery and app promotion |
 | Hugging Face / hf-mirror | Speech, speech-recognition, embedding and on-device LLM model downloads (no document content) | On-device model delivery |
+| The search engine you reach through web search (Bing / DuckDuckGo) | The question you submitted, only while web search is switched on | Retrieving external results you asked for |
+| Apple (App Store) | Purchase and receipt data for the one-time Pro unlock | Processing your payment |
 
 Each recipient is governed by its own privacy policy. We do not sell or rent personal information to anyone.
 
@@ -83,7 +88,7 @@ Each recipient is governed by its own privacy policy. We do not sell or rent per
 
 Your documents, index, annotations, AI cache and settings remain on your device until you delete them, delete the document from your library, or uninstall the App. Deleting a document from the library removes its record, its original file and its index entries. Uninstalling removes everything permanently; we keep no copy and cannot recover it.
 
-Content you submit to your configured LLM provider is retained according to that provider's retention policy.
+Content you submit to your configured LLM provider is retained according to that provider's retention policy. Search queries sent through web search are not stored by us; only a short-lived in-memory cache on your device is used.
 
 ## 8. Security
 

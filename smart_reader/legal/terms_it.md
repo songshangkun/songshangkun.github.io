@@ -44,11 +44,11 @@ L'App può spiegare passaggi, tradurre, riassumere e rispondere a domande. Quest
 
 ## 6. Funzioni opzionali del dispositivo
 
-L'accesso a file, documenti e microfono è facoltativo. L'accesso ai file viene usato solo quando importi o apri un documento. Il microfono viene usato solo quando avvii l'input vocale o alleghi una registrazione a una nota; l'audio viene trascritto **sul tuo dispositivo** dal modello di riconoscimento vocale in streaming e non viene mai caricato. L'App **non** richiede né utilizza fotocamera, libreria foto o servizi di localizzazione. Se rifiuti un permesso, la funzione che lo richiede non funzionerà, ma il resto dell'App sì.
+L'accesso a file, documenti, microfono e fotocamera è facoltativo. L'accesso ai file viene usato solo quando importi o apri un documento. Il microfono viene usato solo quando avvii l'input vocale o alleghi una registrazione a una nota; l'audio viene trascritto **sul tuo dispositivo** dal modello di riconoscimento vocale in streaming e non viene mai caricato. La fotocamera viene usata solo quando scegli «Scansiona e invia» per leggere il codice QR mostrato da un altro dispositivo RomeoAI; le immagini vengono elaborate **sul tuo dispositivo** e non vengono mai caricate. L'App **non** richiede né utilizza la libreria foto o i servizi di localizzazione. Se rifiuti un permesso, la funzione che lo richiede non funzionerà, ma il resto dell'App sì.
 
 ## 7. Prezzo e acquisti
 
-Questa versione dell'App **non prevede acquisti in-app né abbonamenti**. Se una versione futura offrirà acquisti, saranno elaborati dall'app store del tuo dispositivo e i suoi termini regoleranno fatturazione e rimborsi.
+Pro è disponibile come acquisto una tantum tramite l'App Store sul tuo dispositivo. Apple elabora il pagamento e i termini dello store regolano fatturazione e rimborsi. L'App stessa non prevede alcun abbonamento.
 
 ## 8. Licenza e restrizioni
 

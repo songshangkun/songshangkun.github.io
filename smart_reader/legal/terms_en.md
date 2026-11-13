@@ -44,11 +44,11 @@ The App can explain passages, translate, summarise and answer questions. These o
 
 ## 6. Optional device features
 
-File, document and microphone access is optional. File access is used only when you import or open a document. The microphone is used only when you start voice input or attach a recording to a note; audio is transcribed **on your device** by the streaming speech-recognition model and is never uploaded. The App does **not** request or use the camera, photo library or location services. If you decline a permission, the feature that needs it will not work, but the rest of the App will.
+File, document, microphone and camera access is optional. File access is used only when you import or open a document. The microphone is used only when you start voice input or attach a recording to a note; audio is transcribed **on your device** by the streaming speech-recognition model and is never uploaded. The camera is used only when you choose "Scan & Send" to read the QR code shown by another RomeoAI device; frames are processed **on your device** and never uploaded. The App does **not** request or use the photo library or location services. If you decline a permission, the feature that needs it will not work, but the rest of the App will.
 
 ## 7. Price and purchases
 
-This version of the App contains **no in-app purchases and no subscriptions**. If a future version offers purchases, they will be processed by the app store on your device and the store's own terms will govern billing and refunds.
+Pro is available as a one-time purchase through the App Store on your device. Apple processes the payment, and the store's own terms govern billing and refunds. The App itself contains no subscriptions.
 
 ## 8. Licence and restrictions
 

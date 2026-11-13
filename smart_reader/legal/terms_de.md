@@ -44,11 +44,11 @@ Die App kann Passagen erklären, übersetzen, zusammenfassen und Fragen beantwor
 
 ## 6. Optionale Gerätefunktionen
 
-Der Zugriff auf Dateien, Dokumente und das Mikrofon ist optional. Dateizugriff wird nur beim Importieren oder Öffnen eines Dokuments verwendet. Das Mikrofon wird nur verwendet, wenn Sie die Spracheingabe starten oder eine Aufnahme an eine Notiz anhängen; Audio wird **auf Ihrem Gerät** durch das Streaming-Spracherkennungsmodell transkribiert und niemals hochgeladen. Die App fordert **keine** Berechtigung für Kamera, Fotobibliothek oder Standort an und nutzt diese nicht. Wenn Sie eine Berechtigung ablehnen, funktioniert die entsprechende Funktion nicht, der Rest der App jedoch weiterhin.
+Der Zugriff auf Dateien, Dokumente, das Mikrofon und die Kamera ist optional. Dateizugriff wird nur beim Importieren oder Öffnen eines Dokuments verwendet. Das Mikrofon wird nur verwendet, wenn Sie die Spracheingabe starten oder eine Aufnahme an eine Notiz anhängen; Audio wird **auf Ihrem Gerät** durch das Streaming-Spracherkennungsmodell transkribiert und niemals hochgeladen. Die Kamera wird nur verwendet, wenn Sie „Scannen & Senden“ wählen, um den QR-Code eines anderen RomeoAI-Geräts zu lesen; Kamerabilder werden **auf Ihrem Gerät** verarbeitet und niemals hochgeladen. Die App fordert **keine** Berechtigung für Fotobibliothek oder Standort an und nutzt diese nicht. Wenn Sie eine Berechtigung ablehnen, funktioniert die entsprechende Funktion nicht, der Rest der App jedoch weiterhin.
 
 ## 7. Preis und Käufe
 
-Diese Version der App enthält **keine In-App-Käufe und keine Abonnements**. Sollte eine zukünftige Version Käufe anbieten, werden sie vom App-Store auf Ihrem Gerät abgewickelt, und dessen Bedingungen gelten für Abrechnung und Erstattungen.
+Pro ist als einmaliger Kauf über den App Store auf Ihrem Gerät erhältlich. Apple wickelt die Zahlung ab, und die eigenen Bedingungen des Stores gelten für Abrechnung und Erstattungen. Die App selbst enthält keine Abonnements.
 
 ## 8. Lizenz und Beschränkungen
 

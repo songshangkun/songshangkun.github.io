@@ -22,7 +22,7 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <body>
 <div class="container">
 <h1>Datenschutzerklärung</h1>
-<p><strong>Zuletzt aktualisiert:</strong> 2026-11-12 · <strong>Inkrafttreten:</strong> 2026-11-12</p>
+<p><strong>Zuletzt aktualisiert:</strong> 2026-11-13 · <strong>Inkrafttreten:</strong> 2026-11-12</p>
 <h2>1. Wer wir sind</h2>
 <p>RomeoAI (die „App") ist eine lokal arbeitende Lese- und Lern-App. Verantwortlicher für Ihre personenbezogenen Daten ist <strong>songshangkun</strong> („wir"), erreichbar unter <strong>中国河南省郑州市高新区科学大道银屏路正弘高新数码港熙园</strong>.</p>
 <p>Bei Fragen, Anfragen oder Beschwerden zum Datenschutz erreichen Sie uns unter <strong>13808875@qq.com</strong>.</p>
@@ -30,8 +30,9 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <ul>
 <li>Ihre Lesebibliothek, importierten Dokumente, Notizen, Zusammenfassungen und Einstellungen befinden sich <strong>auf Ihrem Gerät</strong>. Wir betreiben kein Konto-System und keinen Server, der Ihre Lesedaten speichert.</li>
 <li>Wir <strong>verkaufen</strong> Ihre personenbezogenen Daten <strong>nicht</strong> und nutzen sie <strong>nicht</strong> für verhaltensbezogene Werbung.</li>
-<li>Diese Version der App <strong>enthält kein Werbe-SDK und kein Analyse-SDK</strong> und hat <strong>keine In-App-Käufe</strong>.</li>
-<li>Die App fordert <strong>nur die Mikrofon-Berechtigung</strong> an, und ausschließlich für die optionale Spracheingabe und Notizaufnahmen, die <strong>auf Ihrem Gerät</strong> durch das Streaming-Spracherkennungsmodell transkribiert werden. Audio wird niemals hochgeladen. Kamera-, Fotobibliothek- und Standort-Berechtigungen werden nicht angefordert. Dokumente und Bilder werden ausschließlich über die System-Dateiauswahl importiert; die Texterkennung (OCR) läuft <strong>vollständig auf Ihrem Gerät</strong>.</li>
+<li>Diese Version der App <strong>enthält kein Werbe-SDK und kein Analyse-SDK</strong>. <strong>Pro</strong> ist ein einmaliges Freischalten über den <strong>App Store</strong>; <strong>Apple</strong> wickelt die Zahlung ab, und wir sehen Ihre Zahlungsdaten niemals.</li>
+<li>Die <strong>Websuche</strong> ist optional und standardmäßig deaktiviert. Wenn Sie sie einschalten, wird nur die von Ihnen eingegebene Frage – niemals Ihre Dokumente – an eine öffentliche Suchmaschine gesendet, und die Ergebnisse sind stets als <strong>externe Quelle (nicht überprüft)</strong> gekennzeichnet.</li>
+<li>Die App fordert die <strong>Mikrofon-Berechtigung</strong> an, ausschließlich für die optionale Spracheingabe und Notizaufnahmen, die <strong>auf Ihrem Gerät</strong> durch das Streaming-Spracherkennungsmodell transkribiert werden, sowie die <strong>Kamera-Berechtigung</strong>, die nur verwendet wird, wenn Sie „Scannen &amp; Senden“ wählen, um den QR-Code eines anderen RomeoAI-Geräts zu lesen. Audio und Kamerabilder werden niemals hochgeladen. Fotobibliothek- und Standort-Berechtigungen werden nicht angefordert. Dokumente und Bilder werden ausschließlich über die System-Dateiauswahl importiert; die Texterkennung (OCR) läuft <strong>vollständig auf Ihrem Gerät</strong>.</li>
 <li>KI-Funktionen laufen entweder auf einem <strong>LLM-Endpunkt, den Sie selbst konfigurieren</strong>, oder mit einem <strong>auf Ihr Gerät heruntergeladenen lokalen Modell</strong> – siehe Abschnitt 4.</li>
 </ul>
 <h2>3. Welche Informationen wir verarbeiten</h2>
@@ -103,12 +104,14 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <li><strong>KI-Verarbeitung (optional).</strong> Wenn Sie KI-Erklärungen, Zusammenfassungen, Rückfragen oder Schnellaktionen nutzen, wird der von Ihnen markierte Text bzw. der relevante Auszug an den <strong>LLM-Endpunkt gesendet, den Sie selbst</strong> unter Einstellungen → KI-Dienst <strong>konfiguriert haben</strong>. Empfänger ist der von Ihnen gewählte Anbieter; wir betreiben ihn nicht, können die konfigurierte Adresse oder den Schlüssel nicht lesen und bewahren keine Kopie Ihrer Übermittlung auf. Bitte prüfen Sie die Datenschutzerklärung dieses Anbieters.</li>
 <li><strong>Remote-Konfiguration und Dokumentbereitstellung.</strong> Die App lädt Konfigurationsdateien, Rechtstexte und die optionale App-Empfehlungsliste von den GitHub Pages des Entwicklers und lädt Sprach-, Spracherkennungs-, Embedding- und lokale Sprachmodelle aus dem Modell-Repository (Hugging Face / hf-mirror). Diese Anfragen enthalten keine Dokumentinhalte, Leseverläufe, Audiodaten oder personenbezogenen Kennungen.</li>
 <li><strong>Von Ihnen ausgelöste Netzwerkzugriffe.</strong> Das Öffnen eines Bildes oder Links in einem Dokument überträgt für sich genommen nichts; die App enthält keine Browser-, Tracking- oder Werbekomponenten.</li>
+<li><strong>Websuche (optional).</strong> Wenn Sie die Websuche in einer Frage-und-Antwort-Ansicht einschalten, wird die von Ihnen eingegebene Frage (auf 200 Zeichen gekürzt) an eine öffentliche Suchmaschine gesendet – Bing für das chinesische Festland, DuckDuckGo oder Bing andernorts –, um Ergebnisse abzurufen. Es werden nur Ergebnistitel und kurze Auszüge ausgewertet; die Ergebnisseiten selbst werden nicht heruntergeladen oder gespeichert. Ihre Dokumente, Auszüge, Leseverläufe und Notizen sind niemals Teil dieser Anfrage. Abfragen werden in keiner von uns kontrollierten Datenbank gespeichert; bei wiederholter gleicher Frage innerhalb von 15 Minuten kann ein lokaler In-Memory-Cache wiederverwendet werden. Webergebnisse sind als <strong>externe Quelle (nicht überprüft)</strong> gekennzeichnet – prüfen Sie stets die Originalseite.</li>
 </ol>
 <h2>4. KI-Funktionen, einfach erklärt</h2>
 <ul>
 <li><strong>Vom Nutzer konfigurierter LLM-Endpunkt (BYOK):</strong> Erklärungen, Zusammenfassungen, Übersetzungen und Fragen &amp; Antworten entstehen durch Senden des markierten Textes an die <strong>LLM-Adresse und den Schlüssel, die Sie selbst eingeben</strong>. Der Anbieter wird von Ihnen gewählt – wir betreiben ihn nicht und können die konfigurierte Adresse oder den Schlüssel nicht lesen. Bitte prüfen Sie die Datenschutz- und Aufbewahrungsrichtlinien dieses Anbieters und übermitteln Sie über diesen Kanal keine vertraulichen Informationen.</li>
 <li><strong>Lokales LLM-Modell (optional):</strong> Erklärungen, Zusammenfassungen und Fragen &amp; Antworten können auch von einem kleinen GGUF-Modell erzeugt werden, das Sie herunterladen und lokal ausführen. In diesem Modus bleibt der Text auf Ihrem Gerät und wird nirgendwohin gesendet.</li>
 <li><strong>Verarbeitung auf dem Gerät:</strong> Textextraktion, OCR, Volltext- und semantische Indexierung, Sprachsynthese, Spracherkennung und On-Device-Modellinferenz laufen lokal auf Ihrem Gerät. <strong>Ihre Dokumente, Bilder und Audiodaten werden durch diese Funktionen nicht hochgeladen.</strong></li>
+<li><strong>Die Websuche ist ein separater Schalter.</strong> Sie ist standardmäßig deaktiviert, funktioniert unabhängig von KI-Funktionen und kann jederzeit ausgeschaltet werden. Ist sie aus, verlassen Fragen und Dokumente Ihr Gerät zu Suchzwecken nie.</li>
 </ul>
 <p>Sie können KI-Funktionen jederzeit deaktivieren; Lesen, Suche und Offline-Vorlesen funktionieren auch ohne sie.</p>
 <h2>5. Warum wir Ihre Informationen verarbeiten</h2>
@@ -139,12 +142,22 @@ hr{border:none;border-top:1px solid #e0e0e0;margin:2em 0;}
 <td>Anfragen zum Download von Sprach-, Spracherkennungs-, Embedding- und lokalen LLM-Modellen (keine Dokumentinhalte)</td>
 <td>Bereitstellung von On-Device-Modellen</td>
 </tr>
+<tr>
+<td>Die Suchmaschine, die Sie über die Websuche erreichen (Bing / DuckDuckGo)</td>
+<td>Die von Ihnen übermittelte Frage, nur solange die Websuche eingeschaltet ist</td>
+<td>Abruf der von Ihnen angeforderten externen Ergebnisse</td>
+</tr>
+<tr>
+<td>Apple (App Store)</td>
+<td>Kauf- und Belegdaten für das einmalige Pro-Freischalten</td>
+<td>Abwicklung Ihrer Zahlung</td>
+</tr>
 </tbody>
 </table>
 <p>Jeder Empfänger unterliegt seiner eigenen Datenschutzerklärung. Wir verkaufen oder vermieten personenbezogene Daten an niemanden.</p>
 <h2>7. Wie lange wir Informationen aufbewahren</h2>
 <p>Ihre Dokumente, Indizes, Notizen, KI-Caches und Einstellungen bleiben auf Ihrem Gerät, bis Sie sie löschen, das Dokument aus der Bibliothek entfernen oder die App deinstallieren. Das Löschen eines Dokuments aus der Bibliothek entfernt seinen Eintrag, seine Originaldatei und seine Indexeinträge. Die Deinstallation entfernt alles dauerhaft; wir bewahren keine Kopie auf und können nichts wiederherstellen.</p>
-<p>Inhalte, die Sie an Ihren konfigurierten LLM-Anbieter übermitteln, werden nach dessen Aufbewahrungsrichtlinie gespeichert.</p>
+<p>Inhalte, die Sie an Ihren konfigurierten LLM-Anbieter übermitteln, werden nach dessen Aufbewahrungsrichtlinie gespeichert. Suchanfragen, die über die Websuche gesendet werden, speichern wir nicht; es wird lediglich ein kurzlebiger In-Memory-Cache auf Ihrem Gerät verwendet.</p>
 <h2>8. Sicherheit</h2>
 <p>Ihre Daten liegen in der App-Sandbox und sind durch die Gerätesicherheit (Gerätecode, Datenträgerverschlüsselung) geschützt. Die LLM-Endpunktadresse und der Schlüssel werden auf dem Gerät verschleiert gespeichert und nie an uns übertragen. Keine Speichermethode ist vollkommen sicher; schützen Sie daher Ihr Gerät und erstellen Sie Sicherungen.</p>
 <h2>9. Kinder</h2>
